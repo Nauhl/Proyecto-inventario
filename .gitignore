@@ -1,4 +1,4 @@
 node_modules
 .next
 utils
-next.config.json
+/next.config.json
