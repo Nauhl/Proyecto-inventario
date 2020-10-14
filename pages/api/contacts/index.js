@@ -1,4 +1,4 @@
-import dbConnect from "../../../utils/dbConnect"
+/*import dbConnect from "../../../utils/dbConnect"
 import Contact from "../../../models/Contact";
 import { authenticated} from "../../../../utils/common"
 
@@ -36,4 +36,4 @@ export default authenticated(async (req, res) => {
 
       break;
   }
-})
+})*/

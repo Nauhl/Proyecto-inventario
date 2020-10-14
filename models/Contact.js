@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+/*const mongoose = require("mongoose");
 const mongodbErrorHandler = require("mongoose-mongodb-errors");
 
 const ContactSchema = new mongoose.Schema({
@@ -35,11 +35,11 @@ const ContactSchema = new mongoose.Schema({
     country: { type: String, trim: true, lowercase: true }
   },
 },
-  /* gives us "createdAt" and "updatedAt" fields automatically */
+  /* gives us "createdAt" and "updatedAt" fields automatically 
   { timestamps: true }
 );
 
-/* The MongoDBErrorHandler plugin gives us a better "unique" error, rather than: "11000 duplicate key" */
+/* The MongoDBErrorHandler plugin gives us a better "unique" error, rather than: "11000 duplicate key" 
 // ContactSchema.plugin(mongodbErrorHandler);
 
-module.exports = mongoose.models.Contact || mongoose.model("Contact", ContactSchema)
+module.exports = mongoose.models.Contact || mongoose.model("Contact", ContactSchema)*/

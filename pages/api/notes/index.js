@@ -18,7 +18,7 @@ export default async (req, res) => {
             break;
         case 'POST':
             try {
-                const note = await Note.create(req.body);
+                const note = await Note.create(req.body);// error status (201, 400, 405, etc.) will tell you about what is the error or where is it
 
                 res.status(201).json({ success: true, data: note })
             } catch (error) {

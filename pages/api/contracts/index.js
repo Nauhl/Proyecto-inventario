@@ -1,4 +1,4 @@
-import dbConnect from "../../../utils/dbConnect"
+/*import dbConnect from "../../../utils/dbConnect"
 import Contract from "../../../models/Contract";
 
 dbConnect();
@@ -35,4 +35,4 @@ export default async (req, res) => {
 
       break;
   }
-}
+}*/

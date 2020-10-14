@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+/*const mongoose = require("mongoose");
 const ContractSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true, trim: true, lowercase: true },
   description: { type: String, default: "", trim: true },
@@ -24,8 +24,8 @@ const ContractSchema = new mongoose.Schema({
   cost: { type: Number, trim: true },
   paymentType: { type: String, trim: true, lowercase: true }
 },
-  /* gives us "createdAt" and "updatedAt" fields automatically */
+  /* gives us "createdAt" and "updatedAt" fields automatically 
   { timestamps: true }
 );
 
-module.exports = mongoose.models.Contract || mongoose.model("Contract", ContractSchema)
+module.exports = mongoose.models.Contract || mongoose.model("Contract", ContractSchema)*/

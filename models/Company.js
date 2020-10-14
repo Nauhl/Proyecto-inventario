@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+/*const mongoose = require("mongoose");
 
 const CompanySchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true, trim: true, lowercase: true },
@@ -25,8 +25,8 @@ const CompanySchema = new mongoose.Schema({
     country: { type: String, trim: true }
   },
 },
-  /* gives us "createdAt" and "updatedAt" fields automatically */
+   /*gives us "createdAt" and "updatedAt" fields automatically 
   { timestamps: true }
 );
 
-module.exports = mongoose.models.Company || mongoose.model("Company", CompanySchema)
+module.exports = mongoose.models.Company || mongoose.model("Company", CompanySchema)*/

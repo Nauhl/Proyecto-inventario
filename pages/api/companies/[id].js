@@ -1,4 +1,4 @@
-import dbConnect from "../../../../utils/dbConnect";
+/*import dbConnect from "../../../../utils/dbConnect";
 import Company from "../../../models/Company";
 
 dbConnect();
@@ -63,4 +63,4 @@ export default async (req, res) => {
       res.status(405).json({ success: false, message: "Method not allowed!" });
       break;
   }
-}
+}*/
