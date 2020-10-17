@@ -8,14 +8,14 @@ const LocationSchema = new mongoose.Schema({
   pictures: { type: Array, default: [] },
   //files: { type: Array, default: [] },
   status: { type: String, default: "in use", trim: true, lowercase: true },
-  address: {
+  /*address: {
     streetNumber: { type: String, trim: true },
     street: { type: String, trim: true },
     street2: { type: String, trim: true },
     city: { type: String, trim: true, lowercase: true },
     province: { type: String, trim: true, lowercase: true },
     country: { type: String, trim: true, lowercase: true }
-  },
+  },*/
 },
   /* gives us "createdAt" and "updatedAt" fields automatically */
   { timestamps: true }

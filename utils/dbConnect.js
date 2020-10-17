@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
-/*import { noteSeeds } from '../noteSeed.js'
-import { CategorySeeds } from '../noteSeed.js'
-import { ConditionSeeds } from '../noteSeed.js'
-import { ItemSeeds } from '../noteSeed.js'
-import { LocationSeeds } from '../noteSeed.js'
-import { RoomSeeds } from '../noteSeed.js'
-import { SCategorySeeds } from '../noteSeed.js'*/
+/*import { noteSeeds } from '../seeder.js'
+import { CategorySeeds } from '../seeder.js'
+import { ConditionSeeds } from '../seeder.js'
+import { ItemSeeds } from '../seeder.js'
+import { LocationSeeds } from '../seeder.js'
+import { RoomSeeds } from '../seeder.js'
+import { SCategorySeeds } from '../seeder.js'*/
 
 const connection = {};
 
