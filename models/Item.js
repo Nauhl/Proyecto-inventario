@@ -22,7 +22,7 @@ const ItemSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Condition",
   },
-  estimatedValue: { type: Number, trim: true },
+  //estimatedValue: { type: Number, trim: true },
   model: { type: String, trim: true },
   brand: { type: String, trim: true },
   serialNumber: { type: String, trim: true },
@@ -35,10 +35,10 @@ const ItemSchema = new mongoose.Schema({
     },
     cost: { type: Number, trim: true },
     waranty: { type: Boolean, default: true },
-    contract: {
+    /*contract: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Contract",
-    },
+    },*/
     //invoiceImage: { type: String, trim: true },
     purchaseNotes: { type: String, default: "", trim: true }
   }

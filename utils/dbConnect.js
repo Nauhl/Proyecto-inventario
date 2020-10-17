@@ -1,5 +1,11 @@
 import mongoose from 'mongoose';
 import { noteSeeds } from '../noteSeed.js'
+import { CategorySeeds } from '../noteSeed.js'
+import { ConditionSeeds } from '../noteSeed.js'
+import { ItemSeeds } from '../noteSeed.js'
+import { LocationSeeds } from '../noteSeed.js'
+import { RoomSeeds } from '../noteSeed.js'
+import { SCategorySeeds } from '../noteSeed.js'
 
 const connection = {};
 
@@ -13,7 +19,7 @@ async function dbConnect() {
         useUnifiedTopology: true,
     });
 
-    noteSeeds()
+    noteSeeds(), CategorySeeds(), ConditionSeeds(), ItemSeeds(), LocationSeeds(), RoomSeeds(), SCategorySeeds()
     /*db.on('error', (error) => console.error(error))
     db.once('open', () => console.log('Connected to database'))*/
 
