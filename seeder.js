@@ -1,27 +1,48 @@
 //import seeder from 'mongoose';
 const seeder = require ('mongoose-seed');
-//import dbConnect from "./utils/dbConnect"
 const faker = require ('faker');
-import sample from 'lodash.sample'
-//import Note from "./models/Note.js"
-import Category from "./models/Category"
-import Condition from "./models/Condition"
-import Item from "./models/Item"
-import Location from "./models/Location"
-import Room from "./models/Room"
-import SubCategory from "./models/SubCategory"
+const lodash = require('lodash')
+const sample = lodash.sample;
+const Category = require("./models/Category")
+const Condition = require("./models/Condition")
+const Item = require("./models/Item")
+const Location = require("./models/Location")
+const Room = require("./models/Room")
+const SubCategory = require("./models/SubCategory")
 
-//dbConnect();
+const mongoose = require('mongoose')
 
-seeder.connect(dbConnect(), function() {
+const connection = {};
+
+async function dbConnect() {
+    if (connection.isConnected) {
+        return;
+    }
+
+	const dbURL = "mongodb+srv://Oneslot9:3mglyOggIQlTHqsB@cluster0.ej2xz.mongodb.net/Inventario?retryWrites=true&w=majority";
+
+    const db = await mongoose.connect(dbURL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+
+    connection.isConnected = db.connections[0].readyState;
+    console.log(connection.isConnected);
+}
+
+dbConnect();
+
+const dbURL = "mongodb+srv://Oneslot9:3mglyOggIQlTHqsB@cluster0.ej2xz.mongodb.net/Inventario?retryWrites=true&w=majority";
+
+seeder.connect(dbURL, function() {
 //const db = "mongodb://localhost:27017/inventario" // this is just example
 
 /*seeder.connect(db, function () {*/
    seeder.loadModels( [
-	   /*"./models/Category.js", "./models/Condition.js", "./models/Item.js", "./models/Location.js", "./models/Room.js", "./models/SubCategory.js"*/
+	   "./models/Category.js", "./models/Condition.js", "./models/Item.js", "./models/Location.js", "./models/Room.js", "./models/SubCategory.js"
    ]);
-   seeder.clearModels( [/*"Category", "Condition", "Item", "Location", "Room", "SubCategory"*/]);
-   seeder.populateModels(/*ConditionSeeds(), ItemSeeds(), SCategorySeeds(), CategorySeeds(), RoomSeeds(), LocationSeeds(),*/ function (err, done) {
+   seeder.clearModels( ["Category", "Condition", "Item", "Location", "Room", "SubCategory"]);
+   seeder.populateModels(ConditionSeeds, ItemSeeds, SCategorySeeds, CategorySeeds, RoomSeeds, LocationSeeds, function (err, done) {
 	   if (err) {
 		   return console.log("seed err", err)
 	   }
@@ -32,7 +53,7 @@ seeder.connect(dbConnect(), function() {
    })
 });
 
-export const ConditionSeeds = async () => {
+const ConditionSeeds = async () => {
 	try {
 		/** check if already populated */
 		const conditionCollection = await Condition.find()
@@ -64,7 +85,7 @@ export const ConditionSeeds = async () => {
 }
 //***************************************************************
 
-export const ItemSeeds = async () => {
+const ItemSeeds = async () => {
 	try {
 		/** check if already populated */
 		const itemCollection = await Item.find()
@@ -121,7 +142,7 @@ export const ItemSeeds = async () => {
 }
 
 //*****************************************************************
-export const SCategorySeeds = async () => {
+const SCategorySeeds = async () => {
 	try {
 		/** check if already populated */
 		const subCollection = await SubCategory.find()
@@ -154,7 +175,7 @@ export const SCategorySeeds = async () => {
 }
 //*********************************** Seeding with faker *************
 
-export const CategorySeeds = async () => {	
+const CategorySeeds = async () => {	
 	try {
 		/** check if already populated */
 		const categoryCollection = await Category.find()
@@ -192,7 +213,7 @@ export const CategorySeeds = async () => {
 	}
 }
 //***************************************************************
-export const RoomSeeds = async () => {
+const RoomSeeds = async () => {
 	try {
 		/** check if already populated */
 		const roomCollection = await Room.find()
@@ -230,7 +251,7 @@ export const RoomSeeds = async () => {
 	}
 }
 //*************************************************************** 
-export const LocationSeeds = async () => {
+const LocationSeeds = async () => {
 	try {
 		/** check if already populated */
 		const locationCollection = await Location.find()
