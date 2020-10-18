@@ -7,10 +7,10 @@ const RoomSchema = new mongoose.Schema({
   //user: { type: String, default: "automatic", trim: true },
   pictures: { type: Array, default: [] },
   //files: { type: Array, default: [] },
-  /*location: {
+  location: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Location",
-  }*/
+  }
 },
   /* gives us "createdAt" and "updatedAt" fields automatically */
   { timestamps: true }

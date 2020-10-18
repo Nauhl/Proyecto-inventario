@@ -1,28 +1,27 @@
-//import seeder from 'mongoose-seed';
-var seeder = require('mongoose-seed');
-import dbConnect from "./utils/dbConnect.js"
-import faker from 'faker'
-//import sample from 'lodash.sample'
+//import seeder from 'mongoose';
+const seeder = require ('mongoose-seed');
+//import dbConnect from "./utils/dbConnect"
+const faker = require ('faker');
+import sample from 'lodash.sample'
 //import Note from "./models/Note.js"
-import Category from "./models/Category.js"
-import Condition from "./models/Condition.js"
-import Item from "./models/Item.js"
-import Location from "./models/Location.js"
-import Room from "./models/Room.js"
-import SubCategory from "./models/SubCategory.js"
+import Category from "./models/Category"
+import Condition from "./models/Condition"
+import Item from "./models/Item"
+import Location from "./models/Location"
+import Room from "./models/Room"
+import SubCategory from "./models/SubCategory"
 
-dbConnect();
+//dbConnect();
 
-seeder.connect(dbConnect, function() {
-
+seeder.connect(dbConnect(), function() {
 //const db = "mongodb://localhost:27017/inventario" // this is just example
 
 /*seeder.connect(db, function () {*/
    seeder.loadModels( [
-	   "./models/Category.js", "./models/Condition.js", "./models/Item.js", "./models/Location.js", "./models/Room.js", "./models/SubCategory.js"
+	   /*"./models/Category.js", "./models/Condition.js", "./models/Item.js", "./models/Location.js", "./models/Room.js", "./models/SubCategory.js"*/
    ]);
-   seeder.clearModels( ["Category", "Condition", "Item", "Location", "Room", "SubCategory"]);
-   seeder.populateModels(cateS, condS, itemS, locatS, roomS, subS, function (err, done) {
+   seeder.clearModels( [/*"Category", "Condition", "Item", "Location", "Room", "SubCategory"*/]);
+   seeder.populateModels(/*ConditionSeeds(), ItemSeeds(), SCategorySeeds(), CategorySeeds(), RoomSeeds(), LocationSeeds(),*/ function (err, done) {
 	   if (err) {
 		   return console.log("seed err", err)
 	   }
@@ -33,57 +32,6 @@ seeder.connect(dbConnect, function() {
    })
 });
 
-/*const data = [
-	{
-		'model': 'Category',
-		'documents': [
-			{
-				
-				"_id" : ("5f8a7686c5612628d80ac768"),
-				"description" : "Eius aut et est repudiandae possimus. Iusto temporibus dicta animi consequatur ut et commodi commodi. Illum esse temporibus aut quaerat mollitia. Deleniti et quo dignissimos non ea atque earum. Quod hic assumenda inventore quia omnis omnis. Qui soluta animi ipsam neque amet.",
-				"pictures" : [ 
-					"https://s3.amazonaws.com/uifaces/faces/twitter/fronx/128.jpg"
-				],
-				"name" : "international infrastructure agent"
-			}
-		]
-	}
-];*/
-//*********************************** Seeding with faker *************
-
-export const CategorySeeds = async () => {	
-	try {
-		/** check if already populated */
-		const categoryCollection = await Category.find()
-		if (categoryCollection.length > 1) {
-			return
-		}
-		/** quantity to be generated */
-		const quantity = 10
-		/** empty array to store new data */
-		let cateS = []
-		for (let i = 0; i < quantity; i++) {
-			cateS.push(
-				new Category({
-                    name: faker.name.title(),
-					description: faker.lorem.paragraph(),
-					pictures: faker.internet.avatar()
-					//subcategory: faker.name.title()
-				})
-			)
-		}
-	    await Category.remove()
-		 
-	    cateS.forEach(categories => {
-	   	Category.create(categories)
-	})
-	console.log('Category Collection has been Populated!')
-	
-	} catch (error) {
-		console.log(error)
-	}
-}
-//***************************************************************
 export const ConditionSeeds = async () => {
 	try {
 		/** check if already populated */
@@ -115,6 +63,7 @@ export const ConditionSeeds = async () => {
 	}
 }
 //***************************************************************
+
 export const ItemSeeds = async () => {
 	try {
 		/** check if already populated */
@@ -127,34 +76,160 @@ export const ItemSeeds = async () => {
 		/** empty array to store new data */
 		let itemS = []
 		for (let i = 0; i < quantity; i++) {
+			const location = await Location.find();
+			const randomLocation = await sample(location);
+			const room = await Room.find();
+			const randomRoom = await sample(room);
+			const category = await Category.find();
+			const randomCategory = await sample(category);
+			const condition = await Condition.find();
+			const randomCondition = await sample(condition);
+
+            
+			if(randomLocation, randomRoom){
 			itemS.push(
 				new Item({
                     name: faker.name.title(),
 					description: faker.lorem.paragraph(),
 					pictures: faker.internet.avatar(),
-					//Location: faker.name.title(),       // como se conectaria estas partes
-					//Room: faker.name.title(),
-					//Category: faker.name.title(),
-					//Condition: faker.name.title(),
+					location: randomLocation._id(),       // como se conectaria estas partes
+					room: randomRoom._id(),
+					category: randomCategory._id(),
+					condition: randomCondition._id(),
 					model: faker.name.title(),
 					brand: faker.name.title(),
 					serialNumber: faker.name.title(),
 					notes: faker.name.title(),
-					//purchaseInfo: 
+					purchaseInfo: {
+				    purchaseDate: faker.date.recent(),
+			    	cost: faker.name.title(),
+		    		waranty: faker.database.type()
+	    			}
+				})
+			
+	    	)
+	    }
+	    await Item.remove()
+	    itemS.forEach(dato => {
+	    	Item.create(dato)
+	})
+	console.log('Item Collection has been Populated!')
+		}	
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+//*****************************************************************
+export const SCategorySeeds = async () => {
+	try {
+		/** check if already populated */
+		const subCollection = await SubCategory.find()
+		if (subCollection.length > 1) {
+			return
+		}
+		/** quantity to be generated */
+		const quantity = 10
+		/** empty array to store new data */
+		let subS = []
+		for (let i = 0; i < quantity; i++) {
+
+			subS.push(
+				new SubCategory({
+                    name: faker.name.title(),
+					description: faker.lorem.paragraph()
 				})
 			)
 		}
-	    await Item.remove()
-	    itemS.forEach(dato => {
-			Item.create(dato)
+	    await SubCategory.remove()
+		 
+	    subS.forEach(subcategories => {
+			SubCategory.create(subcategories)
 	})
-	console.log('Item Collection has been Populated!')
+	console.log('SubCategory Collection has been Populated!')
 	
 	} catch (error) {
 		console.log(error)
 	}
 }
-//*****************************************************************
+//*********************************** Seeding with faker *************
+
+export const CategorySeeds = async () => {	
+	try {
+		/** check if already populated */
+		const categoryCollection = await Category.find()
+		if (categoryCollection.length > 1) {
+			return
+		}
+		/** quantity to be generated */
+		const quantity = 10
+		/** empty array to store new data */
+		let cateS = []
+		for (let i = 0; i < quantity; i++) {
+			const subcategory = await SubCategory.find();
+			const randomSubCategory = await sample(subcategory);
+
+			if(randomSubCategory){
+				cateS.push(
+					new Category({
+						name: faker.name.title(),
+						description: faker.lorem.paragraph(),
+						pictures: faker.internet.avatar(),
+						subcategory: randomSubCategory._id()
+					})
+				)
+			}
+		}
+	    await Category.remove()
+		 
+	    cateS.forEach(categories => {
+	   	Category.create(categories)
+	})
+	console.log('Category Collection has been Populated!')
+	
+	} catch (error) {
+		console.log(error)
+	}
+}
+//***************************************************************
+export const RoomSeeds = async () => {
+	try {
+		/** check if already populated */
+		const roomCollection = await Room.find()
+		if (roomCollection.length > 1) {
+			return
+		}
+		/** quantity to be generated */
+		const quantity = 10
+		/** empty array to store new data */
+		let roomS = []
+		for (let i = 0; i < quantity; i++) {
+			const locations = await Location.find();
+			const randomLocations = await sample(locations);
+
+			if(randomLocations){
+			roomS.push(
+				new Room({
+                    name: faker.name.title(),
+					description: faker.lorem.paragraph(),
+					pictures: faker.internet.avatar(),
+					locations: randomLocations._id()
+				})
+			)
+			}
+		}
+	    await Room.remove()
+		 
+	    roomS.forEach(roooms => {
+			Room.create(roooms)
+	})
+	console.log('Room Collection has been Populated!')
+	
+	} catch (error) {
+		console.log(error)
+	}
+}
+//*************************************************************** 
 export const LocationSeeds = async () => {
 	try {
 		/** check if already populated */
@@ -172,82 +247,26 @@ export const LocationSeeds = async () => {
                     name: faker.name.title(),
 					description: faker.lorem.paragraph(),
 					pictures: faker.internet.avatar(),
-					status: faker.name.title()
-					//address: 
-				})
+					status: faker.name.title(),
+					address: {
+						    streetNumber: faker.address.zipCode(),
+                            street: faker.address.streetAddress(),
+                            street2: faker.address.secondaryAddress(),
+                            city: faker.address.city(),
+                            province: faker.address.state(),
+                            country: faker.address.country()
+						}
+					} 
+				/*)*/)
 			)
 		}
 	    await Location.remove()
-		 
+	
 	    locatS.forEach(locations => {
 			Location.create(locations)
 	})
 	console.log('Locations Collection has been Populated!')
-	
-	} catch (error) {
-		console.log(error)
-	}
-}
-//*****************************************************************
-export const RoomSeeds = async () => {
-	try {
-		/** check if already populated */
-		const roomCollection = await Room.find()
-		if (roomCollection.length > 1) {
-			return
-		}
-		/** quantity to be generated */
-		const quantity = 10
-		/** empty array to store new data */
-		let roomS = []
-		for (let i = 0; i < quantity; i++) {
-			roomS.push(
-				new Room({
-                    name: faker.name.title(),
-					description: faker.lorem.paragraph(),
-					pictures: faker.internet.avatar(),
-					//location: faker.lorem.text()
-				})
-			)
-		}
-	    await Room.remove()
-		 
-	    roomS.forEach(roooms => {
-			Room.create(roooms)
-	})
-	console.log('Room Collection has been Populated!')
-	
-	} catch (error) {
-		console.log(error)
-	}
-}
-//*****************************************************************
-export const SCategorySeeds = async () => {
-	try {
-		/** check if already populated */
-		const subCollection = await SubCategory.find()
-		if (subCollection.length > 1) {
-			return
-		}
-		/** quantity to be generated */
-		const quantity = 10
-		/** empty array to store new data */
-		let subS = []
-		for (let i = 0; i < quantity; i++) {
-			subS.push(
-				new SubCategory({
-                    name: faker.name.title(),
-					description: faker.lorem.paragraph()
-				})
-			)
-		}
-	    await SubCategory.remove()
-		 
-	    subS.forEach(subcategories => {
-			SubCategory.create(subcategories)
-	})
-	console.log('SubCategory Collection has been Populated!')
-	
+
 	} catch (error) {
 		console.log(error)
 	}
