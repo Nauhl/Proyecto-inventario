@@ -11,7 +11,7 @@ const Room = require("./models/Room")
 const SubCategory = require("./models/SubCategory")
 
 const mongoose = require('mongoose')
-
+/*
 const connection = {};
 
 async function dbConnect() {
@@ -30,19 +30,16 @@ async function dbConnect() {
     console.log(connection.isConnected);
 }
 
-dbConnect();
+dbConnect();*/
 
 const dbURL = "mongodb+srv://Oneslot9:3mglyOggIQlTHqsB@cluster0.ej2xz.mongodb.net/Inventario?retryWrites=true&w=majority";
 
 seeder.connect(dbURL, function() {
-//const db = "mongodb://localhost:27017/inventario" // this is just example
-
-/*seeder.connect(db, function () {*/
    seeder.loadModels( [
-	   "./models/Category.js", "./models/Condition.js", "./models/Item.js", "./models/Location.js", "./models/Room.js", "./models/SubCategory.js"
+	"./models/Condition.js", "./models/Item.js", "./models/SubCategory.js", "./models/Category.js", "./models/Room.js", "./models/Location.js"
    ]);
-   seeder.clearModels( ["Category", "Condition", "Item", "Location", "Room", "SubCategory"]);
-   seeder.populateModels(ConditionSeeds, ItemSeeds, SCategorySeeds, CategorySeeds, RoomSeeds, LocationSeeds, function (err, done) {
+   seeder.clearModels( [ "Condition", "Item", "SubCategory", "Category", "Room", "Location"]);
+   seeder.populateModels(/*data*/ConditionSeeds, ItemSeeds, SCategorySeeds, CategorySeeds, RoomSeeds, LocationSeeds, function(err, done) {
 	   if (err) {
 		   return console.log("seed err", err)
 	   }
@@ -53,7 +50,8 @@ seeder.connect(dbURL, function() {
    })
 });
 
-const ConditionSeeds = async () => {
+//**************** Seeding with faker *****************************
+const ConditionSeeds =  async () =>  {
 	try {
 		/** check if already populated */
 		const conditionCollection = await Condition.find()
@@ -83,9 +81,10 @@ const ConditionSeeds = async () => {
 		console.log(error)
 	}
 }
-//***************************************************************
 
-const ItemSeeds = async () => {
+//*****************************************************************
+
+const ItemSeeds =  async () => {
 	try {
 		/** check if already populated */
 		const itemCollection = await Item.find()
@@ -113,10 +112,10 @@ const ItemSeeds = async () => {
                     name: faker.name.title(),
 					description: faker.lorem.paragraph(),
 					pictures: faker.internet.avatar(),
-					location: randomLocation._id(),       // como se conectaria estas partes
-					room: randomRoom._id(),
-					category: randomCategory._id(),
-					condition: randomCondition._id(),
+					location: randomLocation._id,       // como se conectaria estas partes
+					room: randomRoom._id,
+					category: randomCategory._id,
+					condition: randomCondition._id,
 					model: faker.name.title(),
 					brand: faker.name.title(),
 					serialNumber: faker.name.title(),
@@ -142,7 +141,7 @@ const ItemSeeds = async () => {
 }
 
 //*****************************************************************
-const SCategorySeeds = async () => {
+const SCategorySeeds =  async () => {
 	try {
 		/** check if already populated */
 		const subCollection = await SubCategory.find()
@@ -173,9 +172,9 @@ const SCategorySeeds = async () => {
 		console.log(error)
 	}
 }
-//*********************************** Seeding with faker *************
 
-const CategorySeeds = async () => {	
+//*****************************************************************
+const CategorySeeds =  async () => {	
 	try {
 		/** check if already populated */
 		const categoryCollection = await Category.find()
@@ -196,7 +195,7 @@ const CategorySeeds = async () => {
 						name: faker.name.title(),
 						description: faker.lorem.paragraph(),
 						pictures: faker.internet.avatar(),
-						subcategory: randomSubCategory._id()
+						subcategory: randomSubCategory._id
 					})
 				)
 			}
@@ -212,8 +211,9 @@ const CategorySeeds = async () => {
 		console.log(error)
 	}
 }
-//***************************************************************
-const RoomSeeds = async () => {
+
+//*****************************************************************
+const RoomSeeds =  async () => {
 	try {
 		/** check if already populated */
 		const roomCollection = await Room.find()
@@ -234,7 +234,7 @@ const RoomSeeds = async () => {
                     name: faker.name.title(),
 					description: faker.lorem.paragraph(),
 					pictures: faker.internet.avatar(),
-					locations: randomLocations._id()
+					locations: randomLocations._id
 				})
 			)
 			}
@@ -250,8 +250,9 @@ const RoomSeeds = async () => {
 		console.log(error)
 	}
 }
-//*************************************************************** 
-const LocationSeeds = async () => {
+
+//*****************************************************************
+const LocationSeeds =  async () => {
 	try {
 		/** check if already populated */
 		const locationCollection = await Location.find()
