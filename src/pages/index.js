@@ -1,5 +1,5 @@
 //import Head from 'next/head'     // I change/move head to _document.js
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 
 export default function Home() {
   return (
