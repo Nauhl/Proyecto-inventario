@@ -25,15 +25,19 @@ export const seedSubCategory = async () => {
       )
     }
 
-    SubCategory.collection.drop();
+     SubCategory.remove();
 
-    subCategories.forEach((subCategory, index) => {
+     subCategories.forEach(subcategory => {
+      SubCategory.create(subcategory)
+    })
+    console.log('Condition Collection has been Populated!')
+    /*subCategories.forEach((subCategory, index) => {
 
       SubCategory.create(subCategory).then(data => {
         console.log(`Created - subCategory #${index}`);
       })
 
-    })
+    })*/
 
   } catch (error) {
     console.log(error)
@@ -58,13 +62,19 @@ export const seedCategory = async () => {
       )
     }
 
-    categories.forEach((category, index) => {
+    Category.remove();
+
+    categories.forEach(category => {
+      Category.create(category)
+    })
+    console.log('Category Collection has been Populated!')
+    /*categories.forEach((category, index) => {
 
       Category.create(category).then(data => {
         console.log(`Created - category #${index}`);
       })
 
-    })
+    })*/
 
   } catch (error) {
     console.log(error)
@@ -86,7 +96,8 @@ export const seedCondition = async () => {
         })
       )
     }
-    await Condition.remove()
+
+     await Condition.remove();
 
     conditions.forEach(condition => {
       Condition.create(condition)
@@ -115,8 +126,7 @@ export const seedRoom = async () => {
           })
         )
       }
-  
-    await Room.remove()
+      await Room.remove();
 
     rooms.forEach(room => {
       Room.create(room)
@@ -135,7 +145,7 @@ export const seedLocation = async () => {
     for (let i = 0; i < loop; i++) {
       locations.push(
         new Location({
-          name: faker.lorem.word(),
+          name: faker.lorem.text(),
           description: faker.lorem.sentence(),
           isActive: faker.random.boolean(),
           pictures: faker.image.image(),
@@ -151,8 +161,7 @@ export const seedLocation = async () => {
         })
       )
     }
-
-    await Location.remove()
+    await Location.remove();
 
     locations.forEach(location => {
       Location.create(location)
@@ -200,7 +209,8 @@ export const seedItem = async () => {
           })
         )
       }
-      await Item.remove()
+      await Item.remove();
+
       items.forEach(item => {
         Item.create(item)
       })
