@@ -1,4 +1,0 @@
-in an arrow function ( "=>" ) you don't need to put a "return" because the arrow function it's already say it.
-en una funcion de flecha ( "=>" )  no necesitas poner un return porque la propia funcion de flecha se lo hace saber al programa o esa es su funcion en si 
-
-// error status (201, 400, 405, etc.) will tell you about what is the error or where is it
