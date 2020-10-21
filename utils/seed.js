@@ -8,8 +8,6 @@ import Room from "../src/models/Room";
 import dbConnect from "./dbConnect";
 import _ from "lodash";
 
-dbConnect();
-
 export const seedSubCategory = async () => {
   try {
     const loop = 10;
@@ -25,19 +23,12 @@ export const seedSubCategory = async () => {
       )
     }
 
-     SubCategory.remove();
+    SubCategory.collection.drop();
 
-     subCategories.forEach(subcategory => {
+    subCategories.forEach(subcategory => {
       SubCategory.create(subcategory)
     })
-    console.log('Condition Collection has been Populated!')
-    /*subCategories.forEach((subCategory, index) => {
-
-      SubCategory.create(subCategory).then(data => {
-        console.log(`Created - subCategory #${index}`);
-      })
-
-    })*/
+    console.log('SubCategory Collection has been Populated!')
 
   } catch (error) {
     console.log(error)
@@ -57,32 +48,25 @@ export const seedCategory = async () => {
           name: faker.name.findName(),
           description: faker.lorem.paragraph(),
           pictures: faker.internet.avatar(),
-          subCategories: [_.sample(allSubCategories)],
+          subCategories: [_.sample(allSubCategories)._id],
           isActive: faker.random.boolean(),
         })
       )
     }
 
-    Category.remove();
+    Category.collection.drop();
 
     categories.forEach(category => {
       Category.create(category)
     })
     console.log('Category Collection has been Populated!')
-    /*categories.forEach((category, index) => {
-
-      Category.create(category).then(data => {
-        console.log(`Created - category #${index}`);
-      })
-
-    })*/
 
   } catch (error) {
     console.log(error)
   }
 };
 
-export const seedCondition = async () => {   
+export const seedCondition = async () => {
   try {
     const loop = 10;
     const conditions = [];
@@ -91,14 +75,14 @@ export const seedCondition = async () => {
     for (let i = 0; i < loop; i++) {
       conditions.push(
         new Condition({
-          name: faker.lorem.word(),
+          name: faker.lorem.word() + faker.lorem.word(),
           description: faker.lorem.sentence(),
           isActive: faker.random.boolean()
         })
       )
     }
 
-      Condition.remove();
+    Condition.collection.drop();
 
     conditions.forEach(condition => {
       Condition.create(condition)
@@ -109,36 +93,7 @@ export const seedCondition = async () => {
   }
 };
 
-export const seedRoom = async () => {   
-  try {
-    const loop = 10;
-    const rooms = [];
-    const allLocations = await Location.find();
-
-    for (let i = 0; i < loop; i++) {
-
-        rooms.push(
-          new Room({
-            name: faker.lorem.word(),
-            description: faker.lorem.sentence(),
-            isActive: faker.random.boolean(),
-            pictures: faker.image.image(),
-            locations: [_.sample(allLocations)]
-          })
-        )
-      }
-      await Room.remove();
-
-    rooms.forEach(room => {
-      Room.create(room)
-    })
-    console.log('Room Collection has been Populated!')
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const seedLocation = async () => { 
+export const seedLocation = async () => {
   try {
     const loop = 10;
     const locations = [];
@@ -150,7 +105,7 @@ export const seedLocation = async () => {
           description: faker.lorem.sentence(),
           isActive: faker.random.boolean(),
           pictures: faker.image.image(),
-          status: faker.lorem.word(),
+          status: faker.lorem.word() + faker.lorem.word(),
           address: {
             streetNumber: faker.address.zipCode(),
             street: faker.address.streetAddress(),
@@ -162,7 +117,7 @@ export const seedLocation = async () => {
         })
       )
     }
-    await Location.remove();
+    await Location.collection.drop();
 
     locations.forEach(location => {
       Location.create(location)
@@ -173,7 +128,39 @@ export const seedLocation = async () => {
   }
 };
 
-export const seedItem = async () => {    
+export const seedRoom = async () => {
+  try {
+    const loop = 10;
+    const rooms = [];
+    const allLocations = await Location.find();
+
+    for (let i = 0; i < loop; i++) {
+      const locationRoom = [_.sample(allLocations)._id]
+
+      rooms.push(
+        new Room({
+          name: faker.lorem.word() + faker.lorem.word(),
+          description: faker.lorem.sentence(),
+          isActive: faker.random.boolean(),
+          pictures: faker.image.image(),
+          location: locationRoom
+          // location: [_.sample(allLocations)._id]
+        })
+      )
+    }
+
+    Room.collection.drop();
+
+    rooms.forEach(room => {
+      Room.create(room)
+    })
+    console.log('Room Collection has been Populated!')
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const seedItem = async () => {
   try {
     const loop = 10;
     const items = [];
@@ -183,50 +170,65 @@ export const seedItem = async () => {
     const allCondition = await Condition.find();
 
     for (let i = 0; i < loop; i++) {
-     
-         items.push(
-          new Item({
-            name: faker.name.title(),
-            description: faker.lorem.paragraph(),
-            pictures: faker.internet.avatar(),
-            isActive: faker.random.boolean(),
-            locations: [_.sample(allLocations)],
-            rooms: [_.sample(allRooms)],
-            categories: [_.sample(allCategory)],
-            conditions: [_.sample(allCondition)],
-            estimatedValue: faker.commerce.price(),
-            model: faker.name.title(),
-            brand: faker.name.title(),
-            serialNumber: faker.name.title(),
-            notes: faker.name.title(),
-            purchaseInfo: {
-              purchaseDate: faker.date.past(),
-              //company: randomCompany._id,
-              cost: faker.commerce.price(),
-              waranty: faker.random.boolean(),
-              //contract: randomContract._id,
-              purchaseNotes: faker.lorem.sentence()
-            }
-          })
-        )
-      }
-      await Item.remove();
 
-      items.forEach(item => {
-        Item.create(item)
-      })
-      console.log('Item Collection has been Populated!')
-    
+      items.push(
+        new Item({
+          name: faker.name.title(),
+          description: faker.lorem.paragraph(),
+          pictures: faker.internet.avatar(),
+          isActive: faker.random.boolean(),
+          location: [_.sample(allLocations)._id],
+          room: [_.sample(allRooms)._id],
+          category: [_.sample(allCategory)._id],
+          condition: [_.sample(allCondition)._id],
+          estimatedValue: faker.commerce.price(),
+          model: faker.name.title(),
+          brand: faker.name.title(),
+          serialNumber: faker.name.title(),
+          notes: faker.name.title(),
+          purchaseInfo: {
+            purchaseDate: faker.date.past(),
+            //company: randomCompany._id,
+            cost: faker.commerce.price(),
+            waranty: faker.random.boolean(),
+            //contract: randomContract._id,
+            purchaseNotes: faker.lorem.sentence()
+          }
+        })
+      )
+    }
+    await Item.collection.drop();
+
+    items.forEach(item => {
+      Item.create(item)
+    })
+    console.log('Item Collection has been Populated!')
+
   } catch (error) {
     console.log(error)
   }
 };
 
-
 // Databse Seeds
-seedSubCategory();
-seedCategory();
-seedCondition(); 
-seedLocation();    
-seedRoom();         
-seedItem();        
+dbConnect().then(() => {
+  // seedSubCategory()
+  //   .then(() => seedCategory())
+  // seedLocation()
+  //   .then(() => seedRoom())
+  //   .then(() => seedCondition())
+  // seedCondition()
+  // seedRoom()
+  //   .then(() => seedItem())
+
+  //! 1
+  //seedSubCategory()
+  //seedLocation()
+  //seedCondition()
+
+  //! 2
+  //seedCategory()
+  //seedRoom()
+
+  //! 3
+  //seedItem()
+});
