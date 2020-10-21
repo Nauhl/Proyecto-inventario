@@ -5,7 +5,7 @@ import Condition from "../src/models/Condition";
 import Item from "../src/models/Item";
 import Location from "../src/models/Location";
 import Room from "../src/models/Room";
-import dbConnect from "./dbConnect";
+import { dbConnect, dbDisconnect } from "./dbConnect";
 import _ from "lodash";
 
 export const seedSubCategory = async () => {
@@ -209,26 +209,34 @@ export const seedItem = async () => {
   }
 };
 
+function setOne() {
+  console.log("\n= STEP ONE =============")
+  seedSubCategory();
+  seedLocation();
+  seedCondition();
+};
+
+function setTwo() {
+  console.log("\n= STEP TWO =============")
+  seedCategory();
+  seedRoom();
+};
+
+function setThree() {
+  console.log("\n= STEP THREE ===========")
+  seedItem();
+  setTimeout(dbDisconnect, 2000);
+};
+
 // Databse Seeds
 dbConnect().then(() => {
-  // seedSubCategory()
-  //   .then(() => seedCategory())
-  // seedLocation()
-  //   .then(() => seedRoom())
-  //   .then(() => seedCondition())
-  // seedCondition()
-  // seedRoom()
-  //   .then(() => seedItem())
 
   //! 1
-  //seedSubCategory()
-  //seedLocation()
-  //seedCondition()
+  setOne()
 
   //! 2
-  //seedCategory()
-  //seedRoom()
+  setTimeout(setTwo, 2000);
 
   //! 3
-  //seedItem()
+  setTimeout(setThree, 3000);
 });
