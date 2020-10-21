@@ -56,6 +56,7 @@ export const seedCategory = async () => {
         new Category({
           name: faker.name.findName(),
           description: faker.lorem.paragraph(),
+          pictures: faker.internet.avatar(),
           subCategories: [_.sample(allSubCategories)],
           isActive: faker.random.boolean(),
         })
@@ -97,7 +98,7 @@ export const seedCondition = async () => {
       )
     }
 
-     await Condition.remove();
+      Condition.remove();
 
     conditions.forEach(condition => {
       Condition.create(condition)
