@@ -1,90 +1,115 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import { makeStyles } from "@material-ui/core/styles";
+import ReactDOM, { render } from "react-dom";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Nav from "react-bootstrap/Nav";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
+  rootAppBar: {
     flexGrow: 1,
   },
 }));
 
-export default function MenuAppBar() {
+export default function NavBar(props) {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
+  const [expanded, setExpanded] = React.useState(false);
+  const [menuExpanded, setMenuExpanded] = React.useState(false);
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+  const toggleMenuExpanded = () => {
+    if (expanded) {
+      setMenuExpanded(true)
+      return;
+    }
+    const currentState = menuExpanded;
+    setMenuExpanded(!currentState);
   };
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Inventario
-          </Typography>
-          {auth && (
-            <div >
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
-            </div>
-          )}
-        </Toolbar>
-      </AppBar>
-    </div>
+    <>
+
+      <div className={classes.rootAppBar}>
+        <Navbar fixed="top" expanded={expanded} collapseOnSelect expand="md" bg="dark" variant="dark" className="pl-2 pr-2">
+          <Navbar.Brand href="/">Inventory</Navbar.Brand>
+
+          
+            <>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setExpanded(expanded ? false : true)} />
+              <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="mr-auto" onClick={toggleMenuExpanded}>
+                  <Link href="/items"><a className="nav-link">Items</a></Link>
+                  <NavDropdown title="Setup" id="basic-nav-dropdown" show={expanded || menuExpanded}>
+
+                    {/* <Link href="/categories"><a className="nav-link">Categories</a></Link> */}
+                    {/* <Link href="/subCategories"><a className="nav-link">Subcategories</a></Link> */}
+                    {/* <Link href="/companies"><a className="nav-link">Companies</a></Link> */}
+                    {/* <Link href="/conditions"><a className="nav-link">Conditions</a></Link> */}
+                    {/* <Link href="/contacts"><a className="nav-link">Contacts</a></Link> */}
+                    {/* <Link href="/contracts"><a className="nav-link">Contracts</a></Link> */}
+                    {/* <Link href="/info"><a className="nav-link">Info</a></Link> */}
+                    {/* <Link href="/locations"><a className="nav-link">Locations</a></Link> */}
+                    {/* <Link href="/policies"><a className="nav-link">Policies</a></Link> */}
+                    {/* <Link href="/rooms"><a className="nav-link">Rooms</a></Link> */}
+
+                    <Link href="/categories">
+                      <NavDropdown.Item href="/categories">
+                        Categories
+                      </NavDropdown.Item>
+                    </Link>
+
+                    <Link href="/conditions">
+                      <NavDropdown.Item href="/conditions">
+                        Conditions
+                      </NavDropdown.Item>
+                    </Link>
+
+                    <NavDropdown.Divider />
+
+                    <Link href="/locations">
+                      <NavDropdown.Item href="/locations">
+                        Locations
+                      </NavDropdown.Item>
+                    </Link>
+
+                    <Link href="/rooms">
+                      <NavDropdown.Item href="/rooms">
+                        Rooms
+                      </NavDropdown.Item>
+                    </Link>
+
+                    <NavDropdown.Divider />
+
+                    <Link href="/contracts">
+                      <NavDropdown.Item href="/contracts">
+                        About
+                      </NavDropdown.Item>
+                    </Link>
+
+                    <Link href="/policies">
+                      <NavDropdown.Item href="/policies">
+                        Profile
+                      </NavDropdown.Item>
+                    </Link>
+
+                  </NavDropdown>
+                </Nav>
+              </Navbar.Collapse>
+              
+            </>
+           
+           
+        </Navbar>
+
+        {/* FOOTER */}
+        <Navbar fixed="bottom" bg="dark" variant="dark" className="pl-2 pr-2 justify-content-between">
+          <Navbar.Text>Inventory @ 2020</Navbar.Text>
+
+          <Navbar.Text>version 1.1</Navbar.Text>
+
+        </Navbar>
+
+      </div>
+    </>
   );
 }
