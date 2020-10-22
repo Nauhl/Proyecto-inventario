@@ -8,6 +8,7 @@ export default function Home() {
         Welcome to your Inventory
     </h1>
     </div>
+    
   )
 }
 //<main className={styles.main}></main>

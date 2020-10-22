@@ -12,7 +12,7 @@
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "axios": "^0.20.0",
-    "bootstrap": "^5.0.0-alpha1",
+    "bootstrap": "^5.0.0-alpha2",
     "esm": "^3.2.25",
     "faker": "^5.1.0",
     "isomorphic-unfetch": "^3.1.0",
