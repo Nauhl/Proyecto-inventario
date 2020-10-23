@@ -3,10 +3,10 @@ import React from 'react'
 
 export default function CategoryPage() {
 
-  /*  $('#staticBackdrop').on('shown.bs.modal', function () {
+    /*$('#staticBackdrop').on('shown.bs.modal', function () {
       $('#staticBackdrop').trigger('focus')
-    })
-  */
+    })*/
+  
   //CategoriesList()
 
   return (
@@ -35,16 +35,74 @@ export default function CategoryPage() {
           </div>
         </div>
       </div>
+      
 
       { /* Card */}
-      <div className="card border-info mb-3" style="max-width: 18rem;">
+      <div className="card border-info mb-3" >
         <div className="card-header">Header</div>
         <div className="card-body text-info">
           <h5 className="card-title">Info card title</h5>
           <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
-    </div>
+      
+    
+
+</div>
   )
 };
+/*
+function MydModalWithGrid(props) {
+  return (
+    <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Using Grid in Modal
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body className="show-grid">
+        <Container>
+          <Row>
+            <Col xs={12} md={8}>
+              .col-xs-12 .col-md-8
+            </Col>
+            <Col xs={6} md={4}>
+              .col-xs-6 .col-md-4
+            </Col>
+          </Row>
+
+          <Row>
+            <Col xs={6} md={4}>
+              .col-xs-6 .col-md-4
+            </Col>
+            <Col xs={6} md={4}>
+              .col-xs-6 .col-md-4
+            </Col>
+            <Col xs={6} md={4}>
+              .col-xs-6 .col-md-4
+            </Col>
+          </Row>
+        </Container>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+function App() {
+  const [modalShow, setModalShow] = useState(false);
+
+  return (
+    <>
+      <Button variant="success" onClick={() => setModalShow(true)}>
+        Launch modal with grid
+      </Button>
+
+      <MydModalWithGrid show={modalShow} onHide={() => setModalShow(false)} />
+    </>
+  );
+}
+*/
 

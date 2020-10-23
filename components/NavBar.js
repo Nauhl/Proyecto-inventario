@@ -1,5 +1,6 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
+import styles from '../styles/Home.module.css';
 
 export default function NavBar() {
   return (
