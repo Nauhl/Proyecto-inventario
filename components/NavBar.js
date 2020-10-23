@@ -34,28 +34,6 @@ export default function NavBar() {
           </ul>
         </div>
       </nav>
-
-      { /* FOOTER */} 
-      <div className="container">
-        <footer className="page-footer bg-blue" id="Footer" >
-          <div className="bg-success">
-            <div className="container">
-              <div className="row py-4 d-flex align-items-center">
-
-                <div className="col-md-12 text-center">
-                <h4 className="text-center text-light" >Inventory </h4> 
-                <a className="text-center text-light">Designed by me</a> &nbsp;
-                  <a href="https://github.com/Nauhl"><i className="fab fa-github text-white mr-4"></i></a>
-                  <a href="#"><i className="fab fa-twitter-square text-white mr-4"></i></a>
-                  <a className="text-right text-light">@ Vivenda 2020 </a>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </footer>
-        
-      </div>
     </div>
   )
 }

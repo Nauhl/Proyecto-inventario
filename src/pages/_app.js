@@ -3,7 +3,7 @@ import React from 'react';
 import Head from "next/Head";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "../../components/NavBar";
-import Footer  from '../../styles/estilos.css';
+import Footer from "../../components/Footer";
 
 export default function MyApp() {
 
@@ -27,6 +27,7 @@ export default function MyApp() {
       </Head>
 
       <NavBar />
+      <Footer />
 
     </>
   )
