@@ -1,7 +1,7 @@
-import React from "react";
-
-const Condition = () => {
-  return <div>This is the Condition page</div>;
+export default function ConditionPage() {
+  return (
+    <div>
+    <h1 >Condition goes here!</h1>
+    </div>
+  );
 };
-
-export default Condition;
