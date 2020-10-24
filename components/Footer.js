@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css';
 export default function Footer() {
     return (
         <>
-            {
+            {/*
                 <footer className={styles.Footer}>
                     <div className={styles.inner_footer}>
                         <div className="container" >
@@ -21,7 +21,7 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
-                </footer>
+                </footer>*/
             }
             <br />
             {/* Better and easier fotter
@@ -40,7 +40,7 @@ export default function Footer() {
         */}
 
 
-            {   /*Better and easier fotter 
+            {   //Better and easier fotter 
                 <Navbar fixed="bottom" className="bg-success">
                     <Navbar.Brand href="#" className=" text-light" >Nauhl</Navbar.Brand>
                     <Navbar.Toggle />
@@ -52,7 +52,7 @@ export default function Footer() {
                             <a className="text-right text-light">@ Vivenda 2020 </a>
                         </Navbar.Text>
                     </Navbar.Collapse>
-                </Navbar>*/
+                </Navbar>
             }
         </>
     )
