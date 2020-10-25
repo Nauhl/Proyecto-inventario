@@ -39,21 +39,30 @@ export default function Footer() {
         </Navbar>
         */}
 
-
-            {   //Better and easier fotter 
-                <Navbar fixed="bottom" className="bg-success">
-                    <Navbar.Brand href="#" className=" text-light" >Nauhl</Navbar.Brand>
-                    <Navbar.Toggle />
-                    <Navbar.Collapse className="justify-content-end">
-                        <Navbar.Text>
-                            <a className="text-center text-light">Designed by me </a> &nbsp; &nbsp;
-                            <a href="https://github.com/Nauhl"><i className="fab fa-github text-white mr-4"></i></a>
-                            <a href="#"><i className="fab fa-twitter-square text-white mr-4"></i></a>
-                            <a className="text-right text-light">@ Vivenda 2020 </a>
-                        </Navbar.Text>
-                    </Navbar.Collapse>
-                </Navbar>
-            }
+            <div className={styles.foooter} >
+                <h3 className="text-center text-light" >Nauhl</h3>
+                <div>
+                    <h5 className="text-center text-light">Designed by me </h5> 
+                    &nbsp;
+                    <a href="https://github.com/Nauhl"><i className="fab fa-github text-white mr-4 text-center"></i></a>
+                    <a href="#"><i className="fab fa-twitter-square text-white mr-4 text-center"></i></a>
+                    <a className=".text-*-center text-light">@ Vivenda 2020 </a>
+                </div>
+            </div>
         </>
     )
 }
+  /*Better and easier fotter
+              <Navbar fixed="bottom" className="bg-success">
+                  <Navbar.Brand href="#" className=" text-light" >Nauhl</Navbar.Brand>
+                  <Navbar.Toggle />
+                  <Navbar.Collapse className="justify-content-end">
+                      <Navbar.Text>
+                          <a className="text-center text-light">Designed by me </a> &nbsp;
+                          <a href="https://github.com/Nauhl"><i className="fab fa-github text-white mr-4"></i></a>
+                          <a href="#"><i className="fab fa-twitter-square text-white mr-4"></i></a>
+                          <a className="text-right text-light">@ Vivenda 2020 </a>
+                      </Navbar.Text>
+                  </Navbar.Collapse>
+              </Navbar>
+          }*/
