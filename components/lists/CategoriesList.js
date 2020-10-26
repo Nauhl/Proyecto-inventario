@@ -16,7 +16,6 @@ export default function CategoriesList(props) {
             <tr>
               <th>Name</th>
               <th>Description</th>
-              <th>Image</th>
               <th>SubCategory</th>
               <th>Action</th>
             </tr>
@@ -26,7 +25,6 @@ export default function CategoriesList(props) {
               <tr key={category._id}>
                 <td>{category.name}</td>
                 <td>{category.description}</td>
-                <td>{category.pictures}</td>
                 <td>{Object.keys(category.subCategories).length}</td>
                 <td>
                   <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">Edit</button>

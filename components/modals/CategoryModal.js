@@ -1,25 +1,16 @@
 import { getAllSubCategories } from "../../src/lib/ctrlSubCategory";
 import styles from '../../styles/Home.module.css';
-
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { Grid } from "@material-ui/core";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import TextField from "@material-ui/core/TextField";
-import { FormControl, InputLabel, Select, MenuItem, Input } from "@material-ui/core";
-
-const useStyles = makeStyles(theme => ({
-    fillAvailable: {
-        width: "-webkit-fill-available"
-    }
-}));
+import {getAllCategories} from '../../src/lib/ctrlCategory';
 
 const ModalAddCategory = props => {
 
-    const classes = useStyles();
-    const elementType = "category";
-    const { handleClose, open, allCategories, allSubCategories, handleChange,
-        editMode, createNewCategory, cancelCreateNewCategory, newCategory } = props;
+    /*state = {
+        data: getAllCategories,
+    };
+    const elementType = "category";*/
+    //const { handleClose, open, allCategories, allSubCategories, handleChange,
+        //editMode, createNewCategory, cancelCreateNewCategory, newCategory } = props;
+
 
     return (
 
@@ -92,7 +83,6 @@ const ModalAddCategory = props => {
             </div>
 
             { /* Modal create */}
-            <form action="/add" method="POST">
                 <div className="modal fade" id="newCategory" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
@@ -111,14 +101,14 @@ const ModalAddCategory = props => {
                                             className="form-control"
                                             readOnly
                                             type="text"
-                                            name="_id" />
+                                            />
                                         <br />
 
                                         <label>Category</label>
                                         <input
                                             className="form-control"
                                             type="text"
-                                            name="category"
+                                            name="name"
                                             placeholder="Insert category" />
                                         <br />
 
@@ -133,17 +123,10 @@ const ModalAddCategory = props => {
                                         <label>SubCategory</label>
                                         <input
                                             className="form-control"
-                                            name="text"
+                                            name="subCategories"
                                             placeholder="Insert subCategory" />
                                         <br />&nbsp;
 
-                                <label>New Image</label>
-                                        <input
-                                            className="form-control"
-                                            type="file"
-                                            name="pictures"
-                                            placeholder="Insert Picture" />
-                                        <br />
                                     </div>
                                 </div>
 
@@ -155,7 +138,6 @@ const ModalAddCategory = props => {
                         </div>
                     </div>
                 </div>
-            </form>
         </>
     )
 };
