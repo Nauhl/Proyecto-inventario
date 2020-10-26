@@ -1,9 +1,8 @@
 import React from "react";
 
-const RoomPage = () => {
+export default function RoomPage() {
   return (
-  <div>This is the Room page</div>
-  )
+      <h1>Room goes here!</h1>
+  );
 };
 
-export default Room;
