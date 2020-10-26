@@ -14,7 +14,7 @@ export default function Home() {
       </div>
 
         {/* Card */}
-        <div className={styles.card}>
+        <div className={styles.footerr}>
           <div className="card border-info mb-3">
             <div className="card-header">Header</div>
             <div className="card-body text-success">

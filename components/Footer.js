@@ -40,7 +40,7 @@ export default function Footer() {
         */}
 
             <div className={styles.foooter} >
-                <h3 className="text-center text-light" >Nauhl</h3>
+                
                 <div>
                     <h5 className="text-center text-light">Designed by me </h5> 
                     &nbsp;

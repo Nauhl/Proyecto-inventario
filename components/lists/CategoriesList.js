@@ -1,6 +1,6 @@
 import styles from '../../styles/Home.module.css';
 import React from 'react';
-import Category from '../../src/models/Category';
+//import Category from '../../src/models/Category';
 import { getAllCategories, getCategory, updateCategory } from '../../src/lib/ctrlCategory';
 
 export default function CategoriesList(props) {
@@ -87,7 +87,7 @@ export default function CategoriesList(props) {
 
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" className="btn btn-primary">Save</button>
+              <button type="button" className="btn btn-primary"><i className="fa fa-database"></i> &nbsp; Save</button>
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default function CategoriesList(props) {
       <input type="file" className="form-control-file border"></input>
 
       {/* Card */}
-      <div className={styles.card}>
+      <div className={styles.footerr}>
         <div className="card border-info mb-3">
           <div className="card-header">Header</div>
           <div className="card-body text-success">

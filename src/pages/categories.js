@@ -17,42 +17,42 @@ export default function CategoryPage() {
       setAllCategories(categories);
     });
   }
-
- const handleChange = name => event => {
-  setNewCategory({
-    ...newCategory,
-    [name]: event.target.value
-  });
-};
-
-const handleClickOnCreateNewCategory = () => {
-  console.log("SAVING", { editMode, newCategory })
-  if (editMode) {
-    updateCategory(newCategory).then(() => {
-      setOpenModalCategory(false);
-      setEditMode(false);
-      getCategories();
-      getSubCategories();
-    })
-  } else {
-    createNewCategory(newCategory).then(() => {
-      setOpenModalCategory(false);
-      setEditMode(false);
-      getCategories();
-      getSubCategories();
-    })
-  }
-};
-
-
-const handleClickOnCancelNewCategory = () => {
-  setNewCategory({})
-  setEditMode(false);
-};
+  /*
+   const handleChange = name => event => {
+    setNewCategory({
+      ...newCategory,
+      [name]: event.target.value
+    });
+  };
+  
+  const handleClickOnCreateNewCategory = () => {
+    console.log("SAVING", { editMode, newCategory })
+    if (editMode) {
+      updateCategory(newCategory).then(() => {
+        setOpenModalCategory(false);
+        setEditMode(false);
+        getCategories();
+        getSubCategories();
+      })
+    } else {
+      createNewCategory(newCategory).then(() => {
+        setOpenModalCategory(false);
+        setEditMode(false);
+        getCategories();
+        getSubCategories();
+      })
+    }
+  };
+  
+  
+  const handleClickOnCancelNewCategory = () => {
+    setNewCategory({})
+    setEditMode(false);
+  };*/
 
 
   //CategoriesList()
-  
+
   const handleClickEditCategory = category => {
     setNewCategory(category)
     setEditMode(true)
@@ -62,12 +62,11 @@ const handleClickOnCancelNewCategory = () => {
   return (
     <>
 
-        <div item xs={12}>
-          <CategoriesList
-            allCategories={allCategories}
-            editCategory={handleClickEditCategory}
-          />
-        </div>
+      <div item="true" xs={12}></div>
+      <CategoriesList
+        allCategories={allCategories}
+        editCategory={handleClickEditCategory}
+      />
 
     </>
   );
