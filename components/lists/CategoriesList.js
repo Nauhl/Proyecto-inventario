@@ -9,17 +9,14 @@ export default function CategoriesList(props) {
 
   return allCategories && allCategories.length > 0 ? (
     <>
-      <div className={styles.main}>
-        <h2>Categories</h2>
-        <button type="button" className="btn btn-success" data-toggle="modal" data-target="#newCategory">New Category</button>
-      </div>
-      <br />
+      
       <div className={styles.container}>
         <table className="table table-bordered" >
           <thead>
             <tr>
               <th>Name</th>
               <th>Description</th>
+              <th>Image</th>
               <th>SubCategory</th>
               <th>Action</th>
             </tr>
@@ -29,6 +26,7 @@ export default function CategoriesList(props) {
               <tr key={category._id}>
                 <td>{category.name}</td>
                 <td>{category.description}</td>
+                <td>{category.pictures}</td>
                 <td>{Object.keys(category.subCategories).length}</td>
                 <td>
                   <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">Edit</button>
@@ -39,79 +37,6 @@ export default function CategoriesList(props) {
             ))}
           </tbody>
         </table>
-      </div>
-
-
-      { /* Modal edit */}
-      <div className="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="staticBackdropLabel">Edit Category</h5>
-              <button type="button" className="btn btn-danger" data-dismiss="modal" aria-label="Close">
-                &times;
-              </button>
-            </div>
-
-            <div className="form-group">
-              <label>ID</label>
-              <input
-                className="form-control"
-                readOnly
-                type="text"
-                name="id"
-              />
-              <br />
-
-              <label>Category</label>
-              <input
-                className="form-control"
-                type="text"
-                name="category" />
-              <br />
-
-              <label>Description</label>
-              <input
-                className="form-control"
-                type="text"
-                name="description" 
-                />
-              <br />
-
-              <label>SubCategory</label>
-              <input
-                className="form-control"
-                name="text" />
-
-            </div>
-
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" className="btn btn-primary"><i className="fa fa-database"></i> &nbsp; Save</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      { /* Modal create */}
-      <div className="modal fade" id="newCategory" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="staticBackdropLabel">Add new Category</h5>
-              <button type="button" className="btn btn-danger" data-dismiss="modal" aria-label="Close">
-                &times;
-              </button>
-            </div>
-            <div className="modal-body">
-
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" className="btn btn-primary">Save</button>
-            </div>
-          </div>
-        </div>
       </div>
 
       { /* Posible implementacion */ }
