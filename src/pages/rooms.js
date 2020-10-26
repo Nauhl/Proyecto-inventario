@@ -1,7 +1,9 @@
 import React from "react";
 
-const Room = () => {
-  return <div>This is the Room page</div>;
+const RoomPage = () => {
+  return (
+  <div>This is the Room page</div>
+  )
 };
 
 export default Room;
