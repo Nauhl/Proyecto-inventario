@@ -71,7 +71,6 @@ export default function CategoryPage() {
         editMode={editMode}
       />
 
-
     </>
   ) : (
     <>
