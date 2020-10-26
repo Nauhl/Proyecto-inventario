@@ -2,8 +2,8 @@ import { dbConnect } from "../../../../utils/dbConnect";
 import Item from "../../../models/Item";
 import Room from "../../../models/Room";
 import Location from "../../../models/Location";
-/*import Category from "../../../models/Category";
-import Contract from "../../../models/Contract";
+import Category from "../../../models/Category"
+/*import Contract from "../../../models/Contract";
 import Company from "../../../models/Company";*/
 
 dbConnect();
