@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../../styles/Home.module.css';
+//import '../skeletons/skeleton.css';
 
 const User = () => {
     const [profile, setProfile] = useState(null);
@@ -24,7 +25,7 @@ const User = () => {
                 </div>
             )}
 
-            {!profile && <div className="spinner-border">Loading...</div>}
+            {!profile && <div /*className="spinner-border"*/>Loading...</div>}
         </div>
     )
 }
