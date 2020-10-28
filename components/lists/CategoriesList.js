@@ -1,15 +1,13 @@
 import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
-//import Category from '../../src/models/Category';
-import { getAllCategories, getCategory, updateCategory } from '../../src/lib/ctrlCategory';
+//import { getAllCategories, getCategory, updateCategory } from '../../src/lib/ctrlCategory';
 import Skeleton, {SkeletonTheme} from "react-loading-skeleton";
 
 export default function CategoriesList(props) {
 
-  /*const [data, setData] = useState(datapaises);*/
   const [loading, setLoading] = useState(true);
 
-  const { allCategories, editCategory } = props;
+  const { allCategories , editCategory } = props;
 
   useEffect(() => {
     setTimeout(() => {
@@ -17,11 +15,23 @@ export default function CategoriesList(props) {
     }, 5000);
   }, [])
 
-  /*const datapaises =  [
-    { id: 1, nombre: "México", minutos: 245}
-  ];*/
-
   const loader = () => {
+    let filas=[];
+    for (let index = 0; index < 10; index++){
+      filas.push(
+        
+        <tr key={index}>
+        <td><Skeleton /></td>
+        <td><Skeleton /></td>
+        <td><Skeleton /></td>
+        <td>
+          <Skeleton />
+        </td>
+      </tr>
+
+      );
+    }
+
     return allCategories && allCategories.length > 0 ? (
 
       <>
@@ -30,23 +40,14 @@ export default function CategoriesList(props) {
           <table className="table table-bordered" >
             <thead>
               <tr>
-                <th><Skeleton /></th>
-                <th><Skeleton /></th>
-                <th><Skeleton /></th>
-                <th><Skeleton /></th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>SubCategory</th>
+              <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {allCategories.map(category => (
-                <tr >
-                  <td><Skeleton /></td>
-                  <td><Skeleton /></td>
-                  <td><Skeleton /></td>
-                  <td>
-                    <Skeleton />
-                  </td>
-                </tr>
-              ))}
+              {filas}
             </tbody>
           </table>
         </div>
@@ -65,7 +66,7 @@ export default function CategoriesList(props) {
       </>
     ) : (
         <>
-          <div className="spinner-border"></div>
+          
         </>
       );
       
@@ -99,7 +100,7 @@ else {
                 <td>{category.description}</td>
                 <td>{Object.keys(category.subCategories).length}</td>
                 <td>
-                  <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">Edit</button>
+                  <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop" >Edit</button>
                             &nbsp;
                             <button className="btn btn-danger">Delete</button>
                 </td>
@@ -122,7 +123,7 @@ else {
     </>
   ) : (
       <>
-        <div className="spinner-border"></div>
+        
       </>
     );
   }

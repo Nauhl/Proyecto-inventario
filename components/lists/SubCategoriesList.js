@@ -15,6 +15,7 @@ export default function SubCategoriesList(props) {
     <TableContainer component={Paper}>
       <Table size="small" aria-label="a dense table">
         <TableHead>
+          <h2>Subcategories</h2>
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell align="right">Description</TableCell>
@@ -33,6 +34,7 @@ export default function SubCategoriesList(props) {
       </Table>
     </TableContainer>
   ) : (
-      <h1>LOADING...</h1>
+      <>
+      </>
     );
 }
