@@ -1,19 +1,14 @@
 import { getAllSubCategories } from "../../src/lib/ctrlSubCategory";
 import styles from '../../styles/Home.module.css';
-import {getAllCategories} from '../../src/lib/ctrlCategory';
+import { getAllCategories } from '../../src/lib/ctrlCategory';
 
 const ModalAddCategory = props => {
 
-    /*state = {
-        data: getAllCategories,
-    };
-    const elementType = "category";*/
-    //const { handleClose, open, allCategories, allSubCategories, handleChange,
-        //editMode, createNewCategory, cancelCreateNewCategory, newCategory } = props;
-
+    /*const elementType = "category";
+    const { handleClose, open, allCategories, allSubCategories, handleChange,
+        editMode, createNewCategory, cancelCreateNewCategory, newCategory } = props;*/
 
     return (
-
         <>
             <div className={styles.main}>
                 <h2>Categories</h2>
@@ -47,7 +42,9 @@ const ModalAddCategory = props => {
                                     className="form-control"
                                     type="text"
                                     name="category"
-                                    placeholder="Insert new category" />
+                                    placeholder="Insert new category"
+                                    /*value={newCategory.name}
+                                    onChange={handleChange("name")} *//>
                                 <br />
 
                                 <label>Description</label>
@@ -55,34 +52,48 @@ const ModalAddCategory = props => {
                                     className="form-control"
                                     type="text"
                                     name="description"
-                                    placeholder="Insert new description" />
+                                    placeholder="Insert new description"
+                                    /*value={newCategory.description}
+                                    onChange={handleChange("description")} *//>
                                 <br />
 
                                 <label>SubCategory</label>
                                 <input
                                     className="form-control"
                                     name="text"
-                                    placeholder="Insert new subCategory" />
+                                    placeholder="Insert new subCategory"
+                                    /*value={newCategory.subCategories || []}
+                                    onChange={handleChange("subCategories")}
+                                    input={<Input />}
+                                    MenuProps={MenuProps}
+                                >
+                                    <MenuItem value="" disabled>Select subCategory(s)</MenuItem>
+                                    {allSubCategories.map(subCategory => (
+                                        <MenuItem key={subCategory._id} value={subCategory._id}>{subCategory.name}</MenuItem>
+                                    ))}
+                                    /</input>*/
+                                    />
                                 <br />&nbsp;
 
                                 <label>New Image</label>
-                                <input
-                                    className="form-control"
-                                    type="file"
-                                    name="pictures"
-                                    placeholder="Insert new Picture" />
-                                <br />
+                                    <input
+                                        className="form-control"
+                                        type="file"
+                                        name="pictures"
+                                        placeholder="Insert new Picture" />
+                                    <br />
                             </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-success"><i className="fa fa-database"></i> &nbsp; Save</button>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="button" className="btn btn-success"><i className="fa fa-database">
+                                    </i> &nbsp; Save</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            { /* Modal create */}
+                { /* Modal create */}
                 <div className="modal fade" id="newCategory" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
@@ -101,7 +112,7 @@ const ModalAddCategory = props => {
                                             className="form-control"
                                             readOnly
                                             type="text"
-                                            />
+                                        />
                                         <br />
 
                                         <label>Category</label>
@@ -143,7 +154,7 @@ const ModalAddCategory = props => {
 };
 
 ModalAddCategory.defaultProps = {
-    editMode: true
+                editMode: true
 };
 
 export default ModalAddCategory;

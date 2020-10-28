@@ -5,9 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //import '../../components/skeletons/skeleton.css'
 import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
-import Articles from "../../components/skeleton_components/articles";
-import User from "../../components/skeleton_components/user";
-import styles from '../../styles/Home.module.css';
 
 export default function MyApp({ Component, pageProps }) {
 
@@ -31,10 +28,7 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
 
       <NavBar />
-      <div className={styles.content}>
-      <Articles />
-      <User />
-      </div>
+      
       <Component {...pageProps} />
       <Footer />
 
