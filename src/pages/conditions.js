@@ -1,6 +1,8 @@
 import styles from '../../styles/Home.module.css';
-import React from 'react';
+import fetch from 'isomorphic-unfetch';
+import React, {useEffect, useState} from 'react';
 import { getAllConditions, getCondition} from "../../src/lib/ctrlCondition";
+import {Confirm, Button, Loader } from 'semantic-ui-react';
 
 export default function ConditionPage() {
 
@@ -43,6 +45,8 @@ export default function ConditionPage() {
           </tbody>
         </table>
       </div>
+
+
       
     </>
   ) : (
@@ -51,14 +55,3 @@ export default function ConditionPage() {
     </>
   );
 };
-
-/*<div>
-<div className={styles.card}>
-  <img src="../../utils/img/home_inventory.png" className="card-img-top" alt="..."></img>
-    <div className="card-body">
-      <h5 className="card-title">Card with stretched link</h5>
-      <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" className="btn btn-primary stretched-link">Go somewhere</a>
-    </div>
-    </div>
-</div>*/
