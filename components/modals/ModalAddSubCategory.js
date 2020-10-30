@@ -1,69 +1,133 @@
-import { Grid } from "@material-ui/core";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import TextField from "@material-ui/core/TextField";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+//import { makeStyles } from '@material-ui/core/styles';
+import styles from "../../styles/Home.module.css";
 
 const ModalAddSubCategory = props => {
-  const elementType = "subcategory";
-  const { open, handleClose, handleChange, createNewSubCategory } = props;
 
-  return (
+    return (
+        <>
+        <div className={styles.main}>
+                <h2>SubCategories</h2>
+                <button type="button" className="btn btn-success" data-toggle="modal" data-target="#newSubCategory" >New SubCategory</button>
+                </div>
+            <br />
 
-    <Modal show={open} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Add a {elementType}</Modal.Title>
-      </Modal.Header>
+            { /* Modal edit */}
+            
+                <div className="modal fade" id="SubCategoriesEditBTN" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="staticBackdropLabel">Edit SubCategory</h5>
+                                <button type="button" className="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                    &times;
+                            </button>
+                            </div>
 
-      <Modal.Body>
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          spacing={2}
-        >
-          <Grid item xs={12} md={12}>
-            <TextField
-              fullWidth
-              required
-              size="small"
-              id="name-input"
-              label="Name"
-              // variant="outlined"
-              onChange={handleChange("name")}
-            />
-          </Grid>
+                            <div className="card-body">
+                                <div className="form-group">
+                                    <label>ID</label>
+                                    <input
+                                        className="form-control"
+                                        readOnly
+                                        type="text"
+                                        name="_id" />
+                                    <br />
 
-          <Grid item xs={12} md={12}>
-            <TextField
-              fullWidth
-              size="small"
-              id="description-input"
-              label="Description"
-              // variant="outlined"
-              onChange={handleChange("description")}
-            />
-          </Grid>
+                                    <label>SubCategory</label>
+                                    <input
+                                        className="form-control"
+                                        type="text"
+                                        name="category"
+                                        placeholder="Insert new SubCategory"
+                                    /*value={newCategory.name}
+                                    onChange={handleChange("name")} *//>
+                                    <br />
 
-        </Grid>
+                                    <label>Description</label>
+                                    <textarea
+                                        className="form-control"
+                                        type="text"
+                                        name="description"
+                                        placeholder="Insert new description"
+                                    /*value={newCategory.description}
+                                    onChange={handleChange("description")} *//>
+                                    <br />
 
-      </Modal.Body>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="button" className="btn btn-success"><i className="fa fa-database">
+                                </i> &nbsp; Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Cancel
-      </Button>
-        <Button variant="primary" onClick={createNewSubCategory}>
-          Add {elementType}
-        </Button>
-      </Modal.Footer>
+            { /* Modal create */}
+            
+                <div className="modal fade" id="newSubCategory" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h2>SubCategories</h2>
+                                <button type="button" className="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                    &times;
+                            </button>
+                            </div>
+                            <div className="modal-body">
 
-    </Modal>
-  )
+                                <div className="card-body">
+                                    <div className="form-group">
+                                        <label>ID</label>
+                                        <input
+                                            className="form-control"
+                                            readOnly
+                                            type="text"
+                                        />
+                                        <br />
+
+                                        <label>SubCategory</label>
+                                        <input
+                                            className="form-control"
+                                            type="text"
+                                            name="name"
+                                            placeholder="Insert Subcategory"
+                                        /*value={newCategory.name}
+                                        onChange={handleChange("name")}*/
+                                        />
+                                        <br />
+
+                                        <label>Description</label>
+                                        <textarea
+                                            className="form-control"
+                                            type="text"
+                                            name="description"
+                                            placeholder="Insert description"
+                                        /*value={newCategory.description}
+                                        onChange={handleChange("description")}*/
+                                        />
+                                        <br />&nbsp;
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal" >Cancel</button>
+                                <button type="button" className="btn btn-success" >
+                                    Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+        </>
+    )
 };
 
-ModalAddSubCategory.defaultProps = {
-  editMode: true
-};
 
 export default ModalAddSubCategory;

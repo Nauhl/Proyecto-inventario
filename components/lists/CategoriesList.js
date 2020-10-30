@@ -1,7 +1,6 @@
 import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
 import Skeleton, {SkeletonTheme} from "react-loading-skeleton";
-import DeleteCategory from '../Delete/DeleteCategory';
 
 export default function CategoriesList(props) {
 
@@ -102,8 +101,8 @@ else {
                 <td>{Object.keys(category.subCategories).length}</td>
                 <td>
                   <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop" >Edit</button>
-                            &nbsp;
-                            <button className="btn btn-danger" onClick={DeleteCategory}>Delete</button>
+                            &nbsp;&nbsp;&nbsp;
+                            <button className="btn btn-danger"  onClick={()=>List(lista, 'Eliminar')}>Delete</button>
                 </td>
               </tr>
             ))}

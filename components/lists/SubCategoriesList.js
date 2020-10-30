@@ -65,10 +65,6 @@ export default function SubCategoriesList(props) {
     else {
         return allSubCategories && allSubCategories.length > 0 ? (
             <>
-                <div className={styles.main}>
-                    <h2>SubCategories</h2>
-                </div>
-                <br />
                 <div className={styles.container}>
                     <table className="table table-bordered" >
                         <thead>
@@ -86,7 +82,7 @@ export default function SubCategoriesList(props) {
                                     <td>{room.description}</td>
                                     <td>{Object.keys(room.isActive).length}</td>
                                     <td>
-                                        <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop" >Edit</button>
+                                        <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#SubCategoriesEditBTN" >Edit</button>
                                 &nbsp;
                                 <button className="btn btn-danger">Delete</button>
                                     </td>
