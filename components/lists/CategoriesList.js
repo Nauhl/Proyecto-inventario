@@ -1,18 +1,20 @@
 import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
 import Skeleton, {SkeletonTheme} from "react-loading-skeleton";
+import DeleteCategory from '../Delete/DeleteCategory';
 
 export default function CategoriesList(props) {
 
-  const [loading, setLoading] = useState(true);
-
   const { allCategories , editCategory } = props;
+  
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading();
     }, 3000);
   }, [])
+
 
   const loader = () => {
     let filas=[];
@@ -81,7 +83,7 @@ if (loading) {
 else {
   return allCategories && allCategories.length > 0 ? (
     <>
-
+    
       <div className={styles.container}>
         <table className="table table-bordered" >
           <thead>
@@ -101,7 +103,7 @@ else {
                 <td>
                   <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop" >Edit</button>
                             &nbsp;
-                            <button className="btn btn-danger">Delete</button>
+                            <button className="btn btn-danger" onClick={DeleteCategory}>Delete</button>
                 </td>
               </tr>
             ))}

@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import ModalAddCategory from '../../components/modals/CategoryModal';
 import ModalAddSubCategory from "../../components/modals/ModalAddSubCategory";
 import styles from "../../styles/Home.module.css";
+import  DeleteCategory  from "../../components/Delete/DeleteCategory";
 
 export default function CategoryPage() {
 
@@ -116,7 +117,8 @@ export default function CategoryPage() {
         //handleChange={handleChange}
         //createNewCategory={handleClickOnCreateNewCategory}
         newCategory={newCategory}
-      //editMode={editMode}
+        //editMode={editMode}
+        deleteCategory={DeleteCategory}
       />
 
       <br />
@@ -125,7 +127,7 @@ export default function CategoryPage() {
         allSubCategories={allSubCategories}
       />
         
-        <a href="#" className={styles.goToUpBTN}><i class="far fa-chevron-double-up"></i></a>
+        <a href="#" className={styles.goToUpBTN}><i className="far fa-chevron-double-up"></i></a>
     </>
   ) : (
       <>

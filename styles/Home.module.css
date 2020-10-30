@@ -204,8 +204,13 @@
 
   width: 39px;
   height: 37px;
-  background: #1b1b1b;
+  background: #1f1f1f;
   display: block;
   border-radius: 7px;
-  color: #eee;
+  cursor: pointer;
+
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+  font-size: 18px;
 }
