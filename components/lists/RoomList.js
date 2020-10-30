@@ -2,11 +2,11 @@ import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-export default function SubCategoriesList(props) {
+export default function CategoriesList(props) {
 
     const [loading, setLoading] = useState(true);
 
-    const { allSubCategories, editSubCategories } = props;
+    const { allRooms, editRooms } = props;
 
     useEffect(() => {
         setTimeout(() => {
@@ -22,6 +22,8 @@ export default function SubCategoriesList(props) {
                     <td><Skeleton /></td>
                     <td><Skeleton /></td>
                     <td><Skeleton /></td>
+                    <td><Skeleton /></td>
+                    <td><Skeleton /></td>
                     <td>
                         <Skeleton />
                     </td>
@@ -29,7 +31,7 @@ export default function SubCategoriesList(props) {
             );
         }
 
-        return allSubCategories && allSubCategories.length > 0 ? (
+        return allRooms && allRooms.length > 0 ? (
 
             <>
                 <SkeletonTheme color="gray" highlightColor="white">
@@ -40,6 +42,8 @@ export default function SubCategoriesList(props) {
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Status</th>
+                                    <th>Pictures</th>
+                                    <th>Location</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -63,10 +67,10 @@ export default function SubCategoriesList(props) {
 
     }
     else {
-        return allSubCategories && allSubCategories.length > 0 ? (
+        return allRooms && allRooms.length > 0 ? (
             <>
                 <div className={styles.main}>
-                    <h2>SubCategories</h2>
+                    <h2>Rooms</h2>
                 </div>
                 <br />
                 <div className={styles.container}>
@@ -76,15 +80,19 @@ export default function SubCategoriesList(props) {
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Status</th>
+                                <th>Pictures</th>
+                                <th>Location</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {allSubCategories.map(room => (
+                            {allRooms.map(room => (
                                 <tr key={room._id}>
                                     <td>{room.name}</td>
                                     <td>{room.description}</td>
                                     <td>{Object.keys(room.isActive).length}</td>
+                                    <td>{room.pictures}</td>
+                                    <td>{room.location}</td>
                                     <td>
                                         <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop" >Edit</button>
                                 &nbsp;

@@ -1,6 +1,5 @@
 import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
-//import { getAllCategories, getCategory, updateCategory } from '../../src/lib/ctrlCategory';
 import Skeleton, {SkeletonTheme} from "react-loading-skeleton";
 
 export default function CategoriesList(props) {
@@ -12,7 +11,7 @@ export default function CategoriesList(props) {
   useEffect(() => {
     setTimeout(() => {
       setLoading();
-    }, 5000);
+    }, 3000);
   }, [])
 
   const loader = () => {
@@ -35,7 +34,7 @@ export default function CategoriesList(props) {
     return allCategories && allCategories.length > 0 ? (
 
       <>
-    <SkeletonTheme color="gray" highlightColor="green">
+    <SkeletonTheme color="gray" highlightColor="white">
         <div className={styles.container}>
           <table className="table table-bordered" >
             <thead>

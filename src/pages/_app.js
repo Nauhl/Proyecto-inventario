@@ -2,7 +2,6 @@ import App from "next/app";
 import React from 'react';
 import Head from "next/head";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import '../../components/skeletons/skeleton.css'
 import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 
@@ -11,6 +10,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
 
     <>
+    
       <Head>
         <title>Inventory</title>
 

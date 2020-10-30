@@ -38,7 +38,10 @@ export default function Home() {
           </div>
         </div>
       </div>
+      
       <img src="../../utils/img/home_inventory.png" class="rounded float-right" alt="..."></img>
+
+      <a href="#" className={styles.goToUpBTN}><i class="far fa-chevron-double-up"></i></a>
     </>
   )
 }

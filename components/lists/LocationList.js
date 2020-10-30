@@ -2,11 +2,11 @@ import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-export default function SubCategoriesList(props) {
+export default function LocationList(props) {
 
     const [loading, setLoading] = useState(true);
 
-    const { allSubCategories, editSubCategories } = props;
+    const { allLocations, editLocation } = props;
 
     useEffect(() => {
         setTimeout(() => {
@@ -22,6 +22,9 @@ export default function SubCategoriesList(props) {
                     <td><Skeleton /></td>
                     <td><Skeleton /></td>
                     <td><Skeleton /></td>
+                    <td><Skeleton /></td>
+                    <td><Skeleton /></td>
+                    <td><Skeleton /></td>
                     <td>
                         <Skeleton />
                     </td>
@@ -29,8 +32,7 @@ export default function SubCategoriesList(props) {
             );
         }
 
-        return allSubCategories && allSubCategories.length > 0 ? (
-
+        return allLocations && allLocations.length > 0 ? (
             <>
                 <SkeletonTheme color="gray" highlightColor="white">
                     <div className={styles.container}>
@@ -40,6 +42,9 @@ export default function SubCategoriesList(props) {
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Status</th>
+                                    <th>Picture</th>
+                                    <th>Status</th>
+                                    <th>Address</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -60,13 +65,12 @@ export default function SubCategoriesList(props) {
         return (
             loader()
         )
-
     }
     else {
-        return allSubCategories && allSubCategories.length > 0 ? (
+        return allLocations && allLocations.length > 0 ? (
             <>
                 <div className={styles.main}>
-                    <h2>SubCategories</h2>
+                    <h2>Location</h2>
                 </div>
                 <br />
                 <div className={styles.container}>
@@ -76,19 +80,26 @@ export default function SubCategoriesList(props) {
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Status</th>
+                                <th>Picture</th>
+                                <th>Status</th>
+                                <th>Address</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {allSubCategories.map(room => (
-                                <tr key={room._id}>
-                                    <td>{room.name}</td>
-                                    <td>{room.description}</td>
-                                    <td>{Object.keys(room.isActive).length}</td>
+                            {allLocations.map(location => (
+                                <tr key={location._id}>
+                                    <td>{location.name}</td>
+                                    <td>{location.description}</td>
+                                    <td>{Object.keys(location.isActive).length}</td>
+                                    <td>{location.pictures}</td>
+                                    <td>{location.status}</td>
+                                    <td>{Object.keys(location.address).join(location.streetNumber),
+                                        (location.street), (location.street2), (location.city), (location.province), (location.country)}</td>
                                     <td>
                                         <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop" >Edit</button>
-                                &nbsp;
-                                <button className="btn btn-danger">Delete</button>
+                            &nbsp;
+                            <button className="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>
                             ))}

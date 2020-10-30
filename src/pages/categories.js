@@ -2,13 +2,12 @@ import CategoriesList from '../../components/lists/CategoriesList';
 import SubCategoriesList from "../../components/lists/SubCategoriesList";
 import { getAllCategories, createNewCategory, updateCategory } from "../../src/lib/ctrlCategory";
 import { getAllSubCategories, createNewSubCategory, updateSubCategory } from "../../src/lib/ctrlSubCategory";
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import ModalAddCategory from '../../components/modals/CategoryModal';
 import ModalAddSubCategory from "../../components/modals/ModalAddSubCategory";
-//import Skeleton from "react-loading-skeleton";
+import styles from "../../styles/Home.module.css";
 
 export default function CategoryPage() {
-  
 
   const [allCategories, setAllCategories] = React.useState([]);
   const [allSubCategories, setAllSubCategories] = React.useState([]);
@@ -31,7 +30,7 @@ export default function CategoryPage() {
       setAllCategories(categories);
     });
   }
-  
+
   const getSubCategories = () => {
     getAllSubCategories().then(categories => {
       setAllSubCategories(categories);
@@ -103,12 +102,12 @@ export default function CategoryPage() {
     setEditMode(true)
     setOpenModalCategory(true);
   };*/
-  
+
   //Categories Call Methods
 
   return allCategories ? (
     <>
-    <ModalAddCategory />
+      <ModalAddCategory />
 
       <CategoriesList
 
@@ -117,19 +116,19 @@ export default function CategoryPage() {
         //handleChange={handleChange}
         //createNewCategory={handleClickOnCreateNewCategory}
         newCategory={newCategory}
-        //editMode={editMode}
+      //editMode={editMode}
       />
 
       <br />
-      
-      <SubCategoriesList 
-      allSubCategories={allSubCategories}
-      />
 
+      <SubCategoriesList
+        allSubCategories={allSubCategories}
+      />
+        
+        <a href="#" className={styles.goToUpBTN}><i class="far fa-chevron-double-up"></i></a>
     </>
   ) : (
-    <>
-      
-    </>
-  );
+      <>
+      </>
+    );
 };

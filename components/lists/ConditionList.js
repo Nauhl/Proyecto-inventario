@@ -2,11 +2,11 @@ import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-export default function SubCategoriesList(props) {
+export default function ConditionList(props) {
 
     const [loading, setLoading] = useState(true);
 
-    const { allSubCategories, editSubCategories } = props;
+    const { allConditions, editCondition } = props;
 
     useEffect(() => {
         setTimeout(() => {
@@ -29,8 +29,7 @@ export default function SubCategoriesList(props) {
             );
         }
 
-        return allSubCategories && allSubCategories.length > 0 ? (
-
+        return allConditions && allConditions.length > 0 ? (
             <>
                 <SkeletonTheme color="gray" highlightColor="white">
                     <div className={styles.container}>
@@ -63,10 +62,10 @@ export default function SubCategoriesList(props) {
 
     }
     else {
-        return allSubCategories && allSubCategories.length > 0 ? (
+        return allConditions && allConditions.length > 0 ? (
             <>
                 <div className={styles.main}>
-                    <h2>SubCategories</h2>
+                    <h2>Condition</h2>
                 </div>
                 <br />
                 <div className={styles.container}>
@@ -80,11 +79,11 @@ export default function SubCategoriesList(props) {
                             </tr>
                         </thead>
                         <tbody>
-                            {allSubCategories.map(room => (
-                                <tr key={room._id}>
-                                    <td>{room.name}</td>
-                                    <td>{room.description}</td>
-                                    <td>{Object.keys(room.isActive).length}</td>
+                            {allConditions.map(condition => (
+                                <tr key={condition._id}>
+                                    <td>{condition.name}</td>
+                                    <td>{condition.description}</td>
+                                    <td>{Object.keys(condition.isActive).length}</td>
                                     <td>
                                         <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop" >Edit</button>
                                 &nbsp;
