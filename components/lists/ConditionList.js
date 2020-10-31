@@ -86,9 +86,9 @@ export default function ConditionList(props) {
                                     <td>{condition.description}</td>
                                     <td>{Object.keys(condition.isActive).length}</td>
                                     <td>
-                                        <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop" >Edit</button>
+                                        <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#editCondition" >Edit</button>
                                 &nbsp;
-                                <button className="btn btn-danger">Delete</button>
+                                <button type="button" className="btn btn-danger"  data-toggle="modal" data-target="#ConditionDelete">Delete</button>
                                     </td>
                                 </tr>
                             ))}
