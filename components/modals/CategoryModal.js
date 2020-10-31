@@ -86,7 +86,7 @@ const ModalAddCategory = props => {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-success" onClick={()=>List(lista, 'Editar')}><i className="fa fa-database">
+                            <button type="button" className="btn btn-success" ><i className="fa fa-database">
                             </i> &nbsp; Save</button>
                         </div>
                     </div>
@@ -94,9 +94,6 @@ const ModalAddCategory = props => {
             </div>
 
             { /* Modal create */}
-            <br />
-            <Button onClick={() => abrirCerrarModalInsertar()}>Insertar</Button>
-            <br /><br />
             <div className="modal fade" id="newCategory" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">

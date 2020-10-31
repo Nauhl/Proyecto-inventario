@@ -1,33 +1,58 @@
-import styles from '../../styles/Home.module.css';
-import ConditionList from '../../components/lists/ConditionList';
-import React, {useEffect, useState} from 'react';
-import { getAllConditions, getCondition} from "../../src/lib/ctrlCondition";
-import Button from "react-bootstrap/Button";
+import React, { useState, useEffect } from 'react';
+import ConditionList from "../../components/lists/ConditionList";
+import { getAllConditions, createNewCondition, updateCondition } from "../../src/lib/ctrlCondition";
+import ModalCondition from "../../components/modals/ModalCondition";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function ConditionPage() {
-
-  const [allConditions, setAllConditions] = React.useState([]);
   
-  React.useEffect(() => {
+  const [allConditionsState, setAllConditionsState] = useState([]);
+  const [addCondition, setAddCondition] = useState({});
+
+  useEffect(() => {
     getConditions();
   }, []);
 
   const getConditions = () => {
     getAllConditions().then(conditions => {
-      setAllConditions(conditions);
+      setAllConditionsState(conditions);
     });
   }
 
-  return allConditions ? (
+  //**********************   HandleChange ************************************ */
+  const handleChange = name => e => {
+    setAddCondition({
+      ...addCondition,
+      [name]: e.target.value
+    });
+  };
+
+  const handleClickAddCondition = () => {
+
+    createNewCondition(addCondition).then(condition => {
+      getConditions()
+    })
+  };
+
+  const handleClickCancelAddCondition = () => {
+    setAddCondition({})
+  };
+
+  return (
     <>
-    
-    <ConditionList 
-    allConditions={allConditions}
-    />
+
+      <ModalCondition
+              allConditions={allConditionsState}
+              handleChange={handleChange}
+              AddCondition={handleClickAddCondition}
+              cancelAddCondition={handleClickCancelAddCondition}
+        />
+
+      <ConditionList
+              allConditions={allConditionsState}
+            />
+            
+            
     </>
-  ) : (
-    <>
-      <div className="spinner-border"></div>
-    </>
-  );
+  ) 
 };

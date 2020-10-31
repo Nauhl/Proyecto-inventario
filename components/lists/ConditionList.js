@@ -1,13 +1,14 @@
 import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import ModalCondition from '../modals/ModalCondition';
 
 export default function ConditionList(props) {
 
+
     const [loading, setLoading] = useState(true);
-
     const { allConditions, editCondition } = props;
-
+    
     useEffect(() => {
         setTimeout(() => {
             setLoading();
@@ -65,8 +66,8 @@ export default function ConditionList(props) {
         return allConditions && allConditions.length > 0 ? (
             <>
                 <div className={styles.main}>
-                    <h2>Condition</h2>
-                </div>
+                    
+                    </div>
                 <br />
                 <div className={styles.container}>
                     <table className="table table-bordered" >
