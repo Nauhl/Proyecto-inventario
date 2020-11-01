@@ -14,7 +14,6 @@ export default function CategoriesList(props) {
     }, 3000);
   }, [])
 
-
   const loader = () => {
     let filas=[];
     for (let index = 0; index < 10; index++){
@@ -71,7 +70,6 @@ export default function CategoriesList(props) {
       );
       
     }
-
   
 if (loading) {
   return (
@@ -102,7 +100,7 @@ else {
                 <td>
                   <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop" >Edit</button>
                             &nbsp;&nbsp;&nbsp;
-                            <button className="btn btn-danger"  >Delete</button>
+                            <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#DELETEbtn" >Delete</button>
                 </td>
               </tr>
             ))}

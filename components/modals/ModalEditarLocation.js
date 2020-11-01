@@ -1,10 +1,10 @@
 
-export default function InputEditar(props) {
+export default function ModalEditar(props) {
     const { newLocation, allLocations, handleChange, createNewLocation, cancelCreateNewLocation, Editar } = props
 
     return (
         <div>
-            <div className="modal fade" id="editCondition" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal fade" id="editLocation" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -14,7 +14,7 @@ export default function InputEditar(props) {
             </button>
                         </div>
                         <div>
-                            <div item xs={12} md={6}>
+                            <div >
                                 <label>Name</label>
                                 <input
                                     required
@@ -27,7 +27,7 @@ export default function InputEditar(props) {
                                 />
                             </div>
 
-                            <div item xs={12} md={6}>
+                            <div >
                                 <label>Description</label>
                                 <input
                                 type="text"
@@ -39,7 +39,7 @@ export default function InputEditar(props) {
                                 />
                             </div>
 
-                            <div item xs={2} md={4}>
+                            <div >
                                 <label>Street number</label>
                                 <input
                                     size="small"
@@ -51,7 +51,7 @@ export default function InputEditar(props) {
                                 />
                             </div>
 
-                            <div item xs={10} md={8}>
+                            <div >
                                 <label>Street</label>
                                 <input
                                 type="text"
@@ -63,7 +63,7 @@ export default function InputEditar(props) {
                                 />
                             </div>
 
-                            <div item xs={12} md={6}>
+                            <div >
                                 <label>Street 2</label>
                                 <input
                                 type="text"
@@ -75,7 +75,7 @@ export default function InputEditar(props) {
                                 />
                             </div>
 
-                            <div item xs={12} md={6}>
+                            <div >
                                 <label>City</label>
                                 <input
                                 type="text"
@@ -87,7 +87,7 @@ export default function InputEditar(props) {
                                 />
                             </div>
 
-                            <div item xs={12} md={6}>
+                            <div >
                                 <label>Province</label>
                                 <input
                                 type="text"
@@ -99,7 +99,7 @@ export default function InputEditar(props) {
                                 />
                             </div>
 
-                            <div item xs={12} md={6}>
+                            <div >
                                 <label>Country</label>
                                 <input
                                     size="small"
@@ -123,7 +123,7 @@ export default function InputEditar(props) {
     )
 }
 
-InputEditar.defaultProps = {
+ModalEditar.defaultProps = {
     newLocation: {
         name: "",
         description: "",
@@ -145,11 +145,11 @@ InputEditar.defaultProps = {
 
 /*
 
-                            <div item xs={12} md={6}>
+                            <div >
                                 <button variant="contained" disabled={!newLocation.name} onClick={() => Editar()}>Edit location</button>
                             </div>
 
-                            <div item xs={12} md={6}>
+                            <div >
                                 <button variant="contained" onClick={() => cancelCreateNewLocation()}>Cancel</button>
                             </div>
                         </div>*/

@@ -1,19 +1,24 @@
 import CategoriesList from '../../components/lists/CategoriesList';
 import SubCategoriesList from "../../components/lists/SubCategoriesList";
 import styles from "../../styles/Home.module.css";
-import { getAllCategories, createNewCategory, updateCategory } from "../../src/lib/ctrlCategory";
+import { getAllCategories, createNewCategory, updateCategory, deleteCategory } from "../../src/lib/ctrlCategory";
 import { getAllSubCategories, createNewSubCategory, updateSubCategory } from "../../src/lib/ctrlSubCategory";
 import React, { useState, useEffect } from 'react';
-import ModalAddCategory from '../../components/modals/CategoryModal';
-import ModalAddSubCategory from "../../components/modals/ModalAddSubCategory";
+import ModalCategory from '../../components/modals/ModalCategory';
+import ModalSubCategory from "../../components/modals/ModalSubCategory";
 
 export default function CategoryPage() {
 
   const [allCategories, setAllCategories] = React.useState([]);
   const [allSubCategories, setAllSubCategories] = React.useState([]);
   const [newCategory, setNewCategory] = React.useState({});
-  const [newSubCategory, setNewSubCategory] = React.useState({});
-  
+  const [borrar, setBorrar] = React.useState({});
+  //const [newSubCategory, setNewSubCategory] = React.useState({});
+  const [openModalCategory, setOpenModalCategory] = React.useState(false);
+  //const [openModalSubCategory, setOpenModalSubCategory] = React.useState(false);
+  const [editMode, setEditMode] = React.useState(false);
+
+  //****** GET  ***** */
   
   React.useEffect(() => {
     getCategories();
@@ -31,31 +36,68 @@ export default function CategoryPage() {
       setAllSubCategories(categories);
     });
   }
+  
+  const handleChange = name => event => {
+    setNewCategory({
+      ...newCategory,
+      [name]: event.target.value
+    });
+    console.log(newCategory);
+  };
+  
+  const handleCloseModal = () => {
+    setOpenModalCategory(false);
+  };
 
-  //************Return */
+  
+  //******** CREATE ********/
+  
+  const handleClickOnCreateNewCategory = () => {
+    createNewCategory(newCategory).then(() => {
+      setOpenModalCategory(false);
+      getCategories();
+    })
+  };
+
+  
+  const handleClickOnCancelNewCategory = () => {
+    setNewCategory({})
+  };
+
+  //********* DELETE *********/
+
+  const handleClickOnDeleteCategory = (id) => {
+    deleteCategory(borrar.id).then(() => {
+      setOpenModalCategory(false);
+      setBorrar(id);
+    })
+    console.log(newCategory.id);
+  };
 
   return allCategories ? (
     <>
 
-      <ModalAddCategory />
+      <ModalCategory 
+      open={openModalCategory}
+      handleClose={handleCloseModal}
+      createNewCategory={handleClickOnCreateNewCategory}
+      cancelCreateNewCategory={handleClickOnCancelNewCategory}
+      newCategory={newCategory}
+      handleChange={handleChange}
+      deleteCategories={handleClickOnDeleteCategory}
+      />
       <CategoriesList
         allCategories={allCategories}
-        //editCategory={handleClickEditCategory}
-        //handleChange={handleChange}
-        //createNewCategory={handleClickOnCreateNewCategory}
-        newCategory={newCategory}
-      //editMode={editMode}
+      
       />
-
       <br />
 
-      <ModalAddSubCategory />
+      <ModalSubCategory />
+
       <SubCategoriesList
         allSubCategories={allSubCategories}
       />
-
-      <a href="#" className={styles.goToUpBTN}><i className="far fa-chevron-double-up"></i></a>
-    </>
+      </>
   ) : (
       <>
       </>
