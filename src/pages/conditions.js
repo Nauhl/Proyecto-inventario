@@ -3,16 +3,17 @@ import ConditionList from "../../components/lists/ConditionList";
 import { getAllConditions, createNewCondition, updateCondition, deleteCondition } from "../../src/lib/ctrlCondition";
 import ModalCondition from "../../components/modals/ModalCondition";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { name } from 'faker';
 
 export default function ConditionPage() {
 
   const [allConditionsState, setAllConditionsState] = useState([]);
   const [addCondition, setAddCondition] = useState({});
   const [editar, setEditar] = useState({});
+  const [deleteCondition, setDeleteCondition] = useState({});
 
   useEffect(() => {
     getConditions();
-    EditConditions
   }, []);
 
   const getConditions = () => {
@@ -47,23 +48,18 @@ export default function ConditionPage() {
   };
 
   //****************************************************************************** */
-  const handleEdit = name => e => {
-    setEditar({
-      ...editar,
-      [name]: e.target.value
-    });
-    console.log(editar);
-  };
+  
+  const EditConditions = (id, updateCondi) => {
+    setEditar(false); 
+    setAllConditionsState(allConditionsState.map(name => (name.id === id ? updateCondi : name)))
+    };
 
-  const EditConditions = () => {
-    updateCondition(editar).then(condition => {
-      getConditions()
-    })
-  };
+  /**************** Delete condition */
 
-  const handleClickEditCondition = () => {
-    setAddCondition({})
-  };
+  const BorrarCondition = (id) => {
+    
+    setAddCondition(addCondition.filter(name => name.id !== id))
+  }
 
   return (
     <>
@@ -77,6 +73,8 @@ export default function ConditionPage() {
         handleEdit={handleEdit}
         MetodoEditar={EditConditions}
         handleclickEditCondition={handleClickEditCondition}
+
+        borrar={BorrarCondition}
       />
 
       <ConditionList

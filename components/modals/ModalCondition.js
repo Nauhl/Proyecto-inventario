@@ -1,7 +1,7 @@
 import styles from '../../styles/Home.module.css';
 
 export default function ModalCondition(props) {
-    const { handleChange, AddCondition, cancelAddCondition, handleEdit, allConditions, MetodoEditar, handleclickEditCondition } = props
+    const { handleChange, AddCondition, cancelAddCondition, handleEdit, MetodoEditar, handleclickEditCondition, borrar, allConditions } = props
 
     return (
         <>
@@ -68,7 +68,7 @@ export default function ModalCondition(props) {
                         <input
                             className="form-control"
                             type="text"
-                            id="name-input"
+                            //id="name-input"
                             name="condition"
                             variant="outlined"
                             placeholder="Insert new condition" 
@@ -79,7 +79,7 @@ export default function ModalCondition(props) {
                         <textarea
                             className="form-control"
                             type="text"
-                            id="description-input"
+                            //id="description-input"
                             name="description"
                             placeholder="Insert new description" 
                             onChange={handleEdit("description")}/>
@@ -105,12 +105,12 @@ export default function ModalCondition(props) {
                         </div>
                         <div className="modal-body">
 
-                            Are you sure you want to delete this Condition? {allConditions && allConditions.name}
+                            Are you sure you want to delete this Condition? 
 
                             </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">NO</button>
-                            <button type="button" className="btn btn-success" >YES</button>
+                            <button type="button" className="btn btn-success" onClick={() => borrar()} >YES</button>
                         </div>
                     </div>
                 </div>
