@@ -37,6 +37,7 @@ export default function roomsPage() {
     setShowElements(true);
   };
 
+
   return (
     <>
       <div className={styles.main}>
