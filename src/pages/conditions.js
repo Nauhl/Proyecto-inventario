@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import ConditionList from "../../components/lists/ConditionList";
+//import EditCondition from "../../components/inputs/ConditionInput/EditCondition";
 import { getAllConditions, createNewCondition, updateCondition, deleteCondition } from "../../src/lib/ctrlCondition";
 import ModalCondition from "../../components/modals/ModalCondition";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { name } from 'faker';
 
 export default function ConditionPage() {
 
   const [allConditionsState, setAllConditionsState] = useState([]);
   const [addCondition, setAddCondition] = useState({});
-  const [editar, setEditar] = useState({});
-  const [deleteCondition, setDeleteCondition] = useState({});
+
+  const [openModalCondition, setOpenModalCondition] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [deleteCondition, setDeleteCondition] = useState([]);
 
   useEffect(() => {
     getConditions();
@@ -21,12 +23,6 @@ export default function ConditionPage() {
       setAllConditionsState(conditions);
     });
   }
-  
-  /*const EditConditions = () => {
-    updateCondition().then(conditions => { 
-      setAllConditionsState(conditions)
-    });
-  }*/
 
   //**********************   HandleChange ************************************ */
   const handleChange = name => e => {
@@ -47,18 +43,35 @@ export default function ConditionPage() {
     setAddCondition({})
   };
 
-  //****************************************************************************** */
+  //**************    Edit Condition       ******************************* */
   
-  const EditConditions = (id, updateCondi) => {
-    setEditar(false); 
-    setAllConditionsState(allConditionsState.map(name => (name.id === id ? updateCondi : name)))
-    };
+  /*const handleCloseModal = () => {
+    setOpenModalCondition(false);
+    setEditMode(false);
+  };
+  
+  const Editar = () => {
+    console.log ("guardado", {editMode})
+    if (editMode){
+    updateCondition(addCondition).then(() => {
+    setEditMode(false);
+    })
+  } else {
+      console.log("no guardado");
+    }
+  };
+  
+  const handleClickEditCondition = () => {
+    //setNewCategory(category)
+    setEditMode(true)
+    //setOpenModalCategory(true);
+  };
 
   /**************** Delete condition */
 
   const BorrarCondition = (id) => {
-    
-    setAddCondition(addCondition.filter(name => name.id !== id))
+      setAddCondition(deleteCondition.filter(name => name.id !== id));
+      console.log(setAllConditionsState);
   }
 
   return (
@@ -69,19 +82,14 @@ export default function ConditionPage() {
         handleChange={handleChange}
         AddCondition={handleClickAddCondition}
         cancelAddCondition={handleClickCancelAddCondition}
-        
-        handleEdit={handleEdit}
-        MetodoEditar={EditConditions}
-        handleclickEditCondition={handleClickEditCondition}
 
-        borrar={BorrarCondition}
       />
 
       <ConditionList
         allConditions={allConditionsState}
       />
 
-
+      
     </>
   )
 };

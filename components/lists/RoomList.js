@@ -2,11 +2,12 @@ import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-export default function CategoriesList(props) {
+export default function RoomList(props) {
 
     const [loading, setLoading] = useState(true);
 
-    const { allRooms, editRooms } = props;
+    const { allRooms, editRooms  } = props;
+
 
     useEffect(() => {
         setTimeout(() => {
@@ -69,10 +70,6 @@ export default function CategoriesList(props) {
     else {
         return allRooms && allRooms.length > 0 ? (
             <>
-                <div className={styles.main}>
-                    <h2>Rooms</h2>
-                </div>
-                <br />
                 <div className={styles.container}>
                     <table className="table table-bordered" >
                         <thead>

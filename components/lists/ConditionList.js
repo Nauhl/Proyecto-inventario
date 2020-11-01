@@ -5,10 +5,9 @@ import ModalCondition from '../modals/ModalCondition';
 
 export default function ConditionList(props) {
 
-
     const [loading, setLoading] = useState(true);
     const { allConditions, editCondition } = props;
-    
+
     useEffect(() => {
         setTimeout(() => {
             setLoading();
@@ -60,14 +59,13 @@ export default function ConditionList(props) {
         return (
             loader()
         )
-
     }
     else {
         return allConditions && allConditions.length > 0 ? (
             <>
                 <div className={styles.main}>
-                    
-                    </div>
+
+                </div>
                 <br />
                 <div className={styles.container}>
                     <table className="table table-bordered" >
@@ -76,7 +74,7 @@ export default function ConditionList(props) {
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -85,11 +83,7 @@ export default function ConditionList(props) {
                                     <td>{condition.name}</td>
                                     <td>{condition.description}</td>
                                     <td>{Object.keys(condition.isActive).length}</td>
-                                    <td>
-                                        <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#editCondition" >Edit</button>
-                                &nbsp;
-                                <button type="button" className="btn btn-danger"  data-toggle="modal" data-target="#ConditionDelete">Delete</button>
-                                    </td>
+                                    
                                 </tr>
                             ))}
                         </tbody>
@@ -103,3 +97,10 @@ export default function ConditionList(props) {
             );
     }
 }
+
+/*
+<td>
+        <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#editCondition" >Edit</button>
+            &nbsp;
+        <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#ConditionDelete">Delete</button>
+            </td>*/

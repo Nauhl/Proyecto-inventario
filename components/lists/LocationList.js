@@ -6,7 +6,7 @@ export default function LocationList(props) {
 
     const [loading, setLoading] = useState(true);
 
-    const { allLocations, editLocation } = props;
+    const { allLocations } = props;
 
     useEffect(() => {
         setTimeout(() => {
@@ -42,9 +42,6 @@ export default function LocationList(props) {
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Status</th>
-                                    <th>Picture</th>
-                                    <th>Status</th>
-                                    <th>Address</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -80,9 +77,6 @@ export default function LocationList(props) {
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Status</th>
-                                <th>Picture</th>
-                                <th>Status</th>
-                                <th>Address</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -92,10 +86,6 @@ export default function LocationList(props) {
                                     <td>{location.name}</td>
                                     <td>{location.description}</td>
                                     <td>{Object.keys(location.isActive).length}</td>
-                                    <td>{location.pictures}</td>
-                                    <td>{location.status}</td>
-                                    <td>{Object.keys(location.address).join(location.streetNumber),
-                                        (location.street), (location.street2), (location.city), (location.province), (location.country)}</td>
                                     <td>
                                         <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop" >Edit</button>
                             &nbsp;
@@ -114,3 +104,7 @@ export default function LocationList(props) {
             );
     }
 }
+
+/*
+                                    <td>{Object.keys(location.address,
+                                    {streetNumber, street, street2, city, province, country})}</td>*/

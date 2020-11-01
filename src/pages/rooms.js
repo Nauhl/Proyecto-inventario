@@ -1,32 +1,68 @@
+import { getAllRooms, createNewRoom } from "../../src/lib/ctrlRoom";
+import InputRoom from "../../components/inputs/roomInput";
+import RoomList from "../../components/lists/RoomList";
 import styles from '../../styles/Home.module.css';
-import RoomList from '../../components/lists/RoomList';
-import React, {useEffect, useState} from 'react';
-import { getAllRooms, getRoom} from "../../src/lib/ctrlRoom";
-import Button from "react-bootstrap/Button";
 
-export default function RoomPage() {
+export default function roomsPage() {
 
-  const [allRooms, setAllRooms] = React.useState([]);
-  
-  React.useEffect(() => {
-    getRooms();
-  }, []);
+  const [showElements, setShowElements] = React.useState(true);
+  const [allRoomsState, setAllRoomsState] = React.useState([]);
+  const [newRoom, setNewRoom] = React.useState({});
+
+  React.useEffect(() => getRooms(), []);
 
   const getRooms = () => {
-    getAllRooms().then(rooms => {
-      setAllRooms(rooms);
-    });
+    getAllRooms().then(allRooms => {
+      setAllRoomsState(allRooms);
+    })
   }
 
-  return allRooms ? (
+  const handleChange = name => event => {
+    setNewRoom({
+      ...newRoom,
+      [name]: event.target.value
+    });
+  };
+
+  const handleClickOnCreateNewRoom = () => {
+
+    createNewRoom(newRoom).then(room => {
+      getRooms()
+      setShowElements(true);
+    })
+  };
+
+  const handleClickOnCancelNewRoom = () => {
+    setNewRoom({})
+    setShowElements(true);
+  };
+
+  return (
     <>
-    <RoomList 
-    allRooms={allRooms}
-    />
+      <div className={styles.main}>
+        <h2>Rooms</h2>
+        {showElements ?
+          <button type="button" className="btn btn-dark"
+            data-toggle="modal" data-target="#newRoom" onClick={() => setShowElements(false)}>Add  room</button>
+          :
+          null}
+      </div>
+      <br />
+
+      <div>
+        {showElements ?
+          <RoomList
+            allRooms={allRoomsState}
+          />
+          :
+          <InputRoom
+            allRooms={allRoomsState}
+            handleChange={handleChange}
+            createNewRoom={handleClickOnCreateNewRoom}
+            cancelCreateNewRoom={handleClickOnCancelNewRoom}
+          />
+        }
+      </div>
     </>
-  ) : (
-    <>
-      <div className="spinner-border"></div>
-    </>
-  );
+  )
 };
