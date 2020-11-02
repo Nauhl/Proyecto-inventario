@@ -1,4 +1,4 @@
-import { getAllLocations, getLocation, createNewLocation, updateLocation } from "../../src/lib/ctrlLocation";
+import { getAllLocations, getLocation, createNewLocation, updateLocation, deleteLocation } from "../../src/lib/ctrlLocation";
 // import Button from "@material-ui/core/Button";
 import Button from "react-bootstrap/Button";
 //import LocationsInput from "../../components/inputs/locationInput";
@@ -77,7 +77,12 @@ export default function locationsPage() {
 
   const handleClickDeleteLocation = locationID => {
     const borrandoLocation = allLocationsState.filter((location) => location.locationID !== locationID);
+    console.log("DELETING", locationID);
     setAllLocationsState(borrandoLocation)
+    
+    deleteLocation(locationID);
+    setNewLocation(true);
+    setShowElements(true);
   };
 
 
