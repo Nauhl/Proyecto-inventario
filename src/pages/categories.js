@@ -64,6 +64,8 @@ export default function CategoryPage() {
     setNewCategory({})
   };
 
+  //********* UPDATE *********/
+
   //********* DELETE *********/
 
   const handleClickOnDeleteCategory = (id) => {

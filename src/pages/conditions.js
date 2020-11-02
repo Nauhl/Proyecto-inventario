@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ConditionList from "../../components/lists/ConditionList";
-//import EditCondition from "../../components/inputs/ConditionInput/EditCondition";
 import { getAllConditions, createNewCondition, updateCondition, deleteCondition } from "../../src/lib/ctrlCondition";
 import ModalCondition from "../../components/modals/ModalCondition";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -48,10 +47,10 @@ export default function ConditionPage() {
   /*const handleCloseModal = () => {
     setOpenModalCondition(false);
     setEditMode(false);
-  };
+  };*/
   
-  const Editar = () => {
-    console.log ("guardado", {editMode})
+  const handleEdit = () => {
+    console.log ("guardado", {editMode })
     if (editMode){
     updateCondition(addCondition).then(() => {
     setEditMode(false);
@@ -61,15 +60,15 @@ export default function ConditionPage() {
     }
   };
   
-  const handleClickEditCondition = () => {
-    //setNewCategory(category)
+  const handleClickEditCondition = condition => {
+    setAddCondition(condition)
     setEditMode(true)
     //setOpenModalCategory(true);
   };
 
   /**************** Delete condition */
 
-  const BorrarCondition = (id) => {
+  const BorrarCondition = () => {
       setAddCondition(deleteCondition.filter(name => name.id !== id));
       console.log(setAllConditionsState);
   }
@@ -83,6 +82,8 @@ export default function ConditionPage() {
         AddCondition={handleClickAddCondition}
         cancelAddCondition={handleClickCancelAddCondition}
 
+        editMode={editMode}
+        editCondition={handleClickEditCondition}
       />
 
       <ConditionList

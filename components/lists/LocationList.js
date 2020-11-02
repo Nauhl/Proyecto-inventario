@@ -66,10 +66,7 @@ export default function LocationList(props) {
     else {
         return allLocations && allLocations.length > 0 ? (
             <>
-                <div className={styles.main}>
-                    <h2>Location</h2>
-                </div>
-                <br />
+                
                 <div className={styles.container}>
                     <table className="table table-bordered" >
                         <thead>
@@ -108,3 +105,8 @@ export default function LocationList(props) {
 /*
                                     <td>{Object.keys(location.address,
                                     {streetNumber, street, street2, city, province, country})}</td>*/
+
+                                    /*<div className={styles.main}>
+                    <h2>Location</h2>
+                </div>
+                <br />*/

@@ -5,8 +5,8 @@ import Button from "react-bootstrap/Button";
 import LocationList from "../../components/lists/LocationList";
 import Grid from "@material-ui/core/Grid";
 import AddIcon from "@material-ui/icons/Add";
-import ModalEditar from "../../components/modals/ModalEditarLocation";
-
+import AddLocation from "../../components/inputs/LocationInputs/inputAddLocation";
+import styles from '../../styles/Home.module.css';
 
 export default function locationsPage() {
 
@@ -38,6 +38,7 @@ export default function locationsPage() {
         [name]: event.target.value
       });
     }
+    console.log(newLocation);
   };
 
   const handleClickOnCreateNewLocation = () => {
@@ -47,6 +48,7 @@ export default function locationsPage() {
       setNewLocation({})
       setShowElements(true);
     })
+    
   };
 
   const handleClickOnCancelNewLocation = () => {
@@ -64,13 +66,13 @@ export default function locationsPage() {
   return (
     <div >
       <div >
-        <div>
+        <div className={styles.main}>
           <h3>Locations</h3>
         </div>
 
-        <div >
+        <div className={styles.main}>
           {showElements ?
-            <button variant="success" size="sm" onClick={() => setShowElements(false)}>
+            <button data-toggle="modal" data-target="#newLocation" variant="success" size="sm" onClick={() => setShowElements(false)}>
               <AddIcon fontSize="small" />Add new location</button>
             :
             null
@@ -83,7 +85,7 @@ export default function locationsPage() {
               allLocations={allLocationsState}
             />
             :
-            <ModalEditar
+            <AddLocation
               allLocations={allLocationsState}
               handleChange={handleChange}
               createNewLocation={handleClickOnCreateNewLocation}
