@@ -7,13 +7,13 @@ import Grid from "@material-ui/core/Grid";
 import AddIcon from "@material-ui/icons/Add";
 import AddLocation from "../../components/inputs/LocationInputs/inputAddLocation";
 import styles from '../../styles/Home.module.css';
+import ModalLocation from "../../components/modals/ModalLocation";
 
 export default function locationsPage() {
 
-  
-
   const [showElements, setShowElements] = React.useState(true);
   const [showModal, setShowModal] = React.useState(false);
+  const [editMode, setEditMode] = React.useState(false);
   const [allLocationsState, setAllLocationsState] = React.useState([]);
   const [newLocation, setNewLocation] = React.useState({});
   const [editarL, setEditarL] = React.useState({});
@@ -23,6 +23,26 @@ export default function locationsPage() {
   const getLocations = () => {
     getAllLocations().then(allLocations => {
       setAllLocationsState(allLocations);
+    })
+  };
+
+  const handleCloseModal = () => {
+    console.log("handleCloseModal")
+    setShowModal(false);
+    setNewLocation({});
+  };
+
+  const handleClickAddLocation = () => {
+    console.log("handleClickAddLocation")
+    setShowModal(true);
+    setEditMode(false);
+    setNewLocation({});
+  }
+
+  const handleClickUpdateLocation = () => {
+    updateLocation(newLocation).then(() => {
+      handleCloseModal()
+      getLocations();
     })
   }
 
@@ -63,6 +83,7 @@ export default function locationsPage() {
     getLocation(locationID).then(location => {
       console.log("FOUND IT", location);
       setShowModal(true);
+      setEditMode(true);
       setNewLocation(location);
     })
   };
@@ -79,12 +100,13 @@ export default function locationsPage() {
     const borrandoLocation = allLocationsState.filter((location) => location.locationID !== locationID);
     console.log("DELETING", locationID);
     setAllLocationsState(borrandoLocation)
-    
+
     deleteLocation(locationID);
     setNewLocation(true);
     setShowElements(true);
   };
 
+  //console.log("NEW LOCATION", newLocation);
 
   /*const EditarLocation = () => {
     updateLocation(newLocation).then(location => {
@@ -95,6 +117,18 @@ export default function locationsPage() {
 
   return (
     <div >
+      <ModalLocation
+        open={showModal}
+        handleClose={handleCloseModal}
+        allLocations={allLocationsState}
+        handleChange={handleChange}
+        handleClickUpdateLocation={handleClickUpdateLocation}
+        handleClickOnCreateNewLocation={handleClickOnCreateNewLocation}
+        //createNewLocation={createNewLocation}
+        // cancelCreateNewLocation={cancelCreateNewLocation}
+        newLocation={newLocation}
+        editMode={editMode}
+      />
       <div >
         <div className={styles.main}>
           <h3>Locations</h3>
@@ -103,9 +137,11 @@ export default function locationsPage() {
         <div className={styles.main}>
           {showElements ?
             <button
-              data-toggle="modal" data-target="#newLocation"
+              // data-toggle="modal" data-target="#newLocation"
               variant="success" size="sm"
-              onClick={() => setShowElements(false)}>
+              onClick={() => handleClickAddLocation()}
+            // onClick={() => setShowElements(false)}
+            >
               <AddIcon fontSize="small" />Add new location</button>
             :
             null
@@ -113,14 +149,13 @@ export default function locationsPage() {
         </div>
 
         <div >
-          {showElements ?
-            <LocationList
-              allLocations={allLocationsState}
-              handleClickEditLocation={handleClickEditLocation}
-              
-              Borrar={handleClickDeleteLocation}
-            />
-            :
+          {/* {showElements ? */}
+          <LocationList
+            allLocations={allLocationsState}
+            handleClickEditLocation={handleClickEditLocation}
+            Borrar={handleClickDeleteLocation}
+          />
+          {/* :
             <AddLocation
               show={showModal}
               allLocations={allLocationsState}
@@ -130,7 +165,7 @@ export default function locationsPage() {
               newLocation={newLocation}
 
             />
-          }
+          } */}
 
         </div>
       </div>
