@@ -13,7 +13,7 @@ const ModalLocation = props => {
   const { handleClose, open, allLocations, newLocation, editMode, handleChange, handleClickUpdateLocation, createNewLocation, handleClickOnCreateNewLocation, cancelCreateNewLocation } = props;
 
   return (
-
+    
     <Modal show={open} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>{editMode ? `Modifying ${newLocation.name}` : `Add a new location`}</Modal.Title>
@@ -32,26 +32,25 @@ const ModalLocation = props => {
 
         <div>FOOTER</div>
         <Button variant="secondary" onClick={handleClose}>
-          Cancel
+            Cancel
       </Button>
 
-        <Button variant="primary" onClick={createNewLocation}>
-          {editMode ? <button
+        <div variant="primary" onClick={createNewLocation}>
+          {editMode ? <Button
             variant="success" size="sm"
             onClick={() => handleClickUpdateLocation()}
           >
-            UPDATE
-        </button>
-            :
-            <button type="button" className="btn btn-success" onClick={() => handleClickOnCreateNewLocation()}><i className="fa fa-database">
-            </i> &nbsp; Save</button>}
+              UPDATE
         </Button>
-
-
+            :
+            <Button type="button" className="btn btn-success" onClick={() => handleClickOnCreateNewLocation()}><i className="fa fa-database">
+            </i> &nbsp; Save</Button>}
+        </div>
 
       </Modal.Footer>
 
     </Modal>
+
   )
 };
 

@@ -64,7 +64,6 @@ export default function ConditionList(props) {
         return allConditions && allConditions.length > 0 ? (
             <>
                 <div className={styles.main}>
-
                 </div>
                 <br />
                 <div className={styles.container}>
@@ -95,9 +94,7 @@ export default function ConditionList(props) {
                 </div>
             </>
         ) : (
-                <>
-                    <div className="spinner-border"></div>
-                </>
+                <div className="spinner-border"></div>
             );
     }
 }

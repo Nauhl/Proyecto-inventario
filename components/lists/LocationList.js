@@ -8,7 +8,7 @@ export default function LocationList(props) {
 
     const [loading, setLoading] = useState(true);
 
-    const { allLocations, handleClickEditLocation, Borrar } = props;
+    const { allLocations, handleClickEditLocation, Borrar, newLocation } = props;
 
     useEffect(() => {
         setTimeout(() => {
@@ -73,7 +73,7 @@ export default function LocationList(props) {
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Image</th>
-                                <th>Status</th>
+                                
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -83,21 +83,16 @@ export default function LocationList(props) {
                                     <td>{location.name}</td>
                                     <td>{location.description}</td>
                                     <td>{location.pictures}
-                                    <Card key={location._id}>
-                                            <div className="card bg-dark text-white">
-                                                <img size="16by9" src={location.pictures} className="card-img" alt="..."></img>
-                                                <div className="card-img-overlay">
-                                                </div>
-                                            </div>
-                                        </Card></td>
+                                        
+                                    </td>
 
-                                    <td>{Object.keys(location.isActive).length}</td>
+                                    
                                     <td>
                                         <button type="button" className="btn btn-warning"
-                                            data-toggle="modal" data-target="#EditLocation"
                                             onClick={() => handleClickEditLocation(location._id)}
                                         >Edit</button>
-                                        <button className="btn btn-danger" onClick={() => Borrar(location._id)}>Delete</button>
+                                        <button type="button" className="btn btn-danger"
+                                            onClick={() => Borrar(location._id)} >Delete</button>
                                     </td>
                                 </tr>
                             ))}
@@ -113,11 +108,34 @@ export default function LocationList(props) {
     }
 }
 
-/*
-                                    <td>{Object.keys(location.address,
-                                    {streetNumber, street, street2, city, province, country})}</td>*/
+/**********    Linea 86   ********/
+/* 
+<Card >
+                                            <div className="card bg-dark text-white">
+                                                <img size="16by9" src={location.pictures} className="card-img" alt="..."></img>
+                                                <div className="card-img-overlay">
+                                                </div>
+                                            </div>
+                                        </Card> */
+/**********    Linea 89   ********/
+/* 
+<td>{Object.keys(location.isActive).length}</td> */
 
-/*<div className={styles.main}>
-<h2>Location</h2>
-</div>
-<br />*/
+//  Linea  76
+/* <th>Status</th> */
+
+
+/*<div className="modal fade" id="DeleteLocation" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div className="modal-dialog">
+        <div className="modal-content">
+            <div className="modal-header">
+                <h5 className="modal-title" id="staticBackdropLabel">Delete Category</h5>
+                <button type="button" className="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                    &times;
+                            </button>
+            </div>
+            <button type="button" className="btn btn-danger" onClick={() => Borrar(location._id)}>
+                ARE YOU SURE YOU WANT TO DELETE THIS ITEM ?
+                            </button>
+        </div>
+    </div>*/

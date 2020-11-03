@@ -3,9 +3,9 @@ import { getAllLocations, getLocation, createNewLocation, updateLocation, delete
 import Button from "react-bootstrap/Button";
 //import LocationsInput from "../../components/inputs/locationInput";
 import LocationList from "../../components/lists/LocationList";
-import Grid from "@material-ui/core/Grid";
+//import Grid from "@material-ui/core/Grid";
 import AddIcon from "@material-ui/icons/Add";
-import AddLocation from "../../components/inputs/LocationInputs/inputAddLocation";
+//import AddLocation from "../../components/inputs/LocationInputs/inputAddLocation";
 import styles from '../../styles/Home.module.css';
 import ModalLocation from "../../components/modals/ModalLocation";
 
@@ -16,7 +16,7 @@ export default function locationsPage() {
   const [editMode, setEditMode] = React.useState(false);
   const [allLocationsState, setAllLocationsState] = React.useState([]);
   const [newLocation, setNewLocation] = React.useState({});
-  const [editarL, setEditarL] = React.useState({});
+  //const [editarL, setEditarL] = React.useState({});
 
   React.useEffect(() => getLocations(), []);
 
@@ -32,11 +32,14 @@ export default function locationsPage() {
     setNewLocation({});
   };
 
+  /** CRUD */
+
   const handleClickAddLocation = () => {
     console.log("handleClickAddLocation")
     setShowModal(true);
     setEditMode(false);
     setNewLocation({});
+    
   }
 
   const handleClickUpdateLocation = () => {
@@ -44,6 +47,17 @@ export default function locationsPage() {
       handleCloseModal()
       getLocations();
     })
+  }
+
+  // retire el ";" del ultimo braquet de este metodo para que se actualize y se vea el cambio en la pagina
+  const handleClickDeleteLocation = locationID => {
+    const borrandoLocation = allLocationsState.filter((location) => location.locationID !== locationID);
+    console.log("DELETING", locationID);
+    getLocations(borrandoLocation)
+    handleCloseModal()
+    deleteLocation(locationID);
+    /*setNewLocation(true);
+    setShowElements(true);*/
   }
 
   const handleChange = path => name => event => {
@@ -65,19 +79,19 @@ export default function locationsPage() {
   };
 
   const handleClickOnCreateNewLocation = () => {
-
     createNewLocation(newLocation).then(location => {
       getLocations();
       setNewLocation({})
       setShowElements(true);
+      handleCloseModal()
     })
 
   };
 
-  const handleClickOnCancelNewLocation = () => {
+  /*const handleClickOnCancelNewLocation = () => {
     setNewLocation({})
     setShowElements(true);
-  };
+  };*/
 
   const handleClickEditLocation = locationID => {
     getLocation(locationID).then(location => {
@@ -88,32 +102,7 @@ export default function locationsPage() {
     })
   };
 
-  /*const handleClickEditLocation = locationID => {
-    getLocation(locationID).then(location => {
-      updateLocation(location);
-      setShowModal(true);
-      setNewLocation(location);
-    })
-  };*/
-
-  const handleClickDeleteLocation = locationID => {
-    const borrandoLocation = allLocationsState.filter((location) => location.locationID !== locationID);
-    console.log("DELETING", locationID);
-    setAllLocationsState(borrandoLocation)
-
-    deleteLocation(locationID);
-    setNewLocation(true);
-    setShowElements(true);
-  };
-
-  //console.log("NEW LOCATION", newLocation);
-
-  /*const EditarLocation = () => {
-    updateLocation(newLocation).then(location => {
-      getLocations();
-      setEditarL();
-    })
-  };*/
+  
 
   return (
     <div >
@@ -172,5 +161,3 @@ export default function locationsPage() {
     </div>
   )
 };
-
-//Editar={EditarLocation}

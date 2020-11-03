@@ -1,4 +1,4 @@
-import { getAllRooms, createNewRoom } from "../../src/lib/ctrlRoom";
+import { getAllRooms, getRoom, createNewRoom, updateRoom, deleteRoom} from "../../src/lib/ctrlRoom";
 import InputRoom from "../../components/inputs/roomInput";
 import RoomList from "../../components/lists/RoomList";
 import styles from '../../styles/Home.module.css';
