@@ -1,123 +1,58 @@
-import styles from '../../styles/Home.module.css';
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import InputCondition from "../inputs/ConditionInput/inputCondition";
 
-export default function ModalCondition(props) {
-    const { handleChange, AddCondition, cancelAddCondition, EditCondition, editMode, borrar, allConditions } = props
+const useStyles = makeStyles(theme => ({
 
-    const elementType = "condition";
+}));
+
+const ModalCondition = props => {
+    const classes = useStyles();
+    // const { handleClose, open, allLocations, handleChange, createNewLocation, cancelCreateNewLocation, newLocation, editMode } = props;
+    const { handleClose, open, allConditions, addCondition, editMode, handleChange, handleClickUpdateCondition, createNewCondition, handleClickOnCreateNewCondition, cancelCreateNewCondition } = props;
 
     return (
-        <>
-            <div className={styles.main}>
-                <h2>Condition</h2>
-                <br />
-                <button type="button" className="btn btn-success" data-toggle="modal" data-target="#newCondition" >New Condition</button>
-            </div>
 
-            { /* Modal Create */}
+        <Modal show={open} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>{editMode ? `Modifying ${addCondition.name}` : `Add a new location`}</Modal.Title>
 
-            <div className="modal fade" id="newCondition" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <button type="button" className="btn btn-danger" data-dismiss="modal" aria-label="Close">
-                                &times;
-                            </button>
-                        </div>
-                        <label>Name</label>
-                        <input
+            </Modal.Header>
 
-                            required
-                            className="form-control"
-                            type="text"
-                            id="name-input"
-                            name="condition"
-                            variant="outlined"
-                            placeholder="Insert new Condition"
-                            onChange={handleChange("name")}
-                        />
-                        <br />
+            <Modal.Body>
+                <InputCondition
+                    addCondition={addCondition}
+                    handleChange={handleChange}
+                />
 
-                        <label>Description</label>
-                        <textarea
-                            required
-                            className="form-control"
-                            type="text"
-                            id="description-input"
-                            name="description"
-                            placeholder="Insert new description"
-                            onChange={handleChange("description")}
-                        />
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => cancelAddCondition()}>Cancel</button>
-                            <button type="button" className="btn btn-success" onClick={() => AddCondition()}><i className="fa fa-database"></i> Save</button>
-                        </div>
-                    </div>
+            </Modal.Body>
+
+            <Modal.Footer>
+
+                <div>FOOTER</div>
+                <Button variant="secondary" onClick={handleClose}>
+                    Cancel
+                </Button>
+
+                <div variant="primary" onClick={createNewCondition}>
+                    {editMode ? <Button
+                        variant="success" size="sm"
+                        onClick={() => handleClickUpdateCondition()}
+                    >
+                        UPDATE
+        </Button>
+                        :
+                        <Button type="button" className="btn btn-success" onClick={() => handleClickOnCreateNewCondition()}><i className="fa fa-database">
+                        </i> &nbsp; Save</Button>}
                 </div>
-            </div>
-
-            { /* Modal Edit */}
-            <div className="modal fade" id="editCondition" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="staticBackdropLabel">Edit Condition</h5>
-                            <button type="button" className="btn btn-danger" data-dismiss="modal" aria-label="Close">
-                                &times;
-                        </button>
-                        </div>
-                        <label>Name</label>
-                        <input
-                            className="form-control"
-                            type="text"
-                            //id="name-input"
-                            name="condition"
-                            variant="outlined"
-                            placeholder="Edit condition"
-                            onChange={handleChange("name")} />
-                        <br />
-
-                        <label>Description</label>
-                        <textarea
-                            className="form-control"
-                            type="text"
-                            //id="description-input"
-                            name="description"
-                            placeholder="Edit description"
-                            onChange={handleChange("description")} />
-                        <br />
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => handleclickEditCondition()}>Cancel</button>
-                            <button type="button" className="btn btn-success" onClick={() => EditCondition()}><i className="fa fa-database">
-                            </i> &nbsp; {editMode ? "Save" : `Add ${elementType}`} </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            { /* Modal Delete */}
-
-            <div className="modal fade" id="ConditionDelete" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h2>Delete Condition</h2>
-                            <button type="button" className="btn btn-danger" data-dismiss="modal" aria-label="Close">
-                                &times;
-                            </button>
-                        </div>
-                        <div className="modal-body">
-
-                            Are you sure you want to delete this Condition?
-
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">NO</button>
-                            <button type="button" className="btn btn-success" onClick={() => borrar()} >YES</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
+            </Modal.Footer>
+        </Modal>
     )
-}
+};
+
+ModalCondition.defaultProps = {
+    editMode: true
+};
+
+export default ModalCondition;

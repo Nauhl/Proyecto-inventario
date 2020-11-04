@@ -145,7 +145,7 @@ export default function categoriesPage(props) {
         setOpenModalCategory(true);
     };*/
 
-    return allCategories ? (
+    return /*allCategories ?*/ (
         <div className={styles.container}>
 
             <ModalAddCategory
@@ -213,9 +213,9 @@ export default function categoriesPage(props) {
                 </div>
             </div>
         </div>
-    ) : (
+    ) /*: (
             <div className="spinner-border"></div>
-        );
+        );*/
 };
 /*<div>
                 <DeleteModalCategory

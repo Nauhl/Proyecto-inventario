@@ -1,12 +1,12 @@
 import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import ModalCondition from '../modals/ModalCondition';
+//import ModalCondition from '../modals/ModalCondition';
 
 export default function ConditionList(props) {
 
     const [loading, setLoading] = useState(true);
-    const { allConditions, editCondition } = props;
+    const { allConditionsState, handleClickEditCondition, DeleteConditionOnClick } = props;
 
     useEffect(() => {
         setTimeout(() => {
@@ -29,7 +29,7 @@ export default function ConditionList(props) {
             );
         }
 
-        return allConditions && allConditions.length > 0 ? (
+        return allConditionsState && allConditionsState.length > 0 ? (
             <>
                 <SkeletonTheme color="gray" highlightColor="white">
                     <div className={styles.container}>
@@ -61,7 +61,7 @@ export default function ConditionList(props) {
         )
     }
     else {
-        return allConditions && allConditions.length > 0 ? (
+        return allConditionsState && allConditionsState.length > 0 ? (
             <>
                 <div className={styles.main}>
                 </div>
@@ -77,15 +77,17 @@ export default function ConditionList(props) {
                             </tr>
                         </thead>
                         <tbody>
-                            {allConditions.map(condition => (
+                            {allConditionsState.map(condition => (
                                 <tr key={condition._id}>
                                     <td>{condition.name}</td>
                                     <td>{condition.description}</td>
                                     <td>{Object.keys(condition.isActive).length}</td>
                                     <td>
-                                        <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#editCondition" >Edit</button>
-                                        &nbsp;
-                                        <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#ConditionDelete">Delete</button>
+                                        <button type="button" className="btn btn-warning"
+                                            onClick={() => handleClickEditCondition(condition._id)}
+                                        >Edit</button>
+                                        <button type="button" className="btn btn-danger"
+                                            onClick={() => DeleteConditionOnClick(condition._id)} >Delete</button>
                                     </td>
                                 </tr>
                             ))}

@@ -87,7 +87,6 @@ export default function locationsPage() {
       setShowElements(true);
       handleCloseModal()
     })
-
   };
 
   /*const handleClickOnCancelNewLocation = () => {

@@ -1,142 +1,46 @@
-import styles from '../../styles/Home.module.css';
-import React, { useState, useEffect } from 'react';
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
-export default function ItemList(props) {
+const useStyles = makeStyles({
+    table: {
+        minWidth: 650,
+    },
+});
 
-    const [loading, setLoading] = useState(true);
+export default function ItemsList(props) {
+    const classes = useStyles();
 
-    const { allItems, editItem } = props;
+    const { allItems } = props;
 
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading();
-        }, 3000);
-    }, [])
-
-    const loader = () => {
-        let filas = [];
-        for (let index = 0; index < 10; index++) {
-            filas.push(
-                <tr key={index}>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td>
-                        <Skeleton />
-                    </td>
-                </tr>
-            );
-        }
-
-        return allItems && allItems.length > 0 ? (
-            <>
-                <SkeletonTheme color="gray" highlightColor="white">
-                    <div className={styles.container}>
-                        <table className="table table-bordered" >
-                            <thead>
-                                <tr><th>Name</th>
-                                    <th>Description</th>
-                                    <th>Status</th>
-                                    <th>Pictures</th>
-                                    <th>Location</th>
-                                    <th>Room</th>
-                                    <th>Category</th>
-                                    <th>Condition</th>
-                                    <th>Estimated Value</th>
-                                    <th>Model</th>
-                                    <th>Brand</th>
-                                    <th>Serial Number</th>
-                                    <th>Notes</th>
-                                    <th>PurchaseInfo</th>
-                                    <th>purchaseDate</th>
-                                    <th>Cost</th>
-                                    <th>Waranty</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filas}
-                            </tbody>
-                        </table>
-                    </div>
-                </SkeletonTheme>
-            </>
-        ) : (
-                <>
-                </>
-            );
-    }
-
-    if (loading) {
-        return (
-            loader()
-        )
-    }
-    else {
-        return allItems && allItems.length > 0 ? (
-            <>
-                <div className={styles.main}>
-                    <h2>Items</h2>
-                </div>
-                <br />
-                <div className={styles.container}>
-                    <table className="table table-bordered" >
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Status</th>
-                                <th>Pictures</th>
-                                <th>Location</th>
-                                <th>Room</th>
-                                <th>Category</th>
-                                <th>Condition</th>
-                                <th>Estimated Value</th>
-                                <th>Model</th>
-                                <th>Brand</th>
-                                <th>Serial Number</th>
-                                <th>Notes</th>
-                                <th>PurchaseInfo</th>
-                                <th>purchaseDate</th>
-                                <th>Cost</th>
-                                <th>Waranty</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {allItems.map(item => (
-                                <tr key={item._id}>
-                                    <td>{item.name}</td>
-                                    <td>{item.description}</td>
-                                    <td>
-                                        <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop" >Edit</button>
-                            &nbsp;
-                            <button className="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </>
-        ) : (
-                <>
-                    <div className="spinner-border"></div>
-                </>
-            );
-    }
+    return allItems && allItems.length > 0 ? (
+        <TableContainer component={Paper}>
+            <Table className={classes.table} size="small" aria-label="a dense table">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Name</TableCell>
+                        <TableCell align="right">Description</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {allItems.map((item) => (
+                        <TableRow key={item.name}>
+                            <TableCell component="th" scope="row">
+                                {item.name}
+                            </TableCell>
+                            <TableCell align="right">{item.description}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    ) : (
+            <h1>LOADING...</h1>
+        );
 }

@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import ConditionList from "../../components/lists/ConditionList";
-import { getAllConditions, createNewCondition, updateCondition, deleteCondition } from "../../src/lib/ctrlCondition";
+import { getAllConditions, getCondition, createNewCondition, updateCondition, deleteCondition } from "../../src/lib/ctrlCondition";
 import ModalCondition from "../../components/modals/ModalCondition";
-import "bootstrap/dist/css/bootstrap.min.css";
+import styles from '../../styles/Home.module.css';
+import AddIcon from "@material-ui/icons/Add";
 
 export default function ConditionPage() {
 
-  const [allConditionsState, setAllConditionsState] = useState([]);
-  const [addCondition, setAddCondition] = useState({});
+  const [allConditionsState, setAllConditionsState] = React.useState([]);
+  const [addCondition, setAddCondition] = React.useState({});
+  const [showElements, setShowElements] = React.useState(true);
 
-  const [openModalCondition, setOpenModalCondition] = useState(false);
-  const [editMode, setEditMode] = useState(false);
-  const [deleteCondition, setDeleteCondition] = useState([]);
+  const [showModal, setshowModal] = React.useState(false);
+  const [editMode, setEditMode] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     getConditions();
   }, []);
 
@@ -23,7 +24,37 @@ export default function ConditionPage() {
     });
   }
 
+  const handleCloseModal = () => {
+    console.log("handleCloseModal")
+    setshowModal(false);
+    setAddCondition({});
+  };
+
   //**********************   HandleChange ************************************ */
+
+  const handleClickAddCondition = () => {
+    console.log("handleClickAddCondition")
+    setshowModal(true);
+    setEditMode(false);
+    setAddCondition({});
+
+  }
+
+  const handleClickUpdateCondition = () => {
+    updateCondition(addCondition).then(() => {
+      handleCloseModal()
+      getConditions();
+    })
+  }
+
+  const DeleteConditionOnClick = conditionID => {
+    const deleting = allConditionsState.filter((condition) => condition.conditionID !== conditionID);
+    console.log("DELETING", conditionID);
+    getConditions(deleting)
+    handleCloseModal()
+    deleteCondition(conditionID);
+  }
+
   const handleChange = name => e => {
     setAddCondition({
       ...addCondition,
@@ -32,65 +63,79 @@ export default function ConditionPage() {
     console.log(addCondition);
   };
 
-  const handleClickAddCondition = () => {
-    createNewCondition(addCondition).then(condition => {
-      getConditions()
+  const handleClickOnCreateNewCondition = () => {
+    createNewCondition(addCondition).then((condition) => {
+      getConditions();
+      setAddCondition({})
+      setShowElements(true);
+      handleCloseModal()
+    })
+
+  };
+
+  const handleClickEditCondition = conditionID => {
+    getCondition(conditionID).then(condition => {
+      console.log("FOUND IT", condition);
+      setshowModal(true);
+      setEditMode(true);
+      setAddCondition(condition);
     })
   };
 
-  const handleClickCancelAddCondition = () => {
-    setAddCondition({})
-  };
-
-  //**************    Edit Condition       ******************************* */
-  
-  /*const handleCloseModal = () => {
-    setOpenModalCondition(false);
-    setEditMode(false);
-  };*/
-  
-  const handleEdit = () => {
-    console.log ("guardado", {editMode })
-    if (editMode){
+  /*console.log("SAVING", { editMode, addCondition })
+  if (editMode) {
     updateCondition(addCondition).then(() => {
-    setEditMode(false);
+      setshowModal(false);
+      setEditMode(false);
+      getConditions();
     })
   } else {
-      console.log("no guardado");
-    }
-  };
   
-  const handleClickEditCondition = condition => {
-    setAddCondition(condition)
-    setEditMode(true)
-    //setOpenModalCategory(true);
-  };
-
-  /**************** Delete condition */
-
-  const BorrarCondition = () => {
-      setAddCondition(deleteCondition.filter(name => name.id !== id));
-      console.log(setAllConditionsState);
-  }
+  const handleClickOnCancelNewCondition = () => {
+    setAddCondition({})
+    setEditMode(false);
+  };*/
 
   return (
-    <>
-
+    <div>
       <ModalCondition
-        allConditions={allConditionsState}
+        open={showModal}
+        handleClose={handleCloseModal}
         handleChange={handleChange}
-        AddCondition={handleClickAddCondition}
-        cancelAddCondition={handleClickCancelAddCondition}
-
-        editMode={editMode}
-        editCondition={handleClickEditCondition}
-      />
-
-      <ConditionList
         allConditions={allConditionsState}
+        handleClickOnCreateNewCondition={handleClickOnCreateNewCondition}
+        handleClickUpdateCondition={handleClickUpdateCondition}
+
+        addCondition={addCondition}
+        editMode={editMode}
       />
 
-      
-    </>
+      <div >
+        <div className={styles.main} >
+          <h3>Conditions</h3>
+        </div>
+
+        <div className={styles.main}>
+          {showElements ?
+            <button
+              variant="success" size="sm"
+              onClick={() => handleClickAddCondition()}>
+              <AddIcon fontSize="small" />New condition
+                  </button>
+            :
+            null
+          }
+        </div>
+
+        <div>
+          <ConditionList
+            allConditionsState={allConditionsState}
+            handleClickEditCondition={handleClickEditCondition}
+            DeleteConditionOnClick={DeleteConditionOnClick}
+          />
+        </div>
+      </div>
+    </div>
+
   )
 };
