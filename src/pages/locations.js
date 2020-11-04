@@ -49,7 +49,9 @@ export default function locationsPage() {
     })
   }
 
-  // retire el ";" del ultimo braquet de este metodo para que se actualize y se vea el cambio en la pagina
+  /* this works just if I put name description and "street number", I mean, 
+  I need to get the warning in the browser's console to the see the delete change
+  if I just put name and description I won't see the change until I refresh the page*/
   const handleClickDeleteLocation = locationID => {
     const borrandoLocation = allLocationsState.filter((location) => location.locationID !== locationID);
     console.log("DELETING", locationID);
@@ -128,9 +130,7 @@ export default function locationsPage() {
             <button
               // data-toggle="modal" data-target="#newLocation"
               variant="success" size="sm"
-              onClick={() => handleClickAddLocation()}
-            // onClick={() => setShowElements(false)}
-            >
+              onClick={() => handleClickAddLocation()}>
               <AddIcon fontSize="small" />Add new location</button>
             :
             null

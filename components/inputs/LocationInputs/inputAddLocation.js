@@ -49,7 +49,10 @@ export default function AddLocation(props) {
             onChange={handleChange()("pictures")}
             value={newLocation.pictures || ""} />
 
-        </div> */}
+        </div> */ 
+
+        /* El warning sale por el como empieza la lista, 
+        quiero decir se debe ingresar primero las variables que se encuentran dentro de addres */  }
 
             <div >
                 <label>Street number</label>
@@ -122,7 +125,6 @@ export default function AddLocation(props) {
                     value={newLocation.address ? newLocation.address.country : ""}
                 />
             </div>
-
             
         </div>
     )
@@ -133,7 +135,7 @@ AddLocation.defaultProps = {
         name: "",
         description: "",
         isActive: true,
-        user: "",
+        //user: "",
         pictures: "",
         files: "",
         status: "",

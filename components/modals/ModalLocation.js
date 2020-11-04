@@ -46,11 +46,8 @@ const ModalLocation = props => {
             <Button type="button" className="btn btn-success" onClick={() => handleClickOnCreateNewLocation()}><i className="fa fa-database">
             </i> &nbsp; Save</Button>}
         </div>
-
       </Modal.Footer>
-
     </Modal>
-
   )
 };
 

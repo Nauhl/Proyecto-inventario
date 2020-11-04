@@ -122,17 +122,6 @@ export default function ItemList(props) {
                                 <tr key={item._id}>
                                     <td>{item.name}</td>
                                     <td>{item.description}</td>
-                                    <td>{Object.keys(item.isActive).length}</td>
-                                    <td>{item.pictures}</td>
-                                    <td>{item.location}</td>
-                                    <td>{item.room}</td>
-                                    <td>{item.category}</td>
-                                    <td>{item.condition}</td>
-                                    <td>{item.estimatedValue}</td>
-                                    <td>{item.brand}</td>
-                                    <td>{item.serialNumber}</td>
-                                    <td>{item.notes}</td>
-                                    <td>{item.purchaseInfo}</td>
                                     <td>
                                         <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop" >Edit</button>
                             &nbsp;

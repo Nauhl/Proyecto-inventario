@@ -1,47 +1,49 @@
-import React, { useEffect, useState } from 'react';
-import styles from "../../styles/Home.module.css";
+//import React, { useEffect, useState } from 'react';
+//import styles from "../../styles/Home.module.css";
 
 export default function InputRoom(props) {
-    const { allRooms, handleChange, createNewRoom, cancelCreateNewRoom } = props
+
+    const { newRoom ,allRooms, handleChange, createNewRoom, cancelCreateNewRoom } = props
 
     return (
         <div>
-            <div className={styles.main}      >
-                <div >
+            <div >
                 <label>Name</label>
                     <input
-                        required
+                    required
                         size="small"
                         id="name-input"
+                        type="text"
                         label="Name"
-                        variant="outlined"
                         onChange={handleChange("name")}
+                        value={newRoom.name}
                     />
                 </div>
 
                 <div >
                 <label>Description</label>
                     <input
-                        required
                         size="small"
+                        type="text"
                         id="description-input"
                         label="Description"
-                        variant="outlined"
-
                         onChange={handleChange("description")}
+                        value={newRoom.description}
                     />
                 </div>
-
-                <div >
-                    <button type="button" className="btn btn-success" onClick={() => createNewRoom()}>Add room</button>
-                </div>
-
-                <div >
-                    <button type="button" className="btn btn-danger" onClick={() => cancelCreateNewRoom()}>Cancel</button>
-                </div>
-
-            </div>
-
         </div>
     )
 }
+
+/*InputRoom.defaultProps = {
+    newRoom: {
+        name: "",
+        description: "",
+        isActive: true,
+        //user: "",
+        pictures: "",
+        location: {
+            
+        }
+    }
+}*/

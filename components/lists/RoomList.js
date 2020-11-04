@@ -1,12 +1,14 @@
 import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { Card } from '@material-ui/core';
+import { CardColumns } from 'reactstrap';
 
 export default function RoomList(props) {
 
     const [loading, setLoading] = useState(true);
 
-    const { allRooms, editRooms  } = props;
+    const { allRooms, editRooms, handleClickEditRoom, handleClickDeleteRoom  } = props;
 
 
     useEffect(() => {
@@ -91,12 +93,14 @@ export default function RoomList(props) {
                                     <td>{room.pictures}</td>
                                     <td>{room.location}</td>
                                     <td>
-                                        <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop" >Edit</button>
+                                        <button type="button" className="btn btn-warning"
+                                        onClick={() => handleClickEditRoom(room._id)} >Edit</button>
                                 &nbsp;
-                                <button className="btn btn-danger">Delete</button>
+                                <button className="btn btn-danger"
+                                onClick={() => handleClickDeleteRoom(room._id)} >Delete</button>
                                     </td>
                                 </tr>
-                            ))}
+                            ))} 
                         </tbody>
                     </table>
                 </div>
