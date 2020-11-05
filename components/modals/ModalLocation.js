@@ -36,18 +36,20 @@ const ModalLocation = props => {
       </Button>
 
         <div variant="primary" onClick={createNewLocation}>
-          {editMode ? <Button
+          {editMode ? <button className="btn btn-success"
             variant="success" size="sm"
             onClick={() => handleClickUpdateLocation()}
           >
               UPDATE
-        </Button>
+        </button>
             :
             <Button type="button" className="btn btn-success" onClick={() => handleClickOnCreateNewLocation()}><i className="fa fa-database">
             </i> &nbsp; Save</Button>}
         </div>
       </Modal.Footer>
     </Modal>
+
+    
   )
 };
 

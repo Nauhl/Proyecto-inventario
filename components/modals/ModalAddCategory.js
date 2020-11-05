@@ -3,6 +3,8 @@ import { getAllSubCategories } from "../../src/lib/ctrlSubCategory";
 import { Grid } from "@material-ui/core";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+//import InputCategory from "../../vault/CategoryInput/inputCategory";
+
 import TextField from "@material-ui/core/TextField";
 import { FormControl, InputLabel, Select, MenuItem, Input } from "@material-ui/core";
 
@@ -14,9 +16,9 @@ const useStyles = makeStyles(theme => ({
 
 const ModalAddCategory = props => {
     const classes = useStyles();
-    const elementType = "category";
+    //const elementType = "category";
     const { handleClose, open, allCategories, allSubCategories, handleChange,
-        editMode, createNewCategory, cancelCreateNewCategory, newCategory } = props;
+        editMode, handleClickUpdateCategory, createNewCategory, handleClickOnCreateNewCategory, cancelCreateNewCategory, newCategory } = props;
 
     const ITEM_HEIGHT = 48;
     const ITEM_PADDING_TOP = 8;
@@ -33,7 +35,7 @@ const ModalAddCategory = props => {
 
         <Modal show={open} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>{editMode ? `Modifying ${newCategory.name}` : `Add a ${elementType}`}</Modal.Title>
+                <Modal.Title>{editMode ? `Modifying ${newCategory.name}` : `Add a new Category`}</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
@@ -51,6 +53,7 @@ const ModalAddCategory = props => {
                             size="small"
                             id="name-input"
                             label="Name"
+                            // variant="outlined"
                             value={newCategory.name}
                             onChange={handleChange("name")}
                         />
@@ -62,6 +65,7 @@ const ModalAddCategory = props => {
                             size="small"
                             id="description-input"
                             label="Description"
+                            // variant="outlined"
                             value={newCategory.description}
                             onChange={handleChange("description")}
                         />
@@ -93,31 +97,44 @@ const ModalAddCategory = props => {
                         <Button variant="secondary"
                             className={classes.fillAvailable}
                             onClick={handleClose}
-                            disabled>
+                            disabled
+                        >
                             Add picture
-                        </Button>
+            </Button>
                     </Grid>
 
                     <Grid item xs={6}>
                         <Button variant="secondary"
                             className={classes.fillAvailable}
                             onClick={handleClose}
-                            disabled>
+                            disabled
+                        >
                             Add file
-                        </Button>
+            </Button>
                     </Grid>
                 </Grid>
             </Modal.Body>
 
             <Modal.Footer>
+                <div>FOOTER</div>
                 <Button variant="secondary" onClick={handleClose}>
                     Cancel
                 </Button>
-                <Button variant="primary" onClick={createNewCategory}>
-                    {editMode ? "Save changes" : `Add ${elementType}`}
-                </Button>
-            </Modal.Footer>
 
+                <div variant="primary" onClick={createNewCategory}>
+                    {editMode ?
+                        <Button
+                            variant="success" size="sm"
+                            onClick={() => handleClickUpdateCategory()}
+                        >
+                            UPDATE
+                        </Button> :
+                        <Button type="button" className="btn btn-success"
+                            onClick={() => handleClickOnCreateNewCategory()}>
+                            <i className="fa fa-database">
+                            </i> &nbsp; Save</Button>}
+                </div>
+            </Modal.Footer>
         </Modal>
     )
 };

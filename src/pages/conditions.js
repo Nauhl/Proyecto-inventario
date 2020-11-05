@@ -82,20 +82,6 @@ export default function ConditionPage() {
     })
   };
 
-  /*console.log("SAVING", { editMode, addCondition })
-  if (editMode) {
-    updateCondition(addCondition).then(() => {
-      setshowModal(false);
-      setEditMode(false);
-      getConditions();
-    })
-  } else {
-  
-  const handleClickOnCancelNewCondition = () => {
-    setAddCondition({})
-    setEditMode(false);
-  };*/
-
   return (
     <div>
       <ModalCondition

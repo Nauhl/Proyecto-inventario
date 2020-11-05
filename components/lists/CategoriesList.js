@@ -3,7 +3,7 @@ import styles from '../../styles/Home.module.css';
 
 export default function CategoriesList(props) {
 
-    const { allCategories, editCategory, deleteCategoryOpenModal, DeleteCategoryOnClick } = props;
+    const { allCategories, handleClickEditCategory, DeleteCategoryOnClick } = props;
 
     return allCategories && allCategories.length > 0 ? (
         <>
@@ -27,9 +27,11 @@ export default function CategoriesList(props) {
                                 <td >{category.description}</td>
                                 <td >{Object.keys(category.subCategories).length}</td>
                                 <td >
-                                    <button type="button" className="btn btn-warning" onClick={() => editCategory(category)}>Edit</button>
+                                    <button type="button" className="btn btn-warning" 
+                                    onClick={() => handleClickEditCategory(category._id)}>Edit</button>
 
-                                    <button type="button" className="btn btn-danger" onClick={() => DeleteCategoryOnClick(category._id)} >Delete</button>
+                                    <button type="button" className="btn btn-danger" 
+                                    onClick={() => DeleteCategoryOnClick(category._id)} >Delete</button>
                                 </td>
                                 </tr>
                         ))}
