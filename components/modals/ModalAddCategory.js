@@ -32,6 +32,7 @@ const ModalAddCategory = props => {
                                 size="small"
                                 id="name-input"
                                 label="Name"
+                                //placeholder="Insert new Name"
                                 // variant="outlined"
                                 value={newCategory.name}
                                 onChange={handleChange("name")}
@@ -46,6 +47,7 @@ const ModalAddCategory = props => {
                                     size="small"
                                     id="description-input"
                                     label="Description"
+                                    //placeholder="Insert new Description"
                                     // variant="outlined"
                                     value={newCategory.description}
                                     onChange={handleChange("description")}
@@ -60,8 +62,8 @@ const ModalAddCategory = props => {
                                     //fullWidth
                                     size="small"
                                     type="file" ref={inputFileRef}
-                                    id="description-input"
-                                    label="Description"
+                                    id="pictures-input"
+                                    label="Pictures"
                                     // variant="outlined"
                                     value={newCategory.pictures}
                                     onChange={handleChange("pictures")}
@@ -99,10 +101,10 @@ const ModalAddCategory = props => {
 
                 <div variant="primary" onClick={createNewCategory}>
                     {editMode ?
-                        <button
+                        <button className="btn btn-success"
                             variant="success" size="sm"
                             onClick={() => handleClickUpdateCategory()}>
-                            UPDATE
+                            Update
                         </button> :
                         <button type="button" className="btn btn-success"
                             onClick={() => handleClickOnCreateNewCategory()}>

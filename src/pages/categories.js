@@ -1,5 +1,5 @@
 import { getAllCategories, getCategory, createNewCategory, updateCategory, deleteCategory } from "../../src/lib/ctrlCategory";
-import { getAllSubCategories, createNewSubCategory, deleteSubCategory } from "../../src/lib/ctrlSubCategory";
+import { getAllSubCategories, getSubCategory, createNewSubCategory, updateSubCategory, deleteSubCategory } from "../../src/lib/ctrlSubCategory";
 import styles from '../../styles/Home.module.css';
 import CategoriesList from "../../components/lists/CategoriesList";
 import SubCategoriesList from "../../components/lists/SubCategoriesList";
@@ -15,7 +15,7 @@ export default function categoriesPage(props) {
 
     const [showElements, setShowElements] = React.useState(true);
     const [showModal, setshowModal] = React.useState(false);
-    const [openModalSubCategory, setOpenModalSubCategory] = React.useState(false);
+    const [showModalSubCategory, setShowModalSubCategory] = React.useState(false);
     const [editMode, setEditMode] = React.useState(false);
 
     React.useEffect(() => {
@@ -43,6 +43,12 @@ export default function categoriesPage(props) {
         setNewCategory({});
     };
 
+    const handleCloseSubcategoryModal = () => {
+        console.log("handleCloseSubcategoryModal")
+        setShowModalSubCategory(false);
+        setNewSubCategory({});
+    };
+
     //******************************** */
 
     const handleClickAddCategory = () => {
@@ -52,10 +58,27 @@ export default function categoriesPage(props) {
         setNewCategory({});
     }
 
+    /****************  Curioso */
+    const handleClickAddSubCategory = () => {
+        console.log("handleClickAddSubCategory")
+        setShowModalSubCategory(true);
+        setEditMode(false);
+        setNewSubCategory({});
+    }
+
+    //************************ */
+
     const handleClickUpdateCategory = () => {
         updateCategory(newCategory).then(() => {
             handleCloseModal()
             getCategories();
+        })
+    }
+
+    const handleClickUpdateSubCategory = () => {
+        updateSubCategory(newSubCategory).then(() => {
+            handleCloseSubcategoryModal()
+            getSubCategories();
         })
     }
 
@@ -65,6 +88,14 @@ export default function categoriesPage(props) {
         getCategories(deleting)
         handleCloseModal()
         deleteCategory(categoryID);
+    }
+
+    const DeleteSubCategoryOnClick = subCategoryID => {
+        const deleting = allSubCategories.filter((subCategory) => subCategory.subCategoryID !== subCategoryID);
+        console.log("DELETING", subCategoryID);
+        getSubCategories(deleting)
+        handleCloseSubcategoryModal()
+        deleteSubCategory(subCategoryID);
     }
 
     /* Handle Change */ /* we set a variable that it will be changing it state*/
@@ -85,108 +116,52 @@ export default function categoriesPage(props) {
         console.log(newSubCategory);
     };
 
-
-    /* Handle create */ /*  This method do 2 functions using an "if" because it will do an specific mode depending what 
-                            mode/action we want/click and it contains more methods to open the modal when we click in 
-                            these ones for example BUT we put false so it will do the inverse action to open*/
-    /*const handleClickOnCreateNewCategory = () => {
-        console.log("SAVING", { editMode, newCategory })
-        if (editMode) {
-            updateCategory(newCategory).then(() => {
-                setshowModal(false);
-                setEditMode(false);
-                getCategories();
-                getSubCategories();
-            })
-        } else {
-            createNewCategory(newCategory).then(() => {
-                setshowModal(false);
-                setEditMode(false);
-                getCategories();
-                getSubCategories();
-            })
-        }
-    };*/
-
     const handleClickOnCreateNewCategory = () => {
         createNewCategory(newCategory).then((category) => {
-          getCategories();
-          setNewCategory({})
-          setShowElements(true);
-          handleCloseModal()
-        })
-      };
-    
-      
-    /* open the edit button to see the dynamic modal */
-    const handleClickEditCategory = categoryID => {
-        getCategory(categoryID).then(category => {
-        console.log("FOUND IT", category);
-        setEditMode(true);
-        setshowModal(true);
-        setNewCategory(category);
+            getCategories();
+            setNewCategory({})
+            setShowElements(true);
+            handleCloseModal()
         })
     };
 
     /* This one create a new subCategory, put the edit mode in false and close the modal too after do the create action*/
     const handleClickOnCreateNewSubCategory = () => {
         createNewSubCategory(newSubCategory).then(subCategory => {
-            getCategories();
             getSubCategories();
-            setOpenModalSubCategory(false);
-            setEditMode(false);
+            setNewSubCategory({});
+            setShowElements(true);
+            handleCloseModalSubCategory()
+        })
+    };
+
+    /* open the edit button to see the dynamic modal */
+    const handleClickEditCategory = categoryID => {
+        getCategory(categoryID).then(category => {
+            console.log("FOUND IT", category);
+            setEditMode(true);
+            setshowModal(true);
+            setNewCategory(category);
+        })
+    };
+
+    // open the edit button to see the dynamic modal 
+    const handleClickEditSubCategory = subCategoryID => {
+        getSubCategory(subCategoryID).then(subCategory => {
+            console.log("FOUND", subCategory);
+            setEditMode(true);
+            setShowModalSubCategory(true);
+            setNewSubCategory(subCategory);
         })
     };
 
     const handleCloseModalSubCategory = () => {
-        setOpenModalSubCategory(false);
+        setShowModalSubCategory(false);
         setEditMode(false);
     };
 
-    /* Close the modal and it's called in the close button in the modal add category */
-    /*const handleClickOnCancelNewCategory = () => {
-        setNewCategory({})
-        setEditMode(false);
-    };
-
-    const handleClickOnCancelNewSubCategory = () => {
-        setNewSubCategory({})
-    };*/
-
-    /*const DeleteCategoryOnClick = categoryID => {
-        const deleting = allCategories.filter((category) => category.categoryID !== categoryID);
-        console.log("DELETING", categoryID);
-        getCategories(deleting)
-        handleCloseModal()
-        deleteCategory(categoryID);
-    }*/
-
-    /** SubCategory  Delete ***/
-
-    /* open the edit button to see the dynamic modal 
-    const handleClickEditSubCategory = subCategory => {
-        setNewSubCategory(subCategory)
-        setEditMode(true)
-        setOpenModalSubCategory(true);
-    };*/
-
-    /*const DeleteSubCategoryOnClick = subCategoryID => {
-        const deletingSubCategory = allSubCategories.filter((subCategory) => subCategory.subCategoryID !== subCategoryID);
-        console.log("DELETING", subCategoryID);
-        getSubCategories(deletingSubCategory)
-        handleCloseModal()
-        deleteSubCategory(subCategoryID);
-    }*/
-
-    /*const handleClickDeleteCategory = category => {
-        setNewCategory(category)
-        //setEditMode(true)
-        setshowModal(true);
-    };*/
-
-    return /*allCategories ?*/ (
-        <div /*className={styles.container}*/>
-
+    return (
+        <div>
             <ModalAddCategory
                 open={showModal}
                 handleClose={handleCloseModal}
@@ -202,12 +177,14 @@ export default function categoriesPage(props) {
             />
 
             <ModalAddSubCategory
-                open={openModalSubCategory}
-                handleClose={handleCloseModalSubCategory}
+                openSub={showModalSubCategory}
+                handleCloseSub={handleCloseSubcategoryModal}
                 handleChange={handleChangeSubCategory}
                 allSubCategories={allSubCategories}
-                createNewSubCategory={handleClickOnCreateNewSubCategory}
+                handleClickOnCreateNewSubCategory={handleClickOnCreateNewSubCategory}
                 //cancelCreateNewSubCategory={handleClickOnCancelNewSubCategory}
+                handleClickUpdateSubCategory={handleClickUpdateSubCategory}
+
                 newSubCategory={newSubCategory}
                 editMode={editMode}
             />
@@ -219,53 +196,45 @@ export default function categoriesPage(props) {
 
                 <div className={styles.main}>
                     {showElements ?
-                    <button className="btn btn-success"
-                        variant="success" size="sm"
-                        onClick={() => handleClickAddCategory()}>
-                        New category
+                        <button className="btn btn-success"
+                            variant="success" size="sm"
+                            onClick={() => handleClickAddCategory()}>
+                            New category
                     </button>
-                    :
-                    null
+                        :
+                        null
                     }
                 </div>
 
-            <div >
-                <CategoriesList
-                    allCategories={allCategories}
-                    handleClickEditCategory={handleClickEditCategory}
-                    DeleteCategoryOnClick={DeleteCategoryOnClick}
-                />
-            </div>
+                <div >
+                    <CategoriesList
+                        allCategories={allCategories}
+                        handleClickEditCategory={handleClickEditCategory}
+                        DeleteCategoryOnClick={DeleteCategoryOnClick}
+                    //handleClickDeleteCategory={handleClickDeleteCategory}
+                    />
+                </div>
 
+                <div className={styles.main} >
+                    <h3>Sub Categories</h3>
+                </div>
 
-            <div className={styles.main} >
-                <h3>Sub Categories</h3>
-            </div>
-
-            <div className={styles.main}>
-                <button type="button" className="btn btn-warning" variant="warning"
-                    onClick={() => setOpenModalSubCategory(true)}
-                >
-                    New sub category
+                <div className={styles.main}>
+                    <button type="button" className="btn btn-dark" variant="warning"
+                        onClick={() => handleClickAddSubCategory()}
+                    >
+                        New sub category
                     </button>
-            </div>
+                </div>
 
-            <div >
-                <SubCategoriesList
-                    allSubCategories={allSubCategories}
-                //DeleteSubCategoryOnClick={DeleteSubCategoryOnClick}
-                />
+                <div >
+                    <SubCategoriesList
+                        allSubCategories={allSubCategories}
+                        handleClickEditSubCategory={handleClickEditSubCategory}
+                        DeleteSubCategoryOnClick={DeleteSubCategoryOnClick}
+                        />
+                </div>
             </div>
-        </div>
         </div >
-    ) /*: (
-            <div className="spinner-border"></div>
-        );*/
+    ) 
 };
-/*<div>
-                <DeleteModalCategory
-                    allCategories={allCategories}
-                    //deleteCategoryOpenModal={handleClickDeleteCategory}
-                    DeleteCategoryOnClick={DeleteCategoryOnClick}
-                />
-            </div>*/

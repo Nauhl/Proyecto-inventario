@@ -1,61 +1,70 @@
-import { Grid } from "@material-ui/core";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import TextField from "@material-ui/core/TextField";
 
 const ModalAddSubCategory = props => {
-  const elementType = "subcategory";
-  const { open, handleClose, handleChange, createNewSubCategory } = props;
+
+  const { openSub, handleCloseSub, handleChange, createNewSubCategory, editMode, newSubCategory,
+    handleClickUpdateSubCategory, handleClickOnCreateNewSubCategory } = props;
 
   return (
 
-    <Modal show={open} onHide={handleClose}>
+    <Modal show={openSub} onHide={handleCloseSub}>
       <Modal.Header closeButton>
-        <Modal.Title>Add a {elementType}</Modal.Title>
+        <Modal.Title>{editMode ? `Modifying ${newSubCategory.name}` : `Add a SubCategory`}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          spacing={2}
-        >
-          <Grid item xs={12} md={12}>
-            <TextField
-              fullWidth
-              required
-              size="small"
-              id="name-input"
-              label="Name"
-              // variant="outlined"
-              onChange={handleChange("name")}
-            />
-          </Grid>
 
-          <Grid item xs={12} md={12}>
-            <TextField
-              fullWidth
-              size="small"
-              id="description-input"
-              label="Description"
-              // variant="outlined"
-              onChange={handleChange("description")}
-            />
-          </Grid>
-        </Grid>
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <label>Name</label>
+              <input
+                //fullWidth
+                required
+                size="small"
+                id="name-input"
+                label="Name"
+                // variant="outlined"
+                value={newSubCategory.name}
+                onChange={handleChange("name")}
+              />
+            </div>
+
+            <div className="row">
+              <div className="col">
+                <label>Description</label>
+                <input
+                  //fullWidth
+                  size="small"
+                  id="description-input"
+                  label="Description"
+                  // variant="outlined"
+                  value={newSubCategory.description}
+                  onChange={handleChange("description")}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        <button className="btn btn-danger" variant="secondary" onClick={handleCloseSub}>
           Cancel
-      </Button>
-        <Button variant="primary" onClick={createNewSubCategory}>
-          Add {elementType}
-        </Button>
+      </button>
+        <div variant="primary" onClick={createNewSubCategory}>
+          {editMode ?
+            <button className="btn btn-success"
+              variant="success" size="sm"
+              onClick={() => handleClickUpdateSubCategory()}>
+              Update
+            </button> :
+            <button type="button" className="btn btn-success"
+              onClick={() => handleClickOnCreateNewSubCategory()}>
+              <i className="fa fa-database">
+              </i> &nbsp; Save </button>}
+        </div>
       </Modal.Footer>
-
     </Modal>
   )
 };
