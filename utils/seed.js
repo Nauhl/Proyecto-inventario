@@ -18,7 +18,6 @@ export const seedSubCategory = async () => {
         new SubCategory({
           name: faker.name.findName(),
           description: faker.lorem.paragraph(),
-          isActive: faker.random.boolean(),
         })
       )
     }
@@ -49,7 +48,6 @@ export const seedCategory = async () => {
           description: faker.lorem.paragraph(),
           pictures: faker.internet.avatar(),
           subCategories: [_.sample(allSubCategories)._id],
-          isActive: faker.random.boolean(),
         })
       )
     }
@@ -77,7 +75,6 @@ export const seedCondition = async () => {
         new Condition({
           name: faker.lorem.word() + faker.lorem.word(),
           description: faker.lorem.sentence(),
-          isActive: faker.random.boolean()
         })
       )
     }
@@ -103,8 +100,7 @@ export const seedLocation = async () => {
         new Location({
           name: faker.lorem.text(),
           description: faker.lorem.sentence(),
-          isActive: faker.random.boolean(),
-          pictures: faker.image.image(),
+          pictures: faker.internet.avatar(),
           status: faker.lorem.word() + faker.lorem.word(),
           address: {
             streetNumber: faker.address.zipCode(),
@@ -141,8 +137,7 @@ export const seedRoom = async () => {
         new Room({
           name: faker.lorem.word() + faker.lorem.word(),
           description: faker.lorem.sentence(),
-          isActive: faker.random.boolean(),
-          pictures: faker.image.image(),
+          pictures: faker.internet.avatar(),
           location: locationRoom
           // location: [_.sample(allLocations)._id]
         })
@@ -176,7 +171,6 @@ export const seedItem = async () => {
           name: faker.name.title(),
           description: faker.lorem.paragraph(),
           pictures: faker.internet.avatar(),
-          isActive: faker.random.boolean(),
           location: [_.sample(allLocations)._id],
           room: [_.sample(allRooms)._id],
           category: [_.sample(allCategory)._id],

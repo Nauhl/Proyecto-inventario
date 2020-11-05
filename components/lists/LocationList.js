@@ -73,7 +73,6 @@ export default function LocationList(props) {
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Image</th>
-                                
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -82,11 +81,7 @@ export default function LocationList(props) {
                                 <tr key={location._id}>
                                     <td>{location.name}</td>
                                     <td>{location.description}</td>
-                                    <td>{location.pictures}
-                                        
-                                    </td>
-
-                                    
+                                    <td><img src={location.pictures} className="img-fluid" alt="" /></td>
                                     <td>
                                         <button type="button" className="btn btn-warning"
                                             onClick={() => handleClickEditLocation(location._id)}

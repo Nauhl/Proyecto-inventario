@@ -78,7 +78,6 @@ export default function RoomList(props) {
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
-                                <th>Status</th>
                                 <th>Pictures</th>
                                 <th>Location</th>
                                 <th>Action</th>
@@ -89,8 +88,7 @@ export default function RoomList(props) {
                                 <tr key={room._id}>
                                     <td>{room.name}</td>
                                     <td>{room.description}</td>
-                                    <td>{Object.keys(room.isActive).length}</td>
-                                    <td>{room.pictures}</td>
+                                    <td><img src={room.pictures} className="img-fluid" alt="" /></td>
                                     <td>{room.location}</td>
                                     <td>
                                         <button type="button" className="btn btn-warning"

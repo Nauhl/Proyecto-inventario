@@ -38,8 +38,8 @@ export default function AddLocation(props) {
                 />
             </div>
 
-            {/* <div>
-        <label>New Image</label>
+            <div>
+            <label>New Image</label>
             <input
             type="file" ref={inputFileRef}
             size="small"
@@ -49,9 +49,9 @@ export default function AddLocation(props) {
             onChange={handleChange()("pictures")}
             value={newLocation.pictures || ""} />
 
-        </div> */ 
+        </div>  
 
-        /* El warning sale por el como empieza la lista, 
+        {/* El warning sale por el como empieza la lista, 
         quiero decir se debe ingresar primero las variables que se encuentran dentro de addres */  }
 
             <div >

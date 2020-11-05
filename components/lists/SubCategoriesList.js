@@ -6,11 +6,7 @@ export default function SubCategoriesList(props) {
     const { allSubCategories, handleClickEditSubCategory, DeleteSubCategoryOnClick } = props;
 
     return allSubCategories && allSubCategories.length > 0 ? (
-        <>
-        <div className={styles.main}>
-
-        </div>
-        <div className={styles.main}>
+        <div className={styles.container}>
             <table className="table table-bordered">
                 <thead>
                     <tr>
@@ -32,7 +28,6 @@ export default function SubCategoriesList(props) {
                 </tbody>
             </table>
         </div>
-        </>
     ) : (
             <div className="spinner-border"></div>
         );

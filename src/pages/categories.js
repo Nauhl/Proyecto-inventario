@@ -5,8 +5,6 @@ import CategoriesList from "../../components/lists/CategoriesList";
 import SubCategoriesList from "../../components/lists/SubCategoriesList";
 import ModalAddCategory from "../../components/modals/ModalAddCategory";
 import ModalAddSubCategory from "../../components/modals/ModalAddSubCategory";
-//import DeleteModalCategory from "../../vault/DeleteModals/DeleteModalCategory";
-import AddIcon from "@material-ui/icons/Add";
 
 export default function categoriesPage(props) {
 
@@ -221,10 +219,10 @@ export default function categoriesPage(props) {
 
                 <div className={styles.main}>
                     {showElements ?
-                    <button 
+                    <button className="btn btn-success"
                         variant="success" size="sm"
                         onClick={() => handleClickAddCategory()}>
-                        <AddIcon fontSize="small"/> New category
+                        New category
                     </button>
                     :
                     null

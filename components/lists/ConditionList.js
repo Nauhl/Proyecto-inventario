@@ -72,7 +72,6 @@ export default function ConditionList(props) {
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
-                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -81,7 +80,6 @@ export default function ConditionList(props) {
                                 <tr key={condition._id}>
                                     <td>{condition.name}</td>
                                     <td>{condition.description}</td>
-                                    <td>{Object.keys(condition.isActive).length}</td>
                                     <td>
                                         <button type="button" className="btn btn-warning"
                                             onClick={() => handleClickEditCondition(condition._id)}

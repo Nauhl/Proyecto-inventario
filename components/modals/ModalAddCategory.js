@@ -1,141 +1,116 @@
-import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { getAllSubCategories } from "../../src/lib/ctrlSubCategory";
-import { Grid } from "@material-ui/core";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-//import InputCategory from "../../vault/CategoryInput/inputCategory";
-
-import TextField from "@material-ui/core/TextField";
-import { FormControl, InputLabel, Select, MenuItem, Input } from "@material-ui/core";
-
-const useStyles = makeStyles(theme => ({
-    fillAvailable: {
-        width: "-webkit-fill-available"
-    }
-}));
+import { useRef } from 'react';
 
 const ModalAddCategory = props => {
-    const classes = useStyles();
-    //const elementType = "category";
-    const { handleClose, open, allCategories, allSubCategories, handleChange,
-        editMode, handleClickUpdateCategory, createNewCategory, handleClickOnCreateNewCategory, cancelCreateNewCategory, newCategory } = props;
 
-    const ITEM_HEIGHT = 48;
-    const ITEM_PADDING_TOP = 8;
-    const MenuProps = {
-        PaperProps: {
-            style: {
-                maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-                width: 250,
-            },
-        },
-    };
+    const inputFileRef = useRef()
+
+    const handleButton = (e) => {
+        e.preventDefault()
+        //console.log(allLocations)
+        console.log(inputFileRef.current.files)
+    }
+
+    const { handleClose, open, allCategories, allSubCategories, handleChange, editMode, handleClickUpdateCategory,
+        createNewCategory, handleClickOnCreateNewCategory, cancelCreateNewCategory, newCategory } = props;
 
     return (
-
         <Modal show={open} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>{editMode ? `Modifying ${newCategory.name}` : `Add a new Category`}</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-                <Grid
-                    container
-                    direction="row"
-                    justify="center"
-                    alignItems="center"
-                    spacing={2}
-                >
-                    <Grid item xs={12} md={12}>
-                        <TextField
-                            fullWidth
-                            required
-                            size="small"
-                            id="name-input"
-                            label="Name"
-                            // variant="outlined"
-                            value={newCategory.name}
-                            onChange={handleChange("name")}
-                        />
-                    </Grid>
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <label>Name</label>
+                            <input
+                                //fullWidth
+                                required
+                                size="small"
+                                id="name-input"
+                                label="Name"
+                                // variant="outlined"
+                                value={newCategory.name}
+                                onChange={handleChange("name")}
+                            />
+                        </div>
 
-                    <Grid item xs={12} md={12}>
-                        <TextField
-                            fullWidth
-                            size="small"
-                            id="description-input"
-                            label="Description"
-                            // variant="outlined"
-                            value={newCategory.description}
-                            onChange={handleChange("description")}
-                        />
-                    </Grid>
+                        <div className="row">
+                            <div className="col">
+                                <label>Description</label>
+                                <input
+                                    //fullWidth
+                                    size="small"
+                                    id="description-input"
+                                    label="Description"
+                                    // variant="outlined"
+                                    value={newCategory.description}
+                                    onChange={handleChange("description")}
+                                />
+                            </div>
+                        </div>
 
-                    <Grid item xs={12} md={12}>
+                        <div className="row">
+                            <div className="col">
+                                <label>Pictures</label>
+                                <input
+                                    //fullWidth
+                                    size="small"
+                                    type="file" ref={inputFileRef}
+                                    id="description-input"
+                                    label="Description"
+                                    // variant="outlined"
+                                    value={newCategory.pictures}
+                                    onChange={handleChange("pictures")}
+                                />
+                            </div>
+                        </div>
 
-                        <FormControl className={classes.fillAvailable}>
-                            <InputLabel id="multiselect-subCategories-label">Sub Categories</InputLabel>
-                            <Select
-                                labelId="multiselect-subCategories-label"
-                                id="multiselect-subCategories"
-                                multiple
-                                value={newCategory.subCategories || []}
-                                onChange={handleChange("subCategories")}
-                                input={<Input />}
-                                MenuProps={MenuProps}
-                            >
-                                <MenuItem value="" disabled>Select subCategory(s)</MenuItem>
-                                {allSubCategories.map(subCategory => (
-                                    <MenuItem key={subCategory._id} value={subCategory._id}>{subCategory.name}</MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-
-                    </Grid>
-
-                    <Grid item xs={6}>
-                        <Button variant="secondary"
-                            className={classes.fillAvailable}
-                            onClick={handleClose}
-                            disabled
-                        >
-                            Add picture
-            </Button>
-                    </Grid>
-
-                    <Grid item xs={6}>
-                        <Button variant="secondary"
-                            className={classes.fillAvailable}
-                            onClick={handleClose}
-                            disabled
-                        >
-                            Add file
-            </Button>
-                    </Grid>
-                </Grid>
-            </Modal.Body>
+                        <div >
+                            <form >
+                                <div className="form-group">
+                                    <label htmlFor="multi-subcategories">Subcategories</label>
+                                    <select className="custom-select" id="multi-subcategories"
+                                        //multiple
+                                        value={newCategory.subCategories || []}
+                                        onChange={handleChange("subCategories")}
+                                    >
+                                        <option value="" disabled  >Select subCategory(s)</option>
+                                        {allSubCategories.map(subCategory => (
+                                            <option key={subCategory._id} value={subCategory._id}
+                                            >{subCategory.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </Modal.Body >
 
             <Modal.Footer>
-                <div>FOOTER</div>
-                <Button variant="secondary" onClick={handleClose}>
+                <button className="btn btn-danger" variant="secondary" onClick={handleClose}>
                     Cancel
-                </Button>
+                </button>
 
                 <div variant="primary" onClick={createNewCategory}>
                     {editMode ?
-                        <Button
+                        <button
                             variant="success" size="sm"
-                            onClick={() => handleClickUpdateCategory()}
-                        >
+                            onClick={() => handleClickUpdateCategory()}>
                             UPDATE
-                        </Button> :
-                        <Button type="button" className="btn btn-success"
+                        </button> :
+                        <button type="button" className="btn btn-success"
                             onClick={() => handleClickOnCreateNewCategory()}>
                             <i className="fa fa-database">
-                            </i> &nbsp; Save</Button>}
+                            </i> &nbsp; Save</button>}
                 </div>
             </Modal.Footer>
-        </Modal>
+        </Modal >
     )
 };
 
