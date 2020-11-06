@@ -1,110 +1,63 @@
 import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { Card } from '@material-ui/core';
-import { CardColumns } from 'reactstrap';
 
 export default function LocationList(props) {
 
-    const [loading, setLoading] = useState(true);
+    const { allLocations, handleClickEditLocation, handleClickDeleteLocation, newLocation } = props;
 
-    const { allLocations, handleClickEditLocation, Borrar, newLocation } = props;
-
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading();
-        }, 3000);
-    }, [])
-
-    const loader = () => {
-        let filas = [];
-        for (let index = 0; index < 10; index++) {
-            filas.push(
-                <tr key={index}>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td><Skeleton /></td>
-                    <td>
-                        <Skeleton />
-                    </td>
-                </tr>
-            );
-        }
-
-        return allLocations && allLocations.length > 0 ? (
+    return allLocations && allLocations.length > 0 ? (
+        <div className={styles.container}>
+            <table className="table table-bordered" >
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Status</th>
+                        <th>Street-Number</th>
+                        <th>Street</th>
+                        <th>Street-2</th>
+                        <th>City</th>
+                        <th>Province</th>
+                        <th>Country</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {allLocations.map(location => (
+                        <tr key={location._id}>
+                            <td>{location.name}</td>
+                            <td>{location.description}</td>
+                            <td><img src={location.pictures} className="img-fluid" alt="" /></td>
+                            <td>{location.status}</td>
+                            <td>{location.address.streetNumber}</td>
+                            <td>{location.address.street}</td>
+                            <td>{location.address.street2}</td>
+                            <td>{location.address.city}</td>
+                            <td>{location.address.province}</td>
+                            <td>{location.address.country}</td>
+                            <td>
+                                <button type="button" className="btn btn-warning"
+                                    onClick={() => handleClickEditLocation(location._id)}
+                                >Edit</button>
+                                <button type="button" className="btn btn-danger"
+                                    onClick={() => handleClickDeleteLocation(location._id)} >Delete</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    ) : (
             <>
-                <SkeletonTheme color="gray" highlightColor="white">
-                    <div className={styles.container}>
-                        <table className="table table-bordered" >
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filas}
-                            </tbody>
-                        </table>
-                    </div>
-                </SkeletonTheme>
+                <div className="spinner-border"></div>
             </>
-        ) : (
-                <>
-                </>
-            );
-    }
+        );
 
-    if (loading) {
-        return (
-            loader()
-        )
-    }
-    else {
-        return allLocations && allLocations.length > 0 ? (
-            <>
-
-                <div className={styles.container}>
-                    <table className="table table-bordered" >
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Image</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {allLocations.map(location => (
-                                <tr key={location._id}>
-                                    <td>{location.name}</td>
-                                    <td>{location.description}</td>
-                                    <td><img src={location.pictures} className="img-fluid" alt="" /></td>
-                                    <td>
-                                        <button type="button" className="btn btn-warning"
-                                            onClick={() => handleClickEditLocation(location._id)}
-                                        >Edit</button>
-                                        <button type="button" className="btn btn-danger"
-                                            onClick={() => Borrar(location._id)} >Delete</button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </>
-        ) : (
-                <>
-                    <div className="spinner-border"></div>
-                </>
-            );
-    }
 }
 
 /**********    Linea 86   ********/
-/* 
+/*
 <Card >
                                             <div className="card bg-dark text-white">
                                                 <img size="16by9" src={location.pictures} className="card-img" alt="..."></img>
@@ -113,7 +66,7 @@ export default function LocationList(props) {
                                             </div>
                                         </Card> */
 /**********    Linea 89   ********/
-/* 
+/*
 <td>{Object.keys(location.isActive).length}</td> */
 
 //  Linea  76

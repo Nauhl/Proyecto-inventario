@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-export default function AddLocation(props) {
+export default function InputLocation(props) {
     const { newLocation, handleChange, cancelCreateNewLocation, createNewLocation } = props
 
     const inputFileRef = useRef()
@@ -44,12 +44,24 @@ export default function AddLocation(props) {
             type="file" ref={inputFileRef}
             size="small"
             id="pictures-input"
-            label="Pictures"
+            label="New Image"
             placeholder="Insert new Picture"
             onChange={handleChange()("pictures")}
             value={newLocation.pictures || ""} />
 
         </div>  
+
+        <div >
+                <label>Status</label>
+                <input
+                    size="small"
+                    type="text"
+                    id="status-input"
+                    label="Status"
+                    onChange={handleChange()("status")}
+                    value={newLocation.status || ""}
+                />
+            </div>
 
         {/* El warning sale por el como empieza la lista, 
         quiero decir se debe ingresar primero las variables que se encuentran dentro de addres */  }
@@ -60,7 +72,7 @@ export default function AddLocation(props) {
                     size="small"
                     type="number"
                     id="streetNumber-input"
-                    label="Number"
+                    label="Street Number"
                     onChange={handleChange("address")("streetNumber")}
                     value={newLocation.address ? newLocation.address.streetNumber : ""}
                 />
@@ -130,14 +142,14 @@ export default function AddLocation(props) {
     )
 }
 
-AddLocation.defaultProps = {
+InputLocation.defaultProps = {
     newLocation: {
         name: "",
         description: "",
-        isActive: true,
+        //isActive: true,
         //user: "",
         pictures: "",
-        files: "",
+        //files: "",
         status: "",
         address: {
             streetNumber: "",

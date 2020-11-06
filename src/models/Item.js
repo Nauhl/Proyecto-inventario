@@ -34,7 +34,7 @@ const ItemSchema = new mongoose.Schema({
       ref: "Company",
     },*/
     cost: { type: Number, trim: true },
-    waranty: { type: Boolean, default: true },
+    //waranty: { type: Boolean, default: true },
     /*contract: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Contract",

@@ -17,21 +17,19 @@ export default function SubCategoriesList(props) {
                 </thead>
                 <tbody>
                     {allSubCategories.map(subCategory => (
-                        // console.log("subCategory", Object.keys(subCategory.subCategories).length);
-                        //return (
-                            <tr key={subCategory._id}>
-                                <td >{subCategory.name}</td>
-                                <td >{subCategory.description}</td>
-                                <td>
-                                    <button type="button" className="btn btn-warning"
-                                        onClick={() => handleClickEditSubCategory(subCategory._id)}>Edit</button>
+                        <tr key={subCategory._id}>
+                            <td >{subCategory.name}</td>
+                            <td >{subCategory.description}</td>
+                            <td>
+                                <button type="button" className="btn btn-warning"
+                                    onClick={() => handleClickEditSubCategory(subCategory._id)}>Edit</button>
                                         &nbsp;
                                     <button type="button" className="btn btn-danger" //data-toggle="modal" data-target="#DeleteModal"
-                                        onClick={() => DeleteSubCategoryOnClick(subCategory._id)}>
-                                        Delete
+                                    onClick={() => DeleteSubCategoryOnClick(subCategory._id)}>
+                                    Delete
                                     </button>
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
                         //)
                     ))}
                 </tbody>

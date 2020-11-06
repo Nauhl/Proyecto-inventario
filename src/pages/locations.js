@@ -1,11 +1,5 @@
 import { getAllLocations, getLocation, createNewLocation, updateLocation, deleteLocation } from "../../src/lib/ctrlLocation";
-// import Button from "@material-ui/core/Button";
-import Button from "react-bootstrap/Button";
-//import LocationsInput from "../../components/inputs/locationInput";
 import LocationList from "../../components/lists/LocationList";
-//import Grid from "@material-ui/core/Grid";
-import AddIcon from "@material-ui/icons/Add";
-//import AddLocation from "../../components/inputs/LocationInputs/inputAddLocation";
 import styles from '../../styles/Home.module.css';
 import ModalLocation from "../../components/modals/ModalLocation";
 
@@ -16,7 +10,6 @@ export default function locationsPage() {
   const [editMode, setEditMode] = React.useState(false);
   const [allLocationsState, setAllLocationsState] = React.useState([]);
   const [newLocation, setNewLocation] = React.useState({});
-  //const [editarL, setEditarL] = React.useState({});
 
   React.useEffect(() => getLocations(), []);
 
@@ -31,8 +24,6 @@ export default function locationsPage() {
     setShowModal(false);
     setNewLocation({});
   };
-
-  /** CRUD */
 
   const handleClickAddLocation = () => {
     console.log("handleClickAddLocation")
@@ -103,8 +94,6 @@ export default function locationsPage() {
     })
   };
 
-  
-
   return (
     <div >
       <ModalLocation
@@ -114,8 +103,6 @@ export default function locationsPage() {
         handleChange={handleChange}
         handleClickUpdateLocation={handleClickUpdateLocation}
         handleClickOnCreateNewLocation={handleClickOnCreateNewLocation}
-        //createNewLocation={createNewLocation}
-        // cancelCreateNewLocation={cancelCreateNewLocation}
         newLocation={newLocation}
         editMode={editMode}
       />
@@ -126,11 +113,10 @@ export default function locationsPage() {
 
         <div className={styles.main}>
           {showElements ?
-            <button
-              // data-toggle="modal" data-target="#newLocation"
+            <button className="btn btn-success"
               variant="success" size="sm"
               onClick={() => handleClickAddLocation()}>
-              <AddIcon fontSize="small" />Add new location</button>
+              New location</button>
             :
             null
           }
@@ -141,20 +127,8 @@ export default function locationsPage() {
           <LocationList
             allLocations={allLocationsState}
             handleClickEditLocation={handleClickEditLocation}
-            Borrar={handleClickDeleteLocation}
+            handleClickDeleteLocation={handleClickDeleteLocation}
           />
-          {/* :
-            <AddLocation
-              show={showModal}
-              allLocations={allLocationsState}
-              handleChange={handleChange}
-              createNewLocation={handleClickOnCreateNewLocation}
-              cancelCreateNewLocation={handleClickOnCancelNewLocation}
-              newLocation={newLocation}
-
-            />
-          } */}
-
         </div>
       </div>
     </div>

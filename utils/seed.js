@@ -46,7 +46,7 @@ export const seedCategory = async () => {
         new Category({
           name: faker.name.findName(),
           description: faker.lorem.paragraph(),
-          pictures: faker.internet.avatar(),
+          pictures: faker.image.image(),
           subCategories: [_.sample(allSubCategories)._id],
         })
       )
@@ -100,7 +100,7 @@ export const seedLocation = async () => {
         new Location({
           name: faker.lorem.text(),
           description: faker.lorem.sentence(),
-          pictures: faker.internet.avatar(),
+          pictures: faker.image.image(),
           status: faker.lorem.word() + faker.lorem.word(),
           address: {
             streetNumber: faker.address.zipCode(),
@@ -131,14 +131,14 @@ export const seedRoom = async () => {
     const allLocations = await Location.find();
 
     for (let i = 0; i < loop; i++) {
-      const locationRoom = [_.sample(allLocations)._id]
+      //const locationRoom = [_.sample(allLocations)._id]
 
       rooms.push(
         new Room({
           name: faker.lorem.word() + faker.lorem.word(),
           description: faker.lorem.sentence(),
-          pictures: faker.internet.avatar(),
-          location: locationRoom
+          pictures: faker.image.image(),
+          location: [_.sample(allLocations)._id],
           // location: [_.sample(allLocations)._id]
         })
       )
@@ -170,7 +170,7 @@ export const seedItem = async () => {
         new Item({
           name: faker.name.title(),
           description: faker.lorem.paragraph(),
-          pictures: faker.internet.avatar(),
+          pictures: faker.image.image(),
           location: [_.sample(allLocations)._id],
           room: [_.sample(allRooms)._id],
           category: [_.sample(allCategory)._id],
@@ -184,9 +184,9 @@ export const seedItem = async () => {
             purchaseDate: faker.date.past(),
             //company: randomCompany._id,
             cost: faker.commerce.price(),
-            waranty: faker.random.boolean(),
+            //waranty: faker.random.boolean(),
             //contract: randomContract._id,
-            purchaseNotes: faker.lorem.sentence()
+            //purchaseNotes: faker.lorem.sentence()
           }
         })
       )

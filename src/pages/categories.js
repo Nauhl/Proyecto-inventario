@@ -3,8 +3,8 @@ import { getAllSubCategories, getSubCategory, createNewSubCategory, updateSubCat
 import styles from '../../styles/Home.module.css';
 import CategoriesList from "../../components/lists/CategoriesList";
 import SubCategoriesList from "../../components/lists/SubCategoriesList";
-import ModalAddCategory from "../../components/modals/ModalAddCategory";
-import ModalAddSubCategory from "../../components/modals/ModalAddSubCategory";
+import ModalCategory from "../../components/modals/ModalCategory";
+import ModalSubCategory from "../../components/modals/ModalSubCategory";
 
 export default function categoriesPage(props) {
 
@@ -162,7 +162,7 @@ export default function categoriesPage(props) {
 
     return (
         <div>
-            <ModalAddCategory
+            <ModalCategory
                 open={showModal}
                 handleClose={handleCloseModal}
                 handleChange={handleChange}
@@ -176,7 +176,7 @@ export default function categoriesPage(props) {
                 editMode={editMode}
             />
 
-            <ModalAddSubCategory
+            <ModalSubCategory
                 openSub={showModalSubCategory}
                 handleCloseSub={handleCloseSubcategoryModal}
                 handleChange={handleChangeSubCategory}

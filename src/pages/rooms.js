@@ -3,7 +3,6 @@ import InputRoom from "../../components/inputs/roomInput";
 import RoomList from "../../components/lists/RoomList";
 import styles from '../../styles/Home.module.css';
 import ModalRoom from "../../components/modals/ModalRoom";
-import AddIcon from "@material-ui/icons/Add";
 
 export default function roomsPage() {
 
@@ -106,10 +105,10 @@ export default function roomsPage() {
         </div>
         <div className={styles.main}>
           {showElements ?
-            <button
+            <button className="btn btn-success"
               variant="success" size="sm"
               onClick={() => handleClickAddRoom()}>
-              <AddIcon fontSize="small" /> Add  room</button>
+              New room</button>
             :
             null
           }

@@ -1,46 +1,86 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+import styles from '../../styles/Home.module.css';
 
-const useStyles = makeStyles({
-    table: {
-        minWidth: 650,
-    },
-});
+export default function ItemList(props) {
 
-export default function ItemsList(props) {
-    const classes = useStyles();
-
-    const { allItems } = props;
+    const { allItems, handleClickEditItem, handleClickDeleteItem } = props;
 
     return allItems && allItems.length > 0 ? (
-        <TableContainer component={Paper}>
-            <Table className={classes.table} size="small" aria-label="a dense table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell align="right">Description</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {allItems.map((item) => (
-                        <TableRow key={item.name}>
-                            <TableCell component="th" scope="row">
-                                {item.name}
-                            </TableCell>
-                            <TableCell align="right">{item.description}</TableCell>
-                        </TableRow>
+        <div className={styles.container}>
+            <table className="table table-bordered" >
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        
+                        <th>Location</th>
+                        <th>Room</th>
+                        <th>Category</th>
+                        <th>Condition</th>
+
+                        <th>Estimated value</th>
+                        <th>Model</th>
+                        <th>Brand</th>
+                        <th>Seral Number</th>
+                        <th>Notes</th>
+
+                        <th>Purchase date</th>
+                        <th>Cost</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {allItems.map(item => (
+                        <tr key={item._id}>
+                            <td>{item.name}</td>
+                            <td>{item.description}</td>
+                            <td><img src={item.pictures} className="img-fluid" alt="" /></td>
+                            
+                            <td>{Object.keys(item.location)}</td>
+                            <td>{Object.keys(item.room)}</td>
+                            <td>{Object.keys(item.category)}</td>
+                            <td>{Object.keys(item.condition)}</td>
+
+                            <td>{item.estimatedValue}</td>
+                            <td>{item.model}</td>
+                            <td>{item.brand}</td>
+                            <td>{item.serialNumber}</td>
+
+                            <td>{item.notes}</td>
+                            <td>{item.purchaseInfo.purchaseDate}</td>
+                            <td>{item.purchaseInfo.cost}</td>
+                            
+                            <td>
+                                <button type="button" className="btn btn-warning"
+                                    onClick={() => handleClickEditItem(item._id)}
+                                >Edit</button>
+                                <button type="button" className="btn btn-danger"
+                                    onClick={() => handleClickDeleteItem(item._id)} >Delete</button>
+                            </td>
+                        </tr>
                     ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                </tbody>
+            </table>
+        </div>
     ) : (
-            <h1>LOADING...</h1>
+            <>
+                <div className="spinner-border"></div>
+            </>
         );
+
 }
+
+/*
+<th>Location</th>
+                        <th>Room</th>
+                        <th>Category</th>
+                        <th>Condition</th>
+                        */
+
+/*
+<td>{item.location}</td>
+                            <td>{item.room}</td>
+                            <td>{item.category}</td>
+                            <td>{item.condition}</td>
+*/

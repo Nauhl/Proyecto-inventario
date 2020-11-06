@@ -1,14 +1,8 @@
-import { makeStyles } from "@material-ui/core/styles";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import InputRoom from "../inputs/roomInput";
-
-const useStyles = makeStyles(theme => ({
-
-}));
+import InputRoom from "../inputs/InputRoom";
 
 const ModalRoom = props => {
-    const classes = useStyles();
+    
     const { handleClose, open, allRooms, newRoom, editMode, handleChange, handleClickUpdateRoom, createNewRoom, handleClickOnCreateNewRoom, cancelCreateNewRoom } = props;
 
     return (
@@ -29,20 +23,20 @@ const ModalRoom = props => {
 
             <Modal.Footer>
 
-                <Button variant="secondary" onClick={handleClose}>
+                <button className="btn btn-danger" variant="secondary" onClick={handleClose}>
                     Cancel
-                </Button>
+                </button>
 
                 <div variant="primary" onClick={createNewRoom}>
-                    {editMode ? <Button
+                    {editMode ? <button className="btn btn-success"
                         variant="success" size="sm"
                         onClick={() => handleClickUpdateRoom()}
                         >
-                        UPDATE
-                        </Button>
+                        Update
+                        </button>
                         :
-                        <Button type="button" className="btn btn-success" onClick={() => handleClickOnCreateNewRoom()}><i className="fa fa-database">
-                        </i> &nbsp; Save</Button>}
+                        <button type="button" className="btn btn-success" onClick={() => handleClickOnCreateNewRoom()}>
+                        <i className="fa fa-database"></i> &nbsp; Save</button>}
                 </div>
             </Modal.Footer>
         </Modal>

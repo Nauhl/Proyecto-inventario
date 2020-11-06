@@ -3,7 +3,6 @@ import ConditionList from "../../components/lists/ConditionList";
 import { getAllConditions, getCondition, createNewCondition, updateCondition, deleteCondition } from "../../src/lib/ctrlCondition";
 import ModalCondition from "../../components/modals/ModalCondition";
 import styles from '../../styles/Home.module.css';
-import AddIcon from "@material-ui/icons/Add";
 
 export default function ConditionPage() {
 
@@ -103,10 +102,10 @@ export default function ConditionPage() {
 
         <div className={styles.main}>
           {showElements ?
-            <button
+            <button className="btn btn-success"
               variant="success" size="sm"
               onClick={() => handleClickAddCondition()}>
-              <AddIcon fontSize="small" />New condition
+              New condition
                   </button>
             :
             null
