@@ -12,7 +12,6 @@ export default function LocationList(props) {
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Image</th>
                         <th>Status</th>
                         <th>Street-Number</th>
                         <th>Street</th>
@@ -28,7 +27,6 @@ export default function LocationList(props) {
                         <tr key={location._id}>
                             <td>{location.name}</td>
                             <td>{location.description}</td>
-                            <td><img src={location.pictures} className="img-fluid" alt="" /></td>
                             <td>{location.status}</td>
                             <td>{location.address.streetNumber}</td>
                             <td>{location.address.street}</td>

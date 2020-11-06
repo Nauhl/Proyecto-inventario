@@ -85,17 +85,19 @@ export default function categoriesPage(props) {
     const DeleteCategoryOnClick = categoryID => {
         const deleting = allCategories.filter((category) => category.categoryID !== categoryID);
         console.log("DELETING", categoryID);
-        getCategories(deleting)
+        getCategories(deleting);
         handleCloseModal()
         deleteCategory(categoryID);
+        getCategories();
     }
 
     const DeleteSubCategoryOnClick = subCategoryID => {
         const deleting = allSubCategories.filter((subCategory) => subCategory.subCategoryID !== subCategoryID);
         console.log("DELETING", subCategoryID);
-        getSubCategories(deleting)
+        getSubCategories(deleting);
         handleCloseSubcategoryModal()
         deleteSubCategory(subCategoryID);
+        getSubCategories();
     }
 
     /* Handle Change */ /* we set a variable that it will be changing it state*/

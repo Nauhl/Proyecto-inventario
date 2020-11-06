@@ -3,8 +3,8 @@ import { getAllLocations } from "../../src/lib/ctrlLocation";
 import { getAllRooms } from "../../src/lib/ctrlRoom";
 import { getAllCategories } from "../../src/lib/ctrlCategory";
 import { getAllConditions } from "../../src/lib/ctrlCondition";
-import  ItemList from "../../components/lists/ItemList";
-import  ModalItem  from "../../components/modals/ModalItem";
+import ItemList from "../../components/lists/ItemList";
+import ModalItem from "../../components/modals/ModalItem";
 import styles from '../../styles/Home.module.css';
 
 export default function itemsPage() {
@@ -12,15 +12,50 @@ export default function itemsPage() {
     const [showElements, setShowElements] = React.useState(true);
     const [showModal, setShowModal] = React.useState(false);
     const [allItemsState, setAllItemsState] = React.useState([]);
+
+    const [allLocations, setLocationState] = React.useState([]);
+    const [allRooms, setRoomsState] = React.useState([]);
+    const [allCategories, setCategoriesState] = React.useState([]);
+    const [allConditions, setConditionsState] = React.useState([]);
     const [newItem, setNewItem] = React.useState({});
     const [editMode, setEditMode] = React.useState(false);
 
-    React.useEffect(() => getItems(), []);
+    React.useEffect(() => {
+        getItems();
+        getLocations();
+        getRooms();
+        getCategories();
+        getConditions();
+    }, []);
 
     const getItems = () => {
         getAllItems().then(allItems => {
             setAllItemsState(allItems);
-        })
+        });
+    }
+
+    const getLocations = () => {
+        getAllLocations().then(allItems => {
+            setLocationState(allItems);
+        });
+    }
+
+    const getRooms = () => {
+        getAllRooms().then(allItems => {
+            setRoomsState(allItems);
+        });
+    }
+
+    const getCategories = () => {
+        getAllCategories().then(allItems => {
+            setCategoriesState(allItems);
+        });
+    }
+
+    const getConditions = () => {
+        getAllConditions().then(allItems => {
+            setConditionsState(allItems);
+        });
     }
 
     const handleCloseModal = () => {
@@ -46,9 +81,10 @@ export default function itemsPage() {
     const handleClickDeleteItem = itemID => {
         const deleting = allItemsState.filter((item) => item.itemID !== itemID);
         console.log("DELETING", itemID);
-        getItems(deleting)
+        getItems(deleting);
         handleCloseModal()
         deleteItem(itemID);
+        getItems();
         /*setNewLocation(true);
         setShowElements(true);*/
     }
@@ -100,6 +136,11 @@ export default function itemsPage() {
                 open={showModal}
                 handleClose={handleCloseModal}
                 allItems={allItemsState}
+                allLocations={allLocations}
+                allRooms={allRooms}
+                allCategories={allCategories}
+                allConditions={allConditions}
+
                 handleChange={handleChange}
                 handleClickUpdateItem={handleClickUpdateItem}
                 handleClickOnCreateNewItem={handleClickOnCreateNewItem}

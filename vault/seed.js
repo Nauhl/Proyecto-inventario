@@ -7,7 +7,6 @@ import Location from "../src/models/Location";
 import Room from "../src/models/Room";
 import dbConnect from "../utils/dbConnect";
 import _ from "lodash";
-//import { Room } from "@material-ui/icons";
 
 dbConnect();
 

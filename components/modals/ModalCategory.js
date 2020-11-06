@@ -1,16 +1,16 @@
 import { getAllSubCategories } from "../../src/lib/ctrlSubCategory";
 import Modal from "react-bootstrap/Modal";
-import { useRef } from 'react';
+//import { useRef } from 'react';
 
 const ModalCategory = props => {
 
-    const inputFileRef = useRef()
+    /*const inputFileRef = useRef()
 
     const handleButton = (e) => {
         e.preventDefault()
         //console.log(allLocations)
         console.log(inputFileRef.current.files)
-    }
+    }*/
 
     const { handleClose, open, allCategories, allSubCategories, handleChange, editMode, handleClickUpdateCategory,
         createNewCategory, handleClickOnCreateNewCategory, cancelCreateNewCategory, newCategory } = props;
@@ -56,28 +56,12 @@ const ModalCategory = props => {
                         </div>
                     </div>
 
-                    <div className="row">
-                        <div className="col">
-                            <label>Pictures</label>
-                            <input
-                                //fullWidth
-                                size="small"
-                                type="file" ref={inputFileRef}
-                                id="pictures-input"
-                                label="Pictures"
-                                // variant="outlined"
-                                value={newCategory.pictures}
-                                onChange={handleChange("pictures")}
-                            />
-                        </div>
-                    </div>
-
                     <div >
                         <form >
                             <div className="form-group">
                                 <label htmlFor="multi-subcategories">Subcategories</label>
                                 <select className="custom-select" id="multi-subcategories"
-                                    multiple
+                                    //multiple
                                     value={newCategory.subCategories || []}
                                     onChange={handleChange("subCategories")}
                                 >
@@ -121,3 +105,21 @@ ModalCategory.defaultProps = {
 };
 
 export default ModalCategory;
+
+/*
+<div className="row">
+                        <div className="col">
+                            <label>Pictures</label>
+                            <input
+                                //fullWidth
+                                size="small"
+                                type="file" ref={inputFileRef}
+                                id="pictures-input"
+                                label="Pictures"
+                                // variant="outlined"
+                                value={newCategory.pictures}
+                                onChange={handleChange("pictures")}
+                            />
+                        </div>
+                    </div>
+                    */

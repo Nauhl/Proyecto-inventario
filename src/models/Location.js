@@ -5,7 +5,7 @@ const LocationSchema = new mongoose.Schema({
   description: { type: String, default: "", trim: true },
   //isActive: { type: Boolean, default: true },
   //user: { type: String, default: "automatic", trim: true },
-  pictures: { type: Array, default: [] },
+  //pictures: { type: Array, default: [] },
   //files: { type: Array, default: [] },
   status: { type: String, default: "in use", trim: true, lowercase: true },
   address: {

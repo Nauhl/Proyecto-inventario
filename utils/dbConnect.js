@@ -16,15 +16,33 @@ async function dbConnect() {
   /*db.on('error', (error) => console.error(error))
   db.once('open', () => console.log('Connected to database'))*/
 
+  
   connection.isConnected = db.connections[0].readyState;
-  console.log(connection.isConnected);
+  
+  switch (connection.isConnected) {
+    case 1:
+    console.log("IsConnected", connection.isConnected);
+    break;
+    case 2:
+    console.log("IsConnected", connection.isConnected);
+    break;
+    case 3:
+    console.log("IsConnected", connection.isConnected);
+    break;
+    case 4:
+    console.log("IsConnected", connection.isConnected);
+    break;
+
+    default:
+  break;
+  }
 }
 
-async function dbDisconnect() {
-  mongoose.connection.close();
-}
+  async function dbDisconnect() {
+    mongoose.connection.close();
+  }
 
-export {
-  dbConnect,
-  dbDisconnect
-};
+  export {
+    dbConnect,
+    dbDisconnect
+  };

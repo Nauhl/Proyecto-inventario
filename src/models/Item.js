@@ -4,7 +4,7 @@ const ItemSchema = new mongoose.Schema({
   description: { type: String, default: "", trim: true },
   //isActive: { type: Boolean, default: true },
   //user: { type: String, default: "automatic", trim: true },
-  pictures: { type: Array, default: [] },
+  //pictures: { type: Array, default: [] },
   //files: { type: Array, default: [] },
   location: {
     type: mongoose.Schema.Types.ObjectId,
@@ -28,12 +28,12 @@ const ItemSchema = new mongoose.Schema({
   serialNumber: { type: String, trim: true },
   notes: { type: String, default: "", trim: true },
   purchaseInfo: {
-    purchaseDate: { type: Date },
+    //purchaseDate: { type: Date },
     /*company: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Company",
     },*/
-    cost: { type: Number, trim: true },
+    cost: { type: Number, trim: true }
     //waranty: { type: Boolean, default: true },
     /*contract: {
       type: mongoose.Schema.Types.ObjectId,

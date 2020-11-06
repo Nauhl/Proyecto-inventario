@@ -50,8 +50,9 @@ export default function ConditionPage() {
     const deleting = allConditionsState.filter((condition) => condition.conditionID !== conditionID);
     console.log("DELETING", conditionID);
     getConditions(deleting)
-    handleCloseModal()
+    handleCloseModal();
     deleteCondition(conditionID);
+    getConditions();
   }
 
   const handleChange = name => e => {

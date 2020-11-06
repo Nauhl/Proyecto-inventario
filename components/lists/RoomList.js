@@ -12,7 +12,6 @@ export default function RoomList(props) {
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Pictures</th>
                         <th>Location</th>
                         <th>Action</th>
                     </tr>
@@ -22,8 +21,7 @@ export default function RoomList(props) {
                         <tr key={room._id}>
                             <td>{room.name}</td>
                             <td>{room.description}</td>
-                            <td><img src={room.pictures} className="img-fluid" alt="" /></td>
-                            <td>{room.location}</td>
+                            <td>{room.location ? room.location.name : ""}</td>
                             <td>
                                 <button type="button" className="btn btn-warning"
                                     onClick={() => handleClickEditRoom(room._id)} >Edit</button>

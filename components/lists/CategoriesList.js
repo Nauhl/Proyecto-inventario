@@ -12,7 +12,6 @@ export default function CategoriesList(props) {
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Pictures</th>
                         <th>SubCategories</th>
                         <th>Action</th>
                     </tr>
@@ -22,7 +21,6 @@ export default function CategoriesList(props) {
                         <tr key={category._id}>
                             <td>{category.name}</td>
                             <td>{category.description}</td>
-                            <td><img src={category.pictures} className="img-fluid" alt="" /></td>
                             <td>{Object.keys(category.subCategories).length}</td>
                             <td>
                                 <button type="button" className="btn btn-warning"
@@ -76,3 +74,7 @@ export default function CategoriesList(props) {
                                 </div>
                                 </td>
                                 */
+
+    /*
+<td><img src={category.pictures} className="img-fluid" alt="" /></td>
+*/

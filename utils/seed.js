@@ -46,7 +46,7 @@ export const seedCategory = async () => {
         new Category({
           name: faker.name.findName(),
           description: faker.lorem.paragraph(),
-          pictures: faker.image.image(),
+          //pictures: faker.image.image(),
           subCategories: [_.sample(allSubCategories)._id],
         })
       )
@@ -100,7 +100,7 @@ export const seedLocation = async () => {
         new Location({
           name: faker.lorem.text(),
           description: faker.lorem.sentence(),
-          pictures: faker.image.image(),
+          //pictures: faker.image.image(),
           status: faker.lorem.word() + faker.lorem.word(),
           address: {
             streetNumber: faker.address.zipCode(),
@@ -137,7 +137,7 @@ export const seedRoom = async () => {
         new Room({
           name: faker.lorem.word() + faker.lorem.word(),
           description: faker.lorem.sentence(),
-          pictures: faker.image.image(),
+          //pictures: faker.image.image(),
           location: [_.sample(allLocations)._id],
           // location: [_.sample(allLocations)._id]
         })
@@ -170,7 +170,7 @@ export const seedItem = async () => {
         new Item({
           name: faker.name.title(),
           description: faker.lorem.paragraph(),
-          pictures: faker.image.image(),
+          //pictures: faker.image.image(),
           location: [_.sample(allLocations)._id],
           room: [_.sample(allRooms)._id],
           category: [_.sample(allCategory)._id],
@@ -181,7 +181,7 @@ export const seedItem = async () => {
           serialNumber: faker.name.title(),
           notes: faker.name.title(),
           purchaseInfo: {
-            purchaseDate: faker.date.past(),
+            //purchaseDate: faker.date.weekday(),
             //company: randomCompany._id,
             cost: faker.commerce.price(),
             //waranty: faker.random.boolean(),

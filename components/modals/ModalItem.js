@@ -3,7 +3,7 @@ import InputItem from "../inputs/inputItem";
 
 const ModalItem = props => {
     
-    const { handleClose, open, allItems, newItem, editMode, handleChange, handleClickUpdateItem, createNewItem, handleClickOnCreateNewItem } = props;
+    const { handleClose, open, allItems, allLocations, allRooms, allCategories, allConditions , newItem, editMode, handleChange, handleClickUpdateItem, createNewItem, handleClickOnCreateNewItem } = props;
 
     return (
         <Modal show={open} onHide={handleClose}>
@@ -16,6 +16,10 @@ const ModalItem = props => {
                 <InputItem
                     newItem={newItem}
                     handleChange={handleChange}
+                    allLocations={allLocations}
+                    allRooms={allRooms}
+                    allCategories={allCategories}
+                    allConditions={allConditions}
                 />
             </Modal.Body>
 

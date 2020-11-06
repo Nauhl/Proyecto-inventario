@@ -1,5 +1,5 @@
 import { getAllRooms, getRoom, createNewRoom, updateRoom, deleteRoom } from "../../src/lib/ctrlRoom";
-import InputRoom from "../../components/inputs/roomInput";
+import { getAllLocations, getLocation} from "../../src/lib/ctrlLocation";
 import RoomList from "../../components/lists/RoomList";
 import styles from '../../styles/Home.module.css';
 import ModalRoom from "../../components/modals/ModalRoom";
@@ -10,14 +10,24 @@ export default function roomsPage() {
   const [showModal, setShowModal] = React.useState(false);
   const [editMode, setEditMode] = React.useState(false);
   const [allRoomsState, setAllRoomsState] = React.useState([]);
+  const [allLocations, setLocationState] = React.useState([]);
   const [newRoom, setNewRoom] = React.useState({});
 
-  React.useEffect(() => getRooms(), []);
+  React.useEffect(() => {
+    getRooms();
+    getLocations();
+  }, []);
 
   const getRooms = () => {
     getAllRooms().then(allRooms => {
       setAllRoomsState(allRooms);
-    })
+    });
+  }
+
+  const getLocations = () => {
+    getAllLocations().then(allRooms => {
+      setLocationState(allRooms);
+    });
   }
 
   const handleCloseModal = () => {
@@ -45,9 +55,10 @@ export default function roomsPage() {
   const handleClickDeleteRoom = roomID => {
     const DeletingRoom = allRoomsState.filter((room) => room.roomID !== roomID);
     console.log("DELETING", roomID);
-    getRooms(DeletingRoom)
+    getRooms(DeletingRoom);
     handleCloseModal()
     deleteRoom(roomID);
+    getRooms();
     /*setNewLocation(true);
     setShowElements(true);*/
   }
@@ -88,8 +99,9 @@ export default function roomsPage() {
     <div>
       <ModalRoom
         open={showModal}
-        handleclose={handleCloseModal}
+        handleClose={handleCloseModal}
         allRooms={allRoomsState}
+        allLocations={allLocations}
         handleChange={handleChange}
         handleClickUpdateRoom={handleClickUpdateRoom}
         

@@ -1,15 +1,15 @@
-import { useRef } from 'react';
+//import { useRef } from 'react';
 
 export default function InputLocation(props) {
     const { newLocation, handleChange, cancelCreateNewLocation, createNewLocation } = props
 
-    const inputFileRef = useRef()
+    /*const inputFileRef = useRef()
 
     const handleButton = (e) => {
         e.preventDefault()
         //console.log(allLocations)
         console.log(inputFileRef.current.files)
-    }
+    }*/
 
     return (
         <div>
@@ -37,19 +37,6 @@ export default function InputLocation(props) {
                     value={newLocation.description || ""}
                 />
             </div>
-
-            <div>
-            <label>New Image</label>
-            <input
-            type="file" ref={inputFileRef}
-            size="small"
-            id="pictures-input"
-            label="New Image"
-            placeholder="Insert new Picture"
-            onChange={handleChange()("pictures")}
-            value={newLocation.pictures || ""} />
-
-        </div>  
 
         <div >
                 <label>Status</label>
@@ -148,7 +135,7 @@ InputLocation.defaultProps = {
         description: "",
         //isActive: true,
         //user: "",
-        pictures: "",
+        //pictures: "",
         //files: "",
         status: "",
         address: {
@@ -167,3 +154,18 @@ InputLocation.defaultProps = {
                             <button type="button" className="btn btn-success" onClick={() => createNewLocation()}><i className="fa fa-database">
                             </i> &nbsp; Save</button>
                         </div>*/
+
+/*
+<div>
+            <label>New Image</label>
+            <input
+            type="file" ref={inputFileRef}
+            size="small"
+            id="pictures-input"
+            label="New Image"
+            placeholder="Insert new Picture"
+            onChange={handleChange()("pictures")}
+            value={newLocation.pictures || ""} />
+
+        </div>  
+*/
