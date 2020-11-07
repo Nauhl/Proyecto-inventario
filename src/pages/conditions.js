@@ -126,7 +126,7 @@ export default function ConditionPage() {
             :
             null
           }
-        </div>
+        </div>    
 
         <div>
           <ConditionList
