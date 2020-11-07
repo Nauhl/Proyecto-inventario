@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ConditionList from "../../components/lists/ConditionList";
 import { getAllConditions, getCondition, createNewCondition, updateCondition, deleteCondition } from "../../src/lib/ctrlCondition";
 import ModalCondition from "../../components/modals/ModalCondition";
+//import ConditionDeleteModal from "../../components/deleteModals/ConditionDeleteModal";
 import styles from '../../styles/Home.module.css';
 
 export default function ConditionPage() {
@@ -12,6 +13,8 @@ export default function ConditionPage() {
 
   const [showModal, setshowModal] = React.useState(false);
   const [editMode, setEditMode] = React.useState(false);
+
+  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
 
   React.useEffect(() => {
     getConditions();
@@ -26,6 +29,8 @@ export default function ConditionPage() {
   const handleCloseModal = () => {
     console.log("handleCloseModal")
     setshowModal(false);
+
+    setShowDeleteModal(false);
     setAddCondition({});
   };
 
@@ -70,7 +75,6 @@ export default function ConditionPage() {
       setShowElements(true);
       handleCloseModal()
     })
-
   };
 
   const handleClickEditCondition = conditionID => {
@@ -79,6 +83,17 @@ export default function ConditionPage() {
       setshowModal(true);
       setEditMode(true);
       setAddCondition(condition);
+    })
+  };
+
+  // Abre el modal de delete
+  const handleClickDeleteCondition = conditionID => {
+    getCondition(conditionID).then(condition => {
+      console.log("FOUND IT", condition);
+      setShowDeleteModal(true);
+      //ShowDeleteModal(true);
+      //setEditMode(true);
+      //setAddCondition(condition);
     })
   };
 
@@ -117,11 +132,26 @@ export default function ConditionPage() {
           <ConditionList
             allConditionsState={allConditionsState}
             handleClickEditCondition={handleClickEditCondition}
-            DeleteConditionOnClick={DeleteConditionOnClick}
-          />
+            handleClickDeleteCondition={handleClickDeleteCondition}
+
+            
+          openn={showDeleteModal}
+          handleClose={handleCloseModal}
+          DeleteConditionOnClick={DeleteConditionOnClick}
+            />
         </div>
+
       </div>
+      
+      
     </div>
 
   )
 };
+/*<div>
+          <ConditionDeleteModal 
+          openn={showDeleteModal}
+          handleClose={handleCloseModal}
+          DeleteConditionOnClick={DeleteConditionOnClick}
+          />
+        </div>*/

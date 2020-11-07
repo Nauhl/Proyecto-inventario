@@ -132,6 +132,7 @@ export default function roomsPage() {
             allRooms={allRoomsState}
             handleClickEditRoom={handleClickEditRoom}
             handleClickDeleteRoom={handleClickDeleteRoom}
+            //allLocations={allLocations}
           />
           {/*:
           <InputRoom

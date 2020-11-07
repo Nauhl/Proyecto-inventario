@@ -97,7 +97,7 @@ export default function InputItem(props) {
             <div >
                 <form >
                     <div className="form-group">
-                        <label htmlFor="multi-condition">Location</label>
+                        <label htmlFor="multi-condition">Condition</label>
                         <select className="custom-select" id="multi-condition"
                             //multiple
                             value={newItem.condition || []}

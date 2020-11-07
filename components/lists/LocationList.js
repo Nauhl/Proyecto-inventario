@@ -6,46 +6,47 @@ export default function LocationList(props) {
     const { allLocations, handleClickEditLocation, handleClickDeleteLocation, newLocation } = props;
 
     return allLocations && allLocations.length > 0 ? (
-        <div className={styles.container}>
-            <table className="table table-bordered" >
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                        <th>Street-Number</th>
-                        <th>Street</th>
-                        <th>Street-2</th>
-                        <th>City</th>
-                        <th>Province</th>
-                        <th>Country</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {allLocations.map(location => (
-                        <tr key={location._id}>
-                            <td>{location.name}</td>
-                            <td>{location.description}</td>
-                            <td>{location.status}</td>
-                            <td>{location.address.streetNumber}</td>
-                            <td>{location.address.street}</td>
-                            <td>{location.address.street2}</td>
-                            <td>{location.address.city}</td>
-                            <td>{location.address.province}</td>
-                            <td>{location.address.country}</td>
-                            <td>
-                                <button type="button" className="btn btn-warning"
-                                    onClick={() => handleClickEditLocation(location._id)}
-                                >Edit</button>
-                                <button type="button" className="btn btn-danger"
-                                    onClick={() => handleClickDeleteLocation(location._id)} >Delete</button>
-                            </td>
+        
+            <div className={styles.container}>
+                <table className="table table-bordered" >
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Street-Number</th>
+                            <th>Street</th>
+                            <th>Street-2</th>
+                            <th>City</th>
+                            <th>Province</th>
+                            <th>Country</th>
+                            <th>Action</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        {allLocations.map(location => (
+                            <tr key={location._id}>
+                                <td>{location.name}</td>
+                                <td>{location.description}</td>
+                                <td>{location.status}</td>
+                                <td>{location.address.streetNumber}</td>
+                                <td>{location.address.street}</td>
+                                <td>{location.address.street2}</td>
+                                <td>{location.address.city}</td>
+                                <td>{location.address.province}</td>
+                                <td>{location.address.country}</td>
+                                <td>
+                                    <button type="button" className="btn btn-warning"
+                                        onClick={() => handleClickEditLocation(location._id)}
+                                    >Edit</button>
+                                    <button type="button" className="btn btn-danger"
+                                        onClick={() => handleClickDeleteLocation(location._id)} >Delete</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
     ) : (
             <>
                 <div className="spinner-border"></div>
@@ -77,11 +78,11 @@ export default function LocationList(props) {
             <div className="modal-header">
                 <h5 className="modal-title" id="staticBackdropLabel">Delete Category</h5>
                 <button type="button" className="btn btn-danger" data-dismiss="modal" aria-label="Close">
-                    &times;
+                                &times;
                             </button>
             </div>
             <button type="button" className="btn btn-danger" onClick={() => Borrar(location._id)}>
-                ARE YOU SURE YOU WANT TO DELETE THIS ITEM ?
+                            ARE YOU SURE YOU WANT TO DELETE THIS ITEM ?
                             </button>
         </div>
     </div>*/

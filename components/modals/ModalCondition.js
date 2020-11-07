@@ -9,7 +9,7 @@ const ModalCondition = props => {
 
         <Modal show={open} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>{editMode ? `Modifying ${addCondition.name}` : `Add a new location`}</Modal.Title>
+                <Modal.Title>{editMode ? `Modifying ${addCondition.name}` : `Add a new Condition`}</Modal.Title>
 
             </Modal.Header>
 

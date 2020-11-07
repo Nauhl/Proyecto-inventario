@@ -62,18 +62,7 @@ export default function InputRoom(props) {
     )
 }
 
-/*InputRoom.defaultProps = {
-    newRoom: {
-        name: "",
-        description: "",
-        isActive: true,
-        //user: "",
-        pictures: "",
-        location: {
 
-        }
-    }
-}*/
 
 /*<div className="row">
                 <div className="col">
