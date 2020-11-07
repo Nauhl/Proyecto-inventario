@@ -29,9 +29,8 @@ export default function ConditionPage() {
   const handleCloseModal = () => {
     console.log("handleCloseModal")
     setshowModal(false);
-
-    setShowDeleteModal(false);
     setAddCondition({});
+    setShowDeleteModal(false);
   };
 
   //**********************   HandleChange ************************************ */
@@ -91,6 +90,7 @@ export default function ConditionPage() {
     getCondition(conditionID).then(condition => {
       console.log("FOUND IT", condition);
       setShowDeleteModal(true);
+      getConditions();
       //ShowDeleteModal(true);
       //setEditMode(true);
       //setAddCondition(condition);
@@ -134,22 +134,25 @@ export default function ConditionPage() {
             handleClickEditCondition={handleClickEditCondition}
             handleClickDeleteCondition={handleClickDeleteCondition}
 
+            openn={showDeleteModal}
+            handleClose={handleCloseModal}
+            DeleteConditionOnClick={DeleteConditionOnClick}
+          />
+
+          {/* <div>
+            <ConditionDeleteModal 
             
-          openn={showDeleteModal}
-          handleClose={handleCloseModal}
-          DeleteConditionOnClick={DeleteConditionOnClick}
-            />
+            openn={showDeleteModal}
+            handleClose={handleCloseModal}
+            DeleteConditionOnClick={DeleteConditionOnClick}/>
+          </div> */}
         </div>
-
       </div>
-      
-      
     </div>
-
   )
 };
 /*<div>
-          <ConditionDeleteModal 
+          <ConditionDeleteModal
           openn={showDeleteModal}
           handleClose={handleCloseModal}
           DeleteConditionOnClick={DeleteConditionOnClick}

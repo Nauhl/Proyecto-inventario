@@ -18,6 +18,7 @@ export default async (req, res) => {
           .populate("room")
           .populate("location")
           .populate("category")
+          .populate("condition")
           ;
 
         res.status(200).json({ success: true, data: items });

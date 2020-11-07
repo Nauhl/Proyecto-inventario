@@ -11,6 +11,8 @@ export default function locationsPage() {
   const [allLocationsState, setAllLocationsState] = React.useState([]);
   const [newLocation, setNewLocation] = React.useState({});
 
+  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
+
   React.useEffect(() => getLocations(), []);
 
   const getLocations = () => {
@@ -23,6 +25,7 @@ export default function locationsPage() {
     console.log("handleCloseModal")
     setShowModal(false);
     setNewLocation({});
+    setShowDeleteModal(false);
   };
 
   const handleClickAddLocation = () => {
@@ -43,7 +46,7 @@ export default function locationsPage() {
   /* this works just if I put name description and "street number", I mean, 
   I need to get the warning in the browser's console to the see the delete change
   if I just put name and description I won't see the change until I refresh the page*/
-  const handleClickDeleteLocation = locationID => {
+  const DeleteLocationOnClick = locationID => {
     const borrandoLocation = allLocationsState.filter((location) => location.locationID !== locationID);
     console.log("DELETING", locationID);
     getLocations(borrandoLocation);
@@ -93,7 +96,19 @@ export default function locationsPage() {
       setEditMode(true);
       setNewLocation(location);
     })
-  };
+  }; setShowDeleteModal
+
+// Abre el modal de delete
+const handleClickDeleteLocation = locationID => {
+  getLocation(locationID).then(location => {
+    console.log("FOUND IT", location);
+    setShowDeleteModal(true);
+    getLocations();
+    //ShowDeleteModal(true);
+    //setEditMode(true);
+    //setAddCondition(condition);
+  })
+};
 
   return (
     <div >
@@ -129,6 +144,10 @@ export default function locationsPage() {
             allLocations={allLocationsState}
             handleClickEditLocation={handleClickEditLocation}
             handleClickDeleteLocation={handleClickDeleteLocation}
+
+            openn={showDeleteModal}
+            handleClose={handleCloseModal}
+            DeleteLocationOnClick={DeleteLocationOnClick}
           />
         </div>
       </div>

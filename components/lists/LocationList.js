@@ -1,12 +1,14 @@
 import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
+import Modal from "react-bootstrap/Modal";
 
 export default function LocationList(props) {
 
-    const { allLocations, handleClickEditLocation, handleClickDeleteLocation, newLocation } = props;
+    const { allLocations, handleClickEditLocation, handleClickDeleteLocation, newLocation, DeleteLocationOnClick
+        , openn, handleClose } = props;
 
     return allLocations && allLocations.length > 0 ? (
-        
+        <>
             <div className={styles.container}>
                 <table className="table table-bordered" >
                     <thead>
@@ -47,6 +49,35 @@ export default function LocationList(props) {
                     </tbody>
                 </table>
             </div>
+
+            <Modal show={openn} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Be Careful
+        </Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    ARE YOU SURE YOU WANT TO DELETE THIS ITEM ?
+        </Modal.Body>
+
+                <Modal.Footer>
+                    <tbody>
+                    {allLocations.map(location => (
+                        <tr key={location._id}>
+                            <td>
+                                <button className="btn btn-dark" variant="secondary" onClick={handleClose}>
+                                    Cancel
+                                </button>
+
+                                <button type="button" className="btn btn-danger" onClick={() => DeleteLocationOnClick(location._id)}>
+                                    <i className="fa fa-database"></i> &nbsp; Delete</button>
+                            </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </Modal.Footer>
+            </Modal>
+            </>
     ) : (
             <>
                 <div className="spinner-border"></div>

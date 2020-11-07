@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 const ModalCategory = props => {
 
     /*const inputFileRef = useRef()
-
+  
     const handleButton = (e) => {
         e.preventDefault()
         //console.log(allLocations)
@@ -62,13 +62,13 @@ const ModalCategory = props => {
                                 <label htmlFor="multi-subcategories">Subcategories</label>
                                 <select className="custom-select" id="multi-subcategories"
                                     //multiple
-                                    value={newCategory.subCategories || []}
+                                    value={newCategory.subCategories ? newCategory.subCategories[0]._id : []}
                                     onChange={handleChange("subCategories")}
                                 >
                                     <option value="" disabled  >Select subCategory(s)</option>
                                     {allSubCategories.map(subCategory => (
-                                        <option key={subCategory._id} value={subCategory._id}
-                                        >{subCategory.name}
+                                        <option key={subCategory._id} value={subCategory._id}>
+                                            {subCategory.name}
                                         </option>
                                     ))}
                                 </select>

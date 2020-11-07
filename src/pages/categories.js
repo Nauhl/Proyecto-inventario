@@ -18,6 +18,8 @@ export default function categoriesPage(props) {
     const [showModalSubCategory, setShowModalSubCategory] = React.useState(false);
     const [editMode, setEditMode] = React.useState(false);
 
+    const [showDeleteModal, setShowDeleteModal] = React.useState(false);
+
     React.useEffect(() => {
         getCategories();
         getSubCategories();
@@ -41,6 +43,7 @@ export default function categoriesPage(props) {
         console.log("handleCloseModal")
         setshowModal(false);
         setNewCategory({});
+        setShowDeleteModal(false);
     };
 
     const handleCloseSubcategoryModal = () => {
@@ -162,6 +165,28 @@ export default function categoriesPage(props) {
         setEditMode(false);
     };
 
+    const handleClickDeleteCategory = categoryID => {
+        getCategory(categoryID).then(category => {
+            console.log("FOUND IT", category);
+            setShowDeleteModal(true);
+            getCategories();
+            //ShowDeleteModal(true);
+            //setEditMode(true);
+            //setAddCondition(condition);
+        })
+    };
+
+    const handleClickDeleteSubCategory = subCategoryID => {
+        getSubCategory(subCategoryID).then(subCategory => {
+            console.log("FOUND IT", subCategory);
+            setShowDeleteModal(true);
+            getSubCategories();
+            //ShowDeleteModal(true);
+            //setEditMode(true);
+            //setAddCondition(condition);
+        })
+    };
+
     return (
         <div>
             <ModalCategory
@@ -212,8 +237,11 @@ export default function categoriesPage(props) {
                     <CategoriesList
                         allCategories={allCategories}
                         handleClickEditCategory={handleClickEditCategory}
+                        handleClickDeleteCategory={handleClickDeleteCategory}
+
+                        openn={showDeleteModal}
+                        handleClose={handleCloseModal}
                         DeleteCategoryOnClick={DeleteCategoryOnClick}
-                    //handleClickDeleteCategory={handleClickDeleteCategory}
                     />
                 </div>
 
@@ -233,10 +261,15 @@ export default function categoriesPage(props) {
                     <SubCategoriesList
                         allSubCategories={allSubCategories}
                         handleClickEditSubCategory={handleClickEditSubCategory}
+                        // handleClickDeleteSubCategory={handleClickDeleteSubCategory}
+
+                        // openn={showDeleteModal}
+                        // allSubCategories={allSubCategories}
+                        // handleClose={handleCloseSubcategoryModal}
                         DeleteSubCategoryOnClick={DeleteSubCategoryOnClick}
-                        />
+                    />
                 </div>
             </div>
         </div >
-    ) 
+    )
 };

@@ -1,11 +1,14 @@
 import React from "react";
 import styles from '../../styles/Home.module.css';
+import Modal from "react-bootstrap/Modal";
 
 export default function CategoriesList(props) {
 
-    const { allCategories, handleClickEditCategory, DeleteCategoryOnClick, handleClickDeleteCategory } = props;
+    const { allCategories, handleClickEditCategory, DeleteCategoryOnClick, handleClickDeleteCategory 
+        , openn, handleClose } = props;
 
     return allCategories && allCategories.length > 0 ? (
+        <>
         <div className={styles.container}>
             <table className="table table-bordered" >
                 <thead>
@@ -21,21 +24,52 @@ export default function CategoriesList(props) {
                         <tr key={category._id}>
                             <td>{category.name}</td>
                             <td>{category.description}</td>
-                            <td>{Object.keys(category.subCategories).length}</td>
+                            {/* <td>{Object.keys(category.subCategories).length} ({category.subCategories[0].name}) </td> */}
+                            <td>{category.subCategories && category.subCategories[0] ? `${Object.keys(category.subCategories).length} (${category.subCategories[0].name})` : 0}</td>
                             <td>
                                 <button type="button" className="btn btn-warning"
                                     onClick={() => handleClickEditCategory(category._id)}>Edit</button>
                                         &nbsp;
                                     <button type="button" className="btn btn-danger" //data-toggle="modal" data-target="#DeleteModal"
-                                    onClick={() => DeleteCategoryOnClick(category._id)}>
+                                    onClick={() => handleClickDeleteCategory(category._id)}>
                                     Delete
                                     </button>
                             </td>
                         </tr>
-                    ))}
+                    )
+                    )}
                 </tbody>
             </table>
         </div>
+        
+        <Modal show={openn} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Be Careful
+        </Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    ARE YOU SURE YOU WANT TO DELETE THIS ITEM ?
+        </Modal.Body>
+
+                <Modal.Footer>
+                    <tbody>
+                    {allCategories.map(category => (
+                        <tr key={category._id}>
+                            <td>
+                                <button className="btn btn-dark" variant="secondary" onClick={handleClose}>
+                                    Cancel
+                                </button>
+
+                                <button type="button" className="btn btn-danger" onClick={() => DeleteCategoryOnClick(category._id)}>
+                                    <i className="fa fa-database"></i> &nbsp; Delete</button>
+                            </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </Modal.Footer>
+            </Modal>
+        </>
     ) : (
             <div className="spinner-border"></div>
         );
@@ -75,6 +109,6 @@ export default function CategoriesList(props) {
                                 </td>
                                 */
 
-    /*
+/*
 <td><img src={category.pictures} className="img-fluid" alt="" /></td>
 */

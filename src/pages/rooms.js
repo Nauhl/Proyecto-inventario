@@ -13,6 +13,8 @@ export default function roomsPage() {
   const [allLocations, setLocationState] = React.useState([]);
   const [newRoom, setNewRoom] = React.useState({});
 
+  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
+
   React.useEffect(() => {
     getRooms();
     getLocations();
@@ -34,6 +36,7 @@ export default function roomsPage() {
     console.log("handleCloseModal")
     setShowModal(false);
     setNewRoom({});
+    setShowDeleteModal();
   };
 
 
@@ -52,7 +55,7 @@ export default function roomsPage() {
     })
   }
 
-  const handleClickDeleteRoom = roomID => {
+  const DeleteRoomOnClick = roomID => {
     const DeletingRoom = allRoomsState.filter((room) => room.roomID !== roomID);
     console.log("DELETING", roomID);
     getRooms(DeletingRoom);
@@ -94,6 +97,17 @@ export default function roomsPage() {
     })
   };
 
+  // Abre el modal de delete
+  const handleClickDeleteRoom = roomID => {
+    getRoom(roomID).then(room => {
+      console.log("FOUND IT", room);
+      setShowDeleteModal(true);
+      getRooms();
+      //ShowDeleteModal(true);
+      //setEditMode(true);
+      //setAddCondition(condition);
+    })
+  };
 
   return (
     <div>
@@ -132,7 +146,11 @@ export default function roomsPage() {
             allRooms={allRoomsState}
             handleClickEditRoom={handleClickEditRoom}
             handleClickDeleteRoom={handleClickDeleteRoom}
-            //allLocations={allLocations}
+            
+            openn={showDeleteModal}
+            handleClose={handleCloseModal}
+            DeleteRoomOnClick={DeleteRoomOnClick}
+          
           />
           {/*:
           <InputRoom

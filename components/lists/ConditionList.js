@@ -36,6 +36,8 @@ export default function ConditionList(props) {
                 </table>
             </div>
 
+
+            
             <Modal show={openn} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Be Careful
@@ -63,12 +65,10 @@ export default function ConditionList(props) {
                     </tbody>
                 </Modal.Footer>
             </Modal>
-
         </>
     ) : (
             <div className="spinner-border"></div>
         );
-
 }
 /*
 

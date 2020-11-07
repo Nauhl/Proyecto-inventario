@@ -20,6 +20,8 @@ export default function itemsPage() {
     const [newItem, setNewItem] = React.useState({});
     const [editMode, setEditMode] = React.useState(false);
 
+    const [showDeleteModal, setShowDeleteModal] = React.useState(false);
+
     React.useEffect(() => {
         getItems();
         getLocations();
@@ -62,6 +64,7 @@ export default function itemsPage() {
         console.log("handleCloseModal")
         setShowModal(false);
         setNewItem({});
+        setShowDeleteModal(false);
     };
 
     const handleClickAddItem = () => {
@@ -78,7 +81,7 @@ export default function itemsPage() {
         })
     }
 
-    const handleClickDeleteItem = itemID => {
+    const DeleteItemOnClick = itemID => {
         const deleting = allItemsState.filter((item) => item.itemID !== itemID);
         console.log("DELETING", itemID);
         getItems(deleting);
@@ -122,6 +125,18 @@ export default function itemsPage() {
             setShowModal(true);
             setEditMode(true);
             setNewItem(item);
+        })
+    };
+
+    // Abre el modal de delete
+    const handleClickDeleteItem = itemID => {
+        getItem(itemID).then(item => {
+            console.log("FOUND IT", item);
+            setShowDeleteModal(true);
+            getItems();
+            //ShowDeleteModal(true);
+            //setEditMode(true);
+            //setAddCondition(condition);
         })
     };
 
@@ -171,7 +186,12 @@ export default function itemsPage() {
                     <ItemList
                         allItems={allItemsState}
                         handleClickEditItem={handleClickEditItem}
+                        DeleteItemOnClick={DeleteItemOnClick}
+
+                        openn={showDeleteModal}
+                        handleClose={handleCloseModal}
                         handleClickDeleteItem={handleClickDeleteItem}
+
                     />
                 </div>
             </div>
