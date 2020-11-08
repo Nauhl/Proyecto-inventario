@@ -245,7 +245,7 @@ export default function categoriesPage(props) {
                     />
                 </div>
 
-                <div className={styles.main} >
+                <div  >
                     <h3>Sub Categories</h3>
                 </div>
 

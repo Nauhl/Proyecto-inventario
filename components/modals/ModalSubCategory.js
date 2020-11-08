@@ -1,5 +1,5 @@
 import Modal from "react-bootstrap/Modal";
-
+import InputSubCategory from "../inputs/inputSubCategory";
 const ModalSubCategory = props => {
 
   const { openSub, handleCloseSub, handleChange, createNewSubCategory, editMode, newSubCategory,
@@ -13,7 +13,11 @@ const ModalSubCategory = props => {
       </Modal.Header>
 
       <Modal.Body>
-      <div className="container">
+        <InputSubCategory 
+        newSubCategory={newSubCategory}
+        handleChange={handleChange}
+        />
+      {/* <div className="container">
             <div className="row">
                 <div className="col">
                     <label>Name</label>
@@ -44,7 +48,7 @@ const ModalSubCategory = props => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
       </Modal.Body>
 
       <Modal.Footer>

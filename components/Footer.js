@@ -1,45 +1,53 @@
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//mport React from 'react'
-import { Form, FormControl, Button, Nav, Navbar, Card } from 'react-bootstrap';
-import styles from '../styles/Home.module.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import styles from "../styles/Home.module.css";
 
 export default function Footer() {
+
     return (
-        <>
-            {/*
-                <footer className={styles.Footer}>
-                    <div className={styles.inner_footer}>
-                        <div className="container" >
-                            <div className="row py-4 d-flex align-items-center">
-                                <div className="col-md-12 text-center">
-                                    <h4 className="text-center text-light" >Inventory </h4>
-                                    <a className="text-center text-light">Designed by me</a> &nbsp;
-                                        <a href="https://github.com/Nauhl"><i className="fab fa-github text-white mr-4"></i></a>
-                                    <a href="#"><i className="fab fa-twitter-square text-white mr-4"></i></a>
-                                    <a className="text-right text-light">@ Vivenda 2020 </a>
+        <footer id="footer">
+            <div className="container" className={styles.foooter}>
+                <div className="footer-top">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-3 col-md-6 footer-contact" data-aos="fade-up">
+                                <h3 className="text-center text-light">Inventory</h3>
+                                <p className="text-center text-light">
+                                    Apodaca, Nuevo Leon<br />
+                                    México <br /><br />
+                                    {/* <strong>Phone:</strong> +1 5589 55488 55<br /> */}
+                                    <p className="text-center text-light">Email:</p> Nauhl.ValdezBenavides@gmail.com<br />
+                                </p>
+                            </div>
+
+                            <div className="col-lg-3 col-md-6 footer-links" data-aos="fade-up" data-aos-delay="300">
+                                <h4>My Social Networks</h4>
+                                <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+                                <div className="social-links mt-3">
+                                    <a href="#" className="facebook"><i className="bx bxl-facebook"></i></a>
+                                    <a href="#" className="instagram"><i className="bx bxl-instagram"></i></a>
+                                    <a href="https://github.com/Nauhl"><i className="fab fa-github text-white mr-4 text-center"></i></a>
+                                    <a href="#"><i className="fab fa-twitter-square text-white mr-4 text-center"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </footer>*/
-            }
-            <br />
-            {/* Better and easier fotter
-        <Navbar bg="dark" variant="dark" fixed="top">
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-info">Search</Button>
-          </Form>
-        </Navbar>
-        */}
+                </div>
 
-            <div className={styles.foooter} >
+                <div className="container py-4">
+                    <div className="copyright">
+                        &copy; Copyright <strong><span>Inventory</span></strong>. All Rights Reserved
+                        </div>
+                    <div className="credits"><a>
+                        Designed by me</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    )
+}
+
+{/* <div className={styles.foooter} >
                 
                 <div>
                     <h5 className="text-center text-light">Designed by me </h5> 
@@ -48,21 +56,6 @@ export default function Footer() {
                     <a href="#"><i className="fab fa-twitter-square text-white mr-4 text-center"></i></a>
                     <a className=".text-*-center text-light">@ Vivenda 2020 </a>
                 </div>
-            </div>
-        </>
-    )
-}
-  /*Better and easier fotter
-              <Navbar fixed="bottom" className="bg-success">
-                  <Navbar.Brand href="#" className=" text-light" >Nauhl</Navbar.Brand>
-                  <Navbar.Toggle />
-                  <Navbar.Collapse className="justify-content-end">
-                      <Navbar.Text>
-                          <a className="text-center text-light">Designed by me </a> &nbsp;
-                          <a href="https://github.com/Nauhl"><i className="fab fa-github text-white mr-4"></i></a>
-                          <a href="#"><i className="fab fa-twitter-square text-white mr-4"></i></a>
-                          <a className="text-right text-light">@ Vivenda 2020 </a>
-                      </Navbar.Text>
-                  </Navbar.Collapse>
-              </Navbar>
-          }*/
+            </div> */}
+
+            //style="display: inline;"

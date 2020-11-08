@@ -1,5 +1,6 @@
 import { getAllSubCategories } from "../../src/lib/ctrlSubCategory";
 import Modal from "react-bootstrap/Modal";
+import InputCategory from "../inputs/inputCategory";
 //import { useRef } from 'react';
 
 const ModalCategory = props => {
@@ -22,7 +23,12 @@ const ModalCategory = props => {
             </Modal.Header>
 
             <Modal.Body>
-                <div >
+                < InputCategory 
+                newCategory={newCategory}
+                handleChange={handleChange}
+                allSubCategories={allSubCategories}
+                />
+                {/* <div >
                     <div>
                         <label>Name</label>
                         <input
@@ -75,7 +81,7 @@ const ModalCategory = props => {
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> */}
             </Modal.Body >
 
             <Modal.Footer>

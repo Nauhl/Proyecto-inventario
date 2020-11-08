@@ -26,6 +26,7 @@ export default function CategoriesList(props) {
                             <td>{category.description}</td>
                             {/* <td>{Object.keys(category.subCategories).length} ({category.subCategories[0].name}) </td> */}
                             <td>{category.subCategories && category.subCategories[0] ? `${Object.keys(category.subCategories).length} (${category.subCategories[0].name})` : 0}</td>
+                            {/* <td>{category.subCategories ? category.subCategories.name : ""}</td> */}
                             <td>
                                 <button type="button" className="btn btn-warning"
                                     onClick={() => handleClickEditCategory(category._id)}>Edit</button>
@@ -112,3 +113,5 @@ export default function CategoriesList(props) {
 /*
 <td><img src={category.pictures} className="img-fluid" alt="" /></td>
 */
+
+// && category.subCategories[0] ? `${Object.keys(category.subCategories).length} (${category.subCategories[0].name})` : 0
