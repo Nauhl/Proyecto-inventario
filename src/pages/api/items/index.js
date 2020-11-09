@@ -3,6 +3,7 @@ import Item from "../../../models/Item";
 import Room from "../../../models/Room";
 import Location from "../../../models/Location";
 import Category from "../../../models/Category";
+import Condition from "../../../models/Condition";
 
 dbConnect();
 

@@ -2,9 +2,8 @@ import { dbConnect } from "../../../../utils/dbConnect";
 import Item from "../../../models/Item";
 import Room from "../../../models/Room";
 import Location from "../../../models/Location";
-import Category from "../../../models/Category"
-/*import Contract from "../../../models/Contract";
-import Company from "../../../models/Company";*/
+import Category from "../../../models/Category";
+import Condition from "../../../models/Condition";
 
 dbConnect();
 
@@ -23,8 +22,6 @@ export default async (req, res) => {
           .populate("location")
           .populate("category")
           .populate("condition")
-          /*.populate("purchaseInfo.company")
-          .populate("purchaseInfo.contract")*/
           ;
 
         if (!item) {

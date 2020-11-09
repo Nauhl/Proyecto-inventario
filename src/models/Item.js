@@ -33,7 +33,7 @@ const ItemSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Company",
     },*/
-    cost: { type: Number, trim: true }
+    cost: { type: Number, trim: true },
     //waranty: { type: Boolean, default: true },
     /*contract: {
       type: mongoose.Schema.Types.ObjectId,
@@ -41,7 +41,7 @@ const ItemSchema = new mongoose.Schema({
     },
     //invoiceImage: { type: String, trim: true },
     purchaseNotes: { type: String, default: "", trim: true }*/
-  }
+  },
 },
   /* gives us "createdAt" and "updatedAt" fields automatically */
   { timestamps: true }

@@ -36,8 +36,6 @@ export default function ItemList(props) {
                             <td>{item.location ? item.location.name : ""}</td>
                             <td>{item.room ? item.room.name : ""}</td>
                             <td>{item.category ? item.category.name : ""}</td>
-
-                            {/** Conditions doesn't works like the three last ones ***/}
                             <td>{item.condition ? item.condition.name : ""}</td>
                             <td>{item.estimatedValue}</td>
                             <td>{item.model}</td>
@@ -45,7 +43,6 @@ export default function ItemList(props) {
                             <td>{item.serialNumber}</td>
                             <td>{item.notes}</td>
                             <td>{item.purchaseInfo ? item.purchaseInfo.cost : ""}</td>
-
                             <td>
                                 <button type="button" className="btn btn-warning"
                                     onClick={() => handleClickEditItem(item._id)}
