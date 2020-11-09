@@ -81,7 +81,7 @@ export default function categoriesPage(props) {
     const handleClickUpdateSubCategory = () => {
         updateSubCategory(newSubCategory).then(() => {
             handleCloseSubcategoryModal()
-            getSubCategories();
+            getCategories();
         })
     }
 

@@ -31,12 +31,12 @@ export default function LocationList(props) {
                                 <td>{location.name}</td>
                                 <td>{location.description}</td>
                                 <td>{location.status}</td>
-                                <td>{location.address.streetNumber}</td>
-                                <td>{location.address.street}</td>
-                                <td>{location.address.street2}</td>
-                                <td>{location.address.city}</td>
-                                <td>{location.address.province}</td>
-                                <td>{location.address.country}</td>
+                                <td>{location.address ? location.address.streetNumber : ""}</td>
+                                <td>{location.address ? location.address.street : ""}</td>
+                                <td>{location.address ? location.address.street2 : ""}</td>
+                                <td>{location.address ? location.address.city : ""}</td>
+                                <td>{location.address ? location.address.province : ""}</td>
+                                <td>{location.address ? location.address.country : ""}</td>
                                 <td>
                                     <button type="button" className="btn btn-warning"
                                         onClick={() => handleClickEditLocation(location._id)}
