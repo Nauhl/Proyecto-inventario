@@ -89,7 +89,7 @@ export default function categoriesPage(props) {
         const deleting = allCategories.filter((category) => category.categoryID !== categoryID);
         console.log("DELETING", categoryID);
         getCategories(deleting);
-        handleCloseModal()
+        handleCloseModal();
         deleteCategory(categoryID);
         getCategories();
     }
