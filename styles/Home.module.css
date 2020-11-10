@@ -156,9 +156,13 @@
   }
 }
 
+.navbar {
+  background-color: #D7A809;
+}
+
 .foooter {
   margin-bottom: 0;
-  background-color: #046937;
+  background-color: #D7A809;
   border-top: 1px solid hsl(0, 0%, 92%);
   display: flex;
   justify-content: center;
@@ -213,4 +217,87 @@
   text-align: center;
   line-height: 50px;
   font-size: 18px;
+}
+
+.table {
+  background-color: #D7A809;
+}
+
+/* .button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50, -50);
+ }
+ 
+ .buttonn {
+  background: none;
+  color: #ccc;
+  width: 240px;
+  height: 80px;
+  border: 1px solid #338033;
+  font-size: 18px;
+  border-radius: 4px;
+  transition: .6s;
+  overflow: hidden;
+ }
+ 
+ .buttonFocus {
+  outline: none;
+ }
+ 
+ .buttonBefore {
+     content: '';
+     display: block;
+     position: absolute;
+     background: rgba(255,255,255,.5);
+     width: 60px;
+     height: 100%;
+     left: 0;
+     top: 0;
+     opacity: .5;
+     filter: blur(30px);
+     transform: translateX(-130px) skewX(-15deg);
+ }
+ 
+ .buttonAfter {
+     content: '';
+     display: block;
+     position: absolute;
+     background: rgba(255,255,255,.2);
+     width: 30px;
+     height: 100%;
+     left: 30px;
+     top: 0;
+     opacity: 0;
+     filter: blur(30px);
+     transform: translateX(-100px) scaleX(-15deg);
+ }
+ 
+ .buttonHover {
+    background: #338033;
+    cursor: pointer;
+ }
+ 
+ .buttonHoverBefore {
+  transform: translateX(300px) skewX(-15deg);
+  opacity: .6;
+  transition: .7s;
+ }
+ 
+ .buttonHoverAfter {
+  transform: translateX(300px) skewX(-15deg);
+  opacity: 1;
+  transition: .7s;
+ } */
+
+ .button {
+   
+  transition-duration: 0.4s;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
 }

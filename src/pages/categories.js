@@ -261,7 +261,7 @@ export default function categoriesPage(props) {
                     <SubCategoriesList
                         allSubCategories={allSubCategories}
                         handleClickEditSubCategory={handleClickEditSubCategory}
-                        // handleClickDeleteSubCategory={handleClickDeleteSubCategory}
+                        handleClickDeleteSubCategory={handleClickDeleteSubCategory}
 
                         // openn={showDeleteModal}
                         // allSubCategories={allSubCategories}

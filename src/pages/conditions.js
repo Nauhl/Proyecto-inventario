@@ -53,11 +53,19 @@ export default function ConditionPage() {
   const DeleteConditionOnClick = conditionID => {
     const deleting = allConditionsState.filter((condition) => condition.conditionID !== conditionID);
     console.log("DELETING", conditionID);
-    getConditions(deleting)
+    getConditions(deleting);
     handleCloseModal();
     deleteCondition(conditionID);
     getConditions();
   }
+
+  // const DeleteConditionOnClick = conditionID => {
+  //   getCondition(conditionID).then(condition => {
+  //     console.log("FOUND IT", condition);
+  //     deleteCondition(conditionID);
+  //     getConditions();
+  //   })
+  // };
 
   const handleChange = name => e => {
     setAddCondition({
@@ -90,7 +98,7 @@ export default function ConditionPage() {
     getCondition(conditionID).then(condition => {
       console.log("FOUND IT", condition);
       setShowDeleteModal(true);
-      getConditions();
+      //getCondition(condition);
       //ShowDeleteModal(true);
       //setEditMode(true);
       //setAddCondition(condition);
@@ -118,8 +126,7 @@ export default function ConditionPage() {
 
         <div className={styles.main}>
           {showElements ?
-            <button className="btn btn-success"
-              variant="success" size="sm"
+            <button className={ styles.button} 
               onClick={() => handleClickAddCondition()}>
               New condition
                   </button>
