@@ -50,20 +50,32 @@ export default function ConditionPage() {
     })
   }
 
-  const DeleteConditionOnClick = conditionID => {
-    const deleting = allConditionsState.filter((condition) => condition.conditionID !== conditionID);
-    console.log("DELETING", conditionID);
-    getConditions(deleting);
-    handleCloseModal();
-    deleteCondition(conditionID);
-    getConditions();
+  // const DeleteConditionOnClick = (conditionID) => {
+  //   try {
+  //   const deleting = allConditionsState.filter((condition) => condition.conditionID!==conditionID)
+  //   console.log("DELETING", id);
+  //   setAllConditionsState(deleting);
+  //   handleCloseModal();
+  //   //deleteCondition(conditionID);
+  //   getConditions();
+  //   }catch (error) {
+  //       console.log(error)
+      
+  //   }
+  // }
+
+  const DeleteConditionOnClick = (id) => {
+    deleteCondition(id);
+    getConditions
   }
 
   // const DeleteConditionOnClick = conditionID => {
   //   getCondition(conditionID).then(condition => {
   //     console.log("FOUND IT", condition);
-  //     deleteCondition(conditionID);
-  //     getConditions();
+
+  //     // console.log("DELETING", conditionID);
+  //     // deleteCondition(conditionID);
+  //     // getConditions();
   //   })
   // };
 

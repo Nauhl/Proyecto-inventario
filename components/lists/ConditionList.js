@@ -31,7 +31,6 @@ export default function ConditionList(props) {
                                         onClick={() => handleClickDeleteCondition(condition._id)} >Delete</button>
                                 </td>
 
-                                <td>
                                     <div className="modal fade" id="DeleteModal" >
                                         <div className="modal-dialog">
                                             <div className="modal-content">
@@ -57,7 +56,6 @@ export default function ConditionList(props) {
                                             </div>
                                         </div>
                                     </div>
-                                </td>
                             </tr>
                         ))}
                     </tbody>
