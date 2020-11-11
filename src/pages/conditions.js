@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ConditionList from "../../components/lists/ConditionList";
 import { getAllConditions, getCondition, createNewCondition, updateCondition, deleteCondition } from "../../src/lib/ctrlCondition";
 import ModalCondition from "../../components/modals/ModalCondition";
-import ConditionDelete from "../../components/DeleteModals/ConditionDelete";
+// import ConditionDelete from "../../components/DeleteModals/ConditionDelete";
 import styles from '../../styles/Home.module.css';
 
 export default function ConditionPage() {
@@ -151,7 +151,7 @@ export default function ConditionPage() {
             DeleteConditionOnClick={DeleteConditionOnClick}
           />
 
-          <div>
+          {/* <div>
             <ConditionDelete 
             
             openn={showDeleteModal}
@@ -160,7 +160,7 @@ export default function ConditionPage() {
             DeleteConditionOnClick={DeleteConditionOnClick}
             addCondition={addCondition}
             editMode={editMode}/>
-          </div>
+          </div> */}
 
         </div>
       </div>
