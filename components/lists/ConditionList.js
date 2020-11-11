@@ -27,85 +27,42 @@ export default function ConditionList(props) {
                                     <button type="button" className="btn btn-warning"
                                         onClick={() => handleClickEditCondition(condition._id)}
                                     >Edit</button>
-                                    <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#DeleteModal"
+                                    <button type="button" className="btn btn-danger" //data-toggle="modal" data-target="#DeleteModal"
                                         onClick={() => handleClickDeleteCondition(condition._id)} >Delete</button>
                                 </td>
 
-                                    <div className="modal fade" id="DeleteModal" >
+                                    {/* <div className="modal fade" id="DeleteModal" >
                                         <div className="modal-dialog">
                                             <div className="modal-content">
 
-                                                {/* <!-- Modal Header --> */}
+                                                
                                                 <div className="modal-header">
                                                     <h4 className="modal-title">Be Careful</h4>
                                                     <button type="button" className="close" data-dismiss="modal">&times;</button>
                                                 </div>
 
-                                                {/* <!-- Modal body --> */}
+                                                
                                                 <div className="modal-body">
                                                 ARE YOU SURE YOU WANT TO DELETE THIS ITEM ?
                                                 </div>
 
-                                                {/* <!-- Modal footer --> */}
+                                                
                                                 <div className="modal-footer">
                                                     <button type="button" className="btn btn-danger" data-dismiss="modal" >Close</button>
                                                 </div>
-                                                <button type="button" className="btn btn-danger" onClick={() => DeleteConditionOnClick(condition._id)} data-dismiss="modal">
+                                                <button type="button" className="btn btn-danger" onClick={() => DeleteConditionOnClick(condition._id)} >
                                                     <i className="fa fa-database"></i> &nbsp; Delete</button>
 
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                             </tr>
                         ))}
                     </tbody>
-
                 </table>
             </div>
-
-
-
-            {/* <Modal show={openn} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Be Careful
-        </Modal.Title>
-                </Modal.Header>
-
-                <Modal.Body>
-                    ARE YOU SURE YOU WANT TO DELETE THIS ITEM ?
-        </Modal.Body>
-
-                <Modal.Footer>
-                    <tbody>
-                        {/* {allConditionsState.map(condition => (  
-                        <tr key={condition._id}> 
-
-                        <td>
-                            <button className="btn btn-dark" variant="secondary" onClick={handleClose}>
-                                Cancel
-                                </button>
-
-                            <button type="button" className="btn btn-danger" onClick={() => DeleteConditionOnClick(condition._id)}>
-                                <i className="fa fa-database"></i> &nbsp; Delete</button>
-                        </td>
-                        {/* </tr>
-                    ))}   
-                    </tbody>
-                </Modal.Footer>
-            </Modal> */}
         </>
     ) : (
             <div className="spinner-border"></div>
         );
 }
-
-/*
-.map(condition => (
-                        <tr key={condition._id}>
-                        */
-
-/*
-
-                            <td>{condition.name}</td>
-                            <td>{condition.description}</td>
-                            */

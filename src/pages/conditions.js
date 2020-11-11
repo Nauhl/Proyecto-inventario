@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ConditionList from "../../components/lists/ConditionList";
 import { getAllConditions, getCondition, createNewCondition, updateCondition, deleteCondition } from "../../src/lib/ctrlCondition";
 import ModalCondition from "../../components/modals/ModalCondition";
-//import ConditionDeleteModal from "../../components/deleteModals/ConditionDeleteModal";
+import ConditionDelete from "../../components/DeleteModals/ConditionDelete";
 import styles from '../../styles/Home.module.css';
 
 export default function ConditionPage() {
@@ -50,34 +50,29 @@ export default function ConditionPage() {
     })
   }
 
-  // const DeleteConditionOnClick = (conditionID) => {
-  //   try {
-  //   const deleting = allConditionsState.filter((condition) => condition.conditionID!==conditionID)
-  //   console.log("DELETING", id);
-  //   setAllConditionsState(deleting);
-  //   handleCloseModal();
-  //   //deleteCondition(conditionID);
-  //   getConditions();
-  //   }catch (error) {
-  //       console.log(error)
-      
-  //   }
-  // }
-
-  const DeleteConditionOnClick = (id) => {
-    deleteCondition(id);
-    getConditions
+  const DeleteConditionOnClick = (conditionID) => {
+    console.log(conditionID);
+    deleteCondition(conditionID);
+    handleCloseModal();
+    getConditions();
   }
+    // try {
+    // const deleting = allConditionsState.filter((condition) => condition.conditionID!==conditionID)
+    // console.log("DELETING", conditionID);
+    // setAllConditionsState(deleting);
+    // handleCloseModal();
+    // deleteCondition(conditionID);
+    // getConditions();
+    // }catch (error) {
+    //     console.log(error)
+      
+    // }
+  
 
-  // const DeleteConditionOnClick = conditionID => {
-  //   getCondition(conditionID).then(condition => {
-  //     console.log("FOUND IT", condition);
-
-  //     // console.log("DELETING", conditionID);
-  //     // deleteCondition(conditionID);
-  //     // getConditions();
-  //   })
-  // };
+  // const DeleteConditionOnClick = () => {
+  //   deleteCondition();
+  //   getAllConditions();
+  // }
 
   const handleChange = name => e => {
     setAddCondition({
@@ -111,9 +106,7 @@ export default function ConditionPage() {
       console.log("FOUND IT", condition);
       setShowDeleteModal(true);
       //getCondition(condition);
-      //ShowDeleteModal(true);
-      //setEditMode(true);
-      //setAddCondition(condition);
+      
     })
   };
 
@@ -158,22 +151,19 @@ export default function ConditionPage() {
             DeleteConditionOnClick={DeleteConditionOnClick}
           />
 
-          {/* <div>
-            <ConditionDeleteModal 
+          <div>
+            <ConditionDelete 
             
             openn={showDeleteModal}
+            allConditionsState={allConditionsState}
             handleClose={handleCloseModal}
-            DeleteConditionOnClick={DeleteConditionOnClick}/>
-          </div> */}
+            DeleteConditionOnClick={DeleteConditionOnClick}
+            addCondition={addCondition}
+            editMode={editMode}/>
+          </div>
+
         </div>
       </div>
     </div>
   )
 };
-/*<div>
-          <ConditionDeleteModal
-          openn={showDeleteModal}
-          handleClose={handleCloseModal}
-          DeleteConditionOnClick={DeleteConditionOnClick}
-          />
-        </div>*/
