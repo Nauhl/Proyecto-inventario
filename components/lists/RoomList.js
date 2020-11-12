@@ -32,7 +32,7 @@ export default function RoomList(props) {
               }
               <button type="button" className="btn btn-outline-warning"
                 onClick={() => handleClickEditRoom(room._id)} >Edit</button>
-              <button className="btn btn-outline-danger" data-toggle="modal" data-target="#DeleteModal"
+              <button className="btn btn-outline-danger" 
                 onClick={() => handleClickDeleteRoom(room)} >Delete</button>
             </td>
           </tr>

@@ -27,14 +27,15 @@ const ModalRoom = props => {
                 </button>
 
                 <div variant="primary" onClick={createNewRoom}>
-                    {editMode ? <button className="btn btn-success"
+                    {editMode ? <button className="btn btn-outline-success"
                         variant="success" size="sm"
                         onClick={() => handleClickUpdateRoom()}
                         >
                         Update
                         </button>
                         :
-                        <button type="button" className="btn btn-success" onClick={() => handleClickOnCreateNewRoom()}>
+                        <button type="button" className="btn btn-outline-success" 
+                        onClick={() => handleClickOnCreateNewRoom()}>
                         <i className="fa fa-database"></i> &nbsp; Save</button>}
                 </div>
             </Modal.Footer>
@@ -47,15 +48,3 @@ ModalRoom.defaultProps = {
 };
 
 export default ModalRoom;
-
-/*   <Button variant="primary" onClick={createNewRoom}>
-                    {editMode ? <Button
-                        variant="success" size="sm"
-                        onClick={() => handleClickUpdateRoom()}
-                        >
-                        UPDATE
-                        </Button>
-                        :
-                        <Button type="button" className="btn btn-success" onClick={() => handleClickOnCreateNewRoom()}><i className="fa fa-database">
-                        </i> &nbsp; Save</Button>}
-                </Button>*/

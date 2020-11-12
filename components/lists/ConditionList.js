@@ -35,8 +35,8 @@ export default function ConditionList(props) {
                             <button type="button" className="btn btn-outline-warning"
                                 onClick={() => handleClickEditCondition(condition._id)}
                             >Edit</button>
-                            <button type="button" className="btn btn-outline-danger" //data-toggle="modal" data-target="#DeleteModal"
-                                onClick={() => handleClickDeleteCondition(condition._id)} >Delete</button>
+                            <button type="button" className="btn btn-outline-danger" 
+                                onClick={() => handleClickDeleteCondition(condition)} >Delete</button>
                         </td>
 
                         {/* <Modal show={openn} onHide={handleClose}>

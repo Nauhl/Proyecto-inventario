@@ -5,6 +5,7 @@ import CategoriesList from "../../components/lists/CategoriesList";
 import SubCategoriesList from "../../components/lists/SubCategoriesList";
 import ModalCategory from "../../components/modals/ModalCategory";
 import ModalSubCategory from "../../components/modals/ModalSubCategory";
+import ModalConfirmDelete from "../../components/DeleteModal/ModalConfirmDelete";
 
 export default function categoriesPage(props) {
 
@@ -13,10 +14,13 @@ export default function categoriesPage(props) {
     const [newCategory, setNewCategory] = React.useState({});
     const [newSubCategory, setNewSubCategory] = React.useState({});
 
+    const [showConfirmDeleteModal, setShowConfirmDeleteModal] = React.useState(false);
+    const [showDeleteModalSubCategory, setShowDeleteModalSubCategory] = React.useState(false);
     const [showElements, setShowElements] = React.useState(true);
     const [showModal, setshowModal] = React.useState(false);
     const [showModalSubCategory, setShowModalSubCategory] = React.useState(false);
     const [editMode, setEditMode] = React.useState(false);
+    // const [newCategoryy, setNewCategoryy] = React.useState({});
 
     const [showDeleteModal, setShowDeleteModal] = React.useState(false);
 
@@ -43,7 +47,6 @@ export default function categoriesPage(props) {
         console.log("handleCloseModal")
         setshowModal(false);
         setNewCategory({});
-        setShowDeleteModal(false);
     };
 
     const handleCloseSubcategoryModal = () => {
@@ -52,6 +55,13 @@ export default function categoriesPage(props) {
         setNewSubCategory({});
     };
 
+    const handleCloseConfirmDeleteModal = () => {
+        setShowConfirmDeleteModal(false);
+    };
+
+    const handleCloseDeleteModalSubCategory = () => {
+        setShowDeleteModalSubCategory(false);
+    };
     //******************************** */
 
     const handleClickAddCategory = () => {
@@ -85,7 +95,26 @@ export default function categoriesPage(props) {
         })
     }
 
-    const DeleteCategoryOnClick = categoryID => {
+    const DeleteCategoryOnClick = () => {
+        console.log("DELETING", newCategory);
+        deleteCategory(newCategory._id).then(() => {
+            getCategories();
+            setNewCategory({});
+            setShowConfirmDeleteModal(false);
+        })
+    }
+
+    const DeleteSubCategoryOnClick = () => {
+        console.log("DELETING", newSubCategory);
+        deleteSubCategory(newSubCategory._id).then(() => {
+            getSubCategories();
+            getCategories();
+            setNewSubCategory({});
+            setShowDeleteModalSubCategory(false);
+        })
+    }
+
+    /*const DeleteCategoryOnClick = categoryID => {
         const deleting = allCategories.filter((category) => category.categoryID !== categoryID);
         console.log("DELETING", categoryID);
         getCategories(deleting);
@@ -101,7 +130,7 @@ export default function categoriesPage(props) {
         handleCloseSubcategoryModal()
         deleteSubCategory(subCategoryID);
         getSubCategories();
-    }
+    }*/
 
     /* Handle Change */ /* we set a variable that it will be changing it state*/
     const handleChange = name => event => {
@@ -165,26 +194,32 @@ export default function categoriesPage(props) {
         setEditMode(false);
     };
 
-    const handleClickDeleteCategory = categoryID => {
-        getCategory(categoryID).then(category => {
-            console.log("FOUND IT", category);
-            setShowDeleteModal(true);
-            getCategories();
-            //ShowDeleteModal(true);
-            //setEditMode(true);
-            //setAddCondition(condition);
-        })
+    const handleClickDeleteCategory = category => {
+        setNewCategory(category);
+        setShowConfirmDeleteModal(true);
+        // categoryID => {
+        //     getCategory(categoryID).then(category => {
+        //         console.log("FOUND IT", category);
+        //         setShowDeleteModal(true);
+        //         getCategories();
+        //         //ShowDeleteModal(true);
+        //         //setEditMode(true);
+        //         //setAddCondition(condition);
+        //     })
     };
 
-    const handleClickDeleteSubCategory = subCategoryID => {
-        getSubCategory(subCategoryID).then(subCategory => {
-            console.log("FOUND IT", subCategory);
-            setShowDeleteModal(true);
-            getSubCategories();
-            //ShowDeleteModal(true);
-            //setEditMode(true);
-            //setAddCondition(condition);
-        })
+    const handleClickDeleteSubCategory = subCategory => {
+        setNewSubCategory(subCategory);
+        setShowDeleteModalSubCategory(true);
+        // subCategoryID => {
+        //     getSubCategory(subCategoryID).then(subCategory => {
+        //         console.log("FOUND IT", subCategory);
+        //         setShowDeleteModal(true);
+        //         getSubCategories();
+        //         //ShowDeleteModal(true);
+        //         //setEditMode(true);
+        //         //setAddCondition(condition);
+        //     })
     };
 
     return (
@@ -216,6 +251,20 @@ export default function categoriesPage(props) {
                 editMode={editMode}
             />
 
+            <ModalConfirmDelete
+                open={showConfirmDeleteModal}
+                handleClose={handleCloseConfirmDeleteModal}
+                handleConfirmDelete={DeleteCategoryOnClick}
+                item={newCategory}
+            />
+
+<ModalConfirmDelete
+                open={showDeleteModalSubCategory}
+                handleClose={handleCloseConfirmDeleteModal}
+                handleConfirmDelete={DeleteSubCategoryOnClick}
+                item={newSubCategory}
+            />
+
             <div className="card mb-3" >
                 <div className="card-header"></div>
                 <div className="card-body">
@@ -244,9 +293,9 @@ export default function categoriesPage(props) {
                     handleClickEditCategory={handleClickEditCategory}
                     handleClickDeleteCategory={handleClickDeleteCategory}
 
-                    openn={showDeleteModal}
-                    handleClose={handleCloseModal}
-                    DeleteCategoryOnClick={DeleteCategoryOnClick}
+                /*openn={showDeleteModal}
+                handleClose={handleCloseModal}
+    DeleteCategoryOnClick={DeleteCategoryOnClick}*/
                 />
             </div>
 
@@ -268,7 +317,7 @@ export default function categoriesPage(props) {
                     // openn={showDeleteModal}
                     // allSubCategories={allSubCategories}
                     // handleClose={handleCloseSubcategoryModal}
-                    DeleteSubCategoryOnClick={DeleteSubCategoryOnClick}
+                    //DeleteSubCategoryOnClick={DeleteSubCategoryOnClick}
                 />
             </div>
         </div >

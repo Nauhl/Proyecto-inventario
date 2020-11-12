@@ -30,14 +30,15 @@ const ModalItem = props => {
                 </button>
 
                 <div variant="primary" onClick={createNewItem}>
-                    {editMode ? <button className="btn btn-success"
+                    {editMode ? <button className="btn btn-outline-success"
                         variant="success" size="sm"
                         onClick={() => handleClickUpdateItem()}
                         >
                         Update
                         </button>
                         :
-                        <button type="button" className="btn btn-success" onClick={() => handleClickOnCreateNewItem()}>
+                        <button type="button" className="btn btn-outline-success" 
+                        onClick={() => handleClickOnCreateNewItem()}>
                         <i className="fa fa-database"></i> &nbsp; Save</button>}
                 </div>
             </Modal.Footer>

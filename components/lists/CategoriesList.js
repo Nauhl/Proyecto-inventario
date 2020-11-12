@@ -38,8 +38,8 @@ export default function CategoriesList(props) {
                                 <button type="button" className="btn btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Edit Button" data-original-title=""
                                     onClick={() => handleClickEditCategory(category._id)}>Edit</button>
                                         &nbsp;
-                                    <button type="button" className="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Delete Button" data-original-title=""//data-toggle="modal" data-target="#DeleteModal"
-                                    onClick={() => handleClickDeleteCategory(category._id)}>
+                                    <button type="button" className="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Delete Button" data-original-title=""
+                                    onClick={() => handleClickDeleteCategory(category)}>
                                     Delete
                                     </button>
                             </td>
@@ -48,8 +48,6 @@ export default function CategoriesList(props) {
                     )}
                 </tbody>
             </table>
-
-
     ) : (
             <div className="spinner-border bg-success"></div>
         );

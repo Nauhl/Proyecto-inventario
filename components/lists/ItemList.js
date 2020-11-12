@@ -55,8 +55,8 @@ export default function ItemList(props) {
                             <button type="button" className="btn btn-outline-warning"
                                 onClick={() => handleClickEditItem(item._id)}
                             >Edit</button>
-                            <button type="button" className="btn btn-outline-danger" data-toggle="modal" data-target="#DeleteModal"
-                                onClick={() => handleClickDeleteItem(item._id)} >Delete</button>
+                            <button type="button" className="btn btn-outline-danger"
+                                onClick={() => handleClickDeleteItem(item)} >Delete</button>
                         </td>
                     </tr>
                 ))}

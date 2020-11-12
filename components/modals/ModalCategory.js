@@ -91,12 +91,11 @@ const ModalCategory = props => {
 
                 <div variant="primary" onClick={createNewCategory}>
                     {editMode ?
-                        <button className="btn btn-success"
-                            variant="success" size="sm"
+                        <button className="btn btn-outline-success"
                             onClick={() => handleClickUpdateCategory()}>
                             Update
                         </button> :
-                        <button type="button" className="btn btn-success"
+                        <button type="button" className="btn btn-outline-success"
                             onClick={() => handleClickOnCreateNewCategory()}>
                             <i className="fa fa-database">
                             </i> &nbsp; Save</button>}

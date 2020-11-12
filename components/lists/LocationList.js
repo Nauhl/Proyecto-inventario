@@ -47,8 +47,8 @@ export default function LocationList(props) {
                             <button type="button" className="btn btn-outline-warning"
                                 onClick={() => handleClickEditLocation(location._id)}
                             >Edit</button>
-                            <button type="button" className="btn btn-outline-danger" //data-toggle="modal" data-target="#DeleteModal"
-                                onClick={() => handleClickDeleteLocation(location._id)} >Delete</button>
+                            <button type="button" className="btn btn-outline-danger" 
+                                onClick={() => handleClickDeleteLocation(location)} >Delete</button>
                         </td>
 
                     </tr>

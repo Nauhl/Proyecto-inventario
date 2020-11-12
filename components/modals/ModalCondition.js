@@ -28,14 +28,14 @@ const ModalCondition = props => {
                 </button>
 
                 <div variant="primary" onClick={createNewCondition}>
-                    {editMode ? <button className="btn btn-success"
-                        variant="success" size="sm"
+                    {editMode ? <button className="btn btn-outline-success"
                         onClick={() => handleClickUpdateCondition()}
                     >
                         Update
                         </button>
                         :
-                        <button type="button" className="btn btn-success" onClick={() => handleClickOnCreateNewCondition()}>
+                        <button type="button" className="btn btn-outline-success" 
+                        onClick={() => handleClickOnCreateNewCondition()}>
                         <i className="fa fa-database"></i> &nbsp; Save</button>}
                 </div>
             </Modal.Footer>

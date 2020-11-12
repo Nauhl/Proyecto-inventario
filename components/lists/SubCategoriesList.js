@@ -30,8 +30,8 @@ export default function SubCategoriesList(props) {
                             <button type="button" className="btn btn-outline-warning"
                                 onClick={() => handleClickEditSubCategory(subCategory._id)}>Edit</button>
                                         &nbsp;
-                                    <button type="button" className="btn btn-outline-danger" data-toggle="modal" data-target="#DeleteModal"
-                                onClick={() => handleClickDeleteSubCategory(subCategory._id)}>
+                                    <button type="button" className="btn btn-outline-danger" 
+                                onClick={() => handleClickDeleteSubCategory(subCategory)}>
                                 Delete
                                     </button>
                         </td>

@@ -6,12 +6,15 @@ import { getAllConditions } from "../../src/lib/ctrlCondition";
 import ItemList from "../../components/lists/ItemList";
 import ModalItem from "../../components/modals/ModalItem";
 import styles from '../../styles/Home.module.css';
+import ModalConfirmDelete from "../../components/DeleteModal/ModalConfirmDelete";
 
 export default function itemsPage() {
 
+    const [showConfirmDeleteModal, setShowConfirmDeleteModal] = React.useState(false);
     const [showElements, setShowElements] = React.useState(true);
     const [showModal, setShowModal] = React.useState(false);
     const [allItemsState, setAllItemsState] = React.useState([]);
+    // const [newItemss, setNewItemss] = React.useState({});
 
     const [allLocations, setLocationState] = React.useState([]);
     const [allRooms, setRoomsState] = React.useState([]);
@@ -67,6 +70,10 @@ export default function itemsPage() {
         setShowDeleteModal(false);
     };
 
+    const handleCloseConfirmDeleteModal = () => {
+        setShowConfirmDeleteModal(false);
+    };
+
     const handleClickAddItem = () => {
         console.log("handleClickAddItem")
         setShowModal(true);
@@ -81,16 +88,24 @@ export default function itemsPage() {
         })
     }
 
-    const DeleteItemOnClick = itemID => {
+    const DeleteItemOnClick = () => {
+        console.log("DELETING", newItem);
+        deleteItem(newItem._id).then(() => {
+            getItems();
+            setNewItem({});
+            setShowConfirmDeleteModal(false);
+        })
+    }
+    /*const DeleteItemOnClick = itemID => {
         const deleting = allItemsState.filter((item) => item.itemID !== itemID);
         console.log("DELETING", itemID);
         getItems(deleting);
         handleCloseModal()
         deleteItem(itemID);
         getItems();
-        /*setNewLocation(true);
-        setShowElements(true);*/
-    }
+        setNewLocation(true);
+        setShowElements(true);
+    }*/
 
     const handleChange = path => name => event => {
         if (path) {
@@ -129,15 +144,18 @@ export default function itemsPage() {
     };
 
     // Abre el modal de delete
-    const handleClickDeleteItem = itemID => {
-        getItem(itemID).then(item => {
-            console.log("FOUND IT", item);
-            setShowDeleteModal(true);
-            getItems();
-            //ShowDeleteModal(true);
-            //setEditMode(true);
-            //setAddCondition(condition);
-        })
+    const handleClickDeleteItem = item => {
+        setNewItem(item);
+        setShowConfirmDeleteModal(true);
+        // itemID => {
+        //     getItem(itemID).then(item => {
+        //         console.log("FOUND IT", item);
+        //         setShowDeleteModal(true);
+        //         getItems();
+        //ShowDeleteModal(true);
+        //setEditMode(true);
+        //setAddCondition(condition);
+        // })
     };
 
     /*const handleClickOnCancelNewItem = () => {
@@ -165,6 +183,13 @@ export default function itemsPage() {
                 editMode={editMode}
             />
             <div >
+
+                <ModalConfirmDelete
+                    open={showConfirmDeleteModal}
+                    handleClose={handleCloseConfirmDeleteModal}
+                    handleConfirmDelete={DeleteItemOnClick}
+                    item={newItem}
+                />
 
                 <div className="card mb-3" >
                     <div className="card-header"></div>
