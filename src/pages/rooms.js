@@ -1,13 +1,15 @@
 import { getAllRooms, getRoom, createNewRoom, updateRoom, deleteRoom } from "../../src/lib/ctrlRoom";
-import { getAllLocations, getLocation} from "../../src/lib/ctrlLocation";
+import { getAllLocations, getLocation } from "../../src/lib/ctrlLocation";
 import RoomList from "../../components/lists/RoomList";
-import styles from '../../styles/Home.module.css';
+//import styles from '../../styles/Home.module.css';
 import ModalRoom from "../../components/modals/ModalRoom";
+import ModalConfirmDelete from "../../components/DeleteModal/ModalConfirmDelete";
 
 export default function roomsPage() {
 
   const [showElements, setShowElements] = React.useState(true);
   const [showModal, setShowModal] = React.useState(false);
+  const [showConfirmDeleteModal, setShowConfirmDeleteModal] = React.useState(false);
   const [editMode, setEditMode] = React.useState(false);
   const [allRoomsState, setAllRoomsState] = React.useState([]);
   const [allLocations, setLocationState] = React.useState([]);
@@ -39,6 +41,9 @@ export default function roomsPage() {
     setShowDeleteModal();
   };
 
+  const handleCloseConfirmDeleteModal = () => {
+    setShowConfirmDeleteModal(false);
+  };
 
   const handleClickAddRoom = () => {
     console.log("handleClickAddRoom")
@@ -55,15 +60,13 @@ export default function roomsPage() {
     })
   }
 
-  const DeleteRoomOnClick = roomID => {
-    const DeletingRoom = allRoomsState.filter((room) => room.roomID !== roomID);
-    console.log("DELETING", roomID);
-    getRooms(DeletingRoom);
-    handleCloseModal()
-    deleteRoom(roomID);
-    getRooms();
-    /*setNewLocation(true);
-    setShowElements(true);*/
+  const DeleteRoomOnClick = () => {
+    console.log("DELETING", newRoom);
+    deleteRoom(newRoom._id).then(() => {
+      getRooms();
+      setNewRoom({});
+      setShowConfirmDeleteModal(false);
+    })
   }
 
   const handleChange = name => event => {
@@ -83,11 +86,6 @@ export default function roomsPage() {
     })
   };
 
-  /*const handleClickOnCancelNewRoom = () => {
-    setNewRoom({})
-    setShowElements(true);
-  };*/
-
   const handleClickEditRoom = roomID => {
     getRoom(roomID).then(room => {
       console.log("FOUND IT", room);
@@ -98,15 +96,9 @@ export default function roomsPage() {
   };
 
   // Abre el modal de delete
-  const handleClickDeleteRoom = roomID => {
-    getRoom(roomID).then(room => {
-      console.log("FOUND IT", room);
-      setShowDeleteModal(true);
-      getRooms();
-      //ShowDeleteModal(true);
-      //setEditMode(true);
-      //setAddCondition(condition);
-    })
+  const handleClickDeleteRoom = room => {
+    setNewRoom(room);
+    setShowConfirmDeleteModal(true);
   };
 
   return (
@@ -118,45 +110,36 @@ export default function roomsPage() {
         allLocations={allLocations}
         handleChange={handleChange}
         handleClickUpdateRoom={handleClickUpdateRoom}
-        
+
         handleClickOnCreateNewRoom={handleClickOnCreateNewRoom}
-        //cancelCreateNewRoom={handleClickOnCancelNewRoom}
         newRoom={newRoom}
         editMode={editMode}
       />
 
-      <div>
-        <div className={styles.main}>
-          <h3>Rooms</h3>
-        </div>
-        <div className={styles.main}>
-          {showElements ?
-            <button className="btn btn-success"
-              variant="success" size="sm"
-              onClick={() => handleClickAddRoom()}>
-              New room</button>
-            :
-            null
-          }
-        </div>
+      <ModalConfirmDelete
+        open={showConfirmDeleteModal}
+        handleClose={handleCloseConfirmDeleteModal}
+        handleConfirmDelete={DeleteRoomOnClick}
+        item={newRoom}
+      />
 
-        <div>
-          { /*showElements ? */}
-          <RoomList
-            allRooms={allRoomsState}
-            handleClickEditRoom={handleClickEditRoom}
-            handleClickDeleteRoom={handleClickDeleteRoom}
-            
-            openn={showDeleteModal}
-            handleClose={handleCloseModal}
-            DeleteRoomOnClick={DeleteRoomOnClick}
-          
-          />
-          {/*:
-          <InputRoom
-          /> */}
+      <div className="card mb-3" >
+        <div className="card-header"></div>
+        <div className="card-body">
+          <h4 className="card-title">Rooms</h4>
+          <p className="card-text">In this page you can create, edit and delete Rooms to your items.</p>
         </div>
-      </div >
+      </div>
+
+      <div>
+        <RoomList
+          allRooms={allRoomsState}
+          showElements={showElements}
+          handleClickAddRoom={handleClickAddRoom}
+          handleClickEditRoom={handleClickEditRoom}
+          handleClickDeleteRoom={handleClickDeleteRoom}
+        />
+      </div>
     </div >
   )
 };

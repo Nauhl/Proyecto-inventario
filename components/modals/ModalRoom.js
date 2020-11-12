@@ -19,11 +19,9 @@ const ModalRoom = props => {
                     handleChange={handleChange}
                     allLocations={allLocations}
                 />
-
             </Modal.Body>
 
             <Modal.Footer>
-
                 <button className="btn btn-danger" variant="secondary" onClick={handleClose}>
                     Cancel
                 </button>

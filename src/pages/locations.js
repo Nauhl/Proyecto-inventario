@@ -1,6 +1,6 @@
 import { getAllLocations, getLocation, createNewLocation, updateLocation, deleteLocation } from "../../src/lib/ctrlLocation";
 import LocationList from "../../components/lists/LocationList";
-import styles from '../../styles/Home.module.css';
+// import styles from '../../styles/Home.module.css';
 import ModalLocation from "../../components/modals/ModalLocation";
 
 export default function locationsPage() {
@@ -122,26 +122,21 @@ const handleClickDeleteLocation = locationID => {
         newLocation={newLocation}
         editMode={editMode}
       />
-      <div >
-        <div className={styles.main}>
-          <h3>Locations</h3>
-        </div>
-
-        <div className={styles.main}>
-          {showElements ?
-            <button className="btn btn-success"
-              variant="success" size="sm"
-              onClick={() => handleClickAddLocation()}>
-              New location</button>
-            :
-            null
-          }
-        </div>
+      
+      <div className="card mb-3" >
+                <div className="card-header"></div>
+                <div className="card-body">
+                    <h4 className="card-title">Locations</h4>
+                    <p className="card-text">In this page you can create, edit and delete Locations to your items.</p>
+                </div>
+            </div>
 
         <div >
           {/* {showElements ? */}
           <LocationList
+          showElements={showElements}
             allLocations={allLocationsState}
+            handleClickAddLocation={handleClickAddLocation}
             handleClickEditLocation={handleClickEditLocation}
             handleClickDeleteLocation={handleClickDeleteLocation}
 
@@ -151,6 +146,5 @@ const handleClickDeleteLocation = locationID => {
           />
         </div>
       </div>
-    </div>
   )
 };

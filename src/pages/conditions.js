@@ -56,18 +56,18 @@ export default function ConditionPage() {
     handleCloseModal();
     getConditions();
   }
-    // try {
-    // const deleting = allConditionsState.filter((condition) => condition.conditionID!==conditionID)
-    // console.log("DELETING", conditionID);
-    // setAllConditionsState(deleting);
-    // handleCloseModal();
-    // deleteCondition(conditionID);
-    // getConditions();
-    // }catch (error) {
-    //     console.log(error)
-      
-    // }
-  
+  // try {
+  // const deleting = allConditionsState.filter((condition) => condition.conditionID!==conditionID)
+  // console.log("DELETING", conditionID);
+  // setAllConditionsState(deleting);
+  // handleCloseModal();
+  // deleteCondition(conditionID);
+  // getConditions();
+  // }catch (error) {
+  //     console.log(error)
+
+  // }
+
 
   // const DeleteConditionOnClick = () => {
   //   deleteCondition();
@@ -106,7 +106,7 @@ export default function ConditionPage() {
       console.log("FOUND IT", condition);
       setShowDeleteModal(true);
       //getCondition(condition);
-      
+
     })
   };
 
@@ -124,45 +124,26 @@ export default function ConditionPage() {
         editMode={editMode}
       />
 
-      <div >
-        <div className={styles.main} >
-          <h3>Conditions</h3>
+      <div className="card mb-3" >
+        <div className="card-header"></div>
+        <div className="card-body">
+          <h4 className="card-title">Conditions</h4>
+          <p className="card-text">In this page you can create, edit and delete Conditions.</p>
         </div>
+      </div>
 
-        <div className={styles.main}>
-          {showElements ?
-            <button className={ styles.button} 
-              onClick={() => handleClickAddCondition()}>
-              New condition
-                  </button>
-            :
-            null
-          }
-        </div>    
+      <div>
+        <ConditionList
+          showElements={showElements}
+          allConditionsState={allConditionsState}
+          handleClickAddCondition={handleClickAddCondition}
+          handleClickEditCondition={handleClickEditCondition}
+          handleClickDeleteCondition={handleClickDeleteCondition}
 
-        <div>
-          <ConditionList
-            allConditionsState={allConditionsState}
-            handleClickEditCondition={handleClickEditCondition}
-            handleClickDeleteCondition={handleClickDeleteCondition}
-
-            openn={showDeleteModal}
-            handleClose={handleCloseModal}
-            DeleteConditionOnClick={DeleteConditionOnClick}
-          />
-
-          {/* <div>
-            <ConditionDelete 
-            
-            openn={showDeleteModal}
-            allConditionsState={allConditionsState}
-            handleClose={handleCloseModal}
-            DeleteConditionOnClick={DeleteConditionOnClick}
-            addCondition={addCondition}
-            editMode={editMode}/>
-          </div> */}
-
-        </div>
+          openn={showDeleteModal}
+          handleClose={handleCloseModal}
+          DeleteConditionOnClick={DeleteConditionOnClick}
+        />
       </div>
     </div>
   )

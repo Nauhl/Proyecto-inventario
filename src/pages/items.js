@@ -165,26 +165,21 @@ export default function itemsPage() {
                 editMode={editMode}
             />
             <div >
-                <div className={styles.main}>
-                    <h3>Items</h3>
-                </div>
 
-                <div className={styles.main}>
-                    {showElements ?
-                        <button className="btn btn-success"
-                            // data-toggle="modal" data-target="#newLocation"
-                            variant="success" size="sm"
-                            onClick={() => handleClickAddItem()}>
-                            New Item</button>
-                        :
-                        null
-                    }
+                <div className="card mb-3" >
+                    <div className="card-header"></div>
+                    <div className="card-body">
+                        <h4 className="card-title">Items</h4>
+                        <p className="card-text">In this page you can create, edit and delete Items to your inventory.</p>
+                    </div>
                 </div>
 
                 <div >
                     {/* {showElements ? */}
                     <ItemList
+                        showElements={showElements}
                         allItems={allItemsState}
+                        handleClickAddItem={handleClickAddItem}
                         handleClickEditItem={handleClickEditItem}
                         DeleteItemOnClick={DeleteItemOnClick}
 

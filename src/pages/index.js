@@ -1,6 +1,6 @@
 //import Head from 'next/head'     // I change/move head to _document.js
 import React from "react";
-import styles from '../../styles/Home.module.css'
+// import styles from '../../styles/Home.module.css'
 import MyApp from '../pages/_app';
 
 export default function Home() {
@@ -33,10 +33,9 @@ export default function Home() {
         <div className="col-6 col-md-4">
           <h6> Lorem text </h6>Lorem ipsum dolor sit amet, sed cu bonorum fierent. Referrentur delicatissimi ut nam. Vis aperiri praesent an, et nec choro delicata, ad eam illud veniam lobortis. Mel legendos salutatus patrioque no.</div>
       </div>
-    & nbsp;
 
       {/* Card */}
-      <div className={styles.card}>
+      <div >
         <div className="card border-info mb-3">
           <h3 className="card-header">Code components with React</h3>
           <div className="card-body text-success">
@@ -45,8 +44,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-
     </>
   )
 }

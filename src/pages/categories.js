@@ -1,6 +1,6 @@
 import { getAllCategories, getCategory, createNewCategory, updateCategory, deleteCategory } from "../../src/lib/ctrlCategory";
 import { getAllSubCategories, getSubCategory, createNewSubCategory, updateSubCategory, deleteSubCategory } from "../../src/lib/ctrlSubCategory";
-import styles from '../../styles/Home.module.css';
+//import styles from '../../styles/Home.module.css';
 import CategoriesList from "../../components/lists/CategoriesList";
 import SubCategoriesList from "../../components/lists/SubCategoriesList";
 import ModalCategory from "../../components/modals/ModalCategory";
@@ -216,59 +216,60 @@ export default function categoriesPage(props) {
                 editMode={editMode}
             />
 
+            <div className="card mb-3" >
+                <div className="card-header"></div>
+                <div className="card-body">
+                    <h4 className="card-title">Categories</h4>
+                    <p className="card-text">In this page you can create, edit and delete Categories to your items.</p>
+                </div>
+            </div>
+
+            {/* <div >
+                {showElements ?
+                    <button className="btn btn-success"
+                        variant="success" size="sm"
+                        onClick={() => handleClickAddCategory()}>
+                        New category
+                    </button>
+                    :
+                    null
+                }
+            </div> */}
+
             <div >
-                <div className={styles.main} >
-                    <h3>Categories</h3>
+                <CategoriesList
+                    allCategories={allCategories}
+                    showElements={showElements}
+                    handleClickAddCategory={handleClickAddCategory}
+                    handleClickEditCategory={handleClickEditCategory}
+                    handleClickDeleteCategory={handleClickDeleteCategory}
+
+                    openn={showDeleteModal}
+                    handleClose={handleCloseModal}
+                    DeleteCategoryOnClick={DeleteCategoryOnClick}
+                />
+            </div>
+
+            <div className="card mb-3" >
+                <div className="card-header"></div>
+                <div className="card-body">
+                    <h4 className="card-title">SubCategories</h4>
+                    <p className="card-text">With this table you can create, edit and delete SubCategories to your Categories.</p>
                 </div>
+            </div>
 
-                <div className={styles.main}>
-                    {showElements ?
-                        <button className="btn btn-success"
-                            variant="success" size="sm"
-                            onClick={() => handleClickAddCategory()}>
-                            New category
-                    </button>
-                        :
-                        null
-                    }
-                </div>
+            <div >
+                <SubCategoriesList
+                    allSubCategories={allSubCategories}
+                    handleClickAddSubCategory={handleClickAddSubCategory}
+                    handleClickEditSubCategory={handleClickEditSubCategory}
+                    handleClickDeleteSubCategory={handleClickDeleteSubCategory}
 
-                <div >
-                    <CategoriesList
-                        allCategories={allCategories}
-                        handleClickEditCategory={handleClickEditCategory}
-                        handleClickDeleteCategory={handleClickDeleteCategory}
-
-                        openn={showDeleteModal}
-                        handleClose={handleCloseModal}
-                        DeleteCategoryOnClick={DeleteCategoryOnClick}
-                    />
-                </div>
-
-                <div  >
-                    <h3>Sub Categories</h3>
-                </div>
-
-                <div className={styles.main}>
-                    <button type="button" className="btn btn-dark" variant="warning"
-                        onClick={() => handleClickAddSubCategory()}
-                    >
-                        New sub category
-                    </button>
-                </div>
-
-                <div >
-                    <SubCategoriesList
-                        allSubCategories={allSubCategories}
-                        handleClickEditSubCategory={handleClickEditSubCategory}
-                        handleClickDeleteSubCategory={handleClickDeleteSubCategory}
-
-                        // openn={showDeleteModal}
-                        // allSubCategories={allSubCategories}
-                        // handleClose={handleCloseSubcategoryModal}
-                        DeleteSubCategoryOnClick={DeleteSubCategoryOnClick}
-                    />
-                </div>
+                    // openn={showDeleteModal}
+                    // allSubCategories={allSubCategories}
+                    // handleClose={handleCloseSubcategoryModal}
+                    DeleteSubCategoryOnClick={DeleteSubCategoryOnClick}
+                />
             </div>
         </div >
     )

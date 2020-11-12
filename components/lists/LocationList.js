@@ -1,146 +1,62 @@
-import styles from '../../styles/Home.module.css';
+//import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
-import Modal from "react-bootstrap/Modal";
 
 export default function LocationList(props) {
 
-    const { allLocations, handleClickEditLocation, handleClickDeleteLocation, newLocation, DeleteLocationOnClick
+    const { allLocations, showElements, handleClickAddLocation, handleClickEditLocation, handleClickDeleteLocation, newLocation, DeleteLocationOnClick
         , openn, handleClose } = props;
 
     return allLocations && allLocations.length > 0 ? (
-        <>
-            <div className={styles.container}>
-                <table className="table table-bordered" >
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Status</th>
-                            <th>Street-Number</th>
-                            <th>Street</th>
-                            <th>Street-2</th>
-                            <th>City</th>
-                            <th>Province</th>
-                            <th>Country</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {allLocations.map(location => (
-                            <tr key={location._id}>
-                                <td>{location.name}</td>
-                                <td>{location.description}</td>
-                                <td>{location.status}</td>
-                                <td>{location.address ? location.address.streetNumber : ""}</td>
-                                <td>{location.address ? location.address.street : ""}</td>
-                                <td>{location.address ? location.address.street2 : ""}</td>
-                                <td>{location.address ? location.address.city : ""}</td>
-                                <td>{location.address ? location.address.province : ""}</td>
-                                <td>{location.address ? location.address.country : ""}</td>
-                                <td>
-                                    <button type="button" className="btn btn-warning"
-                                        onClick={() => handleClickEditLocation(location._id)}
-                                    >Edit</button>
-                                    <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#DeleteModal"
-                                        onClick={() => handleClickDeleteLocation(location._id)} >Delete</button>
-                                </td>
-                                <td>
-                                    <div className="modal fade" id="DeleteModal" >
-                                        <div className="modal-dialog">
-                                            <div className="modal-content">
+        <table className="table table-striped table-responsive" >
+            <thead>
+                <tr className="table-primary">
+                    <th>Name</th>
+                    <th>Description</th>
+                    {/* <th>Status</th> */}
+                    <th>Street-Number</th>
+                    <th>Street</th>
+                    {/* <th>Street-2</th> */}
+                    <th>City</th>
+                    <th>Province</th>
+                    {/* <th>Country</th> */}
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {allLocations.map(location => (
+                    <tr key={location._id}>
+                        <td>{location.name}</td>
+                        <td>{location.description}</td>
+                        {/* <td>{location.status}</td> */}
+                        <td>{location.address ? location.address.streetNumber : ""}</td>
+                        <td>{location.address ? location.address.street : ""}</td>
+                        {/* <td>{location.address ? location.address.street2 : ""}</td> */}
+                        <td>{location.address ? location.address.city : ""}</td>
+                        <td>{location.address ? location.address.province : ""}</td>
+                        {/* <td>{location.address ? location.address.country : ""}</td> */}
+                        <td>
+                            {showElements ?
+                                <button className="btn btn-outline-success"
+                                    variant="success" size="sm"
+                                    onClick={() => handleClickAddLocation()}>
+                                    New location</button>
+                                :
+                                null
+                            }
 
-                                                {/* <!-- Modal Header --> */}
-                                                <div className="modal-header">
-                                                    <h4 className="modal-title">Be Careful</h4>
-                                                    <button type="button" className="close" data-dismiss="modal">&times;</button>
-                                                </div>
+                            <button type="button" className="btn btn-outline-warning"
+                                onClick={() => handleClickEditLocation(location._id)}
+                            >Edit</button>
+                            <button type="button" className="btn btn-outline-danger" //data-toggle="modal" data-target="#DeleteModal"
+                                onClick={() => handleClickDeleteLocation(location._id)} >Delete</button>
+                        </td>
 
-                                                {/* <!-- Modal body --> */}
-                                                <div className="modal-body">
-                                                ARE YOU SURE YOU WANT TO DELETE THIS ITEM ?
-                                                </div>
-
-                                                {/* <!-- Modal footer --> */}
-                                                <div className="modal-footer">
-                                                    <button type="button" className="btn btn-danger" data-dismiss="modal" >Close</button>
-                                                </div>
-                                                <button type="button" className="btn btn-danger" onClick={() => DeleteLocationOnClick(location._id)} data-dismiss="modal">
-                                                    <i className="fa fa-database"></i> &nbsp; Delete</button>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-
-            {/* <Modal show={openn} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Be Careful
-        </Modal.Title>
-                </Modal.Header>
-
-                <Modal.Body>
-                    ARE YOU SURE YOU WANT TO DELETE THIS ITEM ?
-        </Modal.Body>
-
-                <Modal.Footer>
-                    <tbody>
-                    {allLocations.map(location => (
-                        <tr key={location._id}>
-                            <td>
-                                <button className="btn btn-dark" variant="secondary" onClick={handleClose}>
-                                    Cancel
-                                </button>
-
-                                <button type="button" className="btn btn-danger" onClick={() => DeleteLocationOnClick(location._id)}>
-                                    <i className="fa fa-database"></i> &nbsp; Delete</button>
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </Modal.Footer>
-            </Modal> */}
-            </>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
     ) : (
-            <>
-                <div className="spinner-border"></div>
-            </>
+            <div className="spinner-border bg-success"></div>
         );
 
 }
-
-/**********    Linea 86   ********/
-/*
-<Card >
-                                            <div className="card bg-dark text-white">
-                                                <img size="16by9" src={location.pictures} className="card-img" alt="..."></img>
-                                                <div className="card-img-overlay">
-                                                </div>
-                                            </div>
-                                        </Card> */
-/**********    Linea 89   ********/
-/*
-<td>{Object.keys(location.isActive).length}</td> */
-
-//  Linea  76
-/* <th>Status</th> */
-
-
-/*<div className="modal fade" id="DeleteLocation" data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div className="modal-dialog">
-        <div className="modal-content">
-            <div className="modal-header">
-                <h5 className="modal-title" id="staticBackdropLabel">Delete Category</h5>
-                <button type="button" className="btn btn-danger" data-dismiss="modal" aria-label="Close">
-                                &times;
-                            </button>
-            </div>
-            <button type="button" className="btn btn-danger" onClick={() => Borrar(location._id)}>
-                            ARE YOU SURE YOU WANT TO DELETE THIS ITEM ?
-                            </button>
-        </div>
-    </div>*/
