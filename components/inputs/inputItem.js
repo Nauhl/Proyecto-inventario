@@ -1,8 +1,7 @@
 //import { useRef } from 'react';
 
 export default function InputItem(props) {
-    const { newItem, handleChange, cancelCreateNewItem, createNewItem,
-        allItems, allLocations, allRooms, allCategories, allConditions} = props
+    const { newItem, handleChange, allLocations, allRooms, allCategories, allConditions} = props
 
     return (
         <div>
@@ -31,16 +30,14 @@ export default function InputItem(props) {
                 />
             </div>
 
-            {/* El warning sale por el como empieza la lista, 
-        quiero decir se debe ingresar primero las variables que se encuentran dentro de addres */  }
-
             <div >
                 <form >
                     <div className="form-group">
                         <label htmlFor="multi-location">Location</label>
                         <select className="custom-select" id="multi-location"
                             //multiple
-                            value={newItem.location || []}
+                            value={newItem.location ? newItem.location._id : []}
+                            // value={newItem.location || []}
                             onChange={handleChange()("location")}
                         >
                             <option value="" disabled  >Select Location(s)</option>
@@ -60,7 +57,8 @@ export default function InputItem(props) {
                         <label htmlFor="multi-room">Room</label>
                         <select className="custom-select" id="multi-room"
                             //multiple
-                            value={newItem.room || []}
+                            value={newItem.room ? newItem.room._id : []}
+                            // value={newItem.room || []}
                             onChange={handleChange()("room")}
                         >
                             <option value="" disabled  >Select Room(s)</option>
@@ -80,7 +78,8 @@ export default function InputItem(props) {
                         <label htmlFor="multi-category">Category</label>
                         <select className="custom-select" id="multi-category"
                             //multiple
-                            value={newItem.category || []}
+                            value={newItem.category ? newItem.category._id : []}
+                            // value={newItem.category || []}
                             onChange={handleChange()("category")}
                         >
                             <option value="" disabled  >Select Category(s)</option>
@@ -100,7 +99,8 @@ export default function InputItem(props) {
                         <label htmlFor="multi-condition">Condition</label>
                         <select className="custom-select" id="multi-condition"
                             //multiple
-                            value={newItem.condition || []}
+                            value={newItem.condition ? newItem.condition._id : []}
+                            // value={newItem.condition || []}
                             onChange={handleChange()("condition")}
                         >
                             <option value="" disabled  >Select Condition(s)</option>
@@ -203,82 +203,3 @@ InputItem.defaultProps = {
         }
     }
 }
-
-/*
-<div >
-                <label>Purchase Date</label>
-                <input
-                    size="small"
-                    type="text"
-                    id="purchaseDate-input"
-                    label="Purchase Date"
-                    onChange={handleChange()("purchaseDate")}
-                    value={newItem.purchaseInfo ? newItem.purchaseInfo.purchaseDate : ""} />
-            </div>
-*/
-
-/*
-<div>
-                <label>Pictures</label>
-                <input
-                    type="file" ref={inputFileRef}
-                    size="small"
-                    id="pictures-input"
-                    label="Pictures"
-                    placeholder="Insert new Picture"
-                    onChange={handleChange()("pictures")}
-                    value={newItem.pictures || ""} />
-            </div>*/
-
-
-
-// LOS INPUTS DE ABAJO NO SIRVEN YA QUE LO QUE SE BUSCA ES SELECCIONAR UNA PUESTO QUE ESTAS SE CREAN
-// PUES... EN LA PAGINA RESPECTIVA
-
-
-/*
-<div >
-                <label>Location</label>
-                <input
-                    size="small"
-                    type="text"
-                    id="location-input"
-                    label="Location"
-                    onChange={handleChange()("location")}
-                    value={newItem.location || ""} />
-            </div>
-
-            <div >
-                <label>Room</label>
-                <input
-                    type="text"
-                    size="small"
-                    id="room-input"
-                    label="Room"
-                    onChange={handleChange()("room")}
-                    value={newItem.room || ""} />
-            </div>
-
-            <div >
-                <label>Category</label>
-                <input
-                    type="text"
-                    size="small"
-                    id="category-input"
-                    label="Category"
-                    onChange={handleChange()("category")}
-                    value={newItem.category || ""} />
-            </div>
-
-            <div >
-                <label>Condition</label>
-                <input
-                    type="text"
-                    size="small"
-                    id="condition-input"
-                    label="Condition"
-                    onChange={handleChange()("condition")}
-                    value={newItem.condition || ""} />
-            </div>
-
-            */

@@ -19,7 +19,8 @@ export default function RoomList(props) {
           <tr key={room._id}>
             <td>{room.name}</td>
             <td>{room.description}</td>
-            <td>{room.location && room.location[0] ? `${room.location[0].name}` : ""}</td>
+            <td>{room.location ? room.location.name : ""}</td>
+            {/* <td>{room.location && room.location[0] ? `${room.location[0].name}` : ""}</td> */}
             <td>
 
               <button type="button" className="btn btn-outline-warning"

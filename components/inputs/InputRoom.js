@@ -38,7 +38,8 @@ export default function InputRoom(props) {
                         <select className="custom-select" id="multi-location"
                             //multiple
                             onChange={handleChange()("location")}
-                            value={newRoom.location && newRoom.location[0]  ? newRoom.location[0]._id : []}
+                            value={newRoom.location ? newRoom.location._id : []}
+                            // value={newRoom.location && newRoom.location[0]  ? newRoom.location[0]._id : []}
                         >
                             <option value="" disabled  >Select Location(s)</option>
                             {allLocations.map(location => (

@@ -14,7 +14,6 @@ export default function itemsPage() {
     const [showElements, setShowElements] = React.useState(true);
     const [showModal, setShowModal] = React.useState(false);
     const [allItemsState, setAllItemsState] = React.useState([]);
-    // const [newItemss, setNewItemss] = React.useState({});
 
     const [allLocations, setLocationState] = React.useState([]);
     const [allRooms, setRoomsState] = React.useState([]);
@@ -96,16 +95,6 @@ export default function itemsPage() {
             setShowConfirmDeleteModal(false);
         })
     }
-    /*const DeleteItemOnClick = itemID => {
-        const deleting = allItemsState.filter((item) => item.itemID !== itemID);
-        console.log("DELETING", itemID);
-        getItems(deleting);
-        handleCloseModal()
-        deleteItem(itemID);
-        getItems();
-        setNewLocation(true);
-        setShowElements(true);
-    }*/
 
     const handleChange = path => name => event => {
         if (path) {
@@ -147,21 +136,7 @@ export default function itemsPage() {
     const handleClickDeleteItem = item => {
         setNewItem(item);
         setShowConfirmDeleteModal(true);
-        // itemID => {
-        //     getItem(itemID).then(item => {
-        //         console.log("FOUND IT", item);
-        //         setShowDeleteModal(true);
-        //         getItems();
-        //ShowDeleteModal(true);
-        //setEditMode(true);
-        //setAddCondition(condition);
-        // })
     };
-
-    /*const handleClickOnCancelNewItem = () => {
-        setNewItem({})
-        setShowElements(true);
-    };*/
 
     return (
         <div>
@@ -177,8 +152,7 @@ export default function itemsPage() {
                 handleChange={handleChange}
                 handleClickUpdateItem={handleClickUpdateItem}
                 handleClickOnCreateNewItem={handleClickOnCreateNewItem}
-                //createNewLocation={createNewLocation}
-                // cancelCreateNewLocation={cancelCreateNewLocation}
+                
                 newItem={newItem}
                 editMode={editMode}
             />
@@ -199,8 +173,16 @@ export default function itemsPage() {
                     </div>
                 </div>
 
+                {showElements ?
+                                <button className="btn btn-outline-success"
+                                    variant="success" size="sm"
+                                    onClick={() => handleClickAddItem()}>
+                                    New Item</button>
+                                :
+                                null
+                            }
+
                 <div >
-                    {/* {showElements ? */}
                     <ItemList
                         showElements={showElements}
                         allItems={allItemsState}
@@ -211,7 +193,6 @@ export default function itemsPage() {
                         openn={showDeleteModal}
                         handleClose={handleCloseModal}
                         handleClickDeleteItem={handleClickDeleteItem}
-
                     />
                 </div>
             </div>

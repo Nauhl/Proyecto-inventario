@@ -42,16 +42,6 @@ export default function ItemList(props) {
                         {/* <td>{item.purchaseInfo ? item.purchaseInfo.cost : ""}</td> */}
                         <td>
 
-                            {showElements ?
-                                <button className="btn btn-outline-success"
-                                    // data-toggle="modal" data-target="#newLocation"
-                                    variant="success" size="sm"
-                                    onClick={() => handleClickAddItem()}>
-                                    New Item</button>
-                                :
-                                null
-                            }
-
                             <button type="button" className="btn btn-outline-warning"
                                 onClick={() => handleClickEditItem(item._id)}
                             >Edit</button>

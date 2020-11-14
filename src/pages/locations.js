@@ -36,7 +36,6 @@ export default function locationsPage() {
     setShowModal(true);
     setEditMode(false);
     setNewLocation({});
-
   }
 
   const handleClickUpdateLocation = () => {
