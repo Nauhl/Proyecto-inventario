@@ -4,8 +4,7 @@ import React, { useState, useEffect } from 'react';
 
 export default function ConditionList(props) {
 
-    const { allConditionsState, showElements, handleClickAddCondition, handleClickEditCondition, DeleteConditionOnClick, handleClickDeleteCondition
-        , openn, handleClose } = props;
+    const { allConditionsState, handleClickEditCondition, handleClickDeleteCondition } = props;
 
     return allConditionsState && allConditionsState.length > 0 ? (
         <table className="table table-striped" >
@@ -23,44 +22,12 @@ export default function ConditionList(props) {
                         <td>{condition.description}</td>
                         <td>
 
-                            {showElements ?
-                                <button className="btn btn-outline-success"
-                                    onClick={() => handleClickAddCondition()}>
-                                    New condition
-                                </button>
-                                :
-                                null
-                            }
-
                             <button type="button" className="btn btn-outline-warning"
                                 onClick={() => handleClickEditCondition(condition._id)}
                             >Edit</button>
                             <button type="button" className="btn btn-outline-danger" 
                                 onClick={() => handleClickDeleteCondition(condition)} >Delete</button>
                         </td>
-
-                        {/* <Modal show={openn} onHide={handleClose}>
-                                    <Modal.Header closeButton>
-                                        <Modal.Title>Be Careful
-                                    </Modal.Title>
-                                    </Modal.Header>
-
-                                    <Modal.Body>
-                                        ARE YOU SURE YOU WANT TO DELETE THIS ITEM ?
-                                    </Modal.Body>
-
-                                    <Modal.Footer>
-                                        <tbody>
-                                            <button className="btn btn-dark" variant="secondary" onClick={handleClose}>
-                                                Cancel
-                                            </button>
-
-                                            <button type="button" className="btn btn-danger" onClick={() => DeleteConditionOnClick(condition._id)}>
-                                                <i className="fa fa-database"></i> &nbsp; Delete</button>
-                                            
-                                        </tbody>
-                                    </Modal.Footer>
-                                </Modal> */}
                     </tr>
                 ))}
             </tbody>

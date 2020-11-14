@@ -15,8 +15,6 @@ export default function roomsPage() {
   const [allLocations, setLocationState] = React.useState([]);
   const [newRoom, setNewRoom] = React.useState({});
 
-  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
-
   React.useEffect(() => {
     getRooms();
     getLocations();
@@ -38,7 +36,6 @@ export default function roomsPage() {
     console.log("handleCloseModal")
     setShowModal(false);
     setNewRoom({});
-    setShowDeleteModal();
   };
 
   const handleCloseConfirmDeleteModal = () => {
@@ -50,7 +47,6 @@ export default function roomsPage() {
     setShowModal(true);
     setEditMode(false);
     setNewRoom({});
-
   }
 
   const handleClickUpdateRoom = () => {
@@ -69,11 +65,21 @@ export default function roomsPage() {
     })
   }
 
-  const handleChange = name => event => {
-    setNewRoom({
-      ...newRoom,
-      [name]: event.target.value
-    });
+  const handleChange = path => name => event => {
+    if (path) {
+      setNewRoom({
+        ...newRoom,
+        [path]: {
+          ...newRoom[path],
+          [name]: event.target.value
+        }
+      });
+    } else {
+      setNewRoom({
+        ...newRoom,
+        [name]: event.target.value
+      });
+    }
     console.log(newRoom);
   };
 
@@ -82,7 +88,7 @@ export default function roomsPage() {
       getRooms();
       setNewRoom({})
       setShowElements(true);
-      handleCloseModal()
+      handleCloseModal();
     })
   };
 
@@ -110,7 +116,6 @@ export default function roomsPage() {
         allLocations={allLocations}
         handleChange={handleChange}
         handleClickUpdateRoom={handleClickUpdateRoom}
-
         handleClickOnCreateNewRoom={handleClickOnCreateNewRoom}
         newRoom={newRoom}
         editMode={editMode}
@@ -131,11 +136,18 @@ export default function roomsPage() {
         </div>
       </div>
 
+      {showElements ?
+        <button className="btn btn-outline-info"
+          variant="success" size="sm"
+          onClick={() => handleClickAddRoom()}>
+          New room</button>
+        :
+        null
+      }
+
       <div>
         <RoomList
           allRooms={allRoomsState}
-          showElements={showElements}
-          handleClickAddRoom={handleClickAddRoom}
           handleClickEditRoom={handleClickEditRoom}
           handleClickDeleteRoom={handleClickDeleteRoom}
         />

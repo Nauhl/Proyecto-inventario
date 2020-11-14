@@ -3,14 +3,13 @@ import InputRoom from "../inputs/InputRoom";
 
 const ModalRoom = props => {
     
-    const { handleClose, open, allRooms, allLocations, newRoom, editMode, handleChange, handleClickUpdateRoom, createNewRoom, handleClickOnCreateNewRoom, cancelCreateNewRoom } = props;
+    const { handleClose, open, allLocations, newRoom, editMode, handleChange, handleClickUpdateRoom, createNewRoom, handleClickOnCreateNewRoom } = props;
 
     return (
 
         <Modal show={open} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>{editMode ? `Modifying ${newRoom.name}` : `Add a new room`}</Modal.Title>
-
             </Modal.Header>
 
             <Modal.Body>

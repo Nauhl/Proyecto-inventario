@@ -1,9 +1,9 @@
 import React from "react";
-//import styles from '../../styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 
 export default function SubCategoriesList(props) {
 
-    const { openn, handleClose, allSubCategories, handleClickAddSubCategory, handleClickEditSubCategory, handleClickDeleteSubCategory, DeleteSubCategoryOnClick } = props;
+    const { allSubCategories, handleClickEditSubCategory, handleClickDeleteSubCategory } = props;
 
     return allSubCategories && allSubCategories.length > 0 ? (
         <table className="table table-responsive table-striped ">
@@ -20,12 +20,6 @@ export default function SubCategoriesList(props) {
                         <td >{subCategory.name}</td>
                         <td >{subCategory.description}</td>
                         <td>
-
-                                <button type="button" className="btn btn-outline-info" 
-                                    onClick={() => handleClickAddSubCategory()}
-                                >
-                                    New sub category
-                            </button>
 
                             <button type="button" className="btn btn-outline-warning"
                                 onClick={() => handleClickEditSubCategory(subCategory._id)}>Edit</button>

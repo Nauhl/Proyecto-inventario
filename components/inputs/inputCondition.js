@@ -1,6 +1,6 @@
 
 export default function InputCondition(props) {
-    const { addCondition, handleChange, cancelCreateNewCondition, createNewCondition } = props
+    const { addCondition, handleChange } = props
 
     return (
         <div>
@@ -11,6 +11,7 @@ export default function InputCondition(props) {
                     size="small"
                     type="text"
                     id="name-input"
+                    placeholder="Name"
                     label="Name"
                     onChange={handleChange("name")}
                     value={addCondition.name || ""}
@@ -23,6 +24,7 @@ export default function InputCondition(props) {
                     type="text"
                     size="small"
                     id="description-input"
+                    placeholder="Description"
                     label="Description"
                     onChange={handleChange("description")}
                     value={addCondition.description || ""}
@@ -32,10 +34,3 @@ export default function InputCondition(props) {
         </div>
     )
 }
-
-
-/* <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => cancelCreateNewLocation()}>Cancel</button>
-                            <button type="button" className="btn btn-success" onClick={() => createNewLocation()}><i className="fa fa-database">
-                            </i> &nbsp; Save</button>
-                        </div>*/

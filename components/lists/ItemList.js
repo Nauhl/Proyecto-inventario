@@ -59,7 +59,7 @@ export default function ItemList(props) {
                                 onClick={() => handleClickDeleteItem(item)} >Delete</button>
                         </td>
                     </tr>
-                ))}
+                ))} 
             </tbody>
         </table>
     ) : (

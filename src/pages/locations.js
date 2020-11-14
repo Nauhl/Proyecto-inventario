@@ -1,6 +1,6 @@
 import { getAllLocations, getLocation, createNewLocation, updateLocation, deleteLocation } from "../../src/lib/ctrlLocation";
 import LocationList from "../../components/lists/LocationList";
-// import styles from '../../styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 import ModalLocation from "../../components/modals/ModalLocation";
 import ModalConfirmDelete from "../../components/DeleteModal/ModalConfirmDelete";
 
@@ -12,9 +12,6 @@ export default function locationsPage() {
   const [editMode, setEditMode] = React.useState(false);
   const [allLocationsState, setAllLocationsState] = React.useState([]);
   const [newLocation, setNewLocation] = React.useState({});
-  // const [newLocationn, setNewLocationn] = React.useState({});
-
-  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
 
   React.useEffect(() => getLocations(), []);
 
@@ -28,8 +25,8 @@ export default function locationsPage() {
     console.log("handleCloseModal")
     setShowModal(false);
     setNewLocation({});
-    setShowDeleteModal(false);
   };
+
   const handleCloseConfirmDeleteModal = () => {
     setShowConfirmDeleteModal(false);
   };
@@ -48,20 +45,6 @@ export default function locationsPage() {
       getLocations();
     })
   }
-
-  /* this works just if I put name description and "street number", I mean, 
-  I need to get the warning in the browser's console to the see the delete change
-  if I just put name and description I won't see the change until I refresh the page
-  const DeleteLocationOnClick = locationID => {
-    const borrandoLocation = allLocationsState.filter((location) => location.locationID !== locationID);
-    console.log("DELETING", locationID);
-    getLocations(borrandoLocation);
-    handleCloseModal()
-    deleteLocation(locationID);
-    getLocations();
-    setNewLocation(true);
-    setShowElements(true);
-  }*/
 
   const DeleteLocationOnClick = () => {
     console.log("DELETING", newLocation);
@@ -95,14 +78,9 @@ export default function locationsPage() {
       getLocations();
       setNewLocation({})
       setShowElements(true);
-      handleCloseModal()
+      handleCloseModal();
     })
   };
-
-  /*const handleClickOnCancelNewLocation = () => {
-    setNewLocation({})
-    setShowElements(true);
-  };*/
 
   const handleClickEditLocation = locationID => {
     getLocation(locationID).then(location => {
@@ -110,22 +88,14 @@ export default function locationsPage() {
       setShowModal(true);
       setEditMode(true);
       setNewLocation(location);
+      getLocations();
     })
-  }; setShowDeleteModal
+  };
 
   // Abre el modal de delete
   const handleClickDeleteLocation = location => {
     setNewLocation(location);
     setShowConfirmDeleteModal(true);
-    // locationID => {
-    //   getLocation(locationID).then(location => {
-    //     console.log("FOUND IT", location);
-    //     setShowDeleteModal(true);
-    //     getLocations();
-    //     //ShowDeleteModal(true);
-    //     //setEditMode(true);
-    //     //setAddCondition(condition);
-    //   })
   };
 
   return (
@@ -139,8 +109,6 @@ export default function locationsPage() {
         handleClickOnCreateNewLocation={handleClickOnCreateNewLocation}
         newLocation={newLocation}
         editMode={editMode}
-
-      //newLocationn={newLocationn}
       />
 
       <ModalConfirmDelete
@@ -158,18 +126,21 @@ export default function locationsPage() {
         </div>
       </div>
 
+      {showElements ?
+        <button className="btn btn-outline-success"
+          variant="success" size="sm"
+          onClick={() => handleClickAddLocation()}>
+          New location</button>
+        :
+        null
+      }
+
       <div >
         {/* {showElements ? */}
         <LocationList
-          showElements={showElements}
           allLocations={allLocationsState}
-          handleClickAddLocation={handleClickAddLocation}
           handleClickEditLocation={handleClickEditLocation}
           handleClickDeleteLocation={handleClickDeleteLocation}
-
-          /*openn={showDeleteModal}
-          handleClose={handleCloseModal}
-          handleClickDeleteRoom={handleClickDeleteRoom}*/
         />
       </div>
     </div>

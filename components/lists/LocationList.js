@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 export default function LocationList(props) {
 
-    const { allLocations, showElements, handleClickAddLocation, handleClickEditLocation, handleClickDeleteLocation, newLocation, DeleteLocationOnClick
-        , openn, handleClose } = props;
+    const { allLocations, handleClickEditLocation, handleClickDeleteLocation } = props;
 
     return allLocations && allLocations.length > 0 ? (
         <table className="table table-striped table-responsive" >
@@ -35,22 +34,13 @@ export default function LocationList(props) {
                         <td>{location.address ? location.address.province : ""}</td>
                         {/* <td>{location.address ? location.address.country : ""}</td> */}
                         <td>
-                            {showElements ?
-                                <button className="btn btn-outline-success"
-                                    variant="success" size="sm"
-                                    onClick={() => handleClickAddLocation()}>
-                                    New location</button>
-                                :
-                                null
-                            }
-
+                            
                             <button type="button" className="btn btn-outline-warning"
                                 onClick={() => handleClickEditLocation(location._id)}
                             >Edit</button>
                             <button type="button" className="btn btn-outline-danger" 
                                 onClick={() => handleClickDeleteLocation(location)} >Delete</button>
                         </td>
-
                     </tr>
                 ))}
             </tbody>
@@ -58,5 +48,4 @@ export default function LocationList(props) {
     ) : (
             <div className="spinner-border bg-success"></div>
         );
-
 }

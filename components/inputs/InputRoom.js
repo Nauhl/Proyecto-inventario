@@ -1,16 +1,7 @@
-//import { useRef } from 'react';
 
 export default function InputRoom(props) {
 
-    /*const inputFileRef = useRef()
-
-    const handleButton = (e) => {
-        e.preventDefault()
-        //console.log(allLocations)
-        console.log(inputFileRef.current.files)
-    }*/
-
-    const { newRoom, allRooms, handleChange, createNewRoom, cancelCreateNewRoom, allLocations } = props
+    const { newRoom, handleChange, allLocations } = props
 
     return (
         <div>
@@ -20,10 +11,11 @@ export default function InputRoom(props) {
                     required
                     size="small"
                     id="name-input"
+                    placeholder="Name"
                     type="text"
                     label="Name"
-                    onChange={handleChange("name")}
-                    value={newRoom.name}
+                    onChange={handleChange()("name")}
+                    value={newRoom.name || ""}
                 />
             </div>
 
@@ -33,20 +25,20 @@ export default function InputRoom(props) {
                     size="small"
                     type="text"
                     id="description-input"
+                    placeholder="Description"
                     label="Description"
-                    onChange={handleChange("description")}
-                    value={newRoom.description}
+                    onChange={handleChange()("description")}
+                    value={newRoom.description || ""}
                 />
             </div>
 
             <div >
-                <form >
                     <div className="form-group">
                         <label htmlFor="multi-location">Location</label>
                         <select className="custom-select" id="multi-location"
                             //multiple
-                            value={newRoom.location || []}
-                            onChange={handleChange("location")}
+                            onChange={handleChange()("location")}
+                            value={newRoom.location && newRoom.location[0]  ? newRoom.location[0]._id : []}
                         >
                             <option value="" disabled  >Select Location(s)</option>
                             {allLocations.map(location => (
@@ -56,26 +48,7 @@ export default function InputRoom(props) {
                             ))}
                         </select>
                     </div>
-                </form>
             </div>
         </div>
     )
 }
-
-
-
-/*<div className="row">
-                <div className="col">
-                    <label>Pictures</label>
-                    <input
-                        //fullWidth
-                        size="small"
-                        type="file" ref={inputFileRef}
-                        id="pictures-input"
-                        label="Pictures"
-                        // variant="outlined"
-                        value={newRoom.pictures}
-                        onChange={handleChange("pictures")}
-                    />
-                </div>
-            </div>*/

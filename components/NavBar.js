@@ -1,10 +1,10 @@
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
-// import styles from '../styles/Home.module.css';
+import styles from '../styles/Home.module.css';
 
 export default function NavBar() {
   return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-success" >
         <a className="navbar-brand" href="/"><i className="fas fa-home"></i> &nbsp; Inventory</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>

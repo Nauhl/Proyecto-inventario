@@ -1,15 +1,6 @@
-//import { useRef } from 'react';
 
 export default function InputLocation(props) {
-    const { newLocation, handleChange, cancelCreateNewLocation, createNewLocation } = props
-
-    /*const inputFileRef = useRef()
-
-    const handleButton = (e) => {
-        e.preventDefault()
-        //console.log(allLocations)
-        console.log(inputFileRef.current.files)
-    }*/
+    const { newLocation, handleChange } = props
 
     return (
         <div>
@@ -20,6 +11,7 @@ export default function InputLocation(props) {
                     size="small"
                     type="text"
                     id="name-input"
+                    placeholder="Name"
                     label="Name"
                     onChange={handleChange()("name")}
                     value={newLocation.name || ""}
@@ -32,6 +24,7 @@ export default function InputLocation(props) {
                     type="text"
                     size="small"
                     id="description-input"
+                    placeholder="Description"
                     label="Description"
                     onChange={handleChange()("description")}
                     value={newLocation.description || ""}
@@ -44,14 +37,12 @@ export default function InputLocation(props) {
                     size="small"
                     type="text"
                     id="status-input"
+                    placeholder="Status"
                     label="Status"
                     onChange={handleChange()("status")}
                     value={newLocation.status || ""}
                 />
             </div>
-
-        {/* El warning sale por el como empieza la lista, 
-        quiero decir se debe ingresar primero las variables que se encuentran dentro de addres */  }
 
             <div >
                 <label>Street number</label>
@@ -59,6 +50,7 @@ export default function InputLocation(props) {
                     size="small"
                     type="number"
                     id="streetNumber-input"
+                    placeholder="Street Number"
                     label="Street Number"
                     onChange={handleChange("address")("streetNumber")}
                     value={newLocation.address ? newLocation.address.streetNumber : ""}
@@ -71,6 +63,7 @@ export default function InputLocation(props) {
                     type="text"
                     size="small"
                     id="street-input"
+                    placeholder="Street"
                     label="Street"
                     onChange={handleChange("address")("street")}
                     value={newLocation.address ? newLocation.address.street : ""}
@@ -83,6 +76,7 @@ export default function InputLocation(props) {
                     type="text"
                     size="small"
                     id="street2-input"
+                    placeholder="Street 2"
                     label="Street 2"
                     onChange={handleChange("address")("street2")}
                     value={newLocation.address ? newLocation.address.street2 : ""}
@@ -95,6 +89,7 @@ export default function InputLocation(props) {
                     type="text"
                     size="small"
                     id="city-input"
+                    placeholder="City"
                     label="City"
                     onChange={handleChange("address")("city")}
                     value={newLocation.address ? newLocation.address.city : ""}
@@ -107,6 +102,7 @@ export default function InputLocation(props) {
                     type="text"
                     size="small"
                     id="province-input"
+                    placeholder="Province"
                     label="Province"
                     onChange={handleChange("address")("province")}
                     value={newLocation.address ? newLocation.address.province : ""}
@@ -119,17 +115,17 @@ export default function InputLocation(props) {
                     size="small"
                     type="text"
                     id="country-input"
+                    placeholder="Country"
                     label="Country"
                     onChange={handleChange("address")("country")}
                     value={newLocation.address ? newLocation.address.country : ""}
                 />
             </div>
-            
         </div>
     )
 }
 
-InputLocation.defaultProps = {
+/*InputLocation.defaultProps = {
     newLocation: {
         name: "",
         description: "",
@@ -147,25 +143,4 @@ InputLocation.defaultProps = {
             country: ""
         }
     }
-}
-
-/* <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => cancelCreateNewLocation()}>Cancel</button>
-                            <button type="button" className="btn btn-success" onClick={() => createNewLocation()}><i className="fa fa-database">
-                            </i> &nbsp; Save</button>
-                        </div>*/
-
-/*
-<div>
-            <label>New Image</label>
-            <input
-            type="file" ref={inputFileRef}
-            size="small"
-            id="pictures-input"
-            label="New Image"
-            placeholder="Insert new Picture"
-            onChange={handleChange()("pictures")}
-            value={newLocation.pictures || ""} />
-
-        </div>  
-*/
+}*/

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 export default function RoomList(props) {
 
-  const { allRooms, showElements , handleClickAddRoom, handleClickEditRoom, handleClickDeleteRoom } = props;
+  const { allRooms, handleClickEditRoom, handleClickDeleteRoom } = props;
 
   return allRooms && allRooms.length > 0 ? (
     <table className="table table-striped table-responsive" >
@@ -19,20 +19,12 @@ export default function RoomList(props) {
           <tr key={room._id}>
             <td>{room.name}</td>
             <td>{room.description}</td>
-            <td>{room.location ? room.location.name : ""}</td>
+            <td>{room.location && room.location[0] ? `${room.location[0].name}` : ""}</td>
             <td>
 
-              {showElements ?
-                <button className="btn btn-outline-info"
-                  variant="success" size="sm"
-                  onClick={() => handleClickAddRoom()}>
-                  New room</button>
-                :
-                null
-              }
               <button type="button" className="btn btn-outline-warning"
                 onClick={() => handleClickEditRoom(room._id)} >Edit</button>
-              <button className="btn btn-outline-danger" 
+              <button className="btn btn-outline-danger"
                 onClick={() => handleClickDeleteRoom(room)} >Delete</button>
             </td>
           </tr>

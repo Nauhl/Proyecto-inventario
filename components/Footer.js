@@ -10,7 +10,7 @@ export default function Footer() {
             <div className="row">
                 <div className="col-lg-12">
                     <ul className="list-unstyled">
-                        <li className="float-lg-right"><a href="#top">Back to top</a></li>
+                        <li className="float-lg-right "><a href="">Back to top</a></li>
                         <p className="float-lg-left">@ Vivenda 2020 &nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="https://github.com/Nauhl">GitHub</a>&nbsp;&nbsp;<i className="fab fa-github text-light mr-4 "></i>
                         <a href="#">Twitter</a>&nbsp;&nbsp;<i className="fab fa-twitter-square text-light mr-4 "></i>

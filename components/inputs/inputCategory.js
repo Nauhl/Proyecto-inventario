@@ -1,24 +1,21 @@
 
 export default function InputCategory(props) {
 
-    const { handleClose, open, allCategories, allSubCategories, handleChange, editMode, handleClickUpdateCategory,
-        createNewCategory, handleClickOnCreateNewCategory, cancelCreateNewCategory, newCategory } = props;
+    const { allSubCategories, handleChange, newCategory } = props;
 
     return (
         <div >
             <div>
                 <label>Name</label>
                 <input
-                    //fullWidth
                     required
                     size="small"
                     type="text"
                     id="name-input"
                     label="Name"
-                    //placeholder="Insert new Name"
-                    // variant="outlined"
+                    placeholder="Name"
                     value={newCategory.name || ""}
-                    onChange={handleChange("name")}
+                    onChange={handleChange()("name")}
                 />
             </div>
 
@@ -26,15 +23,13 @@ export default function InputCategory(props) {
                 <div className="col">
                     <label>Description</label>
                     <input
-                        //fullWidth
                         size="small"
                         type="text"
                         id="description-input"
                         label="Description"
-                        //placeholder="Insert new Description"
-                        // variant="outlined"
+                        placeholder="Description"
                         value={newCategory.description || ""}
-                        onChange={handleChange("description")}
+                        onChange={handleChange()("description")}
                     />
                 </div>
             </div>
@@ -45,8 +40,8 @@ export default function InputCategory(props) {
                         <label htmlFor="multi-subcategories">Subcategories</label>
                         <select className="custom-select" id="multi-subcategories"
                             //multiple
-                            value={newCategory.subCategories ? newCategory.subCategories[0]._id : []}
-                            onChange={handleChange("subCategories")}
+                            value={newCategory.subCategories && newCategory.subCategories[0] ? newCategory.subCategories[0]._id : []}
+                            onChange={handleChange()("subCategories")}
                         >
                             <option value="" disabled  >Select subCategory(s)</option>
                             {allSubCategories.map(subCategory => (
@@ -59,6 +54,5 @@ export default function InputCategory(props) {
                 </form>
             </div>
         </div>
-
     )
 }

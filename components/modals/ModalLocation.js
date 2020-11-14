@@ -3,7 +3,7 @@ import InputLocation from "../inputs/InputLocation";
 
 const ModalLocation = props => {
   
-  const { handleClose, open, allLocations, newLocation, editMode, handleChange, handleClickUpdateLocation, createNewLocation, handleClickOnCreateNewLocation, cancelCreateNewLocation } = props;
+  const { handleClose, open, newLocation, editMode, handleChange, handleClickUpdateLocation, createNewLocation, handleClickOnCreateNewLocation } = props;
 
   return (
     
@@ -21,7 +21,6 @@ const ModalLocation = props => {
       </Modal.Body>
 
       <Modal.Footer>
-
         <button className="btn btn-danger" variant="secondary" onClick={handleClose}>
             Cancel
       </button>

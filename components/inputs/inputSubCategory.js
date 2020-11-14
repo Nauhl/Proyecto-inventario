@@ -1,8 +1,7 @@
 
 export default function InputSubCategory(props) {
 
-    const { openSub, handleCloseSub, handleChange, createNewSubCategory, editMode, newSubCategory,
-        handleClickUpdateSubCategory, handleClickOnCreateNewSubCategory } = props;
+    const { handleChange, newSubCategory } = props;
 
     return (
 
@@ -10,15 +9,14 @@ export default function InputSubCategory(props) {
                 <div>
                     <label>Name</label>
                     <input
-                        //fullWidth
                         required
                         size="small"
+                        type="text"
                         id="name-input"
                         label="Name"
                         placeholder="Write a name"
-                        // variant="outlined"
                         value={newSubCategory.name || ""}
-                        onChange={handleChange("name")}
+                        onChange={handleChange()("name")}
                     />
                 </div>
 
@@ -26,14 +24,13 @@ export default function InputSubCategory(props) {
                     <div>
                         <label>Description</label>
                         <input
-                            //fullWidth
                             size="small"
+                            type="text"
                             id="description-input"
                             label="Description"
                             placeholder="Write a description"
-                            // variant="outlined"
                             value={newSubCategory.description || ""}
-                            onChange={handleChange("description")}
+                            onChange={handleChange()("description")}
                         />
                     </div>
                 </div>

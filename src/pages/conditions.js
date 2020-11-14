@@ -14,9 +14,6 @@ export default function ConditionPage() {
   const [showConfirmDeleteModal, setShowConfirmDeleteModal] = React.useState(false);
   const [showModal, setshowModal] = React.useState(false);
   const [editMode, setEditMode] = React.useState(false);
-  // const [newConditionn, setNewConditionn] = React.useState({});
-
-  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
 
   React.useEffect(() => {
     getConditions();
@@ -32,14 +29,12 @@ export default function ConditionPage() {
     console.log("handleCloseModal")
     setshowModal(false);
     setAddCondition({});
-    setShowDeleteModal(false);
+    setshowModal(false);
   };
 
   const handleCloseConfirmDeleteModal = () => {
     setShowConfirmDeleteModal(false);
   };
-
-  //**********************   HandleChange ************************************ */
 
   const handleClickAddCondition = () => {
     console.log("handleClickAddCondition")
@@ -64,30 +59,6 @@ export default function ConditionPage() {
       setShowConfirmDeleteModal(false);
     })
   }
-
-  // const DeleteConditionOnClick = (conditionID) => {
-  //   console.log(conditionID);
-  //   deleteCondition(conditionID);
-  //   handleCloseModal();
-  //   getConditions();
-  // }
-  // try {
-  // const deleting = allConditionsState.filter((condition) => condition.conditionID!==conditionID)
-  // console.log("DELETING", conditionID);
-  // setAllConditionsState(deleting);
-  // handleCloseModal();
-  // deleteCondition(conditionID);
-  // getConditions();
-  // }catch (error) {
-  //     console.log(error)
-
-  // }
-
-
-  // const DeleteConditionOnClick = () => {
-  //   deleteCondition();
-  //   getAllConditions();
-  // }
 
   const handleChange = name => e => {
     setAddCondition({
@@ -119,13 +90,6 @@ export default function ConditionPage() {
   const handleClickDeleteCondition = condition => {
     setAddCondition(condition);
     setShowConfirmDeleteModal(true);
-  // conditionID => {
-  //   getCondition(conditionID).then(condition => {
-  //     console.log("FOUND IT", condition);
-  //     setShowDeleteModal(true);
-  //     //getCondition(condition);
-
-  //   })
   };
 
   return (
@@ -137,12 +101,11 @@ export default function ConditionPage() {
         allConditions={allConditionsState}
         handleClickOnCreateNewCondition={handleClickOnCreateNewCondition}
         handleClickUpdateCondition={handleClickUpdateCondition}
-
         addCondition={addCondition}
         editMode={editMode}
       />
 
-<ModalConfirmDelete
+      <ModalConfirmDelete
         open={showConfirmDeleteModal}
         handleClose={handleCloseConfirmDeleteModal}
         handleConfirmDelete={DeleteConditionOnClick}
@@ -157,6 +120,15 @@ export default function ConditionPage() {
         </div>
       </div>
 
+      {showElements ?
+        <button className="btn btn-outline-success"
+          onClick={() => handleClickAddCondition()}>
+          New condition
+        </button>
+        :
+        null
+      }
+
       <div>
         <ConditionList
           showElements={showElements}
@@ -164,10 +136,6 @@ export default function ConditionPage() {
           handleClickAddCondition={handleClickAddCondition}
           handleClickEditCondition={handleClickEditCondition}
           handleClickDeleteCondition={handleClickDeleteCondition}
-
-          // openn={showDeleteModal}
-          // handleClose={handleCloseModal}
-          // DeleteConditionOnClick={DeleteConditionOnClick}
         />
       </div>
     </div>

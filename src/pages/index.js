@@ -1,6 +1,6 @@
 //import Head from 'next/head'     // I change/move head to _document.js
 import React from "react";
-// import styles from '../../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 import MyApp from '../pages/_app';
 
 export default function Home() {
@@ -47,6 +47,3 @@ export default function Home() {
     </>
   )
 }
-//<img src="../../utils/img/home_inventory.png" className="rounded float-right" alt="..."></img>
-
-//<a href="#" className={styles.goToUpBTN}><i className="far fa-chevron-double-up"></i></a>
