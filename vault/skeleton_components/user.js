@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../../styles/Home.module.css';
 import SkeletonProfile from '../skeletons/skeletonUser'
 //import '../skeletons/skeleton.css';
+// import styles from '../../styles/Home.module.css';
 
 const User = () => {
     const [profile, setProfile] = useState(null);

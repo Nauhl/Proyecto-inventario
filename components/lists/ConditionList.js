@@ -1,4 +1,3 @@
-//import styles from '../../styles/Home.module.css';
 import React, { useState, useEffect } from 'react';
 //import Modal from "react-bootstrap/Modal";
 

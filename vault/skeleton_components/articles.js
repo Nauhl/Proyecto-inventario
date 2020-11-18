@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import styles from '../../styles/Home.module.css';
 import SkeletonArticle from '../skeletons/skeletonArticle';
 //import SkeletonElement from '../skeletons/skeletonElement';
+//import styles from '../../styles/Home.module.css';
 
 const Articles = () => {
 

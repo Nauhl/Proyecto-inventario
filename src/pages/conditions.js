@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ConditionList from "../../components/lists/ConditionList";
 import { getAllConditions, getCondition, createNewCondition, updateCondition, deleteCondition } from "../../src/lib/ctrlCondition";
 import ModalCondition from "../../components/modals/ModalCondition";
-import styles from '../../styles/Home.module.css';
 import ModalConfirmDelete from "../../components/DeleteModal/ModalConfirmDelete";
 
 export default function ConditionPage() {

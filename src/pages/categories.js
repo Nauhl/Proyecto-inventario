@@ -1,6 +1,5 @@
 import { getAllCategories, getCategory, createNewCategory, updateCategory, deleteCategory } from "../../src/lib/ctrlCategory";
 import { getAllSubCategories, getSubCategory, createNewSubCategory, updateSubCategory, deleteSubCategory } from "../../src/lib/ctrlSubCategory";
-import styles from '../../styles/Home.module.css';
 import CategoriesList from "../../components/lists/CategoriesList";
 import SubCategoriesList from "../../components/lists/SubCategoriesList";
 import ModalCategory from "../../components/modals/ModalCategory";

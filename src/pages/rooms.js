@@ -1,7 +1,6 @@
 import { getAllRooms, getRoom, createNewRoom, updateRoom, deleteRoom } from "../../src/lib/ctrlRoom";
 import { getAllLocations, getLocation } from "../../src/lib/ctrlLocation";
 import RoomList from "../../components/lists/RoomList";
-//import styles from '../../styles/Home.module.css';
 import ModalRoom from "../../components/modals/ModalRoom";
 import ModalConfirmDelete from "../../components/DeleteModal/ModalConfirmDelete";
 

@@ -5,7 +5,6 @@ import { getAllCategories } from "../../src/lib/ctrlCategory";
 import { getAllConditions } from "../../src/lib/ctrlCondition";
 import ItemList from "../../components/lists/ItemList";
 import ModalItem from "../../components/modals/ModalItem";
-import styles from '../../styles/Home.module.css';
 import ModalConfirmDelete from "../../components/DeleteModal/ModalConfirmDelete";
 
 export default function itemsPage() {

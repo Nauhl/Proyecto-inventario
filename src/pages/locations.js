@@ -1,6 +1,5 @@
 import { getAllLocations, getLocation, createNewLocation, updateLocation, deleteLocation } from "../../src/lib/ctrlLocation";
 import LocationList from "../../components/lists/LocationList";
-import styles from '../../styles/Home.module.css';
 import ModalLocation from "../../components/modals/ModalLocation";
 import ModalConfirmDelete from "../../components/DeleteModal/ModalConfirmDelete";
 
