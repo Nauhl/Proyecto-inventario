@@ -5,7 +5,7 @@ export default function LocationList(props) {
     const { allLocations, handleClickEditLocation, handleClickDeleteLocation } = props;
 
     return allLocations && allLocations.length > 0 ? (
-        <table className="table table-striped table-responsive" >
+        <table className="table table-responsive" >
             <thead>
                 <tr className="table-primary">
                     <th>Name</th>
@@ -22,7 +22,7 @@ export default function LocationList(props) {
             </thead>
             <tbody>
                 {allLocations.map(location => (
-                    <tr key={location._id}>
+                    <tr key={location._id} className="bg-secondary">
                         <td>{location.name}</td>
                         <td>{location.description}</td>
                         {/* <td>{location.status}</td> */}

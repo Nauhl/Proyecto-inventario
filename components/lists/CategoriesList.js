@@ -16,7 +16,7 @@ export default function CategoriesList(props) {
                 </thead>
                 <tbody>
                     {allCategories.map(category => (
-                        <tr key={category._id}>
+                        <tr key={category._id} className="bg-secondary">
                             <td>{category.name}</td>
                             <td>{category.description}</td>
                             <td>{category.subCategories && category.subCategories[0] ? `${category.subCategories[0].name}` : ""}</td>

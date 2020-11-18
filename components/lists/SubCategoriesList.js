@@ -15,7 +15,7 @@ export default function SubCategoriesList(props) {
             </thead>
             <tbody>
                 {allSubCategories.map(subCategory => (
-                    <tr key={subCategory._id}>
+                    <tr key={subCategory._id} className="bg-secondary">
                         <td >{subCategory.name}</td>
                         <td >{subCategory.description}</td>
                         <td>

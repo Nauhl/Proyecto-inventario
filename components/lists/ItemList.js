@@ -26,7 +26,7 @@ export default function ItemList(props) {
             </thead>
             <tbody>
                 {allItems.map(item => (
-                    <tr key={item._id}>
+                    <tr key={item._id} className="bg-secondary">
                         <td>{item.name}</td>
                         <td>{item.description}</td>
                         <td>{item.location ? item.location.name : ""}</td>

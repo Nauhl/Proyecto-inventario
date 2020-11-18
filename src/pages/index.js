@@ -6,9 +6,14 @@ import MyApp from '../pages/_app';
 export default function Home() {
 
   return (
-    <div className="container">
-      <h2 className="red darken-2">Welcome to your Inventory</h2>
-      
-    </div>
+    <>
+    {/* <script>
+        $(document).ready(function(){
+          $("#sidebarCollapse").on('click', function () {
+            $("#sidebar").toggleClass('active');
+          })
+          });
+        </script> */}
+    </>
   )
 }

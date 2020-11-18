@@ -16,7 +16,7 @@ export default function ConditionList(props) {
             </thead>
             <tbody>
                 {allConditionsState.map(condition => (
-                    <tr key={condition._id}>
+                    <tr key={condition._id} className="bg-secondary">
                         <td>{condition.name}</td>
                         <td>{condition.description}</td>
                         <td>

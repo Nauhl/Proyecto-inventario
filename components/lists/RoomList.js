@@ -16,7 +16,7 @@ export default function RoomList(props) {
       </thead>
       <tbody>
         {allRooms.map(room => (
-          <tr key={room._id}>
+          <tr key={room._id} className="bg-secondary">
             <td>{room.name}</td>
             <td>{room.description}</td>
             <td>{room.location ? room.location.name : ""}</td>
