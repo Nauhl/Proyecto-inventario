@@ -7,7 +7,7 @@ const ModalConfirmDelete = props => {
   return (
 
     <Modal show={open} onHide={handleClose}>
-      <Modal.Header closeButton>
+      <Modal.Header closeButton  className="btn btn-secondary">
         <Modal.Title>Be Careful</Modal.Title>
 
       </Modal.Header>
@@ -26,9 +26,9 @@ const ModalConfirmDelete = props => {
         </button>
 
         <button
-          className="btn btn-danger"
+          className="btn btn-danger" 
           onClick={handleConfirmDelete}
-        >
+        ><i class="fas fa-trash-alt"></i>&nbsp;
           DELETE
         </button>
       </Modal.Footer>

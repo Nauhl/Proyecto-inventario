@@ -38,7 +38,7 @@ export default function NavBar() {
       <div className="wrapper">
         <nav id="sidebar">
           <div className="sidebar-header">
-            <h3>Bootstrap slider</h3>
+            <h3>LOGO</h3>
           </div>
           <ul className="lisst-unstyled components">
             <li>
@@ -82,7 +82,7 @@ export default function NavBar() {
         <div id="content">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-              <button type="button" id="sidebarCollapse" className="btn btn-success" >
+              <button type="button" id="sidebarCollapse" className="btn btn-success"  >
                 <i className="fas fa-align-left"> &nbsp; Details</i>
               </button>
             </div>
@@ -98,6 +98,10 @@ export default function NavBar() {
 
           <p>ksuhrihfygfyugrjehdsufiunhcbidyehrhiejwnowufhiwr</p>
 
+          
+          <div className="w-1/2 flex items-center justify-center">
+              <img className="w-full" src="/undraw_Booking_re_gw4j.svg" />
+            </div>
         </div>
       </div>
   )

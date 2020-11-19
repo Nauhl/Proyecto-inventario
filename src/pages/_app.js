@@ -17,9 +17,11 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossOrigin="anonymous" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossOrigin="anonymous"></link>
-        <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css" />
-
+        {/* <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossOrigin="anonymous"></link> */}
+        {/* <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css" /> */}
+        
+        <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css" />
+        
         {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"></link> */}
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossOrigin="anonymous"></script>
@@ -65,7 +67,7 @@ export default function MyApp({ Component, pageProps }) {
           #sidebar{
             min-width: 250px;
             max-width: 250px;
-            background: #7386D5;
+            background: #232F34;
             color: #fff;
             transition: all 0.3s;
           }
@@ -74,7 +76,7 @@ export default function MyApp({ Component, pageProps }) {
           }
           #sidebar .sidebar-header{
             padding: 20px;
-            background: #6d7fcc;
+            background: #344955;
           }
           #sidebar ul.components{
             padding: 20px 0;
@@ -98,7 +100,7 @@ export default function MyApp({ Component, pageProps }) {
           #sidebar ul li.active>a,
           a[aria-expanded="true"] {
             color: #fff;
-            background: #6d7fcc;
+            background: #232F34;
           }
           
           a[data-toggle="collapse"]{
@@ -115,7 +117,7 @@ export default function MyApp({ Component, pageProps }) {
           ul ul a{
             font-size: 0.9em !important;
             padding-left: 30px !important;
-            background: #6d7fcc;
+            background: #232F34;
           }
           
           #content{
