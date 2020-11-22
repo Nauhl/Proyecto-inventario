@@ -7,23 +7,18 @@ top: 0px;
 
 background: #4B4453;
 }
-/* 
-.footer {
-  color: white;
-  background: #B00020;
-  padding-top: 3em;
-  position: relative;
-  bottom: 0;
-  width: 100%;
+
+
+.landingGrid {
+  background: #3C3B3F;
+
+  background: -webkit-linear-gradient(to left, #605C3C, #3C3B3F);
+
+  background: linear-gradient(to left, #605C3C, #3C3B3F);
+
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+.avatarImg {
+  height: 250px;
+  padding-top: 5em;
 }
-
-.container-wrap {
-  flex: 1;
-} */
-

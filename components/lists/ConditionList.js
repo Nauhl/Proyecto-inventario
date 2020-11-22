@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-//import Modal from "react-bootstrap/Modal";
+import { DataTable, TableHeader, ProgressBar, Button } from 'react-mdl';
+import  Table  from "react-bootstrap/Table";
 
 export default function ConditionList(props) {
 
     const { allConditionsState, handleClickEditCondition, handleClickDeleteCondition } = props;
 
     return allConditionsState && allConditionsState.length > 0 ? (
-        <table className="table table-striped" >
-            <thead className="table-primary">
+
+        <div className="content">
+        <Table className="table table-striped table-bordered" >
+            <thead className="table-warning">
                 <tr>
                     <th>Name</th>
                     <th>Description</th>
@@ -21,17 +24,45 @@ export default function ConditionList(props) {
                         <td>{condition.description}</td>
                         <td>
 
-                            <button type="button" className="btn btn-outline-warning"
+                            <Button type="button" raised accent ripple className="btn btn-warning"
                                 onClick={() => handleClickEditCondition(condition._id)}
-                            >Edit</button>
-                            <button type="button" className="btn btn-outline-danger" 
-                                onClick={() => handleClickDeleteCondition(condition)} >Delete</button>
+                            >Edit</Button>
+                            <Button type="button" raised accent ripple className="btn btn-danger" 
+                                onClick={() => handleClickDeleteCondition(condition)} >Delete</Button>
                         </td>
                     </tr>
                 ))}
             </tbody>
-        </table>
-    ) : (
-            <div className="spinner-border bg-success"></div>
+        </Table>
+        </div>
+
+        // <DataTable
+        //     shadow={0}
+        //     rows={[
+        //         allConditionsState.map(condition => (
+        //         <tr key={condition._id} className="bg-secondary">
+        //             <td id="material">{condition.name}</td>
+        //             <td id="description">{condition.description}</td>
+        //             <td id="actions">
+
+        //                 <button type="button" className="btn btn-outline-warning"
+        //                     onClick={() => handleClickEditCondition(condition._id)}
+        //                 >Edit</button>
+        //                 <button type="button" className="btn btn-outline-danger" 
+        //                     onClick={() => handleClickDeleteCondition(condition)} >Delete</button>
+        //             </td>
+        //         </tr>
+        //     ))
+        // ]}
+        // >
+        //     <TableHeader name="material">Name</TableHeader>
+        //     <TableHeader name="description">Description</TableHeader>
+        //     <TableHeader name="actions">Action</TableHeader>
+        // </DataTable >
+
+    ) 
+    : (
+        <ProgressBar indeterminate />
+            //<div className="spinner-border bg-success"></div>
         );
 }

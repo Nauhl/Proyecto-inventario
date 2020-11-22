@@ -20,7 +20,7 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossOrigin="anonymous" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossOrigin="anonymous"></link>
-        
+
         <link rel="stylesheet" href="material.css" />
 
         <script src="material.js"></script>
@@ -31,14 +31,35 @@ export default function MyApp({ Component, pageProps }) {
 
       <div>
         <NavBar />
-        
+        <div>
+        <style jsx global>
+          {
+            `
+            .header-color {
+              
+              background: #3C3B3F;  
+              background: -webkit-linear-gradient(to right, #605C3C, #3C3B3F);  
+              background: linear-gradient(to right, #605C3C, #3C3B3F); 
+            }
+            
+            .header-draw {
+              background: #3C3B3F;
+              
+              background: -webkit-linear-gradient(to left, #605C3C, #3C3B3F);
+              
+              background: linear-gradient(to left, #605C3C, #3C3B3F);
+            
+            }
+            `}
+        </style>
+        </div>
       </div>
 
       <Component {...pageProps} />
 
       <div>
         <Foooter />
-        
+
       </div>
 
     </div>

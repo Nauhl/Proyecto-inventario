@@ -3,6 +3,8 @@ import ConditionList from "../../components/lists/ConditionList";
 import { getAllConditions, getCondition, createNewCondition, updateCondition, deleteCondition } from "../../src/lib/ctrlCondition";
 import ModalCondition from "../../components/modals/ModalCondition";
 import ModalConfirmDelete from "../../components/DeleteModal/ModalConfirmDelete";
+import { Button, FABButton, Icon } from 'react-mdl';
+
 
 export default function ConditionPage() {
 
@@ -120,13 +122,17 @@ export default function ConditionPage() {
       </div>
 
       {showElements ?
-        <button className="btn btn-outline-success"
+        <Button raised accent ripple className="btn btn-outline-success"
           onClick={() => handleClickAddCondition()}>
           New condition
-        </button>
+        </Button>
         :
         null
       }
+
+<FABButton colored ripple>
+    <Icon name="add" onClick={() => handleClickAddCondition()}/>
+</FABButton>
 
       <div>
         <ConditionList
