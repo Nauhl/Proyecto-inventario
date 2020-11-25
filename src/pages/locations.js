@@ -126,7 +126,7 @@ export default function locationsPage() {
             <br />
             <br />
             <br />
-            <h2>Hi Welcome to Locations </h2>
+            <h2 className={styles.text}>Hi Welcome to Locations </h2>
             <h4 className={styles.text}>Section where everyone can search for a Location to any of the new Items you will add in a future</h4>
           </Cell>
         </Grid>
@@ -161,15 +161,17 @@ export default function locationsPage() {
             <p className="card-text">In this page you can create, edit and delete Locations to your items.</p>
           </div>
         </div>
+        <br />
 
         {showElements ?
           <button className="btn btn-outline-success"
-            variant="success" size="sm"
-            onClick={() => handleClickAddLocation()}>
+            onClick={() => handleClickAddLocation()}><i class="fas fa-plus-circle"></i>&nbsp;
             New location</button>
           :
           null
         }
+        <br />        
+        <br />
 
         <div >
           {/* {showElements ? */}

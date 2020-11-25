@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../../styles/Home.module.css";
 
 export default function ItemList(props) {
 
@@ -9,12 +10,12 @@ export default function ItemList(props) {
         <main>
 
 
-            <table className="table table-striped table-responsive" >
-                <thead>
-                    <tr className="table-primary">
+            <table className={styles.main, "table  table-responsive"} >
+                <thead className={styles.textItems3}>
+                    <tr className="table-primary" >
                         <th scope="row">Name</th>
                         <th scope="row">Description</th>
-                        {/* scope="row" <th>Location</th> */}
+                        <th scope="row">Location</th>
                         <th scope="row">Room</th>
                         <th scope="row">Category</th>
                         <th scope="row">Condition</th>
@@ -30,25 +31,27 @@ export default function ItemList(props) {
                 <tbody>
                     {allItems.map(item => (
                         <tr key={item._id} className="bg-gray">
-                            <td>{item.name}</td>
-                            <td>{item.description}</td>
-                            {/* <td>{item.location ? item.location.name : ""}</td> */}
-                            <td>{item.room ? item.room.name : ""}</td>
-                            <td>{item.category ? item.category.name : ""}</td>
-                            <td>{item.condition ? item.condition.name : ""}</td>
-                            {/* <td>{item.estimatedValue}</td> */}
-                            <td>{item.model}</td>
-                            <td>{item.brand}</td>
-                            {/* <td>{item.serialNumber}</td> */}
-                            {/* <td>{item.notes}</td> */}
-                            {/* <td>{item.purchaseInfo ? item.purchaseInfo.cost : ""}</td> */}
-                            <td>
+                            <td className={styles.textItems3}>{item.name}</td>
+                            <td className={styles.textItems3}>{item.description}</td>
+                            <td className={styles.textItems3}>{item.location ? item.location.name : ""}</td>
+                            <td className={styles.textItems3}>{item.room ? item.room.name : ""}</td>
+                            <td className={styles.textItems3}>{item.category ? item.category.name : ""}</td>
+                            <td className={styles.textItems3}>{item.condition ? item.condition.name : ""}</td>
+                            {/* className={styles.textItems3} <td>{item.estimatedValue}</td> */}
+                            <td className={styles.textItems3}>{item.model}</td>
+                            <td className={styles.textItems3}>{item.brand}</td>
+                            {/* className={styles.textItems3} <td>{item.serialNumber}</td> */}
+                            {/* className={styles.textItems3} <td>{item.notes}</td> */}
+                            {/* className={styles.textItems3} <td>{item.purchaseInfo ? item.purchaseInfo.cost : ""}</td> */}
+                            <td className={styles.textItems3}>
 
                                 <button type="button" className="btn btn-outline-warning"
                                     onClick={() => handleClickEditItem(item._id)}
-                                ><i class="fas fa-pen-square"></i>&nbsp;Edit</button>
+                                ><i className="fas fa-pen-square"></i>&nbsp;Edit</button>
+                                &nbsp;
+                                
                                 <button type="button" className="btn btn-outline-danger"
-                                    onClick={() => handleClickDeleteItem(item)} > <i class="fas fa-trash-alt"></i>&nbsp;Delete</button>
+                                    onClick={() => handleClickDeleteItem(item)} > <i className="fas fa-trash-alt"></i>&nbsp;Delete</button>
                             </td>
                         </tr>
                     ))}
@@ -56,6 +59,6 @@ export default function ItemList(props) {
             </table>
         </main>
     ) : (
-            <div className="spinner-border bg-success"></div>
+            <div className="spinner-border "></div>
         );
 }

@@ -1,3 +1,4 @@
+import { Textfield } from 'react-mdl';
 
 export default function InputCategory(props) {
 
@@ -5,7 +6,19 @@ export default function InputCategory(props) {
 
     return (
         <div >
-            <div>
+
+            <Textfield
+
+                required
+                id="name-input"
+                onChange={() => { }}
+                label="Name *"
+                floatingLabel
+                style={{ width: '200px' }}
+                value={newCategory.name || ""}
+                onChange={handleChange()("name")}
+            />
+            {/* <div>
                 <label>Name</label>
                 <input
                     required
@@ -17,9 +30,22 @@ export default function InputCategory(props) {
                     value={newCategory.name || ""}
                     onChange={handleChange()("name")}
                 />
-            </div>
+            </div> */}
+            <br />
 
-            <div className="row">
+            <Textfield
+
+                
+                onChange={() => { }}
+                label="Description"
+                id="description-input"
+                floatingLabel
+                style={{ width: '200px' }}
+                value={newCategory.description || ""}
+                onChange={handleChange()("description")}
+            />
+
+            {/* <div className="row">
                 <div className="col">
                     <label>Description</label>
                     <input
@@ -32,7 +58,7 @@ export default function InputCategory(props) {
                         onChange={handleChange()("description")}
                     />
                 </div>
-            </div>
+            </div> */}
 
             <div >
                 <form >

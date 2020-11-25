@@ -10,15 +10,17 @@ export default function NavBar() {
                 <Layout>
                     <Header className="header-color" title="Inventory" scroll>
                         <Navigation >
+                            {/* <a href="/">Inventory</a> */}
+                            <a href="/" className={styles.text}>Home</a>
                             <i className="fas fa-sitemap mdl-color-text--white">&nbsp; &nbsp;<a href="/items" className={styles.text}>Items</a></i>
                             <i className="fas fa-user-tie mdl-color-text--white">&nbsp; &nbsp;<a href="/about" className={styles.text}>About us</a></i>
                             <i className="fas fa-id-card-alt mdl-color-text--white">&nbsp; &nbsp;<a href="/contact" className={styles.text}>Contact</a></i>
                         </Navigation>
                     </Header>
-                    <Drawer className="header-draw mdl-color-text--white" title="Inventory">
+                    <Drawer className="header-draw mdl-color-text--white" title="">
                         <Navigation>
                             <div className="profile_img">
-                                <img src="home_inventory.png" alt="profile_pic" />
+                                <img src="Logo-removebg-preview.png" className={styles.avatarLogo} alt="profile_pic" />
                             </div>
                             <i className="far fa-list-alt mdl-color-text--white">&nbsp; &nbsp;<a href="/categories" className={styles.text}>Categories</a></i>
                             <i className="far fa-compass mdl-color-text--white">&nbsp; &nbsp;<a href="/locations" className={styles.text}>Locations</a></i>

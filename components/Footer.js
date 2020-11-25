@@ -8,9 +8,9 @@ export default function Foooter() {
 <>
         <Footer size="mega" className={styles.footerr}>
     <FooterSection type="middle" className={styles.textItems}>
-        <FooterDropDownSection  title="Inventory">
+        <FooterDropDownSection  title="">
             <FooterLinkList>
-                <a>LOGO</a>
+            <img src="Logo-removebg-preview.png" className={styles.avatarLogoFooter} alt="profile_pic" />
             </FooterLinkList>
         </FooterDropDownSection>
         <FooterDropDownSection title="Contact">

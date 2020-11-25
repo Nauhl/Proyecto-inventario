@@ -1,4 +1,5 @@
 import Modal from "react-bootstrap/Modal";
+import styles from "../../styles/Home.module.css";
 
 const ModalConfirmDelete = props => {
 
@@ -12,7 +13,7 @@ const ModalConfirmDelete = props => {
 
       </Modal.Header>
 
-      <Modal.Body>
+      <Modal.Body className={styles.text3}>
         ARE YOU SURE YOU WANT TO DELETE THIS ITEM: <strong>{item.name}</strong>?
       </Modal.Body>
 

@@ -1,10 +1,119 @@
+import { Textfield } from 'react-mdl';
 
 export default function InputLocation(props) {
     const { newLocation, handleChange } = props
 
     return (
         <div>
-            <div >
+            <Textfield
+
+                required
+                id="name-input"
+                onChange={() => { }}
+                label="Name *"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange()("name")}
+                value={newLocation.name || ""}
+            />
+            &nbsp;
+
+            <Textfield
+
+                
+                id="description-input"
+                onChange={() => { }}
+                label="Description"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange()("description")}
+                value={newLocation.description || ""}
+            />
+&nbsp;
+            <Textfield
+
+
+                id="status-input"
+                onChange={() => { }}
+                label="Status"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange()("status")}
+                value={newLocation.status || ""}
+            />
+&nbsp;
+            <Textfield
+
+                type="number"
+                id="streetNumber-input"
+                onChange={() => { }}
+                label="Street Number"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange("address")("streetNumber")}
+                value={newLocation.address ? newLocation.address.streetNumber : ""}
+            />
+&nbsp;
+            <Textfield
+
+                
+                id="street-input"
+                onChange={() => { }}
+                label="Street "
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange("address")("street")}
+                value={newLocation.address ? newLocation.address.street : ""}
+            />
+&nbsp;
+            <Textfield
+
+
+                id="street2-input"
+                onChange={() => { }}
+                label="Street 2 "
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange("address")("street2")}
+                value={newLocation.address ? newLocation.address.street2 : ""}
+            />
+&nbsp;
+            <Textfield
+
+                id="city-input"
+                onChange={() => { }}
+                label="City "
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange("address")("city")}
+                value={newLocation.address ? newLocation.address.city : ""}
+            />
+&nbsp;
+            <Textfield
+
+
+                id="province-input"
+                onChange={() => { }}
+                label="Province "
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange("address")("province")}
+                value={newLocation.address ? newLocation.address.province : ""}
+            />
+            &nbsp;
+            <Textfield
+
+
+                id="country-input"
+                onChange={() => { }}
+                label="Country "
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange("address")("country")}
+                value={newLocation.address ? newLocation.address.country : ""}
+            />
+
+            {/* <div >
                 <label>Name</label>
                 <input
                     required
@@ -120,7 +229,7 @@ export default function InputLocation(props) {
                     onChange={handleChange("address")("country")}
                     value={newLocation.address ? newLocation.address.country : ""}
                 />
-            </div>
+            </div> */}
         </div>
     )
 }

@@ -117,7 +117,7 @@ export default function ConditionPage() {
             <br />
             <br />
             <br />
-            <h2>Hi Welcome to your Conditions</h2>
+            <h2 className={styles.text}>Hi Welcome to your Conditions</h2>
             <h4 className={styles.text}>Section where everyone can do a new Condition for the new Items</h4>
           </Cell>
         </Grid>
@@ -159,16 +159,21 @@ export default function ConditionPage() {
             <h4 className="card-title">Conditions</h4>
             <p className="card-text">In this page you can create, edit and delete Conditions.</p>
           </div>
-        </div>
+        </div> 
+
+        <br />  
 
         {showElements ?
           <button className="btn btn-outline-success"
-            onClick={() => handleClickAddCondition()}>
+            onClick={() => handleClickAddCondition()}><i class="fas fa-plus-circle"></i>&nbsp;
             New condition
         </button>
           :
           null
         }
+        <br />        
+        <br />
+
         {/* 
 <FABButton colored ripple>
     <Icon name="add" onClick={() => handleClickAddCondition()}/>

@@ -227,7 +227,7 @@ export default function categoriesPage(props) {
                         <br />
                         <br />
                         <br />
-                        <h2>Hi, Welcome to your Categories & SubCategories</h2>
+                        <h2 className={styles.text}>Hi, Welcome to your Categories & SubCategories</h2>
                         <h4 className={styles.text}>Section where everyone can do a new Category for the new Items</h4>
                     </Cell>
                 </Grid>
@@ -277,12 +277,15 @@ export default function categoriesPage(props) {
 
                 {showElements ?
                     <button className="btn btn-outline-success"
-                        onClick={() => handleClickAddCategory()}>
+                        onClick={() => handleClickAddCategory()}><i class="fas fa-plus-circle"></i>&nbsp;
                         New category
                     </button>
                     :
                     null
                 }
+
+<br />        
+        <br />
 
                 <div >
                     <CategoriesList
@@ -311,12 +314,14 @@ export default function categoriesPage(props) {
                 {showElements ?
                     <button type="button" className="btn btn-outline-info"
                         onClick={() => handleClickAddSubCategory()}
-                    >
+                    ><i class="fas fa-plus-circle"></i>&nbsp;
                         New sub category
                 </button>
                     :
                     null
                 }
+                <br />        
+        <br />
 
                 <div >
                     <SubCategoriesList

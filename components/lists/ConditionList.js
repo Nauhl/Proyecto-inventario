@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from "../../styles/Home.module.css";
 
 export default function ConditionList(props) {
 
@@ -6,28 +7,29 @@ export default function ConditionList(props) {
 
     return allConditionsState && allConditionsState.length > 0 ? (
 
-        <table className="table table-striped table-responsive" >
-            <thead>
+        <table className={styles.main, "table"}  >
+            <thead className={styles.textItems3}>
                 <tr className="table-primary">
-                    <th scope="row">Name</th>
-                    <th scope="row">Description</th>
-                    <th scope="row">Action</th>
+                    <th scope="row" >Name</th>
+                    <th scope="row" >Description</th>
+                    <th scope="row" >Action</th>
                 </tr>
             </thead>
             <tbody>
                 {allConditionsState.map(condition => (
                     <tr key={condition._id} className="bg-gray">
-                        <td>{condition.name}</td>
-                        <td>{condition.description}</td>
-                        <td>
+                        <td className={styles.textItems3}>{condition.name}</td>
+                        <td className={styles.textItems3}>{condition.description}</td>
+                        <td className={styles.textItems3}>
 
                             <button type="button" className="btn btn-outline-warning "
                                 onClick={() => handleClickEditCondition(condition._id)}
-                            >Edit</button>
+                            ><i className="fas fa-pen-square"></i>&nbsp;Edit</button>
                             &nbsp;
+                            
                             <button type="button" className="btn btn-outline-danger "
                                 onClick={() => handleClickDeleteCondition(condition)}
-                            >Delete</button>
+                            ><i className="fas fa-trash-alt"></i>&nbsp;Delete</button>
                         </td>
                     </tr>
                 ))}
@@ -60,7 +62,6 @@ export default function ConditionList(props) {
 
     )
         : (
-            <>  </>
-            //<div className="spinner-border bg-success"></div>
+            <div className="spinner-border"></div>
         );
 }

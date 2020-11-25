@@ -1,11 +1,34 @@
-//import { useRef } from 'react';
+import { Textfield } from 'react-mdl';
 
 export default function InputItem(props) {
-    const { newItem, handleChange, allLocations, allRooms, allCategories, allConditions} = props
+    const { newItem, handleChange, allLocations, allRooms, allCategories, allConditions } = props
 
     return (
         <div>
-            <div >
+            <Textfield
+
+                required
+                id="name-input"
+                onChange={() => { }}
+                label="Name *"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange()("name")}
+                    value={newItem.name || ""}
+            />
+&nbsp;
+            <Textfield
+
+                
+                onChange={() => { }}
+                label="Description"
+                id="description-input"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange()("description")}
+                    value={newItem.description || ""}
+            />
+            {/* <div >
                 <label>Name</label>
                 <input
                     required
@@ -28,7 +51,7 @@ export default function InputItem(props) {
                     onChange={handleChange()("description")}
                     value={newItem.description || ""}
                 />
-            </div>
+            </div> */}
 
             <div >
                 <form >
@@ -114,8 +137,78 @@ export default function InputItem(props) {
                 </form>
             </div>
 
+            <Textfield
+                type="number"
+                id="estimatedValue-input"
+                onChange={() => { }}
+                label="Estimated Value"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange()("estimatedValue")}
+                value={newItem.estimatedValue || ""}
+            />
+            &nbsp;
+            <Textfield
 
-            <div >
+
+                id="model-input"
+                onChange={() => { }}
+                label="Model"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange()("model")}
+                value={newItem.model || ""}
+            />
+&nbsp;
+            <Textfield
+
+
+                id="brand-input"
+                onChange={() => { }}
+                label="Brand"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange()("brand")}
+                value={newItem.brand || ""}
+            />
+            &nbsp;
+            <Textfield
+
+
+                id="serialNumber-input"
+                onChange={() => { }}
+                label="Serial Number"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange()("serialNumber")}
+                value={newItem.serialNumber || ""}
+            />
+            &nbsp;
+            <Textfield
+
+
+                id="notes-input"
+                onChange={() => { }}
+                label="Notes"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange()("notes")}
+                value={newItem.notes || ""}
+            />
+            &nbsp;
+            <Textfield
+
+
+                id="cost-input"
+                onChange={() => { }}
+                label="Cost"
+                type="number"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange("purchaseInfo")("cost")}
+                value={newItem.purchaseInfo ? newItem.purchaseInfo.cost : ""}
+            />
+            {/* <div >
                 <label>Estimated Value</label>
                 <input
                     type="number"
@@ -179,7 +272,7 @@ export default function InputItem(props) {
                     label="Cost"
                     onChange={handleChange("purchaseInfo")("cost")}
                     value={newItem.purchaseInfo ? newItem.purchaseInfo.cost : ""} />
-            </div>
+            </div> */}
         </div>
     )
 }

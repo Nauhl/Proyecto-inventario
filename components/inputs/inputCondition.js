@@ -1,10 +1,35 @@
+import { Textfield } from 'react-mdl';
 
 export default function InputCondition(props) {
     const { addCondition, handleChange } = props
 
     return (
         <div>
-            <div >
+            <Textfield
+
+                required
+                id="name-input"
+                onChange={() => { }}
+                label="Name *"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange("name")}
+                    value={addCondition.name || ""}
+            />
+            
+            <Textfield
+
+                
+                onChange={() => { }}
+                label="Description"
+                id="description-input"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange("description")}
+                    value={addCondition.description || ""}
+            />
+
+            {/* <div >
                 <label>Name</label>
                 <input
                     required
@@ -29,8 +54,8 @@ export default function InputCondition(props) {
                     onChange={handleChange("description")}
                     value={addCondition.description || ""}
                 />
-            </div>
-            
+            </div> */}
+
         </div>
     )
 }

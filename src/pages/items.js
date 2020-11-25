@@ -155,14 +155,14 @@ export default function itemsPage() {
                         </div>
                     </Cell>
                     &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                    
                     <Cell col={4} className="mdl-color-text--white">
                         <br />
                         <br />
                         <br />
-                        <br />
-                        <br />
-                        <br />
-                        <h2>Hi, Welcome to your Items </h2>
+                        <h2 className={styles.text}>Hi, Welcome to your Items </h2>
                         <h4 className={styles.text}>Here is where you will see the most important information about your items, where everyone can do new Items incluiding their Locations, Conditions, Categories and SubCategories</h4>
                     </Cell>
                 </Grid>
@@ -198,7 +198,7 @@ export default function itemsPage() {
                     />
 
                     <div className="card mb-3" >
-                        <div className="card-header"></div>
+                        <div className="card-header" style={{ background: '#1CB5E0' }}></div>
                         <div className="card-body">
                             <h4 className="card-title">Items</h4>
                             <p className="card-text">In this page you can create, edit and delete Items to your inventory.</p>
@@ -207,12 +207,14 @@ export default function itemsPage() {
 
                     {showElements ?
                         <button className="btn btn-outline-success"
-                            variant="success" size="sm"
-                            onClick={() => handleClickAddItem()}>
+                            onClick={() => handleClickAddItem()}><i class="fas fa-plus-circle"></i>&nbsp;
                             New Item</button>
                         :
                         null
                     }
+
+                    <br />
+                    <br />
 
                     <div >
                         <ItemList

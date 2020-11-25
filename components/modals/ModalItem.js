@@ -7,14 +7,14 @@ const ModalItem = props => {
 
     return (
         <Modal show={open} onHide={handleClose}>
-            <Modal.Header closeButton className="bg-secondary">
+            <Modal.Header closeButton className="bg-info">
                 <Modal.Title>{editMode ? `Modifying ${newItem.name}` : `Add new Item`}
                 </Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-            <div class="alert alert-danger" role="alert">
-                        Los cambos con <strong>( * )</strong> son obligatorios
+            <div className="alert alert-danger" role="alert">
+                        The fields with <strong>( * )</strong> are required
                     </div>
                 <InputItem
                 
@@ -33,15 +33,14 @@ const ModalItem = props => {
                     Cancel
                 </button>
 
-                <div variant="primary" onClick={createNewItem}>
-                    {editMode ? <button className="btn btn-success"
-                        variant="success" size="sm"
+                <div variant="primary" onClick={createNewItem} >
+                    {editMode ? <button className="btn btn-info"
                         onClick={() => handleClickUpdateItem()}
-                    >
+                    ><i className="fas fa-pen-square"></i>&nbsp;
                         Update
                         </button>
                         :
-                        <button type="button" className="btn btn-success"
+                        <button type="button" className="btn btn-info"
                             onClick={() => handleClickOnCreateNewItem()}>
                             <i className="fa fa-database"></i> &nbsp; Save</button>}
                 </div>

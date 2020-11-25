@@ -130,7 +130,7 @@ export default function roomsPage() {
             <br />
             <br />
             <br />
-            <h2>Hi, Welcome to your Rooms</h2>
+            <h2 className={styles.text}>Hi, Welcome to your Rooms</h2>
             <h4 className={styles.text}>Here can do a new Room for the new Items you will add in a future</h4>
           </Cell>
         </Grid>
@@ -169,12 +169,14 @@ export default function roomsPage() {
 
         {showElements ?
           <button className="btn btn-outline-info"
-            variant="success" size="sm"
-            onClick={() => handleClickAddRoom()}>
+            onClick={() => handleClickAddRoom()}><i class="fas fa-plus-circle"></i>&nbsp;
             New room</button>
           :
           null
         }
+
+<br />        
+        <br />
 
         <div>
           <RoomList

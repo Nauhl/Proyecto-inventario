@@ -1,3 +1,4 @@
+import { Textfield } from 'react-mdl';
 
 export default function InputRoom(props) {
 
@@ -5,7 +6,31 @@ export default function InputRoom(props) {
 
     return (
         <div>
-            <div >
+            <Textfield
+
+                required
+                id="name-input"
+                onChange={() => { }}
+                label="Name *"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange()("name")}
+                    value={newRoom.name || ""}
+            />
+<br />
+            <Textfield
+
+
+                onChange={() => { }}
+                label="Description"
+                id="description-input"
+                floatingLabel
+                style={{ width: '200px' }}
+                onChange={handleChange()("description")}
+                    value={newRoom.description || ""}
+            />
+
+            {/* <div >
                 <label>Name</label>
                 <input
                     required
@@ -30,25 +55,25 @@ export default function InputRoom(props) {
                     onChange={handleChange()("description")}
                     value={newRoom.description || ""}
                 />
-            </div>
+            </div> */}
 
             <div >
-                    <div className="form-group">
-                        <label htmlFor="multi-location">Location</label>
-                        <select className="custom-select" id="multi-location"
-                            //multiple
-                            onChange={handleChange()("location")}
-                            value={newRoom.location ? newRoom.location._id : []}
-                            // value={newRoom.location && newRoom.location[0]  ? newRoom.location[0]._id : []}
-                        >
-                            <option value="" disabled  >Select Location(s)</option>
-                            {allLocations.map(location => (
-                                <option key={location._id} value={location._id}
-                                >{location.name}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                <div className="form-group">
+                    <label htmlFor="multi-location">Location</label>
+                    <select className="custom-select" id="multi-location"
+                        //multiple
+                        onChange={handleChange()("location")}
+                        value={newRoom.location ? newRoom.location._id : []}
+                    // value={newRoom.location && newRoom.location[0]  ? newRoom.location[0]._id : []}
+                    >
+                        <option value="" disabled  >Select Location(s)</option>
+                        {allLocations.map(location => (
+                            <option key={location._id} value={location._id}
+                            >{location.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
         </div>
     )
