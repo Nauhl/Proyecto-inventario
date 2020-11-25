@@ -16,16 +16,16 @@ export default function CategoriesList(props) {
                 </thead>
                 <tbody>
                     {allCategories.map(category => (
-                        <tr key={category._id} className="bg-secondary">
+                        <tr key={category._id} className="bg-gray">
                             <td>{category.name}</td>
                             <td>{category.description}</td>
                             <td>{category.subCategories && category.subCategories[0] ? `${category.subCategories[0].name}` : ""}</td>
                             <td>
                                 
-                                <button type="button" className="btn btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Edit Button" data-original-title=""
+                                <button type="button" className="btn btn-outline-warning" 
                                     onClick={() => handleClickEditCategory(category._id)}>Edit</button>
                                         &nbsp;
-                                    <button type="button" className="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Delete Button" data-original-title=""
+                                    <button type="button" className="btn btn-outline-danger" 
                                     onClick={() => handleClickDeleteCategory(category)}>
                                     Delete
                                     </button>
@@ -39,3 +39,5 @@ export default function CategoriesList(props) {
             <div className="spinner-border bg-success"></div>
         );
 }
+// data-toggle="tooltip" data-placement="top" title="Edit Button" data-original-title=""
+// data-toggle="tooltip" data-placement="top" title="Delete Button" data-original-title=""

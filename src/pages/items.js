@@ -6,6 +6,8 @@ import { getAllConditions } from "../../src/lib/ctrlCondition";
 import ItemList from "../../components/lists/ItemList";
 import ModalItem from "../../components/modals/ModalItem";
 import ModalConfirmDelete from "../../components/DeleteModal/ModalConfirmDelete";
+import { Grid, Cell } from 'react-mdl';
+import styles from "../../styles/Home.module.css";
 
 export default function itemsPage() {
 
@@ -138,63 +140,95 @@ export default function itemsPage() {
     };
 
     return (
-        <div>
-            <ModalItem
-                open={showModal}
-                handleClose={handleCloseModal}
-                allItems={allItemsState}
-                allLocations={allLocations}
-                allRooms={allRooms}
-                allCategories={allCategories}
-                allConditions={allConditions}
+        <>
+            <div style={{ width: '100%', margin: 'auto' }}>
+                <Grid className={styles.landingGrid} >
+                    &nbsp; &nbsp;
+                <Cell col={4}>
+                        <img className="w-full responsive-img" src="/undraw_Booking_re_gw4j.svg"
+                            className={styles.avatarImg}
+                        />
+                        <div className={styles.vanished}>
+                            <ItemList
+                                allItems={allItemsState}
+                            />
+                        </div>
+                    </Cell>
+                    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                    <Cell col={4} className="mdl-color-text--white">
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <h2>Hi, Welcome to your Items </h2>
+                        <h4 className={styles.text}>Here is where you will see the most important information about your items, where everyone can do new Items incluiding their Locations, Conditions, Categories and SubCategories</h4>
+                    </Cell>
+                </Grid>
+            </div>
+            <> </>
+            <br />
+            <br />
+            <div className="container">
 
-                handleChange={handleChange}
-                handleClickUpdateItem={handleClickUpdateItem}
-                handleClickOnCreateNewItem={handleClickOnCreateNewItem}
-                
-                newItem={newItem}
-                editMode={editMode}
-            />
-            <div >
+                <ModalItem
+                    open={showModal}
+                    handleClose={handleCloseModal}
+                    allItems={allItemsState}
+                    allLocations={allLocations}
+                    allRooms={allRooms}
+                    allCategories={allCategories}
+                    allConditions={allConditions}
 
-                <ModalConfirmDelete
-                    open={showConfirmDeleteModal}
-                    handleClose={handleCloseConfirmDeleteModal}
-                    handleConfirmDelete={DeleteItemOnClick}
-                    item={newItem}
+                    handleChange={handleChange}
+                    handleClickUpdateItem={handleClickUpdateItem}
+                    handleClickOnCreateNewItem={handleClickOnCreateNewItem}
+
+                    newItem={newItem}
+                    editMode={editMode}
                 />
+                <div >
 
-                <div className="card mb-3" >
-                    <div className="card-header"></div>
-                    <div className="card-body">
-                        <h4 className="card-title">Items</h4>
-                        <p className="card-text">In this page you can create, edit and delete Items to your inventory.</p>
+                    <ModalConfirmDelete
+                        open={showConfirmDeleteModal}
+                        handleClose={handleCloseConfirmDeleteModal}
+                        handleConfirmDelete={DeleteItemOnClick}
+                        item={newItem}
+                    />
+
+                    <div className="card mb-3" >
+                        <div className="card-header"></div>
+                        <div className="card-body">
+                            <h4 className="card-title">Items</h4>
+                            <p className="card-text">In this page you can create, edit and delete Items to your inventory.</p>
+                        </div>
+                    </div>
+
+                    {showElements ?
+                        <button className="btn btn-outline-success"
+                            variant="success" size="sm"
+                            onClick={() => handleClickAddItem()}>
+                            New Item</button>
+                        :
+                        null
+                    }
+
+                    <div >
+                        <ItemList
+                            showElements={showElements}
+                            allItems={allItemsState}
+                            handleClickAddItem={handleClickAddItem}
+                            handleClickEditItem={handleClickEditItem}
+                            DeleteItemOnClick={DeleteItemOnClick}
+
+                            openn={showDeleteModal}
+                            handleClose={handleCloseModal}
+                            handleClickDeleteItem={handleClickDeleteItem}
+                        />
                     </div>
                 </div>
-
-                {showElements ?
-                                <button className="btn btn-outline-success"
-                                    variant="success" size="sm"
-                                    onClick={() => handleClickAddItem()}>
-                                    New Item</button>
-                                :
-                                null
-                            }
-
-                <div >
-                    <ItemList
-                        showElements={showElements}
-                        allItems={allItemsState}
-                        handleClickAddItem={handleClickAddItem}
-                        handleClickEditItem={handleClickEditItem}
-                        DeleteItemOnClick={DeleteItemOnClick}
-
-                        openn={showDeleteModal}
-                        handleClose={handleCloseModal}
-                        handleClickDeleteItem={handleClickDeleteItem}
-                    />
-                </div>
             </div>
-        </div>
+        </>
     )
 };

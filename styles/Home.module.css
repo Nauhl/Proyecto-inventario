@@ -1,3 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.text{
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+.textItems{
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+.textItems2{
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  background: #000000;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.main{
+  width: 90vw;
+  margin: 0 auto;
+  padding: 30px 20px;
+  margin-bottom: 40px;
+  /* min-height: calc(100vh - 211px - 58px); */
+}
+
 .navbar {
   position: absolute;
 width: 1440px;
@@ -10,15 +38,32 @@ background: #4B4453;
 
 
 .landingGrid {
-  background: #3C3B3F;
-
-  background: -webkit-linear-gradient(to left, #605C3C, #3C3B3F);
-
-  background: linear-gradient(to left, #605C3C, #3C3B3F);
+  background: #000046;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
 .avatarImg {
-  height: 250px;
+  height: 400px;
   padding-top: 5em;
+}
+
+.landingGrid2 {
+  background: #000046;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.footerr{
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  bottom: 0;
+}
+
+.vanished{
+  visibility: hidden;
+  height: 10px;
+  padding-top: 1em;
 }

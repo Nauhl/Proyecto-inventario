@@ -1,57 +1,40 @@
 import React from 'react';
 import { Footer, FooterSection, FooterDropDownSection, FooterLinkList } from 'react-mdl';
+import styles from "../styles/Home.module.css";
 
 export default function Foooter() {
 
     return (
 <>
-        <Footer size="mega">
-    <FooterSection type="middle">
-        <FooterDropDownSection title="Features">
+        <Footer size="mega" className={styles.footerr}>
+    <FooterSection type="middle" className={styles.textItems}>
+        <FooterDropDownSection  title="Inventory">
             <FooterLinkList>
-                <a href="#">About</a>
-                <a href="#">Terms</a>
-                <a href="#">Partners</a>
-                <a href="#">Updates</a>
+                <a>LOGO</a>
             </FooterLinkList>
         </FooterDropDownSection>
-        <FooterDropDownSection title="Details">
+        <FooterDropDownSection title="Contact">
             <FooterLinkList>
-                <a href="#">Specs</a>
-                <a href="#">Tools</a>
-                <a href="#">Resources</a>
+            <li><a href="https://github.com/Nauhl">GitHub</a>&nbsp;&nbsp;<i className="fab fa-github text-light mr-4 "></i></li>                
+            <li><a href="#">Twitter</a>&nbsp;&nbsp;<i className="fab fa-twitter-square text-light mr-4 "></i></li>
             </FooterLinkList>
         </FooterDropDownSection>
-        <FooterDropDownSection title="Technology">
+        <FooterDropDownSection title="About us">
             <FooterLinkList>
-                <a href="#">How it works</a>
-                <a href="#">Patterns</a>
-                <a href="#">Usage</a>
-                <a href="#">Products</a>
-                <a href="#">Contracts</a>
+                <p>We want to help bring to the people a good managment tool</p>
             </FooterLinkList>
         </FooterDropDownSection>
-        <FooterDropDownSection title="FAQ">
-            <FooterLinkList>
-                <a href="#">Questions</a>
-                <a href="#">Answers</a>
-                <a href="#">Contact Us</a>
-            </FooterLinkList>
-        </FooterDropDownSection>
-    </FooterSection>
-    <FooterSection type="bottom" logo="Title">
-        <FooterLinkList>
-            <a href="#">Help</a>
-            <a href="#">Privacy & Terms</a>
-        </FooterLinkList>
+        
     </FooterSection>
 </Footer>
 
-<Footer size="mini" className="bg-dark">
-    <FooterSection type="left" logo="Title">
+<Footer size="mini" className={styles.textItems2} >
+    <FooterSection type="left" logo="Inventory">
         <FooterLinkList>
-            <a href="#">Help</a>
-            <a href="#">Privacy & Terms</a>
+            <a>
+                &copy;{new Date().getFullYear()}  INVENTORY | All right deserved | Terms 
+            </a>
+            <a>Privacy & Terms</a>
         </FooterLinkList>
     </FooterSection>
 </Footer>

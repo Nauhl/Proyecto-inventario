@@ -2,6 +2,8 @@ import { getAllLocations, getLocation, createNewLocation, updateLocation, delete
 import LocationList from "../../components/lists/LocationList";
 import ModalLocation from "../../components/modals/ModalLocation";
 import ModalConfirmDelete from "../../components/DeleteModal/ModalConfirmDelete";
+import { Grid, Cell } from 'react-mdl';
+import styles from "../../styles/Home.module.css";
 
 export default function locationsPage() {
 
@@ -97,50 +99,87 @@ export default function locationsPage() {
   };
 
   return (
-    <div >
-      <ModalLocation
-        open={showModal}
-        handleClose={handleCloseModal}
-        allLocations={allLocationsState}
-        handleChange={handleChange}
-        handleClickUpdateLocation={handleClickUpdateLocation}
-        handleClickOnCreateNewLocation={handleClickOnCreateNewLocation}
-        newLocation={newLocation}
-        editMode={editMode}
-      />
+    <>
+      <div style={{ width: '100%', margin: 'auto' }}>
+        <Grid className={styles.landingGrid} >
+          &nbsp; &nbsp;
+                <Cell col={4}>
+            <img className="w-full responsive-img" src="/undraw_Navigation_re_wxx4.svg"
+              className={styles.avatarImg}
+            />
+            <div className={styles.vanished}>
+              <LocationList
+                allLocations={allLocationsState}
+              />
+            </div>
+          </Cell>
+          &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+          &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+          &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+          &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+          &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+          
+          <Cell col={4} className="mdl-color-text--white">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h2>Hi Welcome to Locations </h2>
+            <h4 className={styles.text}>Section where everyone can search for a Location to any of the new Items you will add in a future</h4>
+          </Cell>
+        </Grid>
+      </div>
+      <> </>
+      <br />
+      <br />
+      <div className="container">
 
-      <ModalConfirmDelete
-        open={showConfirmDeleteModal}
-        handleClose={handleCloseConfirmDeleteModal}
-        handleConfirmDelete={DeleteLocationOnClick}
-        item={newLocation}
-      />
+        <ModalLocation
+          open={showModal}
+          handleClose={handleCloseModal}
+          allLocations={allLocationsState}
+          handleChange={handleChange}
+          handleClickUpdateLocation={handleClickUpdateLocation}
+          handleClickOnCreateNewLocation={handleClickOnCreateNewLocation}
+          newLocation={newLocation}
+          editMode={editMode}
+        />
 
-      <div className="card mb-3" >
-        <div className="card-header"></div>
-        <div className="card-body">
-          <h4 className="card-title">Locations</h4>
-          <p className="card-text">In this page you can create, edit and delete Locations to your items.</p>
+        <ModalConfirmDelete
+          open={showConfirmDeleteModal}
+          handleClose={handleCloseConfirmDeleteModal}
+          handleConfirmDelete={DeleteLocationOnClick}
+          item={newLocation}
+        />
+
+        <div className="card mb-3" >
+          <div className="card-header" style={{ background: '#1CB5E0' }}></div>
+          <div className="card-body">
+            <h4 className="card-title">Locations</h4>
+            <p className="card-text">In this page you can create, edit and delete Locations to your items.</p>
+          </div>
+        </div>
+
+        {showElements ?
+          <button className="btn btn-outline-success"
+            variant="success" size="sm"
+            onClick={() => handleClickAddLocation()}>
+            New location</button>
+          :
+          null
+        }
+
+        <div >
+          {/* {showElements ? */}
+          <LocationList
+            allLocations={allLocationsState}
+            handleClickEditLocation={handleClickEditLocation}
+            handleClickDeleteLocation={handleClickDeleteLocation}
+          />
         </div>
       </div>
-
-      {showElements ?
-        <button className="btn btn-outline-success"
-          variant="success" size="sm"
-          onClick={() => handleClickAddLocation()}>
-          New location</button>
-        :
-        null
-      }
-
-      <div >
-        {/* {showElements ? */}
-        <LocationList
-          allLocations={allLocationsState}
-          handleClickEditLocation={handleClickEditLocation}
-          handleClickDeleteLocation={handleClickDeleteLocation}
-        />
-      </div>
-    </div>
+    </>
   )
 };

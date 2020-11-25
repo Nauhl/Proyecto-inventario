@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { DataTable, TableHeader, ProgressBar, Button } from 'react-mdl';
-import  Table  from "react-bootstrap/Table";
+import React from 'react';
 
 export default function ConditionList(props) {
 
@@ -8,34 +6,34 @@ export default function ConditionList(props) {
 
     return allConditionsState && allConditionsState.length > 0 ? (
 
-        <div className="content">
-        <Table className="table table-striped table-bordered" >
-            <thead className="table-warning">
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Action</th>
+        <table className="table table-striped table-responsive" >
+            <thead>
+                <tr className="table-primary">
+                    <th scope="row">Name</th>
+                    <th scope="row">Description</th>
+                    <th scope="row">Action</th>
                 </tr>
             </thead>
             <tbody>
                 {allConditionsState.map(condition => (
-                    <tr key={condition._id} className="bg-secondary">
+                    <tr key={condition._id} className="bg-gray">
                         <td>{condition.name}</td>
                         <td>{condition.description}</td>
                         <td>
 
-                            <Button type="button" raised accent ripple className="btn btn-warning"
+                            <button type="button" className="btn btn-outline-warning "
                                 onClick={() => handleClickEditCondition(condition._id)}
-                            >Edit</Button>
-                            <Button type="button" raised accent ripple className="btn btn-danger" 
-                                onClick={() => handleClickDeleteCondition(condition)} >Delete</Button>
+                            >Edit</button>
+                            &nbsp;
+                            <button type="button" className="btn btn-outline-danger "
+                                onClick={() => handleClickDeleteCondition(condition)}
+                            >Delete</button>
                         </td>
                     </tr>
                 ))}
             </tbody>
-        </Table>
-        </div>
-
+        </table>
+        // </div>
         // <DataTable
         //     shadow={0}
         //     rows={[
@@ -60,9 +58,9 @@ export default function ConditionList(props) {
         //     <TableHeader name="actions">Action</TableHeader>
         // </DataTable >
 
-    ) 
-    : (
-        <ProgressBar indeterminate />
+    )
+        : (
+            <>  </>
             //<div className="spinner-border bg-success"></div>
         );
 }

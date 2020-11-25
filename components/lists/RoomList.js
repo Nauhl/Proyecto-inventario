@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 export default function RoomList(props) {
 
@@ -8,15 +8,15 @@ export default function RoomList(props) {
     <table className="table table-striped table-responsive" >
       <thead>
         <tr className="table-primary">
-          <th>Name</th>
-          <th>Description</th>
-          <th>Location</th>
-          <th>Action</th>
+          <th scope="row">Name</th>
+          <th scope="row">Description</th>
+          <th scope="row">Location</th>
+          <th scope="row">Action</th>
         </tr>
       </thead>
       <tbody>
         {allRooms.map(room => (
-          <tr key={room._id} className="bg-secondary">
+          <tr key={room._id} className="bg-gray">
             <td>{room.name}</td>
             <td>{room.description}</td>
             <td>{room.location ? room.location.name : ""}</td>
@@ -25,7 +25,7 @@ export default function RoomList(props) {
 
               <button type="button" className="btn btn-outline-warning"
                 onClick={() => handleClickEditRoom(room._id)} >Edit</button>
-              <button className="btn btn-outline-danger"
+              <button type="button" className="btn btn-outline-danger"
                 onClick={() => handleClickDeleteRoom(room)} >Delete</button>
             </td>
           </tr>

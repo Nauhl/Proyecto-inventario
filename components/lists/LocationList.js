@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 export default function LocationList(props) {
 
     const { allLocations, handleClickEditLocation, handleClickDeleteLocation } = props;
 
     return allLocations && allLocations.length > 0 ? (
-        <table className="table table-responsive" >
+        <table className="table table-responsive table-striped" >
             <thead>
                 <tr className="table-primary">
-                    <th>Name</th>
-                    <th>Description</th>
-                    {/* <th>Status</th> */}
-                    <th>Street-Number</th>
-                    <th>Street</th>
-                    {/* <th>Street-2</th> */}
-                    <th>City</th>
-                    <th>Province</th>
-                    {/* <th>Country</th> */}
-                    <th>Action</th>
+                    <th scope="row">Name</th>
+                    <th scope="row">Description</th>
+                    {/* scope="row" <th>Status</th> */}
+                    <th scope="row">Street-Number</th>
+                    <th scope="row">Street</th>
+                    {/* scope="row" <th>Street-2</th> */}
+                    <th scope="row">City</th>
+                    <th scope="row">Province</th>
+                    {/* scope="row" <th>Country</th> */}
+                    <th scope="row">Action</th>
                 </tr>
             </thead>
             <tbody>
                 {allLocations.map(location => (
-                    <tr key={location._id} className="bg-secondary">
+                    <tr key={location._id} className="bg-gray">
                         <td>{location.name}</td>
                         <td>{location.description}</td>
                         {/* <td>{location.status}</td> */}
@@ -33,11 +33,11 @@ export default function LocationList(props) {
                         <td>{location.address ? location.address.province : ""}</td>
                         {/* <td>{location.address ? location.address.country : ""}</td> */}
                         <td>
-                            
+
                             <button type="button" className="btn btn-outline-warning"
                                 onClick={() => handleClickEditLocation(location._id)}
                             >Edit</button>
-                            <button type="button" className="btn btn-outline-danger" 
+                            <button type="button" className="btn btn-outline-danger"
                                 onClick={() => handleClickDeleteLocation(location)} >Delete</button>
                         </td>
                     </tr>

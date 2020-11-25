@@ -3,8 +3,8 @@ import ConditionList from "../../components/lists/ConditionList";
 import { getAllConditions, getCondition, createNewCondition, updateCondition, deleteCondition } from "../../src/lib/ctrlCondition";
 import ModalCondition from "../../components/modals/ModalCondition";
 import ModalConfirmDelete from "../../components/DeleteModal/ModalConfirmDelete";
-import { Button, FABButton, Icon } from 'react-mdl';
-
+import { Grid, Cell } from 'react-mdl';
+import styles from "../../styles/Home.module.css";
 
 export default function ConditionPage() {
 
@@ -94,55 +94,96 @@ export default function ConditionPage() {
   };
 
   return (
-    <div>
-      <ModalCondition
-        open={showModal}
-        handleClose={handleCloseModal}
-        handleChange={handleChange}
-        allConditions={allConditionsState}
-        handleClickOnCreateNewCondition={handleClickOnCreateNewCondition}
-        handleClickUpdateCondition={handleClickUpdateCondition}
-        addCondition={addCondition}
-        editMode={editMode}
-      />
 
-      <ModalConfirmDelete
-        open={showConfirmDeleteModal}
-        handleClose={handleCloseConfirmDeleteModal}
-        handleConfirmDelete={DeleteConditionOnClick}
-        item={addCondition}
-      />
-
-      <div className="card mb-3" >
-        <div className="card-header"></div>
-        <div className="card-body">
-          <h4 className="card-title">Conditions</h4>
-          <p className="card-text">In this page you can create, edit and delete Conditions.</p>
-        </div>
+    <>
+      <div style={{ width: '100%', margin: 'auto' }}>
+        <Grid className={styles.landingGrid} >
+          &nbsp; &nbsp;
+                <Cell col={4}>
+            <img className="w-full responsive-img" src="/undraw_Preferences_re_49in.svg"
+              className={styles.avatarImg}
+            />
+            <div className={styles.vanished}>
+              <ConditionList
+                allConditionsState={allConditionsState}
+              />
+            </div>
+          </Cell>
+          &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+          <Cell col={4} className="mdl-color-text--white">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h2>Hi Welcome to your Conditions</h2>
+            <h4 className={styles.text}>Section where everyone can do a new Condition for the new Items</h4>
+          </Cell>
+        </Grid>
       </div>
+      <> </>
+      <br />
+      <br />
+      <div className="container">
 
-      {showElements ?
-        <Button raised accent ripple className="btn btn-outline-success"
-          onClick={() => handleClickAddCondition()}>
-          New condition
-        </Button>
-        :
-        null
-      }
+        <ModalCondition
+          open={showModal}
+          handleClose={handleCloseModal}
+          handleChange={handleChange}
+          allConditions={allConditionsState}
+          handleClickOnCreateNewCondition={handleClickOnCreateNewCondition}
+          handleClickUpdateCondition={handleClickUpdateCondition}
+          addCondition={addCondition}
+          editMode={editMode}
+        />
 
+        <ModalConfirmDelete
+          open={showConfirmDeleteModal}
+          handleClose={handleCloseConfirmDeleteModal}
+          handleConfirmDelete={DeleteConditionOnClick}
+          item={addCondition}
+        />
+
+        {/* <div className="container">
+          <div className={styles.main}>
+            <h3 className={styles.text}>
+              You can add a condition to allow to the items about something like "in good conditions or state" or "it is too old"
+        </h3>
+          </div>
+        </div> */}
+
+        <div className="card mb-3" >
+          <div className="card-header" style={{ background: '#1CB5E0' }}></div>
+          <div className="card-body">
+            <h4 className="card-title">Conditions</h4>
+            <p className="card-text">In this page you can create, edit and delete Conditions.</p>
+          </div>
+        </div>
+
+        {showElements ?
+          <button className="btn btn-outline-success"
+            onClick={() => handleClickAddCondition()}>
+            New condition
+        </button>
+          :
+          null
+        }
+        {/* 
 <FABButton colored ripple>
     <Icon name="add" onClick={() => handleClickAddCondition()}/>
-</FABButton>
+</FABButton> */}
 
-      <div>
-        <ConditionList
-          showElements={showElements}
-          allConditionsState={allConditionsState}
-          handleClickAddCondition={handleClickAddCondition}
-          handleClickEditCondition={handleClickEditCondition}
-          handleClickDeleteCondition={handleClickDeleteCondition}
-        />
+        <div>
+          <ConditionList
+            showElements={showElements}
+            allConditionsState={allConditionsState}
+            handleClickAddCondition={handleClickAddCondition}
+            handleClickEditCondition={handleClickEditCondition}
+            handleClickDeleteCondition={handleClickDeleteCondition}
+          />
+        </div>
       </div>
-    </div>
+    </>
   )
 };

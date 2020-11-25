@@ -1,11 +1,11 @@
 import React from "react";
-import { DataTable, TableHeader, ProgressBar, Button } from 'react-mdl';
 
 export default function SubCategoriesList(props) {
 
     const { allSubCategories, handleClickEditSubCategory, handleClickDeleteSubCategory } = props;
 
     return allSubCategories && allSubCategories.length > 0 ? (
+
         <table className="table table-responsive table-striped ">
             <thead>
                 <tr className="table-primary">
@@ -16,18 +16,18 @@ export default function SubCategoriesList(props) {
             </thead>
             <tbody>
                 {allSubCategories.map(subCategory => (
-                    <tr key={subCategory._id} className="bg-light-gray">
+                    <tr key={subCategory._id} className="bg-gray">
                         <td >{subCategory.name}</td>
                         <td >{subCategory.description}</td>
                         <td>
 
-                            <Button type="button" raised accent ripple className="btn btn-outline-warning"
-                                onClick={() => handleClickEditSubCategory(subCategory._id)}>Edit</Button>
+                            <button type="button" className="btn btn-outline-warning"
+                                onClick={() => handleClickEditSubCategory(subCategory._id)}>Edit</button>
                                         &nbsp;
-                                    <Button type="button" raised accent ripple className="btn btn-outline-danger" 
+                                    <button type="button" className="btn btn-outline-danger"
                                 onClick={() => handleClickDeleteSubCategory(subCategory)}>
                                 Delete
-                                    </Button>
+                                    </button>
                         </td>
                     </tr>
                     //)

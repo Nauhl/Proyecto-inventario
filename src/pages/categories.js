@@ -5,6 +5,8 @@ import SubCategoriesList from "../../components/lists/SubCategoriesList";
 import ModalCategory from "../../components/modals/ModalCategory";
 import ModalSubCategory from "../../components/modals/ModalSubCategory";
 import ModalConfirmDelete from "../../components/DeleteModal/ModalConfirmDelete";
+import { Grid, Cell } from 'react-mdl';
+import styles from "../../styles/Home.module.css";
 
 export default function categoriesPage(props) {
 
@@ -204,95 +206,126 @@ export default function categoriesPage(props) {
     }
 
     return (
-        <div>
-            <ModalCategory
-                open={showModal}
-                handleClose={handleCloseModal}
-                handleChange={handleChange}
-                allCategories={allCategories}
-                allSubCategories={allSubCategories}
-                handleClickOnCreateNewCategory={handleClickOnCreateNewCategory}
-                handleClickUpdateCategory={handleClickUpdateCategory}
-                newCategory={newCategory}
-                editMode={editMode}
-            />
-
-            <ModalSubCategory
-                openSub={showModalSubCategory}
-                handleCloseSub={handleCloseSubcategoryModal}
-                handleChange={handleChangeSubCategory}
-                allSubCategories={allSubCategories}
-                handleClickOnCreateNewSubCategory={handleClickOnCreateNewSubCategory}
-                handleClickUpdateSubCategory={handleClickUpdateSubCategory}
-                newSubCategory={newSubCategory}
-                editMode={editMode}
-            />
-
-            <ModalConfirmDelete
-                open={showConfirmDeleteModal}
-                handleClose={handleCloseConfirmDeleteModal}
-                handleConfirmDelete={DeleteCategoryOnClick}
-                item={newCategory}
-            />
-
-            <div className="card mb-3" >
-                <div className="card-header"></div>
-                <div className="card-body">
-                    <h4 className="card-title">Categories</h4>
-                    <p className="card-text">In this page you can create, edit and delete Categories to your items.</p>
-                </div>
+        <>
+            <div style={{ width: '100%', margin: 'auto' }}>
+                <Grid className={styles.landingGrid} >
+                    &nbsp; &nbsp;
+                <Cell col={4}>
+                        <img className="w-full responsive-img" src="/undraw_Home_settings_re_pkya.svg"
+                            className={styles.avatarImg}
+                        />
+                        <div className={styles.vanished}>
+                            <CategoriesList
+                                allCategories={allCategories}
+                            />
+                        </div>
+                    </Cell>
+                    <Cell col={4} className="mdl-color-text--white">
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <h2>Hi, Welcome to your Categories & SubCategories</h2>
+                        <h4 className={styles.text}>Section where everyone can do a new Category for the new Items</h4>
+                    </Cell>
+                </Grid>
             </div>
+            <> </>
+            <br />
+            <br />
+            <div className="container">
 
-            {showElements ?
-                <button className="btn btn-outline-success"
-                    onClick={() => handleClickAddCategory()}>
-                    New category
-                    </button>
-                :
-                null
-            }
-
-            <div >
-                <CategoriesList
+                <ModalCategory
+                    open={showModal}
+                    handleClose={handleCloseModal}
+                    handleChange={handleChange}
                     allCategories={allCategories}
-                    showElements={showElements}
-                    handleClickEditCategory={handleClickEditCategory}
-                    handleClickDeleteCategory={handleClickDeleteCategory}
-                />
-            </div>
-
-            <ModalConfirmDelete
-                open={showDeleteModalSubCategory}
-                handleClose={handleCloseConfirmDeleteModal}
-                handleConfirmDelete={DeleteSubCategoryOnClick}
-                item={newSubCategory}
-            />
-
-            <div className="card mb-3" >
-                <div className="card-header"></div>
-                <div className="card-body">
-                    <h4 className="card-title">SubCategories</h4>
-                    <p className="card-text">With this table you can create, edit and delete SubCategories to your Categories.</p>
-                </div>
-            </div>
-
-            {showElements ?
-                <button type="button" className="btn btn-outline-info"
-                    onClick={() => handleClickAddSubCategory()}
-                >
-                    New sub category
-                </button>
-                :
-                null
-            }
-
-            <div >
-                <SubCategoriesList
                     allSubCategories={allSubCategories}
-                    handleClickEditSubCategory={handleClickEditSubCategory}
-                    handleClickDeleteSubCategory={handleClickDeleteSubCategory}
+                    handleClickOnCreateNewCategory={handleClickOnCreateNewCategory}
+                    handleClickUpdateCategory={handleClickUpdateCategory}
+                    newCategory={newCategory}
+                    editMode={editMode}
                 />
-            </div>
-        </div >
+
+                <ModalSubCategory
+                    openSub={showModalSubCategory}
+                    handleCloseSub={handleCloseSubcategoryModal}
+                    handleChange={handleChangeSubCategory}
+                    allSubCategories={allSubCategories}
+                    handleClickOnCreateNewSubCategory={handleClickOnCreateNewSubCategory}
+                    handleClickUpdateSubCategory={handleClickUpdateSubCategory}
+                    newSubCategory={newSubCategory}
+                    editMode={editMode}
+                />
+
+                <ModalConfirmDelete
+                    open={showConfirmDeleteModal}
+                    handleClose={handleCloseConfirmDeleteModal}
+                    handleConfirmDelete={DeleteCategoryOnClick}
+                    item={newCategory}
+                />
+
+                <div className="card mb-3" >
+                    <div className="card-header" style={{ background: '#1CB5E0' }} ></div>
+                    <div className="card-body">
+                        <h4 className="card-title">Categories</h4>
+                        <p className="card-text">In this page you can create, edit and delete Categories to your items.</p>
+                    </div>
+                </div>
+
+                {showElements ?
+                    <button className="btn btn-outline-success"
+                        onClick={() => handleClickAddCategory()}>
+                        New category
+                    </button>
+                    :
+                    null
+                }
+
+                <div >
+                    <CategoriesList
+                        allCategories={allCategories}
+                        showElements={showElements}
+                        handleClickEditCategory={handleClickEditCategory}
+                        handleClickDeleteCategory={handleClickDeleteCategory}
+                    />
+                </div>
+
+                <ModalConfirmDelete
+                    open={showDeleteModalSubCategory}
+                    handleClose={handleCloseConfirmDeleteModal}
+                    handleConfirmDelete={DeleteSubCategoryOnClick}
+                    item={newSubCategory}
+                />
+
+                <div className="card mb-3" >
+                    <div className="card-header" style={{ background: '#1CB5E0' }}></div>
+                    <div className="card-body">
+                        <h4 className="card-title">SubCategories</h4>
+                        <p className="card-text">With this table you can create, edit and delete SubCategories to your Categories.</p>
+                    </div>
+                </div>
+
+                {showElements ?
+                    <button type="button" className="btn btn-outline-info"
+                        onClick={() => handleClickAddSubCategory()}
+                    >
+                        New sub category
+                </button>
+                    :
+                    null
+                }
+
+                <div >
+                    <SubCategoriesList
+                        allSubCategories={allSubCategories}
+                        handleClickEditSubCategory={handleClickEditSubCategory}
+                        handleClickDeleteSubCategory={handleClickDeleteSubCategory}
+                    />
+                </div>
+            </div >
+        </>
     )
 };
