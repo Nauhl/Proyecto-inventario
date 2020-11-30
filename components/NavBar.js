@@ -13,7 +13,7 @@ export default function NavBar() {
                             {/* <a href="/">Inventory</a> */}
                             <a href="/" className={styles.text}>Home</a>
                             <i className="fas fa-sitemap mdl-color-text--white">&nbsp; &nbsp;<a href="/items" className={styles.text}>Items</a></i>
-                            <i className="fas fa-user-tie mdl-color-text--white">&nbsp; &nbsp;<a href="/about" className={styles.text}>About us</a></i>
+                            {/* <i className="fas fa-user-tie mdl-color-text--white">&nbsp; &nbsp;<a href="/aboutUs" className={styles.text}>About us</a></i> */}
                             <i className="fas fa-id-card-alt mdl-color-text--white">&nbsp; &nbsp;<a href="/contact" className={styles.text}>Contact</a></i>
                         </Navigation>
                     </Header>

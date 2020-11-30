@@ -130,8 +130,8 @@ export default function roomsPage() {
             <br />
             <br />
             <br />
-            <h2 className={styles.text}>Hi, Welcome to your Rooms</h2>
-            <h4 className={styles.text}>Here can do a new Room for the new Items you will add in a future</h4>
+            <h2 className={styles.textParrafo}>Hi, Welcome to your Rooms</h2>
+            <h4 className={styles.textParrafo}>This is an important area because is where every element will be put it or drop it.</h4>
           </Cell>
         </Grid>
       </div>
@@ -163,7 +163,9 @@ export default function roomsPage() {
           <div className="card-header" style={{ background: '#1CB5E0' }}></div>
           <div className="card-body">
             <h4 className="card-title">Rooms</h4>
-            <p className="card-text">In this page you can create, edit and delete Rooms to your items.</p>
+            <hr />
+            Create, choose, update and delete your rooms.
+            <p className="card-text"></p>
           </div>
         </div>
 

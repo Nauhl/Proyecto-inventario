@@ -24,10 +24,9 @@ export default function Home() {
                         <br />
                         <br />
                         <br />
-                        <br />
-                        <br />
-                    <h4 className={styles.text}> Administra todos tus bienes del hogar desde tu carro hasta el numero de puertas que tienes en tu casa
-                con Inventory Managment Project</h4>
+                        <h1>Welcome To Your Inventory!!!</h1>
+                    <h4 className={styles.text2}> Manage all your items like your cars until as many doors you have in your house with 
+                    Inventory Managment Project</h4>
                 </Cell>
                 </Grid>
                 
@@ -35,6 +34,21 @@ export default function Home() {
             </div >
             <div style={{ width: '100%', margin: 'auto' }}>
                 <Grid className={styles.landingGrid2} >
+
+                <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                <Cell col={4} className="mdl-color-text--white">
+                        
+                    <h4 className={styles.textParrafo}> Have a very nice tool and place where you can organize everything you want.</h4>
+                    <br />
+                    
+                    <h4 className={styles.textParrafo}> You will have the control of each single elements of your own property and you will not ever worry about lost something.</h4>
+                </Cell>
+                        
                     <Cell col={4}>
                         <img className="w-full responsive-img " src="/undraw_Meeting_re_i53h.svg"
                             className={styles.avatarImg}

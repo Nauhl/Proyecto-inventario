@@ -60,6 +60,7 @@ export default function categoriesPage(props) {
 
     const handleCloseConfirmDeleteModal = () => {
         setShowConfirmDeleteModal(false);
+        setShowDeleteModalSubCategory(false);
     };
 
     //TODO------ Show Add Modal ------/
@@ -227,8 +228,8 @@ export default function categoriesPage(props) {
                         <br />
                         <br />
                         <br />
-                        <h2 className={styles.text}>Hi, Welcome to your Categories & SubCategories</h2>
-                        <h4 className={styles.text}>Section where everyone can do a new Category for the new Items</h4>
+                        <h2 className={styles.textParrafo}>Hi, Welcome to your Categories & SubCategories</h2>
+                        <h4 className={styles.textParrafo}>Page where everyone can do a new Category and SubCategorie for the new Items</h4>
                     </Cell>
                 </Grid>
             </div>
@@ -271,7 +272,10 @@ export default function categoriesPage(props) {
                     <div className="card-header" style={{ background: '#1CB5E0' }} ></div>
                     <div className="card-body">
                         <h4 className="card-title">Categories</h4>
-                        <p className="card-text">In this page you can create, edit and delete Categories to your items.</p>
+                        <hr />
+                        You can separate items by "sections" to identify their propierties. 
+                        
+                        <p className="card-text"></p>
                     </div>
                 </div>
 
@@ -306,8 +310,10 @@ export default function categoriesPage(props) {
                 <div className="card mb-3" >
                     <div className="card-header" style={{ background: '#1CB5E0' }}></div>
                     <div className="card-body">
-                        <h4 className="card-title">SubCategories</h4>
-                        <p className="card-text">With this table you can create, edit and delete SubCategories to your Categories.</p>
+                        <h4 className="card-title">SubCategories
+                        <hr />
+                        Now, here is where you decide a sub-sections based in characteristics of the Categories</h4>
+                        <p className="card-text"></p>
                     </div>
                 </div>
 

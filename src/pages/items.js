@@ -163,7 +163,8 @@ export default function itemsPage() {
                         <br />
                         <br />
                         <h2 className={styles.text}>Hi, Welcome to your Items </h2>
-                        <h4 className={styles.text}>Here is where you will see the most important information about your items, where everyone can do new Items incluiding their Locations, Conditions, Categories and SubCategories</h4>
+                        <h4 className={styles.text}>                            Items is the most important area because is where all the last propierties will connect, based in the type of element you want to create or select to something.
+</h4>
                     </Cell>
                 </Grid>
             </div>
@@ -201,7 +202,9 @@ export default function itemsPage() {
                         <div className="card-header" style={{ background: '#1CB5E0' }}></div>
                         <div className="card-body">
                             <h4 className="card-title">Items</h4>
-                            <p className="card-text">In this page you can create, edit and delete Items to your inventory.</p>
+                            <hr />
+                            See all your items right here and do whatever you want with them. 
+                            <p className="card-text"></p>
                         </div>
                     </div>
 

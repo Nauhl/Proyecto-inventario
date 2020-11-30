@@ -117,8 +117,8 @@ export default function ConditionPage() {
             <br />
             <br />
             <br />
-            <h2 className={styles.text}>Hi Welcome to your Conditions</h2>
-            <h4 className={styles.text}>Section where everyone can do a new Condition for the new Items</h4>
+            <h2 className={styles.textParrafo}>Hi, Welcome to your Conditions</h2>
+            <h4 className={styles.textParrafo}>The main idea on this page is to give to the user the conditional option and the state of a new or an existing item</h4>
           </Cell>
         </Grid>
       </div>
@@ -154,10 +154,13 @@ export default function ConditionPage() {
         </div> */}
 
         <div className="card mb-3" >
-          <div className="card-header" style={{ background: '#1CB5E0' }}></div>
+          <div className="card-header" style={{ background: '#1CB5E0' }} >
+            </div>
           <div className="card-body">
-            <h4 className="card-title">Conditions</h4>
-            <p className="card-text">In this page you can create, edit and delete Conditions.</p>
+            <h4 className="card-title"> Conditions</h4>
+            <hr />
+            Here you can add something like "bad", "good", "break", "old" just like example.
+            <p className="card-text"></p>
           </div>
         </div> 
 

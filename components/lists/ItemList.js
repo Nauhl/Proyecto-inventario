@@ -24,7 +24,7 @@ export default function ItemList(props) {
                         <th scope="row">Brand</th>
                         {/* scope="row" <th>Seral Number</th> */}
                         {/* scope="row" <th>Notes</th> */}
-                        {/* scope="row" <th>Cost</th> */}
+                        <th scope="row" >Cost</th>
                         <th scope="row">Action</th>
                     </tr>
                 </thead>
@@ -42,7 +42,7 @@ export default function ItemList(props) {
                             <td className={styles.textItems3}>{item.brand}</td>
                             {/* className={styles.textItems3} <td>{item.serialNumber}</td> */}
                             {/* className={styles.textItems3} <td>{item.notes}</td> */}
-                            {/* className={styles.textItems3} <td>{item.purchaseInfo ? item.purchaseInfo.cost : ""}</td> */}
+                            <td className={styles.textItems3} >{item.purchaseInfo ? item.purchaseInfo.cost : ""}</td>
                             <td className={styles.textItems3}>
 
                                 <button type="button" className="btn btn-outline-warning"

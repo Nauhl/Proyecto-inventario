@@ -126,8 +126,8 @@ export default function locationsPage() {
             <br />
             <br />
             <br />
-            <h2 className={styles.text}>Hi Welcome to Locations </h2>
-            <h4 className={styles.text}>Section where everyone can search for a Location to any of the new Items you will add in a future</h4>
+            <h2 className={styles.text}>Hi, Welcome to Locations </h2>
+            <h4 className={styles.text}>Section where everyone can see the ubication of any of the new Items you will add in a future</h4>
           </Cell>
         </Grid>
       </div>
@@ -158,7 +158,9 @@ export default function locationsPage() {
           <div className="card-header" style={{ background: '#1CB5E0' }}></div>
           <div className="card-body">
             <h4 className="card-title">Locations</h4>
-            <p className="card-text">In this page you can create, edit and delete Locations to your items.</p>
+            <hr />
+            Locations are an another important part into this because it connect with the ubication of the items.
+            <p className="card-text"></p>
           </div>
         </div>
         <br />

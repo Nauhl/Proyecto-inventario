@@ -16,12 +16,12 @@ export default function Foooter() {
         <FooterDropDownSection title="Contact">
             <FooterLinkList>
             <li><a href="https://github.com/Nauhl">GitHub</a>&nbsp;&nbsp;<i className="fab fa-github text-light mr-4 "></i></li>                
-            <li><a href="#">Twitter</a>&nbsp;&nbsp;<i className="fab fa-twitter-square text-light mr-4 "></i></li>
+            <li><a href="https://twitter.com/nauhl_valdez">Twitter</a>&nbsp;&nbsp;<i className="fab fa-twitter-square text-light mr-4 "></i></li>
             </FooterLinkList>
         </FooterDropDownSection>
-        <FooterDropDownSection title="About us">
+        <FooterDropDownSection title="Company">
             <FooterLinkList>
-                <p>We want to help bring to the people a good managment tool</p>
+                <p>We want to help bring to the people a good managment tool.</p>
             </FooterLinkList>
         </FooterDropDownSection>
         
