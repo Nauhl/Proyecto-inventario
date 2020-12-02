@@ -32,7 +32,7 @@ export default function Foooter() {
     <FooterSection type="left" logo="Inventory">
         <FooterLinkList>
             <a>
-                &copy;{new Date().getFullYear()}  INVENTORY | All right deserved | Terms 
+                &copy;{new Date().getFullYear()}  INVENTORY | All rights reserved | Terms 
             </a>
             <a>Privacy & Terms</a>
         </FooterLinkList>
